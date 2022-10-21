@@ -1,0 +1,37 @@
+{
+  "name": "dummy",
+  "version": "1.0.0",
+  "description": "Dummy description",
+  "keywords": [
+    "dummy"
+  ],
+  "author": "MenSeb <sebastien.menard.github@gmail.com>",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
+  },
+  "homepage": "https://github.com/MenSeb/react-packages-boilerplate#readme",
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "typings": "lib/dummy.d.ts"
+}
