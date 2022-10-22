@@ -1,3 +1,6 @@
 import jestConfig from '../../jest.config';
 
-export default jestConfig;
+export default {
+  ...jestConfig,
+  rootDir: '../..',
+};
