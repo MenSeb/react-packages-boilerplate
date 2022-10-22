@@ -65,7 +65,7 @@ function createPackage(): void {
   writeFileSync(
     packageConfigJest,
     `import ${jestConfigName} from '../../jest.config';\n\n` +
-      `export default ${jestConfigName};\n\n`,
+      `export default { ...${jestConfigName}, rootDir: '../..' };\n\n`,
   );
 
   execSync(`prettier --write ${packageFolder}`);
