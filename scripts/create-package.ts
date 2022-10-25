@@ -24,6 +24,9 @@ function createPackage(): void {
   const packageTest = `${packageFolder}/__tests__`;
   const packageJSON = `${packageFolder}/package.json`;
   const packageConfig = `${packageFolder}/tsconfig.json`;
+  const packageConfigJest = `${packageFolder}/jest.config.ts`;
+
+  const jestConfigName = 'jestConfig';
 
   if (existsSync(packageSource)) {
     throw Error(`Package {${packageName}} already exists !`);
@@ -57,6 +60,12 @@ function createPackage(): void {
       compilerOptions: { outDir: './lib' },
       include: ['src'],
     }),
+  );
+
+  writeFileSync(
+    packageConfigJest,
+    `import ${jestConfigName} from '../../jest.config';\n\n` +
+      `export default { ...${jestConfigName}, rootDir: '../..' };\n\n`,
   );
 
   execSync(`prettier --write ${packageFolder}`);
