@@ -4,7 +4,4 @@ export default {
   testEnvironment: 'jsdom',
   transform: { '\\.[jt]sx?$': 'ts-jest' },
   verbose: true,
-
-  coverageDirectory: '<rootDir>/coverage/',
-  collectCoverageFrom: ['<rootDir>/packages/*/src/**/*.{ts,tsx}'],
 };
