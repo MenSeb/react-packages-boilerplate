@@ -25,7 +25,7 @@
     "check": "prettier --check .",
     "create": "ts-node scripts/create-package",
     "commit": "cz",
-    "coverage": "lerna exec jest -- --coverage && nyc report --reporter=lcov",
+    "coverage": "lerna exec jest -- --coverage",
     "prebuild": "lerna exec rimraf lib",
     "build": "lerna exec tsc --stream",
     "eslint": "lerna exec eslint -- . --parser-options=project:../../tsconfig.eslint.json --ignore-path ../../.eslintignore",
@@ -73,7 +73,5 @@
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   },
-  "dependencies": {
-    "nyc": "^15.1.0"
-  }
+  "dependencies": {}
 }

@@ -8,5 +8,3 @@ packages/**/lib
 lerna-debug.log
 yarn-debug.log
 yarn-error.log
-
-.nyc_output
