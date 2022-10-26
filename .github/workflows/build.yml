@@ -37,3 +37,8 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ github.token }}
+
+      - name: semantic-pull-request
+        uses: amannn/action-semantic-pull-request@v5.0.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
