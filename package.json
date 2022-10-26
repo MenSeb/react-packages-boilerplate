@@ -26,6 +26,7 @@
     "create": "ts-node scripts/create-package",
     "commit": "cz",
     "coverage": "lerna exec jest -- --coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prebuild": "lerna exec rimraf lib",
     "build": "lerna exec tsc --stream",
     "eslint": "lerna exec eslint -- . --parser-options=project:../../tsconfig.eslint.json --ignore-path ../../.eslintignore",
