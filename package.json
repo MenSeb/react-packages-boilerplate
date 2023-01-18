@@ -33,7 +33,8 @@
     "lint": "yarn run eslint --fix",
     "prepublish": "yarn run build",
     "publish": "lerna publish",
-    "test": "lerna exec jest"
+    "test": "lerna exec jest --",
+    "watch": "yarn test --watch"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
