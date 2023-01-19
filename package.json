@@ -1,6 +1,6 @@
 {
   "name": "@menseb/react-packages-boilerplate",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "React packages boilerplate.",
   "main": "index.js",
   "repository": "https://github.com/MenSeb/react-packages-boilerplate.git",
