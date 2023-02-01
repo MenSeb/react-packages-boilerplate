@@ -10,7 +10,7 @@ export const config: webpack.Configuration = {
       {
         exclude: /node_modules/,
         test: /\\.[jt]sx?$/,
-        use: ['babel-loader'],
+        use: ['ts-loader'],
       },
       {
         exclude: /node_modules/,

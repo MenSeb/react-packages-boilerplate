@@ -4,7 +4,7 @@ import config, { __dirname } from './webpack.config.js';
 
 export default merge(config, {
   devtool: 'source-map',
-  entry: path.resolve(__dirname, 'lib/index.js'),
+  entry: path.resolve(__dirname, 'public/index.tsx'),
   externals: {
     react: {
       amd: 'react',
