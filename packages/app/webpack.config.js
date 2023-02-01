@@ -8,12 +8,12 @@ export default {
     rules: [
       {
         exclude: /node_modules/,
-        test: /\\.[jt]sx?$/,
-        use: ['babel-loader'],
+        test: /\.tsx?$/,
+        use: ['ts-loader'],
       },
       {
         exclude: /node_modules/,
-        test: /.s[ac]ss$/,
+        test: /\.s[ac]ss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
