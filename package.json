@@ -37,6 +37,7 @@
     "lint": "yarn run eslint --fix",
     "prepublish": "yarn run build",
     "publish": "lerna publish",
+    "start": "lerna run start",
     "test": "lerna exec jest --",
     "watch": "yarn test --watch"
   },
