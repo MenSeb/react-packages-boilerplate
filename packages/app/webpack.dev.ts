@@ -10,7 +10,7 @@ export default merge(config, {
     },
   },
   devtool: 'eval-source-map',
-  entry: path.resolve(__dirname, 'public/index.tsx'),
+  entry: path.resolve(__dirname, 'lib/index.js'),
   mode: 'development',
   output: {
     filename: 'index.js',
