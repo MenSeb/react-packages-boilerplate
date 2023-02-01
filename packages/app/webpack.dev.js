@@ -1,7 +1,6 @@
 import path from 'path';
 import { merge } from 'webpack-merge';
-import config, { __dirname } from './webpack.config';
-import 'webpack-dev-server';
+import config, { __dirname } from './webpack.config.js';
 
 export default merge(config, {
   devServer: {
@@ -10,7 +9,7 @@ export default merge(config, {
     },
   },
   devtool: 'eval-source-map',
-  entry: path.resolve(__dirname, 'lib/index.js'),
+  entry: path.resolve(__dirname, 'public/index.tsx'),
   mode: 'development',
   output: {
     filename: 'index.js',

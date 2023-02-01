@@ -26,8 +26,8 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
-    "postbuild": "webpack --config webpack.prod.ts",
-    "start": "webpack serve --config webpack.dev.ts --open --hot",
+    "postbuild": "webpack --config webpack.prod.js",
+    "start": "webpack serve --config webpack.dev.js --open --hot",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

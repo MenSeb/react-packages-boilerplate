@@ -1,10 +1,9 @@
-import * as webpack from 'webpack';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 export const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export const config: webpack.Configuration = {
+export default {
   module: {
     rules: [
       {
@@ -24,5 +23,3 @@ export const config: webpack.Configuration = {
     modules: ['node_modules', path.resolve(__dirname, 'src')],
   },
 };
-
-export default config;
