@@ -10,7 +10,7 @@ export default {
     },
   },
   devtool: 'source-map',
-  entry: path.resolve(__dirname, 'public/index.tsx'),
+  entry: path.resolve(__dirname, 'src/index.tsx'),
   module: {
     rules: [
       {
