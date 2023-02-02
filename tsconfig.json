@@ -4,7 +4,7 @@
     "declarationMap": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "lib": ["es6"],
+    "lib": ["es6", "dom"],
     "module": "commonjs",
     "noLib": false,
     "removeComments": true,
