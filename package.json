@@ -24,7 +24,7 @@
   "scripts": {
     "check": "prettier --check .",
     "clean": "yarn clean:build && yarn clean:coverage",
-    "clean:build": "lerna exec rimraf lib",
+    "clean:build": "lerna exec rimraf lib dist",
     "clean:coverage": "rimraf coverage",
     "create": "ts-node scripts/create-package",
     "commit": "cz",
