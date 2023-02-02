@@ -31,7 +31,7 @@
     "precoverage": "yarn clean:coverage",
     "coverage": "jest --coverage",
     "prebuild": "yarn clean:build",
-    "build": "lerna exec tsc --stream",
+    "build": "lerna run build",
     "eslint": "lerna exec eslint -- . --parser-options=project:../../tsconfig.eslint.json --ignore-path ../../.eslintignore",
     "format": "prettier --write .",
     "lint": "yarn run eslint --fix",
