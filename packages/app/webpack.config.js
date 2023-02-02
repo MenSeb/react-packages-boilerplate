@@ -1,9 +1,16 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+import * as path from 'path';
+import * as url from 'url';
 
-export const __dirname = path.dirname(fileURLToPath(import.meta.url));
+export const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 export default {
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'public'),
+    },
+  },
+  devtool: 'source-map',
+  entry: path.resolve(__dirname, 'public/index.tsx'),
   module: {
     rules: [
       {
@@ -18,8 +25,12 @@ export default {
       },
     ],
   },
+  output: {
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.sass'],
     modules: ['node_modules', path.resolve(__dirname, 'src')],
   },
 };
