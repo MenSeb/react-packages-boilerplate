@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as url from 'url';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 export const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -29,6 +30,11 @@ export default {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
   },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [{ from: 'public' }],
+    }),
+  ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.sass'],
     modules: ['node_modules', path.resolve(__dirname, 'src')],
