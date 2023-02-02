@@ -27,7 +27,8 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "deploy": "gh-pages -d public",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist",
     "start": "webpack serve --hot --open --mode development",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
