@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { screen, render } from '@testing-library/react';
-import { App } from '../src';
+import App from '../src/App';
 
 describe('<App />', () => {
   it('renders correctly', () => {
