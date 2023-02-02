@@ -28,6 +28,7 @@
     "clean:coverage": "rimraf coverage",
     "create": "ts-node scripts/create-package",
     "commit": "cz",
+    "deploy": "lerna run deploy",
     "precoverage": "yarn clean:coverage",
     "coverage": "jest --coverage",
     "prebuild": "yarn clean:build",
