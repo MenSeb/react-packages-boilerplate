@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Header() {
   return (
     <header>
-      <Link to="/home">
+      <Link to="/">
         <svg></svg>
       </Link>
       <nav>
-        <Link to="/home">Home</Link>
-        <Link to="/about">About</Link>
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+        <NavLink to="/about">About</NavLink>
       </nav>
     </header>
   );
