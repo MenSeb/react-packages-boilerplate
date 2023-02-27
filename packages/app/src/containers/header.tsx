@@ -8,10 +8,10 @@ export default function Header() {
         <svg></svg>
       </Link>
       <nav>
-        <NavLink to="/" end>
+        <NavLink to="." end>
           Home
         </NavLink>
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="about">About</NavLink>
       </nav>
     </header>
   );
