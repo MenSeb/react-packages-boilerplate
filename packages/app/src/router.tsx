@@ -4,14 +4,17 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { About, Home, Layout, Lost } from './pages';
+import { About, Error, Home, Layout, Lost } from './pages';
+import { home } from './routes';
 
 export default createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />} path="/">
-      <Route element={<Home />} index />
-      <Route element={<About />} path="about" />
-      <Route element={<Lost />} path="*" />
+      <Route errorElement={<Error />}>
+        <Route {...home} element={<Home />} index />
+        <Route element={<About />} path="about" />
+        <Route element={<Lost />} path="*" />
+      </Route>
     </Route>,
   ),
 );
