@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { screen, render } from '@testing-library/react';
-import App from '../src/App';
+import { RouterProvider } from 'react-router-dom';
+import router from '../src/router';
 
 describe('<App />', () => {
   it('renders correctly', () => {
-    render(<App />);
+    render(<RouterProvider router={router} />);
 
-    expect(screen.getByTestId('app')).toBeInTheDocument();
+    expect(screen.getByText('About')).toBeInTheDocument();
   });
 });
