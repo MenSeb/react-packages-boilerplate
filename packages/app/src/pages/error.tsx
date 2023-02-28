@@ -9,13 +9,13 @@ export default function Error() {
       <h1>Oops! Seems like there was an unexpected error...</h1>
       {isRouteErrorResponse(error) ? (
         <>
-          <p>Error: {error.data}</p>
+          <p>{error.data}</p>
           <pre>
             {error.status} - {error.statusText}
           </pre>
         </>
       ) : (
-        <p>Error: {error.message}</p>
+        <p>{error.message}</p>
       )}
     </section>
   );
