@@ -4,9 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 export default function Header() {
   return (
     <header>
-      <Link to="/">
-        <svg></svg>
-      </Link>
+      <Link to=".">#Logo</Link>
       <nav>
         <NavLink to="." end>
           Home
