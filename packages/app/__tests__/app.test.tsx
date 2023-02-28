@@ -4,9 +4,27 @@ import { RouterProvider } from 'react-router-dom';
 import router from '../src/router';
 
 describe('<App />', () => {
-  it('renders correctly', () => {
-    render(<RouterProvider router={router} />);
+  beforeEach(() => render(<RouterProvider router={router} />));
 
-    expect(screen.getByText('About')).toBeInTheDocument();
+  describe('<Layout />', () => {
+    it('renders with header', () => {
+      expect(screen.getByRole('banner')).toBeInTheDocument();
+    });
+
+    it('renders with main', () => {
+      expect(screen.getByRole('main')).toBeInTheDocument();
+    });
+
+    it('renders with footer', () => {
+      expect(screen.getByRole('contentinfo')).toBeInTheDocument();
+    });
+  });
+
+  describe('<RouterProvider />', () => {
+    it('renders with home page', () => {
+      expect(
+        screen.getByRole('region', { name: 'home page' }),
+      ).toBeInTheDocument();
+    });
   });
 });
