@@ -6,6 +6,7 @@ export const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 export default {
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.resolve(__dirname, 'public'),
     },
