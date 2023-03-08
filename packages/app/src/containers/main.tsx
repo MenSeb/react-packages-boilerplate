@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { Outlet } from 'react-router-dom';
 
-type MainTypes = {
-  children: React.ReactNode;
-};
-
-export default function Main({ children }: MainTypes) {
-  return <main>{children}</main>;
+export default function Main() {
+  return (
+    <main>
+      <Outlet />
+    </main>
+  );
 }
