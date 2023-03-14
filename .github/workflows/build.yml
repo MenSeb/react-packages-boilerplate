@@ -6,9 +6,11 @@ on:
       - master
     paths-ignore:
       - '**.md'
+      - '**.svg'
   pull_request:
     paths-ignore:
       - '**.md'
+      - '**.svg'
 
 jobs:
   build:
