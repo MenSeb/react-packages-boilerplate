@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 
 export function getAllPanels(hidden = true): HTMLElement[] {
   return screen.getAllByRole('tabpanel', { hidden });
@@ -14,4 +14,12 @@ export function getAllTabs(): HTMLElement[] {
 
 export function getTab(index = 0): HTMLElement {
   return getAllTabs()[index];
+}
+
+export function getTabList(): HTMLElement {
+  return screen.getByRole('tablist');
+}
+
+export function getAllTabListItems(): HTMLElement[] {
+  return within(getTabList()).getAllByRole('presentation');
 }
