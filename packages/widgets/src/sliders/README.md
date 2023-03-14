@@ -3,7 +3,7 @@
         alt="React Sliders"
         height="250"
         width="250"
-        src="assets/sliders.svg"
+        src="../../assets/sliders.svg"
     />
     <h1>
         React Sliders
