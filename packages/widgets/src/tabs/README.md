@@ -3,7 +3,7 @@
         alt="React Tabs"
         height="250"
         width="250"
-        src="https://github.com/MenSeb/react-packages-boilerplate/blob/master/packages/widgets/assets/tabs.svg"
+        src="../../assets/tabs.svg"
     />
     <h1>
         React Tabs

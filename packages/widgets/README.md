@@ -3,7 +3,7 @@
         alt="React Widgets"
         height="250"
         width="250"
-        src="https://github.com/MenSeb/react-packages-boilerplate/blob/master/packages/widgets/assets/widgets.svg"
+        src="assets/widgets.svg"
     />
     <h1>
         React Widgets
