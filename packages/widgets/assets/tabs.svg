@@ -16,7 +16,7 @@
             <use xlink:href="#orbit" transform="rotate(60)" />
             <use xlink:href="#orbit" transform="rotate(-60)" />
         </g>
-        <g transform="scale(0.3)">
+        <g transform="scale(0.3)" stroke-width=".75">
             <use xlink:href="#tab" x="8" />
             <use xlink:href="#tab" x="1.5" />
             <path d="M-10 -8 h6 v4 h14 v12 h-20 z" />
