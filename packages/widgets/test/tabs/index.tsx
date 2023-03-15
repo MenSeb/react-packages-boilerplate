@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { screen, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import {
   Panel,
   PanelProps,
@@ -15,7 +15,7 @@ import {
 
 export const numberOfTabs = 5;
 
-export type Wrapper = {
+export type WrapperProps = {
   propsPanel: PanelProps;
   propsPanelList: PanelListProps;
   propsTab: TabProps;
@@ -23,13 +23,13 @@ export type Wrapper = {
   propsTabs: TabsProps;
 };
 
-export function wrapper({
+export function Wrapper({
   propsPanel,
   propsPanelList,
   propsTab,
   propsTabList,
   propsTabs,
-}: Wrapper) {
+}: WrapperProps) {
   return (
     <Tabs {...propsTabs}>
       <TabList {...propsTabList}>
@@ -44,6 +44,10 @@ export function wrapper({
       </PanelList>
     </Tabs>
   );
+}
+
+export function renderTabs(props: WrapperProps) {
+  return render(<Wrapper {...props} />);
 }
 
 export function getAllPanels(hidden = true): HTMLElement[] {
