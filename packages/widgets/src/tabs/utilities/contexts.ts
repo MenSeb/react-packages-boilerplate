@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Action, State } from '../utilities';
+import { Dispatch, State } from '../utilities';
 
-export const TabsContextDispatch =
-  React.createContext<React.Dispatch<Action> | null>(null);
+export const TabsContextDispatch = React.createContext<Dispatch>(
+  (): void => undefined,
+);
 
 export const TabsContextState = React.createContext<State>({} as State);

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import * as actions from './actions';
 
 export type Data = {
@@ -30,3 +31,7 @@ export type Action = {
   type: keyof typeof actions;
   payload: Payload;
 };
+
+export type Dispatch = React.Dispatch<Action>;
+
+export type Reducer = React.Reducer<State, Action>;

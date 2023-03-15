@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   initializer,
   reducer,
-  Action,
+  Reducer,
   State,
   TabsContextDispatch,
   TabsContextState,
@@ -17,10 +17,11 @@ export default function TabsProvider({
   children,
   initial,
 }: TabsProviderProps): JSX.Element {
-  const [state, dispatch] = React.useReducer<
-    React.Reducer<State, Action>,
-    State
-  >(reducer, initial, initializer);
+  const [state, dispatch] = React.useReducer<Reducer, State>(
+    reducer,
+    initial,
+    initializer,
+  );
 
   return (
     <TabsContextDispatch.Provider value={dispatch}>
