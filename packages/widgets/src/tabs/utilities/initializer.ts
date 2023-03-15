@@ -1,7 +1,7 @@
 import { InitializerState, State } from './';
 
 export function initializer(state: InitializerState): State {
-  const { idTabs, initialIndex, numberOfTabs } = state;
+  const { idTabs, initialIndex, orientation, numberOfTabs } = state;
 
   const datas = [];
 
@@ -19,6 +19,7 @@ export function initializer(state: InitializerState): State {
     ...state,
     datas,
     idActiveTab: datas[initialIndex].id,
+    orientation: orientation ? orientation : 'horizontal',
     target: null,
   };
 }

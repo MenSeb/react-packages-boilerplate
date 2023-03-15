@@ -3,7 +3,7 @@ import { Options } from '../utilities';
 import TabsProvider from './TabsProvider';
 
 type TabsProps = {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   options: Options;
 };
 

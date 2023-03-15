@@ -11,9 +11,20 @@ export type Target = HTMLElement & {
   parentNode: HTMLElement;
 };
 
-export type Options = {
+type OptionsLabel = {
+  label: string;
+  labelledby?: never;
+};
+
+type OptionsLabelledby = {
+  label?: never;
+  labelledby: string;
+};
+
+export type Options = (OptionsLabel | OptionsLabelledby) & {
   initialIndex: number;
   numberOfTabs: number;
+  orientation?: 'horizontal' | 'vertical';
 };
 
 export type InitializerState = Options & {

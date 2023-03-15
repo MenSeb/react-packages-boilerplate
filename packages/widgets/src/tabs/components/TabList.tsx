@@ -1,29 +1,16 @@
 import * as React from 'react';
+import { useTabsContextState } from '../utilities';
 
-type TabList = {
+type TabListProps = {
   children: React.ReactNode[];
-  orientation?: 'horizontal' | 'vertical';
 };
-
-type TabListLabel = TabList & {
-  label: string;
-  labelledby?: never;
-};
-
-type TabListLabelledby = TabList & {
-  label?: never;
-  labelledby: string;
-};
-
-type TabListProps = TabListLabel | TabListLabelledby;
 
 export default function TabList({
   children,
-  label,
-  labelledby,
-  orientation = 'horizontal',
   ...props
 }: TabListProps): JSX.Element {
+  const { label, labelledby, orientation } = useTabsContextState();
+
   return (
     <ul
       aria-orientation={orientation}
