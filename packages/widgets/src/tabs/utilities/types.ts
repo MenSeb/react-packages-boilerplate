@@ -1,11 +1,24 @@
 import * as actions from './actions';
 
+export type Data = {
+  id: string;
+  idTab: string;
+  idPanel: string;
+};
+
 export type Target = HTMLElement & {
   parentNode: HTMLElement;
 };
 
-export type State = {
-  idActiveTab: string | null;
+export type InitializerState = {
+  idTabs: string;
+  initialIndex: number;
+  numberOfTabs: number;
+};
+
+export type State = InitializerState & {
+  datas: Data[];
+  idActiveTab: string;
   target: Target | ChildNode | null;
 };
 
