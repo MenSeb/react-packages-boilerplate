@@ -1,16 +1,27 @@
-export enum Actions {
-  first = 'FIRST_TAB',
-  last = 'LAST_TAB',
-  next = 'NEXT_TAB',
-  prev = 'PREV_TAB',
-  select = 'SELECT_TAB',
+import { State, Target } from './types';
+
+export function first(state: State, target: Target): State {
+  return { ...state, target: target.parentNode.firstChild };
 }
 
-export type Payload = {
-  target: HTMLElement;
-};
+export function last(state: State, target: Target): State {
+  return { ...state, target: target.parentNode.lastChild };
+}
 
-export type Action = {
-  type: Actions;
-  payload: Payload;
-};
+export function next(state: State, target: Target): State {
+  return {
+    ...state,
+    target: target.nextSibling
+      ? target.nextSibling
+      : target.parentNode.firstChild,
+  };
+}
+
+export function prev(state: State, target: Target): State {
+  return {
+    ...state,
+    target: target.previousSibling
+      ? target.previousSibling
+      : target.parentNode.lastChild,
+  };
+}
