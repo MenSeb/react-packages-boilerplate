@@ -2,24 +2,24 @@ import * as React from 'react';
 import {
   initializer,
   reducer,
+  InitializerState,
   Reducer,
-  State,
   TabsContextDispatch,
   TabsContextState,
 } from '../utilities';
 
 type TabsProviderProps = {
   children: React.ReactNode;
-  initial: State;
+  initialState: InitializerState;
 };
 
 export default function TabsProvider({
   children,
-  initial,
+  initialState,
 }: TabsProviderProps): JSX.Element {
-  const [state, dispatch] = React.useReducer<Reducer, State>(
+  const [state, dispatch] = React.useReducer<Reducer, InitializerState>(
     reducer,
-    initial,
+    initialState,
     initializer,
   );
 

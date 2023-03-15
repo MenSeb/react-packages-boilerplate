@@ -11,10 +11,13 @@ export type Target = HTMLElement & {
   parentNode: HTMLElement;
 };
 
-export type InitializerState = {
-  idTabs: string;
+export type Options = {
   initialIndex: number;
   numberOfTabs: number;
+};
+
+export type InitializerState = Options & {
+  idTabs: string;
 };
 
 export type State = InitializerState & {

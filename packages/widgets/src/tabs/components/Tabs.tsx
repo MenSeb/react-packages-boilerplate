@@ -1,13 +1,24 @@
 import * as React from 'react';
+import { Options } from '../utilities';
+import TabsProvider from './TabsProvider';
 
 type TabsProps = {
   children?: React.ReactNode;
+  options: Options;
 };
 
-export default function Tabs({ children, ...props }: TabsProps): JSX.Element {
+export default function Tabs({
+  children,
+  options,
+  ...props
+}: TabsProps): JSX.Element {
+  const idTabs = React.useId();
+
   return (
-    <div {...props} aria-live="polite" role="region">
-      {children}
-    </div>
+    <TabsProvider initialState={{ idTabs, ...options }}>
+      <div {...props} aria-live="polite" role="region">
+        {children}
+      </div>
+    </TabsProvider>
   );
 }
