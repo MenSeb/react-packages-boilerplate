@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-type PanelProps = {
+export type PanelProps = {
   children: React.ReactNode;
   hidden?: boolean;
   id: string;
   labelledby: string;
 };
 
-export default function Panel({
+export function Panel({
   children,
   hidden = true,
   id,

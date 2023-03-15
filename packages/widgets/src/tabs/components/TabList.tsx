@@ -1,14 +1,11 @@
 import * as React from 'react';
 import { useTabsContextState } from '../utilities';
 
-type TabListProps = {
+export type TabListProps = {
   children: React.ReactNode[];
 };
 
-export default function TabList({
-  children,
-  ...props
-}: TabListProps): JSX.Element {
+export function TabList({ children, ...props }: TabListProps): JSX.Element {
   const { label, labelledby, orientation } = useTabsContextState();
 
   return (

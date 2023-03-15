@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-type PanelListProps = {
+export type PanelListProps = {
   children: React.ReactNode[];
 };
 
-export default function PanelList({ children }: PanelListProps): JSX.Element {
+export function PanelList({ children }: PanelListProps): JSX.Element {
   return <>{children}</>;
 }

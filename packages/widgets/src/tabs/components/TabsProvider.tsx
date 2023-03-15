@@ -8,12 +8,12 @@ import {
   TabsContextState,
 } from '../utilities';
 
-type TabsProviderProps = {
+export type TabsProviderProps = {
   children: React.ReactNode;
   initialState: InitializerState;
 };
 
-export default function TabsProvider({
+export function TabsProvider({
   children,
   initialState,
 }: TabsProviderProps): JSX.Element {

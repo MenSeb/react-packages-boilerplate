@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-type TabProps = {
+export type TabProps = {
   children: React.ReactNode;
   controls: string;
   id: string;
   selected?: boolean;
 };
 
-export default function Tab({
+export function Tab({
   children,
   controls,
   id,

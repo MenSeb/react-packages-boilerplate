@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { screen, within } from '@testing-library/react';
-import { Panel, PanelList, Tab, TabList, Tabs } from '../../src/tabs';
 import {
+  Panel,
   PanelProps,
+  PanelList,
   PanelListProps,
+  Tab,
   TabProps,
+  TabList,
   TabListProps,
+  Tabs,
   TabsProps,
-} from '../../src/tabs/utilities';
+} from '../../src/tabs';
 
 export const numberOfTabs = 5;
 
@@ -20,11 +24,11 @@ export type Wrapper = {
 };
 
 export function wrapper({
-  propsPanel = {},
-  propsPanelList = {},
-  propsTab = {},
-  propsTabList = {},
-  propsTabs = {},
+  propsPanel,
+  propsPanelList,
+  propsTab,
+  propsTabList,
+  propsTabs,
 }: Wrapper) {
   return (
     <Tabs {...propsTabs}>
