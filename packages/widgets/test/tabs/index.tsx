@@ -1,4 +1,5 @@
 import * as React from 'react';
+import userEvent from '@testing-library/user-event';
 import { render, screen, within } from '@testing-library/react';
 import { Panel, PanelList, Tab, TabList, Tabs } from '../../src/tabs';
 import { Options, OptionsBase } from '../../src/tabs/utilities';
@@ -50,6 +51,10 @@ export function Wrapper({ options }: WrapperProps) {
 
 export function renderTabs(options = optionsLabel) {
   return render(<Wrapper options={options} />);
+}
+
+export function renderTabsUser(options?: Options) {
+  return { ...renderTabs(options), user: userEvent.setup() };
 }
 
 export function getAllPanels(hidden = true): HTMLElement[] {
