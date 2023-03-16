@@ -3,13 +3,13 @@ import * as React from 'react';
 export type PanelProps = {
   children: React.ReactNode;
   hidden?: boolean;
-  id: string;
-  labelledby: string;
+  id?: string;
+  labelledby?: string;
 };
 
 export function Panel({
   children,
-  hidden = true,
+  hidden,
   id,
   labelledby,
   ...props
