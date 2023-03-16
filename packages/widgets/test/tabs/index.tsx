@@ -65,12 +65,24 @@ export function getPanel(index = 0, hidden?: boolean): HTMLElement {
   return getAllPanels(hidden)[index];
 }
 
+export function getActivePanel(): HTMLElement | undefined {
+  return getAllPanels().find(
+    (panel) => panel.getAttribute('aria-hidden') === 'false',
+  );
+}
+
 export function getAllTabs(): HTMLElement[] {
   return screen.getAllByRole('tab');
 }
 
 export function getTab(index = 0): HTMLElement {
   return getAllTabs()[index];
+}
+
+export function getActiveTab(): HTMLElement | undefined {
+  return getAllTabs().find(
+    (tab) => tab.getAttribute('aria-selected') === 'true',
+  );
 }
 
 export function getTabList(): HTMLElement {
