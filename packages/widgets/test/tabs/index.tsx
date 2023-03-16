@@ -1,53 +1,55 @@
 import * as React from 'react';
 import { render, screen, within } from '@testing-library/react';
-import {
-  Panel,
-  PanelProps,
-  PanelList,
-  PanelListProps,
-  Tab,
-  TabProps,
-  TabList,
-  TabListProps,
-  Tabs,
-  TabsProps,
-} from '../../src/tabs';
+import { Panel, PanelList, Tab, TabList, Tabs } from '../../src/tabs';
+import { Options, OptionsBase } from '../../src/tabs/utilities';
 
-export const numberOfTabs = 5;
-
-export type WrapperProps = {
-  propsPanel: PanelProps;
-  propsPanelList: PanelListProps;
-  propsTab: TabProps;
-  propsTabList: TabListProps;
-  propsTabs: TabsProps;
+export const props = {
+  className: 'className',
+  style: { color: 'red' },
 };
 
-export function Wrapper({
-  propsPanel,
-  propsPanelList,
-  propsTab,
-  propsTabList,
-  propsTabs,
-}: WrapperProps) {
+export const options: OptionsBase = {
+  initialIndex: 2,
+  numberOfTabs: 5,
+};
+
+export const optionsLabel: Options = {
+  ...options,
+  label: 'label',
+};
+
+export const optionsLabelledby: Options = {
+  ...options,
+  labelledby: 'labelledby',
+};
+
+export type WrapperProps = {
+  options: Options;
+};
+
+export function Wrapper({ options }: WrapperProps) {
   return (
-    <Tabs {...propsTabs}>
-      <TabList {...propsTabList}>
-        {Array.from({ length: numberOfTabs }, (_, index) => (
-          <Tab key={index} {...propsTab} />
+    <Tabs {...props} options={options}>
+      <TabList {...props}>
+        {Array.from({ length: options.numberOfTabs }, (_, index) => (
+          <Tab {...props} key={index}>
+            {`Tab ${index}`}
+          </Tab>
         ))}
       </TabList>
-      <PanelList {...propsPanelList}>
-        {Array.from({ length: numberOfTabs }, (_, index) => (
-          <Panel key={index} {...propsPanel} />
+      <PanelList {...props}>
+        {Array.from({ length: options.numberOfTabs }, (_, index) => (
+          <Panel {...props} key={index}>
+            {`Panel ${index}`}
+          </Panel>
         ))}
       </PanelList>
     </Tabs>
   );
 }
 
-export function renderTabs(props: WrapperProps) {
-  return render(<Wrapper {...props} />);
+export function renderTabs(options = optionsLabel) {
+  return render(<Wrapper options={options} />);
 }
 
 export function getAllPanels(hidden = true): HTMLElement[] {
