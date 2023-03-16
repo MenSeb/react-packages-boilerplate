@@ -11,21 +11,23 @@ export type Target = HTMLElement & {
   parentNode: HTMLElement;
 };
 
-type OptionsLabel = {
-  label: string;
-  labelledby?: never;
-};
-
-type OptionsLabelledby = {
-  label?: never;
-  labelledby: string;
-};
-
-export type Options = (OptionsLabel | OptionsLabelledby) & {
+export type OptionsBase = {
   initialIndex: number;
   numberOfTabs: number;
   orientation?: 'horizontal' | 'vertical';
 };
+
+export type OptionsLabel = {
+  label: string;
+  labelledby?: never;
+};
+
+export type OptionsLabelledby = {
+  label?: never;
+  labelledby: string;
+};
+
+export type Options = OptionsBase & (OptionsLabel | OptionsLabelledby);
 
 export type InitializerState = Options & {
   idTabs: string;
