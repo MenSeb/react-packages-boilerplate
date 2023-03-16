@@ -2,8 +2,8 @@ import * as React from 'react';
 
 export type TabProps = {
   children: React.ReactNode;
-  controls: string;
-  id: string;
+  controls?: string;
+  id?: string;
   selected?: boolean;
 };
 
@@ -11,7 +11,7 @@ export function Tab({
   children,
   controls,
   id,
-  selected = false,
+  selected,
   ...props
 }: TabProps): JSX.Element {
   return (

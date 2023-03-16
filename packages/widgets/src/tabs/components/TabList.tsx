@@ -6,7 +6,8 @@ export type TabListProps = {
 };
 
 export function TabList({ children, ...props }: TabListProps): JSX.Element {
-  const { label, labelledby, orientation } = useTabsContextState();
+  const { datas, idActiveTab, label, labelledby, orientation } =
+    useTabsContextState();
 
   return (
     <ul
@@ -16,11 +17,19 @@ export function TabList({ children, ...props }: TabListProps): JSX.Element {
       role="tablist"
       {...props}
     >
-      {React.Children.map(children, (child, index) => (
-        <li key={index} role="presentation">
-          {child}
-        </li>
-      ))}
+      {React.Children.map(children, (child, index) => {
+        const { id, idTab, idPanel } = datas[index];
+
+        return (
+          <li key={index} role="presentation">
+            {React.cloneElement(child as React.ReactElement, {
+              controls: idPanel,
+              id: idTab,
+              selected: id === idActiveTab,
+            })}
+          </li>
+        );
+      })}
     </ul>
   );
 }
