@@ -7,7 +7,9 @@ type ConsumerDispatchProps = {
   children: (dispatch: Dispatcher) => React.ReactNode;
 };
 
-export default function ConsumerDispatch({ children }: ConsumerDispatchProps) {
+export default function ConsumerDispatch({
+  children,
+}: ConsumerDispatchProps): JSX.Element {
   return (
     <ContextDispatch.Consumer>
       {(dispatch) => {

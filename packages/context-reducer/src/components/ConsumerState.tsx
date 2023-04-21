@@ -7,7 +7,9 @@ type ConsumerStateProps = {
   children: (state: State) => React.ReactNode;
 };
 
-export default function ConsumerState({ children }: ConsumerStateProps) {
+export default function ConsumerState({
+  children,
+}: ConsumerStateProps): JSX.Element {
   return (
     <ContextState.Consumer>
       {(state) => {

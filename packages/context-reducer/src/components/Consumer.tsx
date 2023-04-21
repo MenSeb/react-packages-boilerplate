@@ -6,7 +6,7 @@ type ConsumerProps = {
   children: (context: Context) => React.ReactNode;
 };
 
-export default function Consumer({ children }: ConsumerProps) {
+export default function Consumer({ children }: ConsumerProps): JSX.Element {
   return (
     <ConsumerDispatch>
       {(dispatch) => (

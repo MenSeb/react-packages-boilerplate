@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ContextDispatch, ContextState } from '../contexts';
-import { Actions, Reducer, State } from '../types';
+import { Actions, State } from '../types';
 import { createDispatcher, createReducer } from '../utilities';
 
 type ProviderProps = {
@@ -15,8 +15,8 @@ export default function Provider({
   children,
   initializer = (initialState) => initialState,
   initialState = {},
-}: ProviderProps) {
-  const [state, dispatch] = React.useReducer<Reducer, State>(
+}: ProviderProps): JSX.Element {
+  const [state, dispatch] = React.useReducer(
     createReducer(actions),
     initialState,
     initializer,
