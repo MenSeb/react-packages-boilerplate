@@ -20,12 +20,16 @@ export type Dispatcher = {
   [key: keyof Actions]: (payload: Payload) => void;
 };
 
-export type Payload = {
-  [key: string]: unknown;
-};
+export type Payload = Shape;
 
 export type Reducer = React.Reducer<State, Action>;
 
-export type State = {
-  [key: string]: unknown;
+export type Shape = {
+  [key: string]: boolean | number | null | string | undefined;
+  // | number[]
+  // | string[]
+  // | Shape[]
+  // | Record<string, Shape>;
 };
+
+export type State = Shape;
