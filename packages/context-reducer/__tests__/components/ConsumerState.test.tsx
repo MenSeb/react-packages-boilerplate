@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { ConsumerState, Provider } from '../../src/';
+import { ConsumerState, Provider, State } from '../../src/';
 
 describe('<ConsumerState />', () => {
   it('throws when used without provider', () => {
@@ -14,14 +14,12 @@ describe('<ConsumerState />', () => {
   });
 
   it('calls children with state', () => {
-    const actions = { test: jest.fn() };
+    const actions = { test: jest.fn((state: State) => state) };
     const initialState = { text: 'test' };
 
     render(
       <Provider actions={actions} initialState={initialState}>
-        <ConsumerState>
-          {(state) => <div>{state.text as string}</div>}
-        </ConsumerState>
+        <ConsumerState>{(state) => <div>{state.text}</div>}</ConsumerState>
       </Provider>,
     );
 

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
 import { act, render, screen } from '@testing-library/react';
-import { Consumer, Provider } from '../../src/';
-import { State } from '../../src/types';
+import { Consumer, Provider, State } from '../../src/';
 
 describe('<Consumer />', () => {
   it('throws when used without provider', () => {
@@ -25,19 +24,16 @@ describe('<Consumer />', () => {
       <Provider actions={actions} initialState={initialState}>
         <Consumer>
           {({ dispatch, state }) => (
-            <button onClick={() => dispatch.test(payload)}>
-              {state.text as string}
-            </button>
+            <button onClick={() => dispatch.test(payload)}>{state.text}</button>
           )}
         </Consumer>
       </Provider>,
     );
 
     await act(async () => {
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByText(initialState.text));
     });
 
     expect(actions.test).toHaveBeenCalledWith(initialState, payload);
-    expect(screen.getByText(initialState.text)).toBeInTheDocument();
   });
 });
