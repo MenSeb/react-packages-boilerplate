@@ -3,9 +3,8 @@ import { ContextDispatch, ContextState } from '../contexts';
 import { Actions, State } from '../types';
 import { createDispatcher, createReducer } from '../utilities';
 
-type ProviderProps = {
+type ProviderProps = React.PropsWithChildren & {
   actions: Actions;
-  children: React.ReactNode;
   initializer?: (initialState: State) => State;
   initialState?: State;
 };
