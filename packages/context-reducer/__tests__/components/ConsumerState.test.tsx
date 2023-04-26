@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { ConsumerState, Provider, State } from '../../src/';
-import { spyOnConsoleError } from '../';
+import { ConsumerState, Provider } from '../../src/';
+import { initialProps, spyOnConsoleError } from '../';
 
 spyOnConsoleError();
 
@@ -13,15 +13,14 @@ describe('<ConsumerState />', () => {
   });
 
   it('calls children with state', () => {
-    const actions = { test: jest.fn((state: State) => state) };
-    const initialState = { text: 'test' };
-
     render(
-      <Provider actions={actions} initialState={initialState}>
+      <Provider {...initialProps}>
         <ConsumerState>{(state) => <div>{state.text}</div>}</ConsumerState>
       </Provider>,
     );
 
-    expect(screen.getByText(initialState.text)).toBeInTheDocument();
+    expect(
+      screen.getByText(initialProps.initialState.text),
+    ).toBeInTheDocument();
   });
 });

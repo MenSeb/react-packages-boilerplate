@@ -1,8 +1,8 @@
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
 import { act, render, screen } from '@testing-library/react';
-import { Consumer, Provider, State } from '../../src/';
-import { spyOnConsoleError } from '../';
+import { Consumer, Provider } from '../../src/';
+import { actions, initialProps, payload, spyOnConsoleError } from '../';
 
 spyOnConsoleError();
 
@@ -15,12 +15,9 @@ describe('<Consumer />', () => {
 
   it('calls children with dispatch and state', async () => {
     const user = userEvent.setup();
-    const actions = { test: jest.fn((state: State) => state) };
-    const payload = {};
-    const initialState = { text: 'test' };
 
     render(
-      <Provider actions={actions} initialState={initialState}>
+      <Provider {...initialProps}>
         <Consumer>
           {({ dispatch, state }) => (
             <button onClick={() => dispatch.test(payload)}>{state.text}</button>
@@ -30,9 +27,12 @@ describe('<Consumer />', () => {
     );
 
     await act(async () => {
-      await user.click(screen.getByText(initialState.text));
+      await user.click(screen.getByText(initialProps.initialState.text));
     });
 
-    expect(actions.test).toHaveBeenCalledWith(initialState, payload);
+    expect(actions.test).toHaveBeenCalledWith(
+      initialProps.initialState,
+      payload,
+    );
   });
 });
