@@ -27,7 +27,7 @@ export const initialProps = {
   initialState: {
     text: 'test',
   },
-  initializer: (state: State): State => state,
+  initializer: jest.fn((state: State): State => state),
 };
 
 export const payload = {
