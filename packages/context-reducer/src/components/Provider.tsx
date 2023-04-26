@@ -12,7 +12,7 @@ type ProviderProps = React.PropsWithChildren & {
 export default function Provider({
   actions,
   children,
-  initializer = (initialState) => initialState,
+  initializer = () => initialState,
   initialState = {},
 }: ProviderProps): JSX.Element {
   const [state, dispatch] = React.useReducer(
