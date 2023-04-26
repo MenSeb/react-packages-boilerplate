@@ -2,9 +2,9 @@ import { act, renderHook } from '@testing-library/react';
 import { useContextDispatch, useContextReducer, useContextState } from '../src';
 import {
   actions,
-  createWrapper,
   initialProps,
   payload,
+  renderContextHook,
   spyOnConsoleError,
 } from '.';
 
@@ -18,9 +18,7 @@ describe('useContextDispatch', () => {
   });
 
   it('renders the context dispatcher', () => {
-    const { result } = renderHook(() => useContextDispatch(), {
-      wrapper: createWrapper(initialProps),
-    });
+    const { result } = renderContextHook(useContextDispatch);
 
     act(() => result.current.test(payload));
 
@@ -39,9 +37,7 @@ describe('useContextState', () => {
   });
 
   it('renders the context state', () => {
-    const { result } = renderHook(() => useContextState(), {
-      wrapper: createWrapper(initialProps),
-    });
+    const { result } = renderContextHook(useContextState);
 
     expect(result.current).toEqual(initialProps.initialState);
   });
@@ -55,9 +51,7 @@ describe('useContextReducer', () => {
   });
 
   it('renders the context dispatcher and state', () => {
-    const { result } = renderHook(() => useContextReducer(), {
-      wrapper: createWrapper(initialProps),
-    });
+    const { result } = renderContextHook(useContextReducer);
 
     act(() => result.current.dispatch.test(payload));
 
