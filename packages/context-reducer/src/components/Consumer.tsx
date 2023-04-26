@@ -9,9 +9,9 @@ type ConsumerProps = {
 export default function Consumer({ children }: ConsumerProps): JSX.Element {
   return (
     <ConsumerDispatch>
-      {(dispatch) => (
+      {({ dispatch }) => (
         <ConsumerState>
-          {(state) => children({ dispatch, state })}
+          {({ state }) => children({ dispatch, state })}
         </ConsumerState>
       )}
     </ConsumerDispatch>

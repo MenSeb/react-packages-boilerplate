@@ -4,7 +4,7 @@ import { Dispatcher } from '../types';
 import { createError } from '../utilities';
 
 type ConsumerDispatchProps = {
-  children: (dispatch: Dispatcher) => React.ReactNode;
+  children: ({ dispatch }: { dispatch: Dispatcher }) => React.ReactNode;
 };
 
 export default function ConsumerDispatch({
@@ -15,7 +15,7 @@ export default function ConsumerDispatch({
       {(dispatch) => {
         if (dispatch === null) throw createError('ConsumerDispatch');
 
-        return children(dispatch);
+        return children({ dispatch });
       }}
     </ContextDispatch.Consumer>
   );

@@ -4,7 +4,7 @@ import { State } from '../types';
 import { createError } from '../utilities';
 
 type ConsumerStateProps = {
-  children: (state: State) => React.ReactNode;
+  children: ({ state }: { state: State }) => React.ReactNode;
 };
 
 export default function ConsumerState({
@@ -15,7 +15,7 @@ export default function ConsumerState({
       {(state) => {
         if (state === null) throw createError('ConsumerState');
 
-        return children(state);
+        return children({ state });
       }}
     </ContextState.Consumer>
   );
