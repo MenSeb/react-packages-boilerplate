@@ -6,7 +6,7 @@ import {
   initialProps,
   payload,
   spyOnConsoleError,
-} from './';
+} from '.';
 
 spyOnConsoleError();
 

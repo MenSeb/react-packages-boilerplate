@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { ConsumerState, Provider } from '../../src/';
-import { initialProps, spyOnConsoleError } from '../';
+import { initialProps, spyOnConsoleError } from '..';
 
 spyOnConsoleError();
 

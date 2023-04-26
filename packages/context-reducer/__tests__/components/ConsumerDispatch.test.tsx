@@ -2,7 +2,7 @@ import * as React from 'react';
 import userEvent from '@testing-library/user-event';
 import { act, render, screen } from '@testing-library/react';
 import { ConsumerDispatch, Provider } from '../../src/';
-import { actions, initialProps, payload, spyOnConsoleError } from '../';
+import { actions, initialProps, payload, spyOnConsoleError } from '..';
 
 spyOnConsoleError();
 
