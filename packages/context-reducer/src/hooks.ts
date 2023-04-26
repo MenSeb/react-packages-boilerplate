@@ -4,24 +4,28 @@ import { Context, Dispatcher, State } from './types';
 import { createError } from './utilities';
 
 export function useContextDispatch(): Dispatcher {
-  const context = React.useContext(ContextDispatch);
+  const dispatch = React.useContext(ContextDispatch);
 
-  if (context === null) throw createError('useContextDispatch');
+  if (dispatch === null) throw createError('useContextDispatch');
 
-  return context;
-}
-
-export function useContextReducer(): Context {
-  return {
-    dispatch: useContextDispatch(),
-    state: useContextState(),
-  };
+  return dispatch;
 }
 
 export function useContextState(): State {
-  const context = React.useContext(ContextState);
+  const state = React.useContext(ContextState);
 
-  if (context === null) throw createError('useContextState');
+  if (state === null) throw createError('useContextState');
 
-  return context;
+  return state;
+}
+
+export function useContextReducer(): Context {
+  try {
+    return {
+      dispatch: useContextDispatch(),
+      state: useContextState(),
+    };
+  } catch (error) {
+    throw createError('useContextReducer');
+  }
 }
