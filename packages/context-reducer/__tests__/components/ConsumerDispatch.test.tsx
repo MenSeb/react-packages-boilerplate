@@ -2,16 +2,15 @@ import * as React from 'react';
 import userEvent from '@testing-library/user-event';
 import { act, render, screen } from '@testing-library/react';
 import { ConsumerDispatch, Provider, State } from '../../src/';
+import { spyOnConsoleError } from '../';
+
+spyOnConsoleError();
 
 describe('<ConsumerDispatch />', () => {
   it('throws when used without provider', () => {
-    const spy = jest.spyOn(console, 'error').mockImplementation();
-
     expect(() => {
       render(<ConsumerDispatch>{jest.fn()}</ConsumerDispatch>);
     }).toThrow('ConsumerDispatch');
-
-    spy.mockRestore();
   });
 
   it('calls children with dispatch', async () => {

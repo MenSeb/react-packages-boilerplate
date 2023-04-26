@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { ConsumerState, Provider, State } from '../../src/';
+import { spyOnConsoleError } from '../';
+
+spyOnConsoleError();
 
 describe('<ConsumerState />', () => {
   it('throws when used without provider', () => {
-    const spy = jest.spyOn(console, 'error').mockImplementation();
-
     expect(() => {
       render(<ConsumerState>{jest.fn()}</ConsumerState>);
     }).toThrow('ConsumerState');
-
-    spy.mockRestore();
   });
 
   it('calls children with state', () => {
