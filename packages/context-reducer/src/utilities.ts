@@ -1,4 +1,12 @@
-import { Action, Actions, Dispatch, Dispatcher, Reducer, State } from './types';
+import {
+  Action,
+  Actions,
+  Dispatch,
+  Dispatcher,
+  Payload,
+  Reducer,
+  State,
+} from './types';
 
 export function createDispatcher(
   actions: Actions,
@@ -7,7 +15,7 @@ export function createDispatcher(
   const dispatcher: Dispatcher = {};
 
   for (const type of Object.keys(actions))
-    dispatcher[type] = (payload) => dispatch({ payload, type });
+    dispatcher[type] = (payload: Payload) => dispatch({ payload, type });
 
   return dispatcher;
 }
