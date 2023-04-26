@@ -1,8 +1,14 @@
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
 import { act, render, screen } from '@testing-library/react';
-import { ConsumerDispatch, Provider } from '../../src/';
-import { actions, initialProps, payload, spyOnConsoleError } from '..';
+import { ConsumerDispatch } from '../../src/';
+import {
+  actions,
+  initialProps,
+  payload,
+  renderConsumer,
+  spyOnConsoleError,
+} from '..';
 
 spyOnConsoleError();
 
@@ -16,13 +22,7 @@ describe('<ConsumerDispatch />', () => {
   it('calls children with dispatch', async () => {
     const user = userEvent.setup();
 
-    render(
-      <Provider {...initialProps}>
-        <ConsumerDispatch>
-          {(dispatch) => <button onClick={() => dispatch.test(payload)} />}
-        </ConsumerDispatch>
-      </Provider>,
-    );
+    renderConsumer(ConsumerDispatch, initialProps);
 
     await act(async () => {
       await user.click(screen.getByRole('button'));

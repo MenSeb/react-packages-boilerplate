@@ -1,8 +1,14 @@
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
 import { act, render, screen } from '@testing-library/react';
-import { Consumer, Provider } from '../../src/';
-import { actions, initialProps, payload, spyOnConsoleError } from '..';
+import { Consumer } from '../../src/';
+import {
+  actions,
+  initialProps,
+  payload,
+  renderConsumer,
+  spyOnConsoleError,
+} from '..';
 
 spyOnConsoleError();
 
@@ -16,15 +22,7 @@ describe('<Consumer />', () => {
   it('calls children with dispatch and state', async () => {
     const user = userEvent.setup();
 
-    render(
-      <Provider {...initialProps}>
-        <Consumer>
-          {({ dispatch, state }) => (
-            <button onClick={() => dispatch.test(payload)}>{state.text}</button>
-          )}
-        </Consumer>
-      </Provider>,
-    );
+    renderConsumer(Consumer, initialProps);
 
     await act(async () => {
       await user.click(screen.getByText(initialProps.initialState.text));

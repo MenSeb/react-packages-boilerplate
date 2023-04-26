@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { ConsumerState, Provider } from '../../src/';
-import { initialProps, spyOnConsoleError } from '..';
+import { ConsumerState } from '../../src/';
+import { initialProps, renderConsumer, spyOnConsoleError } from '..';
 
 spyOnConsoleError();
 
@@ -13,11 +13,7 @@ describe('<ConsumerState />', () => {
   });
 
   it('calls children with state', () => {
-    render(
-      <Provider {...initialProps}>
-        <ConsumerState>{(state) => <div>{state.text}</div>}</ConsumerState>
-      </Provider>,
-    );
+    renderConsumer(ConsumerState, initialProps);
 
     expect(
       screen.getByText(initialProps.initialState.text),
