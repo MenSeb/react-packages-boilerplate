@@ -2,11 +2,11 @@ import * as React from 'react';
 
 export type Action = {
   type: keyof Actions;
-  payload: Payload;
+  payload?: Payload;
 };
 
 export type Actions = {
-  [key: string]: (state: State, payload: Payload) => State;
+  [key: string]: (state: State, payload?: Payload) => State;
 };
 
 export type Context = {
@@ -17,7 +17,7 @@ export type Context = {
 export type Dispatch = React.Dispatch<Action>;
 
 export type Dispatcher = {
-  [key: keyof Actions]: (payload: Payload) => void;
+  [key: keyof Actions]: (payload?: Payload) => void;
 };
 
 export type Payload = Shape;
