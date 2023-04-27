@@ -103,7 +103,7 @@ import {
   Consumer,
   ConsumerDispatch,
   ConsumerState,
-  Providder,
+  Provider,
 } from '@menseb/context-reducer';
 ```
 
