@@ -8,15 +8,15 @@ import {
 import { Actions, Dispatcher, Payload, Provider, State } from '../src';
 
 export const actions: Actions = {
-  test: jest.fn((state: State, payload: Payload) => ({
+  test: jest.fn((state: State, payload?: Payload) => ({
     ...state,
     ...payload,
   })),
-  other: jest.fn((state: State, payload: Payload) => ({
+  other: jest.fn((state: State, payload?: Payload) => ({
     ...state,
     ...payload,
   })),
-  another: jest.fn((state: State, payload: Payload) => ({
+  another: jest.fn((state: State, payload?: Payload) => ({
     ...state,
     ...payload,
   })),
