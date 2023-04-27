@@ -22,14 +22,6 @@
 - [How to use](#how-to-use)
   - [Imports](#imports)
   - [Provider](#provider)
-  - [Hooks](#hooks)
-    - [useTheme](#usetheme)
-    - [useThemeDispatch](#usethemedispatch)
-    - [useThemeState](#usethemestate)
-  - [Consumers](#consumers)
-    - [Consumer](#consumer)
-    - [ConsumerDispatch](#consumerdispatch)
-    - [ConsumerState](#consumerstate)
 
 ## Installation
 
@@ -50,6 +42,8 @@ On `toggleTheme` or `MediaQuery onChange`, updates theme and saves to localStora
 
 ## How to use
 
+See how to use each hooks and consumers from [react-context-reducer](../context-reducer/README.md).
+
 You can pass any props to `ThemeButton` and `ThemeIcon` i.e. `className`, `style`, etc.
 
 ### Imports
@@ -60,13 +54,15 @@ import * as Theme from '@menseb/react-theme';
 
 ```jsx
 import {
-  useTheme,
-  useThemeDispatch,
-  useThemeState,
+  useContextDispatch,
+  useContextReducer,
+  useContextState,
   Consumer,
   ConsumerDispatch,
   ConsumerState,
-  Providder,
+  Provider,
+  ThemeButton,
+  ThemeIcon,
 } from '@menseb/react-theme';
 ```
 
@@ -78,105 +74,5 @@ import * as Theme from '@menseb/react-theme';
 
 export function ComponentProvider({ children }) {
   return <Theme.Provider>{children}</Theme.Provider>;
-}
-```
-
-### Hooks
-
-#### useTheme
-
-```jsx
-import * as React from 'react';
-import * as Theme from '@menseb/react-theme';
-
-export function ComponentHook() {
-  const { dispatch, state } = Theme.useTheme();
-
-  return (
-    <div>
-      <p>Current theme: {state.theme}</p>
-      <button onClick={dispatch.toggle}>Toggle Theme</button>
-    </div>
-  );
-}
-```
-
-#### useThemeDispatch
-
-```jsx
-import * as React from 'react';
-import * as Theme from '@menseb/react-theme';
-
-export function ComponentHookDispatch() {
-  const { dispatch } = Theme.useThemeDispatch();
-
-  return <button onClick={dispatch.toggle}>Toggle Theme</button>;
-}
-```
-
-#### useThemeState
-
-```jsx
-import * as React from 'react';
-import * as Theme from '@menseb/react-theme';
-
-export function ComponentHookState() {
-  const { state } = Theme.useThemeState();
-
-  return <p>Current theme: {state.theme}</p>;
-}
-```
-
-### Consumers
-
-#### Consumer
-
-```jsx
-import * as React from 'react';
-import * as Theme from '@menseb/react-theme';
-
-export function ComponentConsumer() {
-  return (
-    <Theme.Consumer>
-      {({ dispatch, state }) => (
-        <div>
-          <p>Current theme: {state.theme}</p>
-          <button onClick={dispatch.toggle}>Toggle Theme</button>
-        </div>
-      )}
-    </Theme.Consumer>
-  );
-}
-```
-
-#### ConsumerDispatch
-
-```jsx
-import * as React from 'react';
-import * as Theme from '@menseb/react-theme';
-
-export function ComponentConsumerDispatch() {
-  return (
-    <Theme.ConsumerDispatch>
-      {({ dispatch }) => (
-        <button onClick={dispatch.toggle}>Toggle Theme</button>
-      )}
-    </Theme.ConsumerDispatch>
-  );
-}
-```
-
-#### ConsumerState
-
-```jsx
-import * as React from 'react';
-import * as Theme from '@menseb/react-theme';
-
-export function ComponentConsumerState() {
-  return (
-    <Theme.ConsumerState>
-      {({ state }) => <p>Current theme: {state.theme}</p>}
-    </Theme.ConsumerState>
-  );
 }
 ```
