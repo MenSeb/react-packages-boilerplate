@@ -6,7 +6,7 @@
         width="250"
     />
     <h1>
-        Context Reducer
+        React Context Reducer
     </h1>
     <p>
         React context with reducer and actions.
@@ -34,7 +34,7 @@
 ## Installation
 
 ```
-npm install --save @menseb/context-reducer
+npm install --save @menseb/react-context-reducer
 ```
 
 **N.B.** This package depends on React.
@@ -92,7 +92,7 @@ export function initializer(initialState) {
 ### Imports
 
 ```jsx
-import * as ContextReducer from '@menseb/context-reducer';
+import * as ContextReducer from '@menseb/react-context-reducer';
 ```
 
 ```jsx
@@ -104,7 +104,7 @@ import {
   ConsumerDispatch,
   ConsumerState,
   Provider,
-} from '@menseb/context-reducer';
+} from '@menseb/react-context-reducer';
 ```
 
 ### Provider
@@ -113,7 +113,7 @@ Setup the provider with your actions, initial state and initializer function.
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/context-reducer';
+import * as ContextReducer from '@menseb/react-context-reducer';
 import * as actions from 'path-to-actions';
 import { initializer, initialState } from 'path-to-setup';
 
@@ -136,7 +136,7 @@ export function ComponentProvider({ children }) {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/context-reducer';
+import * as ContextReducer from '@menseb/react-context-reducer';
 
 export function ComponentHook() {
   const { dispatch, state } = ContextReducer.useContextReducer();
@@ -153,7 +153,7 @@ export function ComponentHook() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/context-reducer';
+import * as ContextReducer from '@menseb/react-context-reducer';
 
 export function ComponentHookDispatch() {
   const { dispatch } = ContextReducer.useContextDispatch();
@@ -170,7 +170,7 @@ export function ComponentHookDispatch() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/context-reducer';
+import * as ContextReducer from '@menseb/react-context-reducer';
 
 export function ComponentHookState() {
   const { state } = ContextReducer.useContextState();
@@ -190,7 +190,7 @@ export function ComponentHookState() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/context-reducer';
+import * as ContextReducer from '@menseb/react-context-reducer';
 
 export function ComponentConsumer() {
   return (
@@ -209,7 +209,7 @@ export function ComponentConsumer() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/context-reducer';
+import * as ContextReducer from '@menseb/react-context-reducer';
 
 export function ComponentConsumerDispatch() {
   return (
@@ -228,7 +228,7 @@ export function ComponentConsumerDispatch() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/context-reducer';
+import * as ContextReducer from '@menseb/react-context-reducer';
 
 export function ComponentConsumerState() {
   return (
