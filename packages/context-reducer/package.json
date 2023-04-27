@@ -11,7 +11,8 @@
   "author": "MenSeb <sebastien.menard.github@gmail.com>",
   "homepage": "https://github.com/MenSeb/react-packages-boilerplate#readme",
   "license": "ISC",
-  "main": "lib/context-reducer.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "type": "module",
   "directories": {
     "lib": "lib",
