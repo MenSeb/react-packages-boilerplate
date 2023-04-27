@@ -36,6 +36,9 @@ jobs:
       - name: Lint
         run: yarn run lint
 
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v9
+
       - name: Test
         run: yarn run coverage
 
