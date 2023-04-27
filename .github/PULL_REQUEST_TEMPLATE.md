@@ -1,10 +1,10 @@
-# Description
+## Description
 
-#### Please describe the reason related to the changes:
+Please describe the reason related to the changes:
 
-# Type
+## Type
 
-#### Please select the type related to the changes:
+Please select the type related to the changes:
 
 - [ ] bugfix
 - [ ] build
@@ -17,28 +17,28 @@
 - [ ] styling
 - [ ] other (please describe below):
 
-# Breaking Change
+## Breaking Change
 
-#### Does your changes introduce a breaking change?
+Does your changes introduce a breaking change?
 
 - [ ] no
 - [ ] yes
 
-# Behavior
+## Behavior
 
-#### Please describe the current behavior:
+Please describe the current behavior:
 
-# Changes
+## Changes
 
-#### Please describe the new behavior:
+Please describe the new behavior:
 
-# Information (issue, links, logs, etc.)
+## Information (issue, links, logs, etc.)
 
-#### Please list any other useful information:
+Please list any other useful information:
 
-# Checklist
+## Checklist
 
-#### Please make sure this pull request follow the requirements
+Please make sure this pull request follow the requirements:
 
 - [ ] commit guidelines [@commitlint/config-conventional](https://www.conventionalcommits.org/en/v1.0.0/#specification)
 - [ ] **100%** code coverage
