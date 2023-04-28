@@ -38,6 +38,11 @@ jobs:
 
       - name: Lint Markdown
         uses: DavidAnson/markdownlint-cli2-action@v10
+        with:
+          command: config
+          globs: |
+            .markdownlint.json
+            **/*.md #node_modules
 
       - name: Test
         run: yarn run coverage

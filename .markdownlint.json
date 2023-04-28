@@ -1,3 +1,4 @@
 {
-  "extends": "markdownlint/style/relaxed"
+  "extends": "markdownlint/style/relaxed",
+  "MD025": true
 }
