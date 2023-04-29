@@ -1,5 +1,5 @@
 {
-  "name": "@menseb/react-context-reducer",
+  "name": "@react/context-reducer",
   "version": "1.0.0",
   "description": "React context with reducer and actions",
   "keywords": [
