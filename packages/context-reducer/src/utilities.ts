@@ -15,7 +15,7 @@ export function createDispatcher(
   const dispatcher: Dispatcher = {};
 
   for (const type of Object.keys(actions))
-    dispatcher[type] = (payload: Payload) => dispatch({ payload, type });
+    dispatcher[type] = (payload?: Payload) => dispatch({ payload, type });
 
   return dispatcher;
 }
