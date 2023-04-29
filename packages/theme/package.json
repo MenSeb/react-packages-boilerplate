@@ -1,7 +1,7 @@
 {
-  "name": "@menseb/react-theme",
+  "name": "@react/theme",
   "version": "1.0.0",
-  "description": "Theme dark and light with React.",
+  "description": "Dark and light theme with React.",
   "keywords": [
     "theme",
     "dark",
