@@ -33,7 +33,7 @@
 
 ## Installation
 
-```
+```bash
 npm install --save @menseb/react-context-reducer
 ```
 
