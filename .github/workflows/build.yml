@@ -37,12 +37,7 @@ jobs:
         run: yarn run lint
 
       - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v10
-        with:
-          command: config
-          globs: |
-            .markdownlint.json
-            **/*.md #node_modules
+        run: yarn run lint:markdown
 
       - name: Test
         run: yarn run coverage

@@ -36,7 +36,7 @@
     "eslint": "lerna exec eslint -- . --parser-options=project:../../tsconfig.eslint.json --ignore-path ../../.eslintignore",
     "format": "prettier --write .",
     "lint": "yarn run eslint --fix",
-    "lint:markdown": "yarn run markdownlint-cli2 **/*.md #node_modules",
+    "lint:markdown": "markdownlint-cli2 **/*.md #node_modules",
     "prepublish": "yarn run build",
     "publish": "lerna publish",
     "start": "lerna run start",

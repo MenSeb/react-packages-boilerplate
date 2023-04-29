@@ -1,4 +1,6 @@
 {
-  "extends": "markdownlint/style/relaxed",
-  "MD025": true
+  "default": true,
+  "first-line-h1": false,
+  "line_length": false,
+  "no-inline-html": false
 }
