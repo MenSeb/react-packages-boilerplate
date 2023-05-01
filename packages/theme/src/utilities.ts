@@ -5,6 +5,10 @@ export const THEME_CONTEXT_ERROR =
 export const THEME_QUERY_DARK = '(prefers-color-scheme: dark)';
 export const THEME_STORAGE_KEY = 'color-scheme';
 
+export const initialState: ThemeState = {
+  theme: 'light',
+};
+
 export function initializer(): ThemeState {
   const theme = localStorage.getItem(THEME_STORAGE_KEY);
 
