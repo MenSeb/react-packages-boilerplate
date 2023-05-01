@@ -25,8 +25,8 @@
 
 ## Installation
 
-```
-npm install --save @menseb/react-theme
+```bash
+npm install --save @react/theme
 ```
 
 **N.B.** This package depends on React.
@@ -49,28 +49,28 @@ You can pass any props to `ThemeButton` and `ThemeIcon` i.e. `className`, `style
 ### Imports
 
 ```jsx
-import * as Theme from '@menseb/react-theme';
+import * as Theme from '@react/theme';
 ```
 
 ```jsx
 import {
-  useContextDispatch,
-  useContextReducer,
-  useContextState,
-  Consumer,
   ConsumerDispatch,
+  ConsumerReducer,
   ConsumerState,
   Provider,
   ThemeButton,
   ThemeIcon,
-} from '@menseb/react-theme';
+  useContextDispatch,
+  useContextReducer,
+  useContextState,
+} from '@react/theme';
 ```
 
 ### Provider
 
 ```jsx
 import * as React from 'react';
-import * as Theme from '@menseb/react-theme';
+import * as Theme from '@react/theme';
 
 export function ComponentProvider({ children }) {
   return <Theme.Provider>{children}</Theme.Provider>;
