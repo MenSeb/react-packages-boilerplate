@@ -1,69 +1,79 @@
 import * as React from 'react';
-import {
-  render,
-  renderHook,
-  RenderHookResult,
-  RenderResult,
-} from '@testing-library/react';
-import { Actions, Dispatcher, Payload, Provider, State } from '../src';
+import { render, renderHook } from '@testing-library/react';
+import * as Types from '../src/types';
 
-export const actions: Actions = {
-  test: jest.fn((state: State, payload?: Payload) => ({
-    ...state,
-    ...payload,
-  })),
-  other: jest.fn((state: State, payload?: Payload) => ({
-    ...state,
-    ...payload,
-  })),
-  another: jest.fn((state: State, payload?: Payload) => ({
-    ...state,
-    ...payload,
-  })),
+type State = {
+  bar: string;
+  baz?: string;
+  foo?: string;
+  foobarbaz?: string;
 };
 
-export const initialProps = {
-  actions,
-  initialState: {
-    text: 'test',
-  },
-  initializer: jest.fn((state: State): State => state),
+type Payload = Partial<State>;
+
+export const actions = {
+  action1: jest.fn((state: State, payload: Payload) => ({
+    ...state,
+    ...payload,
+  })),
+  action2: jest.fn((state: State, payload: Payload) => ({
+    ...state,
+    ...payload,
+  })),
+  action3: jest.fn((state: State, payload: Payload) => ({
+    ...state,
+    ...payload,
+  })),
 };
 
 export const payload = {
-  bool: true,
+  foo: 'foo',
 };
 
-export function createWrapper(
-  props: React.ComponentProps<typeof Provider> = initialProps,
-): ({ children }: React.PropsWithChildren) => JSX.Element {
-  return function wrapper({ children }: React.PropsWithChildren): JSX.Element {
-    return <Provider {...props}>{children}</Provider>;
+export const initialState = {
+  bar: 'bar',
+};
+
+export const initializer = jest.fn(() => initializerState);
+
+export const initializerState = { ...initialState, baz: 'baz' };
+
+export function createWrapper(Provider: React.ElementType) {
+  return function wrapper({ children }: React.PropsWithChildren) {
+    return <Provider>{children}</Provider>;
   };
 }
 
 export function renderConsumer(
   Consumer: React.ElementType,
-  props?: React.ComponentProps<typeof Provider>,
-): RenderResult {
+  Provider: React.ElementType,
+) {
   return render(
     <Consumer>
-      {({ dispatch, state }: { dispatch?: Dispatcher; state?: State }) => {
+      {({
+        dispatch,
+        state,
+      }: {
+        dispatch?: Types.Dispatcher<State>;
+        state?: State;
+      }) => {
         return (
-          <button onClick={() => dispatch?.test(payload)}>{state?.text}</button>
+          <button onClick={() => dispatch?.action1(payload)}>
+            {state?.bar}
+          </button>
         );
       }}
     </Consumer>,
-    { wrapper: createWrapper(props) },
+    { wrapper: createWrapper(Provider) },
   );
 }
 
-export function renderContextHook<Result, Props>(
+export function renderContextHook<Result>(
   hook: () => Result,
-  props?: React.ComponentProps<typeof Provider>,
-): RenderHookResult<Result, Props> {
+  Provider: React.ElementType,
+) {
   return renderHook(() => hook(), {
-    wrapper: createWrapper(props),
+    wrapper: createWrapper(Provider),
   });
 }
 

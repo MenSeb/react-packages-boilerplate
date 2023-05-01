@@ -20,7 +20,7 @@
 - [Installation](#installation)
 - [How it works](#how-it-works)
 - [How to use](#how-to-use)
-  - [Imports](#imports)
+  - [Import](#import)
   - [Provider](#provider)
   - [Hooks](#hooks)
     - [useContextReducer](#usecontextreducer)
@@ -34,7 +34,7 @@
 ## Installation
 
 ```bash
-npm install --save @menseb/react-context-reducer
+npm install --save @react/context-reducer
 ```
 
 **N.B.** This package depends on React.
@@ -60,8 +60,8 @@ Each of your action should be a function which receives the current state and a 
 **Example:**
 
 ```js
-export function action1(state, payload) {
-  return { ...state, ...payload };
+export function action1(state) {
+  return { ...state, bar: 'bar' };
 }
 
 export function action2(state, payload) {
@@ -69,7 +69,7 @@ export function action2(state, payload) {
 }
 
 export function action3(state, payload) {
-  return { ...state, bar: payload.bar };
+  return { ...state, ...payload };
 }
 ```
 
@@ -89,22 +89,32 @@ export function initializer(initialState) {
 
 ## How to use
 
-### Imports
+### Import
 
-```jsx
-import * as ContextReducer from '@menseb/react-context-reducer';
+```js
+import { createContextReducer } from '@react/context-reducer';
 ```
 
-```jsx
-import {
+### Setup
+
+```js
+const ContextReducer = createContextReducer({
+  actions,
+  initializer,
+  initialState,
+});
+
+const {
+  ConsumerDispatch,
+  ConsumerReducer,
+  ConsumerState,
+  Provider,
   useContextDispatch,
   useContextReducer,
   useContextState,
-  Consumer,
-  ConsumerDispatch,
-  ConsumerState,
-  Provider,
-} from '@menseb/react-context-reducer';
+} = ContextReducer;
+
+export default ContextReducer;
 ```
 
 ### Provider
@@ -113,20 +123,10 @@ Setup the provider with your actions, initial state and initializer function.
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/react-context-reducer';
-import * as actions from 'path-to-actions';
-import { initializer, initialState } from 'path-to-setup';
+import ContextReducer from 'path-to-setup';
 
 export function ComponentProvider({ children }) {
-  return (
-    <ContextReducer.Provider
-      actions={actions}
-      initializer={initializer}
-      initialState={initialState}
-    >
-      {children}
-    </ContextReducer.Provider>
-  );
+  return <ContextReducer.Provider>{children}</ContextReducer.Provider>;
 }
 ```
 
@@ -136,7 +136,7 @@ export function ComponentProvider({ children }) {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/react-context-reducer';
+import ContextReducer from 'path-to-setup';
 
 export function ComponentHook() {
   const { dispatch, state } = ContextReducer.useContextReducer();
@@ -153,7 +153,7 @@ export function ComponentHook() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/react-context-reducer';
+import ContextReducer from 'path-to-setup';
 
 export function ComponentHookDispatch() {
   const { dispatch } = ContextReducer.useContextDispatch();
@@ -170,7 +170,7 @@ export function ComponentHookDispatch() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/react-context-reducer';
+import ContextReducer from 'path-to-setup';
 
 export function ComponentHookState() {
   const { state } = ContextReducer.useContextState();
@@ -190,7 +190,7 @@ export function ComponentHookState() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/react-context-reducer';
+import ContextReducer from 'path-to-setup';
 
 export function ComponentConsumer() {
   return (
@@ -209,7 +209,7 @@ export function ComponentConsumer() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/react-context-reducer';
+import ContextReducer from 'path-to-setup';
 
 export function ComponentConsumerDispatch() {
   return (
@@ -228,7 +228,7 @@ export function ComponentConsumerDispatch() {
 
 ```jsx
 import * as React from 'react';
-import * as ContextReducer from '@menseb/react-context-reducer';
+import ContextReducer from 'path-to-setup';
 
 export function ComponentConsumerState() {
   return (
