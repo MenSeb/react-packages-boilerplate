@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ContextReducer from '@react/context-reducer';
+import ContextReducer from '../setup';
 import { THEME_QUERY_DARK, THEME_STORAGE_KEY } from '../utilities';
 
 export default function ThemeUpdate(): null {

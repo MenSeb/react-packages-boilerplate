@@ -1,16 +1,12 @@
 import * as React from 'react';
-import * as ContextReducer from '@react/context-reducer';
-import * as actions from '../actions';
+import ContextReducer from '../setup';
 import ThemeUpdate from './ThemeUpdate';
-import { initializer } from '../utilities';
 
 type ProviderProps = React.PropsWithChildren;
 
-export default function ThemeProvider({
-  children,
-}: ProviderProps): JSX.Element {
+export default function ThemeProvider({ children }: ProviderProps) {
   return (
-    <ContextReducer.Provider actions={actions} initializer={initializer}>
+    <ContextReducer.Provider>
       <ThemeUpdate />
       {children}
     </ContextReducer.Provider>
