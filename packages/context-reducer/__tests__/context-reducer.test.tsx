@@ -181,5 +181,16 @@ describe('createContextReducer', () => {
 
       expect(result.current.state).toEqual(initializerState);
     });
+
+    it('calls the dispatcher with an empty object if payload is undefined', () => {
+      const { result } = renderContextHook(
+        ContextReducer.useContextReducer,
+        ContextReducer.Provider,
+      );
+
+      act(() => result.current.dispatch.action1());
+
+      expect(actions.action1).toHaveBeenCalledWith(initializerState, {});
+    });
   });
 });

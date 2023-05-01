@@ -11,7 +11,7 @@ type State = {
 
 type Payload = Partial<State>;
 
-export const actions: Types.Actions<State> = {
+export const actions = {
   action1: jest.fn((state: State, payload: Payload) => ({
     ...state,
     ...payload,

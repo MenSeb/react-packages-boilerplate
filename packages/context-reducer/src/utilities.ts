@@ -7,7 +7,7 @@ export function createDispatcher<T>(
   const dispatcher = {} as Types.Dispatcher<T>;
 
   for (const type of Object.keys(actions) as (keyof typeof actions)[])
-    dispatcher[type] = (payload?: Types.Payload) => dispatch({ payload, type });
+    dispatcher[type] = (payload = {}) => dispatch({ payload, type });
 
   return dispatcher;
 }
@@ -18,6 +18,6 @@ export function createError(source: string): Error {
 
 export function createReducer<T>(actions: Types.Actions<T>): Types.Reducer<T> {
   return function reducer(state: T, action: Types.Action<T>) {
-    return actions[action.type](state, action.payload ?? {});
+    return actions[action.type](state, action.payload);
   };
 }

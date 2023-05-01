@@ -1,6 +1,6 @@
 export type Action<T> = {
   type: keyof Actions<T>;
-  payload?: Payload;
+  payload: Payload;
 };
 
 export type Actions<T> = {
