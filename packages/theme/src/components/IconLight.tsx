@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ContextReducer from '../setup';
 
-export default function ThemeIconLight({
+export default function IconLight({
   children,
   ...props
 }: React.SVGProps<SVGSVGElement>): JSX.Element {

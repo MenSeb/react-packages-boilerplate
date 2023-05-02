@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ContextReducer from '../setup';
 
-export default function ThemeButtonLight({
+export default function ButtonLight({
   children,
   ...props
 }: React.HTMLProps<HTMLButtonElement>): JSX.Element {
