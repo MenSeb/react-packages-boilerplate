@@ -4,7 +4,9 @@ import ThemeUpdate from './ThemeUpdate';
 
 type ProviderProps = React.PropsWithChildren;
 
-export default function ThemeProvider({ children }: ProviderProps) {
+export default function ThemeProvider({
+  children,
+}: ProviderProps): JSX.Element {
   return (
     <ContextReducer.Provider>
       <ThemeUpdate />
