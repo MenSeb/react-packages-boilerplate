@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react';
 import { ButtonDark } from '../../src/components';
 import { THEME_STORAGE_KEY } from '../../src/utilities';
-import { createRender, getButton } from '..';
+import { createRender, getButton, props } from '..';
 
 const renderButtonDark = createRender(ButtonDark);
 
@@ -33,5 +33,13 @@ describe('<ThemeButtonDark />', () => {
     await act(async () => await userEvent.click(getButton()));
 
     expect(getButton()).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('renders with additional props', () => {
+    renderButtonDark(props);
+
+    expect(getButton()).toHaveStyle(props.style);
+    expect(getButton()).toHaveClass(props.className);
+    expect(getButton()).toHaveAttribute('id', props.id);
   });
 });

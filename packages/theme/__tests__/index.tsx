@@ -2,6 +2,12 @@ import * as React from 'react';
 import { render, renderHook, screen } from '@testing-library/react';
 import * as Theme from '../src';
 
+export const props = {
+  className: 'className',
+  id: 'id',
+  style: { color: 'red' },
+};
+
 export const spyAddEventListener = jest.fn();
 export const spyRemoveEventListener = jest.fn();
 

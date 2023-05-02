@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react';
 import { ButtonToggle } from '../../src/components';
 import { THEME_STORAGE_KEY } from '../../src/utilities';
-import { createRender, getButton } from '..';
+import { createRender, getButton, props } from '..';
 
 const renderButtonToggle = createRender(ButtonToggle);
 
@@ -39,5 +39,13 @@ describe('<ThemeButtonToggle />', () => {
     await act(async () => await userEvent.click(getButton()));
 
     expect(getButton()).toHaveAttribute('data-theme', 'light');
+  });
+
+  it('renders with additional props', () => {
+    renderButtonToggle(props);
+
+    expect(getButton()).toHaveStyle(props.style);
+    expect(getButton()).toHaveClass(props.className);
+    expect(getButton()).toHaveAttribute('id', props.id);
   });
 });
