@@ -20,8 +20,18 @@
 - [Installation](#installation)
 - [How it works](#how-it-works)
 - [How to use](#how-to-use)
-  - [Imports](#imports)
+  - [Import](#import)
   - [Provider](#provider)
+  - [Examples](#examples)
+    - [ButtonDark with IconDark](#buttondark-with-icondark)
+    - [ButtonLight with IconLight](#buttonlight-with-iconlight)
+    - [ButtonToggle with icons](#buttontoggle-with-icons)
+  - [Selectors](#selectors)
+    - [ButtonDark](#buttondark)
+    - [ButtonLight](#buttonlight)
+    - [ButtonToggle](#buttontoggle)
+    - [IconDark](#icondark)
+    - [IconLight](#iconlight)
 
 ## Installation
 
@@ -33,37 +43,60 @@ npm install --save @react/theme
 
 ## How it works
 
-On load, check if theme is stored in localStorage.
+On load, check if the theme is stored in localStorage.
 
-- If true, loads theme from localStorage;
-- If false, loads theme from user system preference;
+- If true, loads the theme from localStorage;
+- If false, loads the theme from user system preference;
 
-On `toggleTheme` or `MediaQuery onChange`, updates theme and saves to localStorage.
+Whenever the user system preference change, i.e. `MediaQuery onChange`, or the theme change, i.e. `toggleTheme`, `setThemeDark` or `setThemeLight`, it updates the theme and saves it to localStorage.
 
 ## How to use
 
 See how to use each hooks and consumers from [react-context-reducer](../context-reducer/README.md).
 
-You can pass any props to `ThemeButton` and `ThemeIcon` i.e. `className`, `style`, etc.
+Available state and actions are:
 
-### Imports
+```js
+/* theme 'light' or 'dark' */
+state.theme;
+
+/* toggle between dark and light theme. */
+dispatch.toggleTheme();
+
+/* set the theme to dark. */
+dispatch.setThemeDark();
+
+/* set the theme to light. */
+dispatch.setThemeLight();
+```
+
+You can pass any additional props, i.e. `className`, `style`, `id`, etc. onto each Theme components:
+
+- `ButtonDark`
+- `ButtonLight`
+- `ButtonToggle`
+- `IconDark`
+- `IconLight`
+
+### Import
 
 ```jsx
 import * as Theme from '@react/theme';
-```
 
-```jsx
-import {
+const {
+  ButtonDark,
+  ButtonLight,
+  ButtonToggle,
   ConsumerDispatch,
   ConsumerReducer,
   ConsumerState,
+  IconDark,
+  IconLight,
   Provider,
-  ThemeButton,
-  ThemeIcon,
   useContextDispatch,
   useContextReducer,
   useContextState,
-} from '@react/theme';
+} = Theme;
 ```
 
 ### Provider
@@ -72,7 +105,126 @@ import {
 import * as React from 'react';
 import * as Theme from '@react/theme';
 
-export function ComponentProvider({ children }) {
-  return <Theme.Provider>{children}</Theme.Provider>;
+export function App() {
+  return <Theme.Provider>{...}</Theme.Provider>;
 }
+```
+
+### Examples
+
+#### ButtonDark with IconDark
+
+```jsx
+import * as React from 'react';
+import * as Theme from '@react/theme';
+
+export function Component() {
+  return (
+    <Theme.ButtonDark>
+      <Theme.IconDark />
+      Dark theme
+    </Theme.ButtonDark>
+  );
+}
+```
+
+#### ButtonLight with IconLight
+
+```jsx
+import * as React from 'react';
+import * as Theme from '@react/theme';
+
+export function Component() {
+  return (
+    <Theme.ButtonLight>
+      <Theme.IconLight />
+      Light theme
+    </Theme.ButtonLight>
+  );
+}
+```
+
+#### ButtonToggle with icons
+
+```jsx
+import * as React from 'react';
+import * as Theme from '@react/theme';
+
+export function Component() {
+  return (
+    <Theme.ButtonToggle>
+      <Theme.IconDark />
+      <Theme.IconLight />
+      Toggle theme
+    </Theme.ButtonToggle>
+  );
+}
+```
+
+### Selectors
+
+#### ButtonDark
+
+```css
+[data-theme='dark']
+[type='button']
+
+/* when theme is dark */
+[aria-pressed='true']
+
+/* when theme is light */
+[aria-pressed='false']
+```
+
+#### ButtonLight
+
+```css
+[data-theme='light']
+[type='button']
+
+/* when theme is dark */
+[aria-pressed='false']
+
+/* when theme is light */
+[aria-pressed='true']
+```
+
+#### ButtonToggle
+
+```css
+[type='button']
+
+/* when theme is dark */
+[data-theme='dark']
+[aria-pressed='true']
+
+/* when theme is light */
+[data-theme='light']
+[aria-pressed='false']
+```
+
+#### IconDark
+
+```css
+[data-theme='dark']
+[aria-hidden='true']
+
+/* when theme is dark */
+[data-hidden='false']
+
+/* when theme is light */
+[data-hidden='true']
+```
+
+#### IconLight
+
+```css
+[data-theme='light']
+[aria-hidden='true']
+
+/* when theme is dark */
+[data-hidden='true']
+
+/* when theme is light */
+[data-hidden='false']
 ```
