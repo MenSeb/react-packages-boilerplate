@@ -8,9 +8,12 @@ on:
       - '**.md'
       - '**.svg'
   pull_request:
-    paths-ignore:
-      - '**.md'
-      - '**.svg'
+    paths:
+      - '!**.md'
+      - '!**.svg'
+    # paths-ignore:
+    #   - '**.md'
+    #   - '**.svg'
 
 jobs:
   build:
