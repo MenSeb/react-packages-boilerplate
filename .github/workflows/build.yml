@@ -2,18 +2,13 @@ name: build
 
 on:
   push:
-    branches:
-      - master
     paths-ignore:
       - '**.md'
       - '**.svg'
   pull_request:
-    paths:
-      - '!**.md'
-      - '!**.svg'
-    # paths-ignore:
-    #   - '**.md'
-    #   - '**.svg'
+    paths-ignore:
+      - '**.md'
+      - '**.svg'
 
 jobs:
   build:
