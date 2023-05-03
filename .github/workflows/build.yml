@@ -6,6 +6,7 @@ on:
       - '**.md'
       - '**.svg'
   pull_request:
+    types: [opened, reopened]
     paths-ignore:
       - '**.md'
       - '**.svg'
