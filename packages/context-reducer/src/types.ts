@@ -31,24 +31,27 @@ export type ConsumerStateProps<S> = {
   children: ({ state }: { state: S }) => React.ReactNode;
 };
 
+export type CustomState<S, P> = Options<S, P>['defaultState'] &
+  ProviderProps<S>['initialState'];
+
 export type Dispatch<S, P> = React.Dispatch<Action<S, P>>;
 
 export type Dispatcher<S, P> = {
   [Property in keyof Actions<S, P>]: (payload?: P) => void;
 };
 
-export type Initializer<S> = (initialState?: InitialState<S>) => S;
-
-export type InitialState<S> = S | Partial<S>;
+export type Initializer<S> = (state?: S | Partial<S>) => S;
 
 export type Options<S, P> = {
   actions: Actions<S, P>;
+  defaultState?: Partial<S>;
   initializer: Initializer<S>;
-  initialState: InitialState<S>;
 };
 
 export type Payload = Record<string, unknown>;
 
-export type ProviderProps = React.PropsWithChildren;
+export type ProviderProps<S> = React.PropsWithChildren & {
+  initialState: Partial<S>;
+};
 
 export type Reducer<S, P> = React.Reducer<S, Action<S, P>>;

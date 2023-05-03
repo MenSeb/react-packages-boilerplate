@@ -4,9 +4,10 @@ import { act, render, renderHook, screen } from '@testing-library/react';
 import createContextReducer from '../src/context-reducer';
 import {
   actions,
+  defaultState,
+  initialState,
   initializer,
   initializerState,
-  initialState,
   payload,
   renderConsumer,
   renderContextHook,
@@ -21,8 +22,8 @@ beforeEach(
   () =>
     (ContextReducer = createContextReducer({
       actions,
+      defaultState,
       initializer,
-      initialState,
     })),
 );
 

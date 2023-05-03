@@ -10,10 +10,10 @@ export default function createContextReducer<S, P>(
     null,
   );
 
-  function Provider(props: Types.ProviderProps): JSX.Element {
+  function Provider(props: Types.ProviderProps<S>): JSX.Element {
     const [state, dispatch] = React.useReducer(
       utilities.createReducer(options.actions),
-      options.initialState,
+      { ...options.defaultState, ...props.initialState },
       options.initializer,
     );
 
