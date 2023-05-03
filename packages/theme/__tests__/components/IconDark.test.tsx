@@ -4,7 +4,7 @@ import { createRender, getIcon, getIconPath, props } from '..';
 
 const renderIconDark = createRender(IconDark);
 
-describe('<ThemeIconDark />', () => {
+describe('<IconDark />', () => {
   it('renders a path for the dark icon', () => {
     const { container } = renderIconDark();
 

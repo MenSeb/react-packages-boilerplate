@@ -57,7 +57,7 @@ See how to use each hooks and consumers from [react-context-reducer](../context-
 Available state and actions are:
 
 ```js
-/* theme 'light' or 'dark' */
+/* theme "light" or "dark" */
 state.theme;
 
 /* toggle between dark and light theme. */
@@ -166,65 +166,65 @@ export function Component() {
 #### ButtonDark
 
 ```css
-[data-theme='dark']
-[type='button']
+[data-theme="dark"]
+[type="button"]
 
 /* when theme is dark */
-[aria-pressed='true']
+[aria-pressed="true"]
 
 /* when theme is light */
-[aria-pressed='false']
+[aria-pressed="false"]
 ```
 
 #### ButtonLight
 
 ```css
-[data-theme='light']
-[type='button']
+[data-theme="light"]
+[type="button"]
 
 /* when theme is dark */
-[aria-pressed='false']
+[aria-pressed="false"]
 
 /* when theme is light */
-[aria-pressed='true']
+[aria-pressed="true"]
 ```
 
 #### ButtonToggle
 
 ```css
-[type='button']
+[type="button"]
 
 /* when theme is dark */
-[data-theme='dark']
-[aria-pressed='true']
+[data-theme="dark"]
+[aria-pressed="true"]
 
 /* when theme is light */
-[data-theme='light']
-[aria-pressed='false']
+[data-theme="light"]
+[aria-pressed="false"]
 ```
 
 #### IconDark
 
 ```css
-[data-theme='dark']
-[aria-hidden='true']
+[data-theme="dark"]
+[aria-hidden="true"]
 
 /* when theme is dark */
-[data-hidden='false']
+[data-hidden="false"]
 
 /* when theme is light */
-[data-hidden='true']
+[data-hidden="true"]
 ```
 
 #### IconLight
 
 ```css
-[data-theme='light']
-[aria-hidden='true']
+[data-theme="light"]
+[aria-hidden="true"]
 
 /* when theme is dark */
-[data-hidden='true']
+[data-hidden="true"]
 
 /* when theme is light */
-[data-hidden='false']
+[data-hidden="false"]
 ```

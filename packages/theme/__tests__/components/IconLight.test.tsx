@@ -4,7 +4,7 @@ import { createRender, getIcon, getIconPath, props } from '..';
 
 const renderIconLight = createRender(IconLight);
 
-describe('<ThemeIconLight />', () => {
+describe('<IconLight />', () => {
   it('renders a path for the light icon', () => {
     const { container } = renderIconLight();
 

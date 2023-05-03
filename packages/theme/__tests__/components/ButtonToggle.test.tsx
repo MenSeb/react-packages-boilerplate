@@ -6,7 +6,7 @@ import { createRender, getButton, props } from '..';
 
 const renderButtonToggle = createRender(ButtonToggle);
 
-describe('<ThemeButtonToggle />', () => {
+describe('<ButtonToggle />', () => {
   it('renders with attribute data-theme set to theme', () => {
     renderButtonToggle();
 

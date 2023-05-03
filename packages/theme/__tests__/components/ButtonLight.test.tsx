@@ -6,7 +6,7 @@ import { createRender, getButton, props } from '..';
 
 const renderButtonLight = createRender(ButtonLight);
 
-describe('<ThemeButtonLight />', () => {
+describe('<ButtonLight />', () => {
   it('renders with attribute data-theme to light', () => {
     renderButtonLight();
 

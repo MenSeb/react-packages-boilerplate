@@ -6,7 +6,7 @@ import { createRender, getButton, props } from '..';
 
 const renderButtonDark = createRender(ButtonDark);
 
-describe('<ThemeButtonDark />', () => {
+describe('<ButtonDark />', () => {
   it('renders with attribute data-theme to dark', () => {
     renderButtonDark();
 
