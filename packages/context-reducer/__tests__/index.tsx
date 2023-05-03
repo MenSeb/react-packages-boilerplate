@@ -2,41 +2,42 @@ import * as React from 'react';
 import { render, renderHook } from '@testing-library/react';
 import * as Types from '../src/types';
 
-type State = {
+export type State = {
   bar: string;
   baz?: string;
   foo?: string;
   foobarbaz?: string;
 };
 
-type Payload = Partial<State>;
+export type Payload1 = Partial<State>;
+export type Payload2 = Pick<State, 'foobarbaz'>;
+export type Payloads = Payload1 & Payload2;
 
-export const actions = {
-  action1: jest.fn((state: State, payload: Payload) => ({
-    ...state,
-    ...payload,
-  })),
-  action2: jest.fn((state: State, payload: Payload) => ({
-    ...state,
-    ...payload,
-  })),
-  action3: jest.fn((state: State, payload: Payload) => ({
-    ...state,
-    ...payload,
-  })),
+export const actions: Types.Actions<State, Payloads> = {
+  action1: jest.fn((state: State): State => state),
+  action2: jest.fn(
+    (state: State, payload?: Payload1): State => ({
+      ...state,
+      ...payload,
+    }),
+  ),
+  action3: jest.fn(
+    (state: State, payload: Payload2): State => ({
+      ...state,
+      ...payload,
+    }),
+  ),
 };
 
-export const payload = {
-  foo: 'foo',
-};
+export const payload: Payload1 = { foo: 'foo' };
 
-export const initialState = {
-  bar: 'bar',
-};
+export const initialState: Partial<State> = { bar: 'bar' };
 
-export const initializer = jest.fn(() => initializerState);
+export const initializerState: State = { bar: 'bar', baz: 'baz' };
 
-export const initializerState = { ...initialState, baz: 'baz' };
+export const initializer: Types.Initializer<State> = jest.fn(
+  () => initializerState,
+);
 
 export function createWrapper(Provider: React.ElementType) {
   return function wrapper({ children }: React.PropsWithChildren) {
@@ -54,7 +55,7 @@ export function renderConsumer(
         dispatch,
         state,
       }: {
-        dispatch?: Types.Dispatcher<State>;
+        dispatch?: Types.Dispatcher<State, Payloads>;
         state?: State;
       }) => {
         return (
