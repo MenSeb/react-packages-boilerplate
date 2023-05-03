@@ -12,7 +12,7 @@ export default function ButtonToggle({
       {...props}
       aria-pressed={state.theme === 'dark'}
       data-theme={state.theme}
-      onClick={() => dispatch.toggleTheme()}
+      onClick={dispatch.toggleTheme}
       type="button"
     >
       {children}
