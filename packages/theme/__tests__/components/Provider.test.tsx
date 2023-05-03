@@ -79,6 +79,10 @@ describe('Provider', () => {
     act(() => result.current.dispatch.setThemeDark());
 
     expect(result.current.state.theme).toBe('dark');
+
+    act(() => result.current.dispatch.setThemeDark());
+
+    expect(result.current.state.theme).toBe('dark');
   });
 
   it('renders with the dispatch to set theme light', () => {
@@ -87,6 +91,10 @@ describe('Provider', () => {
     const { result } = renderThemeHook(Theme.useContextReducer);
 
     expect(result.current.state.theme).toBe('dark');
+
+    act(() => result.current.dispatch.setThemeLight());
+
+    expect(result.current.state.theme).toBe('light');
 
     act(() => result.current.dispatch.setThemeLight());
 
