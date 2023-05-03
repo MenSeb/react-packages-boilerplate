@@ -2,11 +2,15 @@ import * as React from 'react';
 import * as Types from './types';
 import * as utilities from './utilities';
 
-export default function createContextReducer<T>(options: Types.Options<T>) {
-  const ContextState = React.createContext<T | null>(null);
-  const ContextDispatch = React.createContext<Types.Dispatcher<T> | null>(null);
+export default function createContextReducer<S, P>(
+  options: Types.Options<S, P>,
+) {
+  const ContextState = React.createContext<S | null>(null);
+  const ContextDispatch = React.createContext<Types.Dispatcher<S, P> | null>(
+    null,
+  );
 
-  function Provider(props: Types.ProviderProps) {
+  function Provider(props: Types.ProviderProps): JSX.Element {
     const [state, dispatch] = React.useReducer(
       utilities.createReducer(options.actions),
       options.initialState,
@@ -27,7 +31,9 @@ export default function createContextReducer<T>(options: Types.Options<T>) {
     );
   }
 
-  function ConsumerDispatch({ children }: Types.ConsumerDispatchProps<T>) {
+  function ConsumerDispatch({
+    children,
+  }: Types.ConsumerDispatchProps<S, P>): JSX.Element {
     return (
       <ContextDispatch.Consumer>
         {(dispatch) => {
@@ -40,7 +46,9 @@ export default function createContextReducer<T>(options: Types.Options<T>) {
     );
   }
 
-  function ConsumerState({ children }: Types.ConsumerStateProps<T>) {
+  function ConsumerState({
+    children,
+  }: Types.ConsumerStateProps<S>): JSX.Element {
     return (
       <ContextState.Consumer>
         {(state) => {
@@ -52,7 +60,9 @@ export default function createContextReducer<T>(options: Types.Options<T>) {
     );
   }
 
-  function ConsumerReducer({ children }: Types.ConsumerReducerProps<T>) {
+  function ConsumerReducer({
+    children,
+  }: Types.ConsumerReducerProps<S, P>): JSX.Element {
     return (
       <ContextDispatch.Consumer>
         {(dispatch) => (
