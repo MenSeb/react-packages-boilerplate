@@ -2,12 +2,11 @@ name: build
 
 on:
   push:
-    branches:
-      - master
     paths-ignore:
       - '**.md'
       - '**.svg'
   pull_request:
+    types: [opened, reopened]
     paths-ignore:
       - '**.md'
       - '**.svg'
