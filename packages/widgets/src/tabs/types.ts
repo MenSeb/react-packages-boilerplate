@@ -1,26 +1,6 @@
 import * as React from 'react';
 import { Tab } from './components';
 
-// export type OptionsBase = {
-//   initialIndex: number;
-//   numberOfTabs: number;
-//   orientation?: 'horizontal' | 'vertical';
-// };
-
-// export type OptionsLabel = {
-//   label: string;
-//   labelledby?: never;
-// };
-
-// export type OptionsLabelledby = {
-//   label?: never;
-//   labelledby: string;
-// };
-
-// export type Options = OptionsBase & (OptionsLabel | OptionsLabelledby);
-
-/* */
-
 export type Data = {
   deleted?: boolean;
   id: string;
@@ -43,19 +23,31 @@ export type InitialState = {
   numberOfTabs: number;
   orientation?: Orientation;
   removable?: boolean;
+} & (Label | Labelledby);
+
+export type Label = {
+  label: string;
+  labelledby?: never;
 };
 
+export type Labelledby = {
+  label?: never;
+  labelledby: string;
+};
+
+export type Options = Omit<InitialState, 'idWidget'> & (Label | Labelledby);
+
 export type Orientation = 'horizontal' | 'vertical';
+
+export type Payload = {
+  childs: React.ReactElement<React.ComponentProps<typeof Tab>>[];
+} & (React.UIEvent & { target: Target });
 
 export type State = Omit<InitialState, 'initialTabIndex'> & {
   datas: Data[];
   idActiveTab: string;
   target: Target | ChildNode | null;
 };
-
-export type Payload = {
-  childs: React.ReactElement<React.ComponentProps<typeof Tab>>[];
-} & (React.UIEvent & { target: Target });
 
 export type Target = HTMLElement & {
   parentNode: HTMLElement;
