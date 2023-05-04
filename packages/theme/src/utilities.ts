@@ -3,7 +3,7 @@ import { State } from './types';
 export const THEME_QUERY_DARK = '(prefers-color-scheme: dark)';
 export const THEME_STORAGE_KEY = 'color-scheme';
 
-export const initialState: State = { theme: 'light' };
+export const defaultState: State = { theme: 'light' };
 
 export function initializer(): State {
   const theme = localStorage.getItem(THEME_STORAGE_KEY);
