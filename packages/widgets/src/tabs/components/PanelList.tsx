@@ -6,7 +6,7 @@ export type PanelListProps = {
   children: React.ReactElement<PanelProps>[];
 };
 
-export default function PanelList({ children }: PanelListProps): JSX.Element {
+export function PanelList({ children }: PanelListProps): JSX.Element {
   const { datas, idActiveTab } = ContextReducer.useContextState();
 
   return (

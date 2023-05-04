@@ -6,10 +6,7 @@ export type TabListProps = React.HTMLAttributes<HTMLUListElement> & {
   children: React.ReactElement<TabProps>[];
 };
 
-export default function TabList({
-  children,
-  ...props
-}: TabListProps): JSX.Element {
+export function TabList({ children, ...props }: TabListProps): JSX.Element {
   const { datas, idActiveTab, label, labelledby, orientation } =
     ContextReducer.useContextState();
 

@@ -7,7 +7,7 @@ export type TabProps = React.HTMLAttributes<HTMLButtonElement> & {
   selected?: boolean;
 } & React.PropsWithChildren;
 
-export default function Tab({
+export function Tab({
   children,
   controls,
   id,

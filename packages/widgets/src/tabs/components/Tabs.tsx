@@ -6,11 +6,7 @@ export type TabsProps = React.HTMLAttributes<HTMLDivElement> & {
   options: Options;
 } & React.PropsWithChildren;
 
-export default function Tabs({
-  children,
-  options,
-  ...props
-}: TabsProps): JSX.Element {
+export function Tabs({ children, options, ...props }: TabsProps): JSX.Element {
   const idWidget = React.useId();
 
   return (

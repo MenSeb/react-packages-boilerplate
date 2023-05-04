@@ -6,7 +6,7 @@ export type PanelProps = React.HTMLAttributes<HTMLDivElement> & {
   labelledby?: string;
 } & React.PropsWithChildren;
 
-export default function Panel({
+export function Panel({
   children,
   hidden,
   id,
