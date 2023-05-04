@@ -6,25 +6,25 @@ export const defaultState: DefaultState = {
   removable: false,
 };
 
-export function initializer(initialState: InitialState): State {
+export function initializer(state: DefaultState & InitialState): State {
   const datas: Data[] = [];
 
-  for (let index = 0; index < initialState.numberOfTabs; index++) {
-    const id: DataID = `${initialState.idWidget}-${index}`;
+  for (let index = 0; index < state.numberOfTabs; index++) {
+    const id: DataID = `${state.idWidget}-${index}`;
 
     datas.push({
       deleted: false,
       id,
       idPanel: `${id}-panel`,
       idTab: `${id}-tab`,
-      removable: initialState.removable,
+      removable: state.removable,
     });
   }
 
   return {
-    ...initialState,
+    ...state,
     datas,
-    idActiveTab: datas[initialState.initialTabIndex].id,
+    idActiveTab: datas[state.initialTabIndex].id,
     target: null,
   };
 }
