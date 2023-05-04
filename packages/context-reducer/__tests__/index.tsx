@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { render, renderHook } from '@testing-library/react';
+import {
+  render,
+  renderHook,
+  RenderHookResult,
+  RenderResult,
+} from '@testing-library/react';
 import * as Types from '../src/types';
 
 export type State = {
@@ -29,26 +34,33 @@ export const actions: Types.Actions<State, Payloads> = {
   ),
 };
 
-export const payload: Payload1 = { foo: 'foo' };
+export const payload: Payloads = { foo: 'foo' };
 
-export const initialState: Partial<State> = { bar: 'bar' };
+export const defaultState: Partial<State> = { baz: 'baz' };
 
-export const initializerState: State = { bar: 'bar', baz: 'baz' };
+export const initialState: State = { bar: 'bar' };
+
+export const initializerState = { ...defaultState, ...initialState };
 
 export const initializer: Types.Initializer<State> = jest.fn(
-  () => initializerState,
+  (state?: Partial<State>): State =>
+    state === undefined ? initialState : initializerState,
 );
 
-export function createWrapper(Provider: React.ElementType) {
+export function createWrapper(
+  Provider: React.ElementType,
+  props: React.ComponentProps<typeof Provider>,
+) {
   return function wrapper({ children }: React.PropsWithChildren) {
-    return <Provider>{children}</Provider>;
+    return <Provider {...props}>{children}</Provider>;
   };
 }
 
 export function renderConsumer(
   Consumer: React.ElementType,
   Provider: React.ElementType,
-) {
+  props = { initialState },
+): RenderResult {
   return render(
     <Consumer>
       {({
@@ -65,16 +77,17 @@ export function renderConsumer(
         );
       }}
     </Consumer>,
-    { wrapper: createWrapper(Provider) },
+    { wrapper: createWrapper(Provider, props) },
   );
 }
 
 export function renderContextHook<Result>(
   hook: () => Result,
   Provider: React.ElementType,
-) {
+  props = { initialState },
+): RenderHookResult<Result, React.ComponentProps<typeof Provider>> {
   return renderHook(() => hook(), {
-    wrapper: createWrapper(Provider),
+    wrapper: createWrapper(Provider, props),
   });
 }
 
