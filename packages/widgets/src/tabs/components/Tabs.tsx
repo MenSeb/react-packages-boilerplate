@@ -1,19 +1,12 @@
 import * as React from 'react';
-import ContextReducer from '../setup';
-import { Options } from '../types';
 
-export type TabsProps = React.HTMLAttributes<HTMLDivElement> & {
-  options: Options;
-} & React.PropsWithChildren;
+export type TabsProps = React.HTMLAttributes<HTMLDivElement> &
+  React.PropsWithChildren;
 
-export function Tabs({ children, options, ...props }: TabsProps): JSX.Element {
-  const idWidget = React.useId();
-
+export function Tabs({ children, ...props }: TabsProps): JSX.Element {
   return (
-    <ContextReducer.Provider initialState={{ ...options, idWidget }}>
-      <div {...props} aria-live="polite" role="region">
-        {children}
-      </div>
-    </ContextReducer.Provider>
+    <div {...props} aria-live="polite" role="region">
+      {children}
+    </div>
   );
 }
