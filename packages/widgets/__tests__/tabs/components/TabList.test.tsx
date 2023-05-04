@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Tab, TabList, TabListProps } from '../../../src/tabs/';
+import { TabList, TabListProps } from '../../../src/tabs/';
 import {
+  childrenTabs,
   createRenderTabs,
   defaultOptions,
   getAllTabListItems,
@@ -8,9 +8,7 @@ import {
 } from '../';
 
 const props = {
-  children: Array.from({ length: defaultOptions.numberOfTabs }, (_, index) => {
-    return <Tab key={index}>{`tab ${index}`}</Tab>;
-  }),
+  children: childrenTabs,
   className: 'classname',
   id: 'id',
   style: { color: 'red' },

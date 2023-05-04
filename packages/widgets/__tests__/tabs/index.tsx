@@ -1,14 +1,46 @@
+import * as React from 'react';
 import { screen, within } from '@testing-library/react';
-import { Options, TabsProvider, TabsProviderProps } from '../../src/tabs';
+import {
+  Options,
+  Panel,
+  PanelList,
+  Tab,
+  TabList,
+  Tabs,
+  TabsProvider,
+  TabsProviderProps,
+} from '../../src/tabs';
 import { createRender, createWrapper } from '..';
-import { ElementType } from 'react';
 
+export const indexRemovable = 2;
 export const defaultOptions: Options = {
   numberOfTabs: 4,
   label: 'label',
 };
 
-export function createRenderTabs<Props>(FC: ElementType, defaultProps?: Props) {
+export const childrenTabs = Array.from(
+  { length: defaultOptions.numberOfTabs },
+  (_, index) => {
+    return (
+      <Tab
+        key={index}
+        removable={indexRemovable === index ? true : undefined}
+      >{`tab ${index}`}</Tab>
+    );
+  },
+);
+
+export const childrenPanels = Array.from(
+  { length: defaultOptions.numberOfTabs },
+  (_, index) => {
+    return <Panel key={index}>{`panel ${index}`}</Panel>;
+  },
+);
+
+export function createRenderTabs<Props>(
+  FC: React.ElementType,
+  defaultProps?: Props,
+) {
   return function renderTabsComponent({
     props,
     options,
@@ -26,6 +58,15 @@ export function createRenderTabs<Props>(FC: ElementType, defaultProps?: Props) {
       },
     })(props);
   };
+}
+
+export function Widget(): JSX.Element {
+  return (
+    <Tabs>
+      <TabList>{childrenTabs}</TabList>
+      <PanelList>{childrenPanels}</PanelList>
+    </Tabs>
+  );
 }
 
 export function getAllPanels(hidden = true): HTMLElement[] {

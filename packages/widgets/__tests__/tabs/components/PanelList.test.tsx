@@ -1,11 +1,8 @@
-import * as React from 'react';
-import { Panel, PanelList, PanelListProps } from '../../../src/tabs';
-import { createRenderTabs, defaultOptions } from '../';
+import { PanelList, PanelListProps } from '../../../src/tabs';
+import { childrenPanels, createRenderTabs } from '../';
 
 const props = {
-  children: Array.from({ length: defaultOptions.numberOfTabs }, (_, index) => {
-    return <Panel key={index}>{`panel ${index}`}</Panel>;
-  }),
+  children: childrenPanels,
 };
 
 const renderPanelList = createRenderTabs<PanelListProps>(PanelList, props);
