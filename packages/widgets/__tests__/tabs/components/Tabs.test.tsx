@@ -8,11 +8,11 @@ const props = {
   style: { color: 'red' },
 };
 
-const renderTab = createRenderTabs<TabsProps>(Tabs, props);
+const renderTabs = createRenderTabs<TabsProps>(Tabs, props);
 
 describe('<Tabs />', () => {
   describe('Default behavior and props', () => {
-    beforeEach(() => renderTab());
+    beforeEach(() => renderTabs());
 
     it('renders with role region', () => {
       expect(getTabs()).toBeInTheDocument();
