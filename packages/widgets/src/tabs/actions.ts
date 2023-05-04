@@ -61,6 +61,6 @@ export function removeTab(state: State, { target }: Payload): State {
   };
 }
 
-export default function selectTab(state: State, { target }: Payload): State {
-  return { ...state, target };
+export function selectTab(state: State, { target }: Payload): State {
+  return { ...state, idActiveTab: target.id, target };
 }
