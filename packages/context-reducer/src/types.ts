@@ -48,7 +48,7 @@ export type Options<S, P> = {
 export type Payload = Record<string, unknown>;
 
 export type ProviderProps<S> = React.PropsWithChildren & {
-  initialState: Partial<S>;
+  initialState?: Partial<S>;
 };
 
 export type Reducer<S, P> = React.Reducer<S, Action<S, P>>;
