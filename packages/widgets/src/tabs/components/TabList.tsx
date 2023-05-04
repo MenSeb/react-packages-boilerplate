@@ -1,9 +1,9 @@
 import * as React from 'react';
 import ContextReducer from '../setup';
-import { Tab } from '.';
+import { TabProps } from './Tab';
 
 export type TabListProps = React.HTMLAttributes<HTMLUListElement> & {
-  children: React.ReactElement<React.ComponentProps<typeof Tab>>[];
+  children: React.ReactElement<TabProps>[];
 };
 
 export default function TabList({

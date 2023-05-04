@@ -1,9 +1,9 @@
 import * as React from 'react';
 import ContextReducer from '../setup';
-import { Panel } from '.';
+import { PanelProps } from './Panel';
 
 export type PanelListProps = {
-  children: React.ReactElement<React.ComponentProps<typeof Panel>>[];
+  children: React.ReactElement<PanelProps>[];
 };
 
 export default function PanelList({ children }: PanelListProps): JSX.Element {
