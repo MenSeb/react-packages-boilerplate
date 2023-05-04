@@ -38,9 +38,10 @@ describe('createContextReducer', () => {
     });
 
     it('renders the context dispatcher', () => {
-      const { result } = renderHook(() => ContextReducer.useContextDispatch(), {
-        wrapper: ContextReducer.Provider,
-      });
+      const { result } = renderContextHook(
+        ContextReducer.useContextDispatch,
+        ContextReducer.Provider,
+      );
 
       act(() => result.current.action2(payload));
 
@@ -56,9 +57,10 @@ describe('createContextReducer', () => {
     });
 
     it('renders the context state', () => {
-      const { result } = renderHook(() => ContextReducer.useContextState(), {
-        wrapper: ContextReducer.Provider,
-      });
+      const { result } = renderContextHook(
+        ContextReducer.useContextState,
+        ContextReducer.Provider,
+      );
 
       expect(result.current).toEqual(initializerState);
     });
@@ -72,9 +74,10 @@ describe('createContextReducer', () => {
     });
 
     it('renders the context dispatcher and state', () => {
-      const { result } = renderHook(() => ContextReducer.useContextReducer(), {
-        wrapper: ContextReducer.Provider,
-      });
+      const { result } = renderContextHook(
+        ContextReducer.useContextReducer,
+        ContextReducer.Provider,
+      );
 
       act(() => result.current.dispatch.action2(payload));
 
@@ -173,7 +176,10 @@ describe('createContextReducer', () => {
         ContextReducer.Provider,
       );
 
-      expect(initializer).toHaveBeenCalledWith(initialState);
+      expect(initializer).toHaveBeenCalledWith({
+        ...defaultState,
+        ...initialState,
+      });
     });
 
     it('renders with the initial state', () => {

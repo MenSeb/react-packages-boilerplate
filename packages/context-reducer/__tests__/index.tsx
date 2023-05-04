@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { render, renderHook } from '@testing-library/react';
+import {
+  render,
+  renderHook,
+  RenderHookResult,
+  RenderResult,
+} from '@testing-library/react';
 import * as Types from '../src/types';
 
 export type State = {
@@ -55,7 +60,7 @@ export function renderConsumer(
   Consumer: React.ElementType,
   Provider: React.ElementType,
   props = { initialState },
-) {
+): RenderResult {
   return render(
     <Consumer>
       {({
@@ -80,7 +85,7 @@ export function renderContextHook<Result>(
   hook: () => Result,
   Provider: React.ElementType,
   props = { initialState },
-) {
+): RenderHookResult<Result, React.ComponentProps<typeof Provider>> {
   return renderHook(() => hook(), {
     wrapper: createWrapper(Provider, props),
   });
