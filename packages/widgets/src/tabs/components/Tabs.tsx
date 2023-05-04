@@ -2,9 +2,9 @@ import * as React from 'react';
 import ContextReducer from '../setup';
 import { Options } from '../types';
 
-export type TabsProps = React.PropsWithChildren & {
+export type TabsProps = React.HTMLAttributes<HTMLDivElement> & {
   options: Options;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.PropsWithChildren;
 
 export default function Tabs({
   children,

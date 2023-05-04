@@ -33,7 +33,7 @@ describe('<Tab />', () => {
       expect(getTab()).toHaveAttribute('aria-controls', props.controls);
     });
 
-    it('renders with other attributes', () => {
+    it('renders with other attributes  as className or style', () => {
       expect(getTab()).toHaveClass(props.className);
       expect(getTab()).toHaveStyle(props.style);
     });

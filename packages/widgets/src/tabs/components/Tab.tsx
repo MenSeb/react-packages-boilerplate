@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-type TabProps = React.PropsWithChildren & {
+export type TabProps = React.HTMLAttributes<HTMLButtonElement> & {
   controls?: string;
   id?: string;
   removable?: boolean;
   selected?: boolean;
-} & React.HTMLAttributes<HTMLButtonElement>;
+} & React.PropsWithChildren;
 
 export default function Tab({
   children,

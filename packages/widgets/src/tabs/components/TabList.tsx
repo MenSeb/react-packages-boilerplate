@@ -2,7 +2,7 @@ import * as React from 'react';
 import ContextReducer from '../setup';
 import { Tab } from '.';
 
-export type TabListProps = {
+export type TabListProps = React.HTMLAttributes<HTMLUListElement> & {
   children: React.ReactElement<React.ComponentProps<typeof Tab>>[];
 };
 
