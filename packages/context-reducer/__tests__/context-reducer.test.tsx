@@ -4,23 +4,26 @@ import { act, render, renderHook, screen } from '@testing-library/react';
 import createContextReducer from '../src/context-reducer';
 import {
   actions,
+  defaultState,
+  initialState,
   initializer,
   initializerState,
-  initialState,
   payload,
   renderConsumer,
   renderContextHook,
   spyOnConsoleError,
+  Payloads,
+  State,
 } from '.';
 
-let ContextReducer: ReturnType<typeof createContextReducer>;
+let ContextReducer: ReturnType<typeof createContextReducer<State, Payloads>>;
 
 beforeEach(
   () =>
     (ContextReducer = createContextReducer({
       actions,
+      defaultState,
       initializer,
-      initialState,
     })),
 );
 
@@ -35,13 +38,14 @@ describe('createContextReducer', () => {
     });
 
     it('renders the context dispatcher', () => {
-      const { result } = renderHook(() => ContextReducer.useContextDispatch(), {
-        wrapper: ContextReducer.Provider,
-      });
+      const { result } = renderContextHook(
+        ContextReducer.useContextDispatch,
+        ContextReducer.Provider,
+      );
 
-      act(() => result.current.action1(payload));
+      act(() => result.current.action2(payload));
 
-      expect(actions.action1).toHaveBeenCalledWith(initializerState, payload);
+      expect(actions.action2).toHaveBeenCalledWith(initializerState, payload);
     });
   });
 
@@ -53,9 +57,10 @@ describe('createContextReducer', () => {
     });
 
     it('renders the context state', () => {
-      const { result } = renderHook(() => ContextReducer.useContextState(), {
-        wrapper: ContextReducer.Provider,
-      });
+      const { result } = renderContextHook(
+        ContextReducer.useContextState,
+        ContextReducer.Provider,
+      );
 
       expect(result.current).toEqual(initializerState);
     });
@@ -69,18 +74,19 @@ describe('createContextReducer', () => {
     });
 
     it('renders the context dispatcher and state', () => {
-      const { result } = renderHook(() => ContextReducer.useContextReducer(), {
-        wrapper: ContextReducer.Provider,
-      });
+      const { result } = renderContextHook(
+        ContextReducer.useContextReducer,
+        ContextReducer.Provider,
+      );
 
-      act(() => result.current.dispatch.action1(payload));
+      act(() => result.current.dispatch.action2(payload));
 
       expect(result.current.state).toEqual({
         ...initializerState,
         ...payload,
       });
 
-      expect(actions.action1).toHaveBeenCalledWith(initializerState, payload);
+      expect(actions.action2).toHaveBeenCalledWith(initializerState, payload);
     });
   });
 
@@ -98,7 +104,7 @@ describe('createContextReducer', () => {
     it('calls children with state', () => {
       renderConsumer(ContextReducer.ConsumerState, ContextReducer.Provider);
 
-      expect(screen.getByText(initialState.bar)).toBeInTheDocument();
+      expect(screen.getByText(initializerState.bar)).toBeInTheDocument();
     });
   });
 
@@ -122,7 +128,7 @@ describe('createContextReducer', () => {
         await user.click(screen.getByRole('button'));
       });
 
-      expect(actions.action1).toHaveBeenCalledWith(initializerState, payload);
+      expect(actions.action2).toHaveBeenCalledWith(initializerState, payload);
     });
   });
 
@@ -143,10 +149,10 @@ describe('createContextReducer', () => {
       renderConsumer(ContextReducer.ConsumerReducer, ContextReducer.Provider);
 
       await act(async () => {
-        await user.click(screen.getByText(initialState.bar));
+        await user.click(screen.getByText(initializerState.bar));
       });
 
-      expect(actions.action1).toHaveBeenCalledWith(initializerState, payload);
+      expect(actions.action2).toHaveBeenCalledWith(initializerState, payload);
     });
   });
 
@@ -170,7 +176,10 @@ describe('createContextReducer', () => {
         ContextReducer.Provider,
       );
 
-      expect(initializer).toHaveBeenCalledWith(initialState);
+      expect(initializer).toHaveBeenCalledWith({
+        ...defaultState,
+        ...initialState,
+      });
     });
 
     it('renders with the initial state', () => {
@@ -188,9 +197,9 @@ describe('createContextReducer', () => {
         ContextReducer.Provider,
       );
 
-      act(() => result.current.dispatch.action1());
+      act(() => result.current.dispatch.action2());
 
-      expect(actions.action1).toHaveBeenCalledWith(initializerState, {});
+      expect(actions.action2).toHaveBeenCalledWith(initializerState, {});
     });
   });
 });

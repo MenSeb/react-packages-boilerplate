@@ -1,9 +1,9 @@
 <div align="center">
     <img
-        alt="React Widgets"
+        alt="react widgets logo"
         height="250"
+        src="logo.svg"
         width="250"
-        src="assets/widgets.svg"
     />
     <h1>
         React Widgets
@@ -15,4 +15,44 @@
 
 <hr>
 
-## List of widgets
+## Table of contents
+
+- [Installation](#installation)
+- [How it works](#how-it-works)
+- [How to use](#how-to-use)
+  - [Import](#import)
+  - [Widgets](#widgets)
+    - [Sliders](#sliders)
+    - [Tabs](./src/tabs/README.md)
+
+## Installation
+
+```bash
+npm install --save @react/widgets
+```
+
+**N.B.** This package depends on React.
+
+## How it works
+
+## How to use
+
+See how to use each hooks and consumers from [react-context-reducer](../context-reducer/README.md).
+
+### Import
+
+```jsx
+import * as Widgets from '@react/widgets';
+
+const { Sliders, Tabs } = Widgets;
+```
+
+### Widgets
+
+#### Sliders
+
+<!-- See [README](./src/sliders/README.md) -->
+
+#### Tabs
+
+<!-- See [README](./src/tabs/README.md) -->

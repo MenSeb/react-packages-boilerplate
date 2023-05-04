@@ -1,51 +1,54 @@
-export type Action<T> = {
-  type: keyof Actions<T>;
-  payload: Payload;
+export type Action<S, P> = {
+  type: keyof Actions<S, P>;
+  payload: P;
 };
 
-export type Actions<T> = {
-  [key: string]:
-    | ((state: T) => T)
-    | ((state: T, payload?: Payload) => T)
-    | ((state: T, payload: Payload) => T);
+export type ActionPayload<S, P> =
+  | ((state: S, payload?: P) => S)
+  | ((state: S, payload: P) => S);
+
+export type ActionState<S> = (state: S) => S;
+
+export type Actions<S, P> = {
+  [key: string]: ActionState<S> | ActionPayload<S, P>;
 };
 
-export type ConsumerDispatchProps<T> = {
-  children: ({ dispatch }: { dispatch: Dispatcher<T> }) => React.ReactNode;
+export type ConsumerDispatchProps<S, P> = {
+  children: ({ dispatch }: { dispatch: Dispatcher<S, P> }) => React.ReactNode;
 };
 
-export type ConsumerReducerProps<T> = {
+export type ConsumerReducerProps<S, P> = {
   children: ({
     dispatch,
     state,
   }: {
-    dispatch: Dispatcher<T>;
-    state: T;
+    dispatch: Dispatcher<S, P>;
+    state: S;
   }) => React.ReactNode;
 };
 
-export type ConsumerStateProps<T> = {
-  children: ({ state }: { state: T }) => React.ReactNode;
+export type ConsumerStateProps<S> = {
+  children: ({ state }: { state: S }) => React.ReactNode;
 };
 
-export type Dispatch<T> = React.Dispatch<Action<T>>;
+export type Dispatch<S, P> = React.Dispatch<Action<S, P>>;
 
-export type Dispatcher<T> = {
-  [Property in keyof Actions<T>]: (payload?: Payload) => void;
+export type Dispatcher<S, P> = {
+  [Property in keyof Actions<S, P>]: (payload?: P) => void;
 };
 
-export type Initializer<T> = (initialState?: T) => T;
+export type Initializer<S> = (state?: S | Partial<S>) => S;
 
-export type InitialState<T> = T | Partial<T>;
-
-export type Options<T> = {
-  actions: Actions<T>;
-  initializer: Initializer<T>;
-  initialState: T;
+export type Options<S, P> = {
+  actions: Actions<S, P>;
+  defaultState?: Partial<S>;
+  initializer: Initializer<S>;
 };
 
 export type Payload = Record<string, unknown>;
 
-export type ProviderProps = React.PropsWithChildren;
+export type ProviderProps<S> = React.PropsWithChildren & {
+  initialState?: Partial<S>;
+};
 
-export type Reducer<T> = React.Reducer<T, Action<T>>;
+export type Reducer<S, P> = React.Reducer<S, Action<S, P>>;

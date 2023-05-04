@@ -12,7 +12,7 @@ export default function ButtonLight({
       {...props}
       aria-pressed={state.theme === 'light'}
       data-theme="light"
-      onClick={() => dispatch.setThemeLight()}
+      onClick={dispatch.setThemeLight}
       type="button"
     >
       {children}

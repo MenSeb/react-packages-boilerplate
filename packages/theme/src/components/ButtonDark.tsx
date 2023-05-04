@@ -12,7 +12,7 @@ export default function ButtonDark({
       {...props}
       aria-pressed={state.theme === 'dark'}
       data-theme="dark"
-      onClick={() => dispatch.setThemeDark()}
+      onClick={dispatch.setThemeDark}
       type="button"
     >
       {children}
