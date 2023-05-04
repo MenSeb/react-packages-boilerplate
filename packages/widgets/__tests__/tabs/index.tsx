@@ -51,3 +51,7 @@ export function getTabList(): HTMLElement {
 export function getAllTabListItems(): HTMLElement[] {
   return within(getTabList()).getAllByRole('presentation');
 }
+
+export function getTabs(): HTMLElement {
+  return screen.getByRole('region');
+}
