@@ -37,18 +37,18 @@ export type Dispatcher<S, P> = {
   [Property in keyof Actions<S, P>]: (payload?: P) => void;
 };
 
-export type Initializer<S> = (state?: S | Partial<S>) => S;
+export type Initializer<S, D, I> = (state: D & I) => S;
 
-export type Options<S, P> = {
+export type Options<S, P, D, I> = {
   actions: Actions<S, P>;
-  defaultState?: Partial<S>;
-  initializer: Initializer<S>;
+  defaultState?: D;
+  initializer: Initializer<S, D, I>;
 };
 
 export type Payload = Record<string, unknown>;
 
-export type ProviderProps<S> = React.PropsWithChildren & {
-  initialState?: Partial<S>;
+export type ProviderProps<I> = React.PropsWithChildren & {
+  initialState?: I;
 };
 
 export type Reducer<S, P> = React.Reducer<S, Action<S, P>>;
