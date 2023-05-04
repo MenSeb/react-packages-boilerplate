@@ -31,9 +31,6 @@ export type ConsumerStateProps<S> = {
   children: ({ state }: { state: S }) => React.ReactNode;
 };
 
-export type CustomState<S, P> = Options<S, P>['defaultState'] &
-  ProviderProps<S>['initialState'];
-
 export type Dispatch<S, P> = React.Dispatch<Action<S, P>>;
 
 export type Dispatcher<S, P> = {
