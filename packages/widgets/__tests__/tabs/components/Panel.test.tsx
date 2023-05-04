@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { render } from '@testing-library/react';
-import { Panel } from '../../../src/tabs';
-import { getPanel } from '../';
+import { Panel, PanelProps } from '../../../src/tabs';
+import { createRenderTabs, getPanel } from '../';
 
 const props = {
   children: 'children',
@@ -11,9 +9,11 @@ const props = {
   style: { color: 'red' },
 };
 
+const renderPanel = createRenderTabs<PanelProps>(Panel, props);
+
 describe('<Panel />', () => {
   describe('Default behavior and props', () => {
-    beforeEach(() => render(<Panel {...props} />));
+    beforeEach(() => renderPanel());
 
     it('renders with role panel', () => {
       expect(getPanel()).toBeInTheDocument();
@@ -38,7 +38,7 @@ describe('<Panel />', () => {
   });
 
   describe('When selected', () => {
-    beforeEach(() => render(<Panel {...props} hidden={false} />));
+    beforeEach(() => renderPanel({ props: { hidden: false } }));
 
     it('renders with attribute aria-hidden to false', () => {
       expect(getPanel()).toHaveAttribute('aria-hidden', 'false');
@@ -50,7 +50,7 @@ describe('<Panel />', () => {
   });
 
   describe('When not selected', () => {
-    beforeEach(() => render(<Panel {...props} hidden={true} />));
+    beforeEach(() => renderPanel({ props: { hidden: true } }));
 
     it('renders with attribute aria-hidden to true', () => {
       expect(getPanel()).toHaveAttribute('aria-hidden', 'true');

@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { render } from '@testing-library/react';
-import { Tab } from '../../../src/tabs';
-import { getTab } from '../';
+import { Tab, TabProps } from '../../../src/tabs';
+import { createRenderTabs, getTab } from '../';
 
 const props = {
   children: 'children',
@@ -13,9 +11,11 @@ const props = {
   style: { color: 'red' },
 };
 
+const renderTab = createRenderTabs<TabProps>(Tab, props);
+
 describe('<Tab />', () => {
   describe('Default behavior and props', () => {
-    beforeEach(() => render(<Tab {...props} />));
+    beforeEach(() => renderTab());
 
     it('renders with role tab', () => {
       expect(getTab()).toBeInTheDocument();
@@ -40,7 +40,7 @@ describe('<Tab />', () => {
   });
 
   describe('When selected', () => {
-    beforeEach(() => render(<Tab {...props} selected={true} />));
+    beforeEach(() => renderTab({ props: { selected: true } }));
 
     it('renders with attribute aria-selected to true', () => {
       expect(getTab()).toHaveAttribute('aria-selected', 'true');
@@ -52,7 +52,7 @@ describe('<Tab />', () => {
   });
 
   describe('When not selected', () => {
-    beforeEach(() => render(<Tab {...props} selected={false} />));
+    beforeEach(() => renderTab({ props: { selected: false } }));
 
     it('renders with attribute aria-selected to false', () => {
       expect(getTab()).toHaveAttribute('aria-selected', 'false');
@@ -64,7 +64,7 @@ describe('<Tab />', () => {
   });
 
   describe('When removable', () => {
-    beforeEach(() => render(<Tab {...props} removable={true} />));
+    beforeEach(() => renderTab({ props: { removable: true } }));
 
     it('renders with attribute data-removable to true', () => {
       expect(getTab()).toHaveAttribute('data-removable', 'true');
@@ -72,7 +72,7 @@ describe('<Tab />', () => {
   });
 
   describe('When not removable', () => {
-    beforeEach(() => render(<Tab {...props} removable={false} />));
+    beforeEach(() => renderTab({ props: { removable: false } }));
 
     it('renders with attribute data-removable to false', () => {
       expect(getTab()).toHaveAttribute('data-removable', 'false');
