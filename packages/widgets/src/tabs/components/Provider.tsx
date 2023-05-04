@@ -2,18 +2,16 @@ import * as React from 'react';
 import ContextReducer from '../setup';
 import { Options } from '../types';
 
-export type TabsProviderProps = React.PropsWithChildren & {
-  options: Options;
-};
+export type TabsProviderProps = React.PropsWithChildren & Options;
 
 export function TabsProvider({
   children,
-  options,
+  ...props
 }: TabsProviderProps): JSX.Element {
   const idWidget = React.useId();
 
   return (
-    <ContextReducer.Provider initialState={{ ...options, idWidget }}>
+    <ContextReducer.Provider initialState={{ ...props, idWidget }}>
       {children}
     </ContextReducer.Provider>
   );
