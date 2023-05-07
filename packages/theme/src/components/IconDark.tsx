@@ -5,7 +5,7 @@ import { Theme } from '../types';
 export default function IconDark({
   children,
   ...props
-}: React.SVGProps<SVGSVGElement>): JSX.Element {
+}: React.ComponentProps<'svg'>) {
   const state = ContextReducer.useContextState();
 
   return (

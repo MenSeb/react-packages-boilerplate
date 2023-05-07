@@ -5,7 +5,7 @@ import { Theme } from '../types';
 export default function ButtonToggle({
   children,
   ...props
-}: React.HTMLProps<HTMLButtonElement>): JSX.Element {
+}: React.ComponentProps<'button'>) {
   const { state, dispatch } = ContextReducer.useContextReducer();
 
   return (
