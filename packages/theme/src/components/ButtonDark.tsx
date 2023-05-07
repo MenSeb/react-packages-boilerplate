@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ContextReducer from '../setup';
+import { Theme } from '../types';
 
 export default function ButtonDark({
   children,
@@ -10,8 +11,8 @@ export default function ButtonDark({
   return (
     <button
       {...props}
-      aria-pressed={state.theme === 'dark'}
-      data-theme="dark"
+      aria-pressed={state.theme === Theme.DARK}
+      data-theme={Theme.DARK}
       onClick={dispatch.setThemeDark}
       type="button"
     >

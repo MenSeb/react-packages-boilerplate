@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ContextReducer from '../setup';
+import { Theme } from '../types';
 
 export default function ButtonLight({
   children,
@@ -10,8 +11,8 @@ export default function ButtonLight({
   return (
     <button
       {...props}
-      aria-pressed={state.theme === 'light'}
-      data-theme="light"
+      aria-pressed={state.theme === Theme.LIGHT}
+      data-theme={Theme.LIGHT}
       onClick={dispatch.setThemeLight}
       type="button"
     >

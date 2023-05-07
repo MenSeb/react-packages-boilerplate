@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ContextReducer from '../setup';
+import { Theme } from '../types';
 
 export default function IconLight({
   children,
@@ -11,8 +12,8 @@ export default function IconLight({
     <svg
       {...props}
       aria-hidden="true"
-      data-theme="light"
-      data-hidden={state.theme === 'dark'}
+      data-theme={Theme.LIGHT}
+      data-hidden={state.theme === Theme.DARK}
       focusable="false"
       viewBox="-12 -12 24 24"
     >

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ContextReducer from '../setup';
+import { Theme } from '../types';
 
 export default function ButtonToggle({
   children,
@@ -10,7 +11,7 @@ export default function ButtonToggle({
   return (
     <button
       {...props}
-      aria-pressed={state.theme === 'dark'}
+      aria-pressed={state.theme === Theme.DARK}
       data-theme={state.theme}
       onClick={dispatch.toggleTheme}
       type="button"
