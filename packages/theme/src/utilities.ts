@@ -10,14 +10,12 @@ export const defaultState: State = {
 export function initializer(): State {
   const localStorageTheme = localStorage.getItem(THEME_STORAGE_KEY);
 
-  if (localStorageTheme === null)
-    return {
-      theme: window.matchMedia(THEME_QUERY_DARK).matches
-        ? Theme.DARK
-        : Theme.LIGHT,
-    };
-
   return {
-    theme: localStorageTheme === Theme.DARK ? Theme.DARK : Theme.LIGHT,
+    theme:
+      localStorageTheme === null
+        ? window.matchMedia(THEME_QUERY_DARK).matches
+          ? Theme.DARK
+          : Theme.LIGHT
+        : (localStorageTheme as Theme),
   };
 }
