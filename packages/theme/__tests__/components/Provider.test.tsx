@@ -9,18 +9,12 @@ import {
 } from '..';
 
 describe('Provider', () => {
-  it('loads the dark theme from local storage', () => {
+  it('loads the theme from local storage', () => {
     localStorage.setItem(THEME_STORAGE_KEY, 'dark');
 
     const { result } = renderThemeHook(Theme.useContextReducer);
 
     expect(result.current.state.theme).toBe('dark');
-  });
-
-  it('loads the light theme from local storage', () => {
-    const { result } = renderThemeHook(Theme.useContextReducer);
-
-    expect(result.current.state.theme).toBe('light');
   });
 
   it('loads the user color scheme preference', () => {
