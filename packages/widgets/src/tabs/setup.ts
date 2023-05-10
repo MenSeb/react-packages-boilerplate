@@ -4,8 +4,9 @@ import { DefaultState, InitialState, Payload, State } from './types';
 import { defaultState, initializer } from './utilities';
 
 const ContextReducer = createContextReducer<
-  State,
+  typeof actions,
   Payload,
+  State,
   DefaultState,
   InitialState
 >({
