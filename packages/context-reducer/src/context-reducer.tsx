@@ -2,19 +2,23 @@ import * as React from 'react';
 import * as Types from './types';
 import * as utilities from './utilities';
 
-export default function createContextReducer<Actions, State, Payload>(
-  options: Types.Options<Actions, State, Payload>,
-) {
+export default function createContextReducer<
+  Actions,
+  Payload,
+  State,
+  DefaultState,
+  InitialState,
+>(options: Types.Options<Actions, Payload, State, DefaultState, InitialState>) {
   const ContextState = React.createContext<State | null>(null);
   const ContextDispatch = React.createContext<Types.GenericDispatcher<
     Actions,
     Payload
   > | null>(null);
 
-  function Provider(props: Types.ProviderProps<State>): JSX.Element {
+  function Provider(props: Types.ProviderProps<InitialState>): JSX.Element {
     const [state, dispatch] = React.useReducer(
       utilities.createReducer(options.actions),
-      { ...options.defaultState, ...props.initialState },
+      Object.assign({}, options.defaultState, props.initialState),
       options.initializer,
     );
 
