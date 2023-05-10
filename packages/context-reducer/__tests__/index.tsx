@@ -20,7 +20,7 @@ export type Payload1 = Partial<State>;
 export type Payload2 = Pick<State, 'foobarbaz'>;
 export type Payloads = Payload1 & Payload2;
 
-export const actions: Types.Actions<State, Payloads> = {
+export const actions = {
   action1: jest.fn((state: State): State => state),
   action2: jest.fn(
     (state: State, payload?: Payload1): State => ({
@@ -42,10 +42,11 @@ export const defaultState: DefaultState = { baz: 'baz' };
 
 export const initialState: InitialState = { bar: 'bar' };
 
-export const initializerState = { ...defaultState, ...initialState };
+export const initializerState: State = { ...defaultState, ...initialState };
 
-export const initializer: Types.Initializer<State, DefaultState, InitialState> =
-  jest.fn((state: DefaultState & InitialState): State => state);
+export const initializer: Types.Initializer<State> = jest.fn(
+  (state?: DefaultState): State => ({ ...state, ...initialState }),
+);
 
 export function createWrapper(
   Provider: React.ElementType,
@@ -67,7 +68,7 @@ export function renderConsumer(
         dispatch,
         state,
       }: {
-        dispatch?: Types.Dispatcher<State, Payloads>;
+        dispatch?: Types.GenericDispatcher<typeof actions, Payloads>;
         state?: State;
       }) => {
         return (

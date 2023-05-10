@@ -12,14 +12,12 @@ import {
   renderConsumer,
   renderContextHook,
   spyOnConsoleError,
-  DefaultState,
   Payloads,
   State,
-  InitialState,
 } from '.';
 
 let ContextReducer: ReturnType<
-  typeof createContextReducer<State, Payloads, DefaultState, InitialState>
+  typeof createContextReducer<typeof actions, State, Payloads>
 >;
 
 beforeEach(
