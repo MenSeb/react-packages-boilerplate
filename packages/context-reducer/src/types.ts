@@ -14,12 +14,20 @@ export type GenericDispatcher<Actions, Payload> = {
   [key in keyof Actions]: (payload?: Payload) => void;
 };
 
-export type Initializer<State> = (state?: State | Partial<State>) => State;
+export type Initializer<State, DefaultState, InitialState> = (
+  state: DefaultState & InitialState,
+) => State;
 
-export type Options<Actions, State, Payload> = {
+export type Options<
+  Actions,
+  Payload,
+  State,
+  DefaultState = Record<string, unknown>,
+  InitialState = Record<string, unknown>,
+> = {
   actions: GenericActions<Actions, State, Payload>;
-  defaultState?: Partial<State>;
-  initializer: Initializer<State>;
+  defaultState?: DefaultState;
+  initializer: Initializer<State, DefaultState, InitialState>;
 };
 
 export type ConsumerStateProps<State> = {
@@ -44,6 +52,6 @@ export type ConsumerReducerProps<Actions, State, Payload> = {
   }) => React.ReactNode;
 };
 
-export type ProviderProps<S> = React.PropsWithChildren & {
-  initialState?: Partial<S>;
+export type ProviderProps<InitialState> = React.PropsWithChildren & {
+  initialState?: InitialState;
 };
