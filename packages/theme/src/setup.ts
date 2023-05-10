@@ -3,7 +3,7 @@ import * as actions from './actions';
 import { Payload, State } from './types';
 import { defaultState, initializer } from './utilities';
 
-export default createContextReducer<State, Payload>({
+export default createContextReducer<typeof actions, State, Payload>({
   actions,
   defaultState,
   initializer,
