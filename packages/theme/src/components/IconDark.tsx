@@ -1,18 +1,19 @@
 import * as React from 'react';
 import ContextReducer from '../setup';
+import { Theme } from '../types';
 
 export default function IconDark({
   children,
   ...props
-}: React.SVGProps<SVGSVGElement>): JSX.Element {
+}: React.ComponentProps<'svg'>) {
   const state = ContextReducer.useContextState();
 
   return (
     <svg
       {...props}
       aria-hidden="true"
-      data-theme="dark"
-      data-hidden={state.theme === 'light'}
+      data-theme={Theme.DARK}
+      data-hidden={state.theme === Theme.LIGHT}
       focusable="false"
       viewBox="-12 -12 24 24"
     >
