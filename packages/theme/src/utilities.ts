@@ -1,14 +1,21 @@
-import { State } from './types';
+import { State, Theme } from './types';
 
 export const THEME_QUERY_DARK = '(prefers-color-scheme: dark)';
 export const THEME_STORAGE_KEY = 'color-scheme';
 
-export function initializer(): State {
-  const theme = localStorage.getItem(THEME_STORAGE_KEY);
+export const defaultState: State = {
+  theme: Theme.LIGHT,
+};
 
-  if (theme === 'light' || theme === 'dark') return { theme };
+export function initializer(): State {
+  const localStorageTheme = localStorage.getItem(THEME_STORAGE_KEY);
 
   return {
-    theme: window.matchMedia(THEME_QUERY_DARK).matches ? 'dark' : 'light',
+    theme:
+      localStorageTheme === null
+        ? window.matchMedia(THEME_QUERY_DARK).matches
+          ? Theme.DARK
+          : Theme.LIGHT
+        : (localStorageTheme as Theme),
   };
 }
