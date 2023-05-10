@@ -16,7 +16,9 @@ import {
   State,
 } from '.';
 
-let ContextReducer: ReturnType<typeof createContextReducer<State, Payloads>>;
+let ContextReducer: ReturnType<
+  typeof createContextReducer<typeof actions, State, Payloads>
+>;
 
 beforeEach(
   () =>
