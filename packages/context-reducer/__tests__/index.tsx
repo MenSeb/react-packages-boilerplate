@@ -7,6 +7,8 @@ import {
 } from '@testing-library/react';
 import * as Types from '../src/types';
 
+export type DefaultState = { baz?: string };
+export type InitialState = { bar: string };
 export type State = {
   bar: string;
   baz?: string;
@@ -16,7 +18,7 @@ export type State = {
 
 export type Payload1 = Partial<State>;
 export type Payload2 = Pick<State, 'foobarbaz'>;
-export type Payloads = Payload1 & Payload2;
+export type Payload = Payload1 & Payload2;
 
 export const actions = {
   action1: jest.fn((state: State): State => state),
@@ -34,18 +36,19 @@ export const actions = {
   ),
 };
 
-export const payload: Payloads = { foo: 'foo' };
+export const payload: Payload = { foo: 'foo' };
 
-export const defaultState: Partial<State> = { baz: 'baz' };
+export const defaultState: DefaultState = { baz: 'baz' };
 
-export const initialState: State = { bar: 'bar' };
+export const initialState: InitialState = { bar: 'bar' };
 
-export const initializerState = { ...defaultState, ...initialState };
+export const initializerState: State = { ...defaultState, ...initialState };
 
-export const initializer: Types.Initializer<State> = jest.fn(
-  (state?: Partial<State>): State =>
-    state === undefined ? initialState : initializerState,
-);
+export const initializer: Types.Initializer<State, DefaultState, InitialState> =
+  jest.fn(
+    (state: DefaultState & InitialState): State =>
+      state.baz === undefined ? initializerState : state,
+  );
 
 export function createWrapper(
   Provider: React.ElementType,
@@ -67,7 +70,7 @@ export function renderConsumer(
         dispatch,
         state,
       }: {
-        dispatch?: Types.GenericDispatcher<typeof actions, Payloads>;
+        dispatch?: Types.GenericDispatcher<typeof actions, Payload>;
         state?: State;
       }) => {
         return (

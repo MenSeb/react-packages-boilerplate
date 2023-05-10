@@ -1,9 +1,15 @@
 import { createContextReducer } from '@react/context-reducer';
 import * as actions from './actions';
-import { Payload, State } from './types';
+import { DefaultState, InitialState, Payload, State } from './types';
 import { defaultState, initializer } from './utilities';
 
-export default createContextReducer<typeof actions, State, Payload>({
+export default createContextReducer<
+  typeof actions,
+  Payload,
+  State,
+  DefaultState,
+  InitialState
+>({
   actions,
   defaultState,
   initializer,
