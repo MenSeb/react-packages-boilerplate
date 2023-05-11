@@ -15,7 +15,7 @@ export function PanelList({ children }: PanelListProps) {
         const { id, idTab, idPanel } = datas[index];
 
         return React.cloneElement(child, {
-          hidden: id === idActiveTab,
+          hidden: id !== idActiveTab,
           id: idPanel,
           labelledby: idTab,
         });
