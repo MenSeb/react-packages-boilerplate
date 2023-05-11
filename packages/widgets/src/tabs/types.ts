@@ -43,7 +43,7 @@ export type Payload = {
   childs: React.ReactElement<React.ComponentProps<typeof Tab>>[];
 } & (React.UIEvent & { target: Target });
 
-export type State = Omit<InitialState, 'initialTabIndex'> & {
+export type State = (DefaultState & Omit<InitialState, 'initialTabIndex'>) & {
   datas: Data[];
   idActiveTab: string;
   target: Target | ChildNode | null;
