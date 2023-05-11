@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-export type TabsProps = React.HTMLAttributes<HTMLDivElement> &
-  React.PropsWithChildren;
+export type TabsProps = React.ComponentProps<'div'>;
 
 export function Tabs({ children, ...props }: TabsProps): JSX.Element {
   return (

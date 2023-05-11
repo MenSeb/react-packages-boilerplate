@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-export type PanelProps = React.HTMLAttributes<HTMLDivElement> & {
+export type PanelProps = React.ComponentProps<'div'> & {
   hidden?: boolean;
   id?: string;
   labelledby?: string;
-} & React.PropsWithChildren;
+};
 
 export function Panel({
   children,
