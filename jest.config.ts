@@ -11,7 +11,7 @@ const config: Config = {
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['^(.(?!\\.test\\.))*$'],
-  transform: { '\\.[jt]sx?$': 'ts-jest' },
+  transform: { '\\.tsx?': 'ts-jest' },
   verbose: true,
 };
 
