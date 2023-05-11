@@ -17,12 +17,9 @@ export type DefaultState = {
   removable: boolean;
 };
 
-export type InitialState = {
+export type InitialState = Partial<DefaultState> & {
   idWidget: string;
-  initialTabIndex?: number;
   numberOfTabs: number;
-  orientation?: Orientation;
-  removable?: boolean;
 } & (Label | Labelledby);
 
 export type Label = {
