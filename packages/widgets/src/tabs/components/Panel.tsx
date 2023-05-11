@@ -12,7 +12,7 @@ export function Panel({
   id,
   labelledby,
   ...props
-}: PanelProps): JSX.Element {
+}: PanelProps) {
   return (
     <div
       {...props}

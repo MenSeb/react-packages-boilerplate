@@ -6,7 +6,7 @@ export type TabListProps = Omit<React.ComponentProps<'ul'>, 'children'> & {
   children: React.ReactElement<TabProps>[];
 };
 
-export function TabList({ children, ...props }: TabListProps): JSX.Element {
+export function TabList({ children, ...props }: TabListProps) {
   const { datas, idActiveTab, label, labelledby, orientation } =
     ContextReducer.useContextState();
 

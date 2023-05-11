@@ -4,10 +4,7 @@ import { Options } from '../types';
 
 export type TabsProviderProps = React.PropsWithChildren & Options;
 
-export function TabsProvider({
-  children,
-  ...props
-}: TabsProviderProps): JSX.Element {
+export function TabsProvider({ children, ...props }: TabsProviderProps) {
   const idWidget = React.useId();
 
   return (

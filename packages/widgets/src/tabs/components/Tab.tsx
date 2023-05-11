@@ -14,7 +14,7 @@ export function Tab({
   removable,
   selected,
   ...props
-}: TabProps): JSX.Element {
+}: TabProps) {
   return (
     <button
       {...props}
