@@ -12,10 +12,10 @@ export function PanelList({ children }: PanelListProps) {
   return (
     <>
       {React.Children.map(children, (child, index) => {
-        const { id, idTab, idPanel } = datas[index];
+        const { idTab, idPanel } = datas[index];
 
         return React.cloneElement(child, {
-          hidden: id !== idActiveTab,
+          hidden: idTab !== idActiveTab,
           id: idPanel,
           labelledby: idTab,
         });

@@ -14,7 +14,6 @@ export function initializer(state: DefaultState & InitialState): State {
 
     datas.push({
       deleted: false,
-      id,
       idPanel: `${id}-panel`,
       idTab: `${id}-tab`,
       removable: state.removable,
@@ -24,7 +23,7 @@ export function initializer(state: DefaultState & InitialState): State {
   return {
     ...state,
     datas,
-    idActiveTab: datas[state.initialTabIndex].id,
+    idActiveTab: datas[state.initialTabIndex].idTab,
     target: null,
   };
 }

@@ -65,7 +65,7 @@ export function registerTab(state: State, payload: Payload): State {
 export function removeTab(state: State, payload: Payload): State {
   const { target } = payload as PayloadEvent & PayloadTarget;
 
-  const indexTab = state.datas.findIndex((data) => data.id === target.id);
+  const indexTab = state.datas.findIndex((data) => data.idTab === target.id);
 
   if (!state.datas[indexTab]?.removable) return state;
 

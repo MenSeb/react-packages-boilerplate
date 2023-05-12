@@ -3,7 +3,6 @@ import { Tab } from './components';
 
 export type Data = {
   deleted?: boolean;
-  id: string;
   idTab: `${DataID}-tab`;
   idPanel: `${DataID}-panel`;
   removable?: boolean;

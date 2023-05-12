@@ -19,14 +19,14 @@ export function TabList({ children, ...props }: TabListProps) {
       {...props}
     >
       {React.Children.map(children, (child, index) => {
-        const { id, idTab, idPanel } = datas[index];
+        const { idTab, idPanel } = datas[index];
 
         return (
           <li key={index} role="presentation">
             {React.cloneElement(child, {
               controls: idPanel,
               id: idTab,
-              selected: id === idActiveTab,
+              selected: idTab === idActiveTab,
             })}
           </li>
         );
