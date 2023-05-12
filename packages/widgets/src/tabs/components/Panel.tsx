@@ -18,6 +18,7 @@ export function Panel({
       {...props}
       aria-hidden={hidden}
       aria-labelledby={labelledby}
+      hidden={hidden}
       id={id}
       role="tabpanel"
       tabIndex={hidden ? -1 : 0}
