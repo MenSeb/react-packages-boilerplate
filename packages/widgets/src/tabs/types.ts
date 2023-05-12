@@ -36,16 +36,18 @@ export type Options = Omit<InitialState, 'idWidget'> & (Label | Labelledby);
 
 export type Orientation = 'horizontal' | 'vertical';
 
-export type Payload = {
+export type Payload = PayloadChilds | PayloadEvent | PayloadTarget;
+
+export type PayloadChilds = {
   childs: React.ReactElement<React.ComponentProps<typeof Tab>>[];
-} & (React.UIEvent & { target: Target });
+};
+
+export type PayloadEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
+
+export type PayloadTarget = { currentTarget: { parentNode: ParentNode } };
 
 export type State = (DefaultState & Omit<InitialState, 'initialTabIndex'>) & {
   datas: Data[];
   idActiveTab: string;
-  target: Target | ChildNode | null;
-};
-
-export type Target = HTMLElement & {
-  parentNode: HTMLElement;
+  currentTarget: ChildNode | null;
 };
