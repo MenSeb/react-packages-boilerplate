@@ -25,6 +25,6 @@ export function initializer(state: DefaultState & InitialState): State {
     ...state,
     datas,
     idActiveTab: datas[state.initialTabIndex].id,
-    target: null,
+    currentTarget: null,
   };
 }
