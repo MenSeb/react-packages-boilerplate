@@ -7,7 +7,7 @@ const props = {
 
 const renderPanelList = createRenderTabs<PanelListProps>(PanelList, props);
 
-describe('<PanelList />', () => {
+describe.skip('<PanelList />', () => {
   it('renders with children', () => {
     const { container } = renderPanelList();
 

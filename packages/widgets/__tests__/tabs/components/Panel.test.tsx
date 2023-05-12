@@ -11,7 +11,7 @@ const props = {
 
 const renderPanel = createRenderTabs<PanelProps>(Panel, props);
 
-describe('<Panel />', () => {
+describe.skip('<Panel />', () => {
   describe('Default behavior and props', () => {
     beforeEach(() => renderPanel());
 

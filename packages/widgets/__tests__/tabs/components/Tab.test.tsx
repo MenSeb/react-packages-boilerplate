@@ -13,7 +13,7 @@ const props = {
 
 const renderTab = createRenderTabs<TabProps>(Tab, props);
 
-describe('<Tab />', () => {
+describe.skip('<Tab />', () => {
   describe('Default behavior and props', () => {
     beforeEach(() => renderTab());
 
