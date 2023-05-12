@@ -44,10 +44,14 @@ export type PayloadChilds = {
 
 export type PayloadEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
 
-export type PayloadTarget = { currentTarget: { parentNode: ParentNode } };
+export type PayloadTarget = {
+  target: HTMLButtonElement & {
+    parentNode: ParentNode;
+  };
+};
 
 export type State = (DefaultState & Omit<InitialState, 'initialTabIndex'>) & {
   datas: Data[];
   idActiveTab: string;
-  currentTarget: ChildNode | null;
+  target: EventTarget | ChildNode | null;
 };

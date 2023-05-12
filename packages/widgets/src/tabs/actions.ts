@@ -7,42 +7,42 @@ import {
 } from './types';
 
 export function firstTab(state: State, payload: Payload): State {
-  const { currentTarget } = payload as PayloadEvent & PayloadTarget;
+  const { target } = payload as PayloadEvent & PayloadTarget;
 
   return {
     ...state,
-    currentTarget: currentTarget.parentNode.firstChild,
+    target: target.parentNode.firstChild,
   };
 }
 
 export function lastTab(state: State, payload: Payload): State {
-  const { currentTarget } = payload as PayloadEvent & PayloadTarget;
+  const { target } = payload as PayloadEvent & PayloadTarget;
 
   return {
     ...state,
-    currentTarget: currentTarget.parentNode.lastChild,
+    target: target.parentNode.lastChild,
   };
 }
 
 export function nextTab(state: State, payload: Payload): State {
-  const { currentTarget } = payload as PayloadEvent & PayloadTarget;
+  const { target } = payload as PayloadEvent & PayloadTarget;
 
   return {
     ...state,
-    currentTarget: currentTarget.nextSibling
-      ? currentTarget.nextSibling
-      : currentTarget.parentNode.firstChild,
+    target: target.nextSibling
+      ? target.nextSibling
+      : target.parentNode.firstChild,
   };
 }
 
 export function prevTab(state: State, payload: Payload): State {
-  const { currentTarget } = payload as PayloadEvent & PayloadTarget;
+  const { target } = payload as PayloadEvent & PayloadTarget;
 
   return {
     ...state,
-    currentTarget: currentTarget.previousSibling
-      ? currentTarget.previousSibling
-      : currentTarget.parentNode.lastChild,
+    target: target.previousSibling
+      ? target.previousSibling
+      : target.parentNode.lastChild,
   };
 }
 
@@ -63,11 +63,9 @@ export function registerTab(state: State, payload: Payload): State {
 }
 
 export function removeTab(state: State, payload: Payload): State {
-  const { currentTarget } = payload as PayloadEvent & PayloadTarget;
+  const { target } = payload as PayloadEvent & PayloadTarget;
 
-  const indexTab = state.datas.findIndex(
-    (data) => data.id === currentTarget.id,
-  );
+  const indexTab = state.datas.findIndex((data) => data.id === target.id);
 
   if (!state.datas[indexTab]?.removable) return state;
 
@@ -78,21 +76,21 @@ export function removeTab(state: State, payload: Payload): State {
   return {
     ...state,
     datas,
-    currentTarget:
-      state.idActiveTab === currentTarget.id
-        ? currentTarget.nextSibling
-          ? currentTarget.nextSibling
-          : currentTarget.previousSibling
-        : state.currentTarget,
+    target:
+      state.idActiveTab === target.id
+        ? target.nextSibling
+          ? target.nextSibling
+          : target.previousSibling
+        : state.target,
   };
 }
 
 export function selectTab(state: State, payload: Payload): State {
-  const { currentTarget } = payload as PayloadEvent & PayloadTarget;
+  const { target } = payload as PayloadEvent & PayloadTarget;
 
   return {
     ...state,
-    idActiveTab: currentTarget.id,
-    currentTarget: currentTarget,
+    idActiveTab: target.id,
+    target: target,
   };
 }
