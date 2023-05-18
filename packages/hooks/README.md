@@ -18,10 +18,8 @@
 ## Table of contents
 
 - [Installation](#installation)
-- [How it works](#how-it-works)
-- [How to use](#how-to-use)
 - [Import](#import)
-- [Examples](#examples)
+- [Hooks](#hooks)
 
 ## Installation
 
@@ -29,10 +27,40 @@
 npm install --save @react/hooks
 ```
 
-## How it works
-
-## How to use
-
 ## Import
 
-## Examples
+```js
+import * as ReactHooks from '@react/hooks';
+
+const { useMatchMedia } = ReactHooks;
+```
+
+## Hooks
+
+### useMatchMedia
+
+```js
+import * as React from 'react';
+import * as ReactHooks from '@react/hooks';
+
+function Component() {
+  const mediaListener = React.useCallback((event) => {
+    const { matches } = event;
+
+    // Do something with matches
+  }, []);
+
+  const { matches } = ReactHooks.useMatchMedia(
+    '(max-width: 480px)',
+    mediaListener,
+  );
+
+  return (
+    <span>
+      {matches
+        ? 'screen is smaller or equal to 480px'
+        : 'screen is larger than 480px'}
+    </span>
+  );
+}
+```
