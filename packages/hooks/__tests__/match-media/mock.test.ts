@@ -67,6 +67,26 @@ describe('Match Media Mock', () => {
     expect(mediaListener).toHaveBeenCalledTimes(1);
   });
 
+  it('handles onchange with addListener and removeListener', () => {
+    const mediaQueryList = window.matchMedia(mediaQuery);
+
+    mediaQueryList.dispatchEvent(new Event('change'));
+
+    expect(mediaListener).toHaveBeenCalledTimes(0);
+
+    mediaQueryList.addListener(mediaListener);
+
+    mediaQueryList.dispatchEvent(new Event('change'));
+
+    expect(mediaListener).toHaveBeenCalledTimes(1);
+
+    mediaQueryList.removeListener(mediaListener);
+
+    mediaQueryList.dispatchEvent(new Event('change'));
+
+    expect(mediaListener).toHaveBeenCalledTimes(1);
+  });
+
   it('passes matches and media to listener', () => {
     const mediaQueryList = window.matchMedia(mediaQuery);
 
