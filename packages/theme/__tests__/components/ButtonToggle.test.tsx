@@ -8,12 +8,16 @@ const renderButtonToggle = createRender(ButtonToggle);
 
 describe('<ButtonToggle />', () => {
   it('renders with attribute data-theme set to theme', () => {
+    localStorage.setItem(THEME_STORAGE_KEY, 'dark');
+
     renderButtonToggle();
 
-    expect(getButton()).toHaveAttribute('data-theme', 'light');
+    expect(getButton()).toHaveAttribute('data-theme', 'dark');
   });
 
   it('renders with aria-pressed to false when the theme is light', () => {
+    localStorage.setItem(THEME_STORAGE_KEY, 'light');
+
     renderButtonToggle();
 
     expect(getButton()).toHaveAttribute('aria-pressed', 'false');
@@ -28,6 +32,8 @@ describe('<ButtonToggle />', () => {
   });
 
   it('renders with click handler to toggle the theme', async () => {
+    localStorage.setItem(THEME_STORAGE_KEY, 'light');
+
     renderButtonToggle();
 
     expect(getButton()).toHaveAttribute('data-theme', 'light');

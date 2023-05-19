@@ -24,6 +24,8 @@ describe('<IconLight />', () => {
   });
 
   it('renders with attribute data-hidden to false when theme is light', () => {
+    localStorage.setItem(THEME_STORAGE_KEY, 'light');
+
     const { container } = renderIconLight();
 
     expect(getIcon(container)).toHaveAttribute('data-hidden', 'false');
