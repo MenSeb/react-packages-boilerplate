@@ -1,5 +1,15 @@
 defineMatchMedia();
 
+export const mapMatchMedia = new Map<string, MediaQueryList>();
+
+export function dispatchMatchMedia(
+  mediaQuery: string,
+  event = new Event('change'),
+) {
+  if (mapMatchMedia.has(mediaQuery))
+    mapMatchMedia.get(mediaQuery)?.dispatchEvent(event);
+}
+
 export function defineMatchMedia() {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
@@ -22,7 +32,7 @@ export function mockMatchMedia(mediaQuery: string): MediaQueryList {
       } as MediaQueryListEvent);
   }
 
-  return {
+  const mediaQueryList: MediaQueryList = {
     get matches() {
       return mediaMatches;
     },
@@ -50,4 +60,8 @@ export function mockMatchMedia(mediaQuery: string): MediaQueryList {
       if (mediaListener === listener) mediaListener = undefined;
     },
   };
+
+  mapMatchMedia.set(mediaQuery, mediaQueryList);
+
+  return mediaQueryList;
 }
