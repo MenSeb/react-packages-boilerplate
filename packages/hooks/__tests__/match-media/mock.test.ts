@@ -1,3 +1,4 @@
+import { dispatchMatchMedia } from '../../src/match-media/mock';
 import { mediaListener, mediaQuery } from './index';
 
 describe('Match Media Mock', () => {
@@ -26,12 +27,20 @@ describe('Match Media Mock', () => {
     expect(window.matchMedia(mediaQuery)).toMatchObject({ matches: true });
   });
 
+  it('exposes dispatchEvent with dispatchMatchMedia', () => {
+    const mediaQueryList = window.matchMedia(mediaQuery);
+
+    const spy = jest.spyOn(mediaQueryList, 'dispatchEvent');
+
+    dispatchMatchMedia(mediaQuery);
+
+    expect(spy).toHaveBeenCalledWith(new Event('change'));
+  });
+
   it('reverses matches by default if no value is provided to onchange', () => {
     const mediaQueryList = window.matchMedia(mediaQuery);
 
-    mediaQueryList.dispatchEvent({
-      type: 'change',
-    } as MediaQueryListEvent);
+    dispatchMatchMedia(mediaQuery);
 
     expect(mediaQueryList).toMatchObject({ matches: false });
   });
@@ -39,7 +48,7 @@ describe('Match Media Mock', () => {
   it('updates matches with the value provided to onchange', () => {
     const mediaQueryList = window.matchMedia(mediaQuery);
 
-    mediaQueryList.dispatchEvent({
+    dispatchMatchMedia(mediaQuery, {
       matches: true,
       type: 'change',
     } as MediaQueryListEvent);
@@ -50,19 +59,19 @@ describe('Match Media Mock', () => {
   it('handles onchange with addEventListener and removeEventListener', () => {
     const mediaQueryList = window.matchMedia(mediaQuery);
 
-    mediaQueryList.dispatchEvent(new Event('change'));
+    dispatchMatchMedia(mediaQuery);
 
     expect(mediaListener).toHaveBeenCalledTimes(0);
 
     mediaQueryList.addEventListener('change', mediaListener);
 
-    mediaQueryList.dispatchEvent(new Event('change'));
+    dispatchMatchMedia(mediaQuery);
 
     expect(mediaListener).toHaveBeenCalledTimes(1);
 
     mediaQueryList.removeEventListener('change', mediaListener);
 
-    mediaQueryList.dispatchEvent(new Event('change'));
+    dispatchMatchMedia(mediaQuery);
 
     expect(mediaListener).toHaveBeenCalledTimes(1);
   });
@@ -70,19 +79,19 @@ describe('Match Media Mock', () => {
   it('handles onchange with addListener and removeListener', () => {
     const mediaQueryList = window.matchMedia(mediaQuery);
 
-    mediaQueryList.dispatchEvent(new Event('change'));
+    dispatchMatchMedia(mediaQuery);
 
     expect(mediaListener).toHaveBeenCalledTimes(0);
 
     mediaQueryList.addListener(mediaListener);
 
-    mediaQueryList.dispatchEvent(new Event('change'));
+    dispatchMatchMedia(mediaQuery);
 
     expect(mediaListener).toHaveBeenCalledTimes(1);
 
     mediaQueryList.removeListener(mediaListener);
 
-    mediaQueryList.dispatchEvent(new Event('change'));
+    dispatchMatchMedia(mediaQuery);
 
     expect(mediaListener).toHaveBeenCalledTimes(1);
   });
@@ -92,7 +101,7 @@ describe('Match Media Mock', () => {
 
     mediaQueryList.addEventListener('change', mediaListener);
 
-    mediaQueryList.dispatchEvent(new Event('change'));
+    dispatchMatchMedia(mediaQuery);
 
     expect(mediaListener).toHaveBeenCalledWith({
       matches: false,
