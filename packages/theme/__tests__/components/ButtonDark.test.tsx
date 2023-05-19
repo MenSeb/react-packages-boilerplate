@@ -22,12 +22,16 @@ describe('<ButtonDark />', () => {
   });
 
   it('renders with aria-pressed to false when theme is light', () => {
+    localStorage.setItem(THEME_STORAGE_KEY, 'light');
+
     renderButtonDark();
 
     expect(getButton()).toHaveAttribute('aria-pressed', 'false');
   });
 
   it('renders with click handler to set the theme to dark', async () => {
+    localStorage.setItem(THEME_STORAGE_KEY, 'light');
+
     renderButtonDark();
 
     await act(async () => await userEvent.click(getButton()));

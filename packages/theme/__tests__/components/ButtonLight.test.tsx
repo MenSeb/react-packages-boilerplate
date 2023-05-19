@@ -14,6 +14,8 @@ describe('<ButtonLight />', () => {
   });
 
   it('renders with aria-pressed to true when theme is light', () => {
+    localStorage.setItem(THEME_STORAGE_KEY, 'light');
+
     renderButtonLight();
 
     expect(getButton()).toHaveAttribute('aria-pressed', 'true');

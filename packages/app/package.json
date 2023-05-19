@@ -26,11 +26,21 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
+    "prebuild": "yarn build:clean",
     "build": "webpack --mode production",
+    "build:clean": "rimraf dist",
+    "build:watch": "yarn build && yarn start",
     "predeploy": "rimraf dist && yarn build",
     "deploy": "gh-pages -d dist",
     "start": "webpack serve --hot --open --mode development",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "clean": "yarn build:clean && yarn test:clean",
+    "lint": "eslint . --parser-options=project:../../tsconfig.eslint.json",
+    "lint:fix": "yarn lint --fix",
+    "test": "jest --config=../../jest.config.ts",
+    "test:clean": "rimraf coverage",
+    "pretest:coverage": "yarn test:clean",
+    "test:coverage": "yarn test --coverage",
+    "test:watch": "yarn test --watch"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"

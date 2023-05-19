@@ -40,8 +40,8 @@
     "prepublish": "yarn run build",
     "publish": "lerna publish",
     "start": "lerna run start",
-    "test": "lerna exec jest --",
-    "watch": "yarn test --watch"
+    "test": "lerna run test",
+    "watch": "lerna run test:watch"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",

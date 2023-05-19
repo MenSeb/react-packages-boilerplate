@@ -13,4 +13,6 @@ export type DefaultState = {
   theme: Theme;
 };
 
-export type InitialState = undefined;
+export type InitialState = {
+  theme?: Theme;
+};

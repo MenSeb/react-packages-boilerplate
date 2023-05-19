@@ -37,11 +37,11 @@
     "clean": "yarn build:clean && yarn test:clean",
     "lint": "eslint . --parser-options=project:../../tsconfig.eslint.json",
     "lint:fix": "yarn lint --fix",
-    "test": "jest",
+    "test": "jest --config=../../jest.config.ts",
     "test:clean": "rimraf coverage",
     "pretest:coverage": "yarn test:clean",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:coverage": "yarn test --coverage",
+    "test:watch": "yarn test --watch"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
@@ -50,6 +50,7 @@
     "react": "^18.2.0"
   },
   "dependencies": {
-    "@react/context-reducer": "*"
+    "@react/context-reducer": "*",
+    "@react/hooks": "*"
   }
 }
