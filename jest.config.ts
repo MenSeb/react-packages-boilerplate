@@ -8,7 +8,7 @@ const config: Config = {
     '!<rootDir>/packages/**/src/index.{ts,tsx}',
     '!<rootDir>/packages/**/src/**/index.{ts,tsx}',
   ],
-  setupFiles: ['../../jest.setup.ts'],
+  setupFiles: ['./jest.setup.ts'],
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['^(.(?!\\.test\\.))*$'],
