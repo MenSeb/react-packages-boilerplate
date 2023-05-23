@@ -1,4 +1,4 @@
-export const mediaListener = jest.fn();
-export const mediaQuery = 'prefers-color-scheme: dark';
+export const listener = jest.fn();
+export const query = 'prefers-color-scheme: dark';
 
-afterEach(() => mediaListener.mockReset());
+afterEach(() => listener.mockReset());

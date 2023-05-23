@@ -1,20 +1,14 @@
 import * as React from 'react';
+import { useEventListener } from '../event-listener';
 
 export default function useMatchMedia(
-  mediaQuery: string,
-  mediaListener?: EventListener,
+  query: string,
+  listener: EventListenerOrEventListenerObject,
+  options?: AddEventListenerOptions,
 ) {
-  const refMatchMedia = React.useRef(window.matchMedia(mediaQuery));
+  const refMatchMedia = React.useRef(window.matchMedia(query));
 
-  React.useEffect(() => {
-    if (mediaListener === undefined) return;
-
-    const { current: mediaQueryList } = refMatchMedia;
-
-    mediaQueryList.addEventListener('change', mediaListener);
-
-    return () => mediaQueryList.removeEventListener('change', mediaListener);
-  }, [mediaListener]);
+  useEventListener('change', listener, refMatchMedia.current, options);
 
   return refMatchMedia.current;
 }
