@@ -4,11 +4,11 @@ import { useEventListener } from '../event-listener';
 export default function useMatchMedia(
   query: string,
   listener: EventListenerOrEventListenerObject,
-  options?: AddEventListenerOptions,
+  options?: Partial<AddEventListenerOptions>,
 ) {
   const refMatchMedia = React.useRef(window.matchMedia(query));
 
-  useEventListener('change', listener, refMatchMedia.current, options);
+  useEventListener(refMatchMedia.current, 'change', listener, options);
 
   return refMatchMedia.current;
 }
