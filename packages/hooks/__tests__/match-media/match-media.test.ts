@@ -12,8 +12,10 @@ describe('useMatchMedia', () => {
     });
   });
 
-  it('handles addEventListener with the listener', () => {
-    const { result } = renderHook(() => useMatchMedia(query, listener));
+  it('listens to change on the media query', () => {
+    const { result, unmount } = renderHook(() =>
+      useMatchMedia(query, listener),
+    );
 
     result.current.dispatchEvent(new Event('change'));
 
@@ -21,17 +23,11 @@ describe('useMatchMedia', () => {
       matches: result.current.matches,
       media: result.current.media,
     });
-  });
-
-  it('handles removeEventListener with the listener', () => {
-    const { unmount, result } = renderHook(() =>
-      useMatchMedia(query, listener),
-    );
 
     unmount();
 
     result.current.dispatchEvent(new Event('change'));
 
-    expect(listener).not.toHaveBeenCalled();
+    expect(listener).toHaveBeenCalledTimes(1);
   });
 });
