@@ -1,5 +1,5 @@
 import { dispatchMatchMedia } from '../../src/match-media/mock';
-import { mediaListener, mediaQuery } from './index';
+import { listener, query } from './index';
 
 describe('Match Media Mock', () => {
   it('defines matchMedia on window', () => {
@@ -7,7 +7,7 @@ describe('Match Media Mock', () => {
   });
 
   it('returns a media query list', () => {
-    expect(window.matchMedia(mediaQuery)).toMatchObject({
+    expect(window.matchMedia(query)).toMatchObject({
       matches: expect.any(Boolean) as boolean,
       media: expect.any(String) as string,
       onchange: expect.any(Function) as () => void,
@@ -20,35 +20,35 @@ describe('Match Media Mock', () => {
   });
 
   it('returns the query as media', () => {
-    expect(window.matchMedia(mediaQuery)).toMatchObject({ media: mediaQuery });
+    expect(window.matchMedia(query)).toMatchObject({ media: query });
   });
 
   it('returns matches to true by default', () => {
-    expect(window.matchMedia(mediaQuery)).toMatchObject({ matches: true });
+    expect(window.matchMedia(query)).toMatchObject({ matches: true });
   });
 
   it('exposes dispatchEvent with dispatchMatchMedia', () => {
-    const mediaQueryList = window.matchMedia(mediaQuery);
+    const mediaQueryList = window.matchMedia(query);
 
     const spy = jest.spyOn(mediaQueryList, 'dispatchEvent');
 
-    dispatchMatchMedia(mediaQuery);
+    dispatchMatchMedia(query);
 
     expect(spy).toHaveBeenCalledWith(new Event('change'));
   });
 
   it('reverses matches by default if no value is provided to onchange', () => {
-    const mediaQueryList = window.matchMedia(mediaQuery);
+    const mediaQueryList = window.matchMedia(query);
 
-    dispatchMatchMedia(mediaQuery);
+    dispatchMatchMedia(query);
 
     expect(mediaQueryList).toMatchObject({ matches: false });
   });
 
   it('updates matches with the value provided to onchange', () => {
-    const mediaQueryList = window.matchMedia(mediaQuery);
+    const mediaQueryList = window.matchMedia(query);
 
-    dispatchMatchMedia(mediaQuery, {
+    dispatchMatchMedia(query, {
       matches: true,
       type: 'change',
     } as MediaQueryListEvent);
@@ -57,55 +57,55 @@ describe('Match Media Mock', () => {
   });
 
   it('handles onchange with addEventListener and removeEventListener', () => {
-    const mediaQueryList = window.matchMedia(mediaQuery);
+    const mediaQueryList = window.matchMedia(query);
 
-    dispatchMatchMedia(mediaQuery);
+    dispatchMatchMedia(query);
 
-    expect(mediaListener).toHaveBeenCalledTimes(0);
+    expect(listener).toHaveBeenCalledTimes(0);
 
-    mediaQueryList.addEventListener('change', mediaListener);
+    mediaQueryList.addEventListener('change', listener);
 
-    dispatchMatchMedia(mediaQuery);
+    dispatchMatchMedia(query);
 
-    expect(mediaListener).toHaveBeenCalledTimes(1);
+    expect(listener).toHaveBeenCalledTimes(1);
 
-    mediaQueryList.removeEventListener('change', mediaListener);
+    mediaQueryList.removeEventListener('change', listener);
 
-    dispatchMatchMedia(mediaQuery);
+    dispatchMatchMedia(query);
 
-    expect(mediaListener).toHaveBeenCalledTimes(1);
+    expect(listener).toHaveBeenCalledTimes(1);
   });
 
   it('handles onchange with addListener and removeListener', () => {
-    const mediaQueryList = window.matchMedia(mediaQuery);
+    const mediaQueryList = window.matchMedia(query);
 
-    dispatchMatchMedia(mediaQuery);
+    dispatchMatchMedia(query);
 
-    expect(mediaListener).toHaveBeenCalledTimes(0);
+    expect(listener).toHaveBeenCalledTimes(0);
 
-    mediaQueryList.addListener(mediaListener);
+    mediaQueryList.addListener(listener);
 
-    dispatchMatchMedia(mediaQuery);
+    dispatchMatchMedia(query);
 
-    expect(mediaListener).toHaveBeenCalledTimes(1);
+    expect(listener).toHaveBeenCalledTimes(1);
 
-    mediaQueryList.removeListener(mediaListener);
+    mediaQueryList.removeListener(listener);
 
-    dispatchMatchMedia(mediaQuery);
+    dispatchMatchMedia(query);
 
-    expect(mediaListener).toHaveBeenCalledTimes(1);
+    expect(listener).toHaveBeenCalledTimes(1);
   });
 
   it('passes matches and media to listener', () => {
-    const mediaQueryList = window.matchMedia(mediaQuery);
+    const mediaQueryList = window.matchMedia(query);
 
-    mediaQueryList.addEventListener('change', mediaListener);
+    mediaQueryList.addEventListener('change', listener);
 
-    dispatchMatchMedia(mediaQuery);
+    dispatchMatchMedia(query);
 
-    expect(mediaListener).toHaveBeenCalledWith({
+    expect(listener).toHaveBeenCalledWith({
       matches: false,
-      media: mediaQuery,
+      media: query,
     });
   });
 });
