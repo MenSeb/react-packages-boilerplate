@@ -32,7 +32,7 @@
     "build:clean": "rimraf lib",
     "build:watch": "yarn build -w",
     "clean": "yarn build:clean",
-    "lint": "stylelint",
+    "lint": "stylelint ./src",
     "lint:fix": "yarn lint --fix"
   },
   "bugs": {
