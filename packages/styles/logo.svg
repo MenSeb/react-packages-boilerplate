@@ -12,7 +12,7 @@
 		</g>
 	</defs>
 	<g fill="none" stroke="#5fd4f4">
-		<g stroke-width="1">
+		<g stroke-width=".5">
 			<use xlink:href="#orbit" />
 			<use xlink:href="#orbit" transform="rotate(60)" />
 			<use xlink:href="#orbit" transform="rotate(-60)" />
