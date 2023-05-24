@@ -1,0 +1,3 @@
+@function is-number($number) {
+  @return type-of($number) == number;
+}
