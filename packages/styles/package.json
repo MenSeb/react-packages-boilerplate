@@ -28,12 +28,15 @@
   },
   "scripts": {
     "prebuild": "yarn build:clean",
-    "build": "node-sass ./src/index.scss -o ./lib",
+    "build": "yarn sass:prod",
     "build:clean": "rimraf lib",
-    "build:watch": "yarn build -w",
     "clean": "yarn build:clean",
     "lint": "stylelint ./src",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "sass": "sass src/index.scss:lib/index.css",
+    "sass:dev": "yarn sass --style=expanded --embed-source-map",
+    "sass:prod": "yarn sass --style=compressed --no-source-map",
+    "sass:watch": "yarn sass:dev --watch --color --update"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
