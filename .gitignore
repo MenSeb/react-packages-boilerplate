@@ -1,10 +1,7 @@
 node_modules
-
 coverage
-
-packages/**/coverage
-packages/**/lib
-packages/**/dist
+dist
+lib
 
 lerna-debug.log
 yarn-debug.log

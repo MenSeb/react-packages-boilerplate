@@ -34,7 +34,7 @@
     "prebuild": "yarn clean:build",
     "build": "lerna run build",
     "format": "prettier --write .",
-    "lint": "lerna run lint --parallel",
+    "lint": "lerna run lint --parallel --stream",
     "lint:eslint": "eslint .",
     "lint:markdown": "markdownlint **/*.md --ignore node_modules",
     "lint:styles": "stylelint **/*.scss",
