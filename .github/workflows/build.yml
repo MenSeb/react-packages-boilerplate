@@ -39,6 +39,9 @@ jobs:
       - name: Lint Markdown
         run: yarn run lint:markdown
 
+      - name: Lint Styles
+        run: yarn run lint:styles
+
       - name: Test
         run: yarn run coverage
 
