@@ -1,0 +1,41 @@
+{
+  "name": "@react/styles",
+  "version": "1.0.0",
+  "description": "Styles for React development.",
+  "keywords": [
+    "styles",
+    "react",
+    "css",
+    "sass"
+  ],
+  "author": "MenSeb <sebastien.menard.github@gmail.com>",
+  "homepage": "https://github.com/MenSeb/react-packages-boilerplate#readme",
+  "license": "ISC",
+  "main": "lib/index.css",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
+  },
+  "scripts": {
+    "prebuild": "yarn build:clean",
+    "build": "node-sass ./src/index.scss -o ./lib",
+    "build:clean": "rimraf lib",
+    "build:watch": "yarn build -w",
+    "clean": "yarn build:clean",
+    "lint": "stylelint",
+    "lint:fix": "yarn lint --fix"
+  },
+  "bugs": {
+    "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
+  }
+}
