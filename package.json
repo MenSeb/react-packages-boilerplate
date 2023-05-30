@@ -22,15 +22,9 @@
     }
   },
   "scripts": {
-    "clean": "yarn clean:build && yarn clean:coverage",
-    "clean:build": "lerna exec rimraf lib dist",
-    "clean:coverage": "rimraf coverage",
     "create": "ts-node scripts/create-package",
     "commit": "cz",
     "deploy": "lerna run deploy",
-    "precoverage": "yarn clean:coverage",
-    "coverage": "jest --coverage",
-    "prebuild": "yarn clean:build",
     "build": "lerna run build",
     "lint": "yarn lint:es && yarn lint:markdown && yarn lint:style",
     "lint:es": "eslint .",
@@ -41,8 +35,9 @@
     "prepublish": "yarn run build",
     "publish": "lerna publish",
     "start": "lerna run start",
-    "test": "lerna run test",
-    "watch": "lerna run test:watch"
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "yarn test --coverage"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",

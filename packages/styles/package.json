@@ -27,10 +27,7 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
-    "prebuild": "yarn build:clean",
     "build": "yarn sass:prod",
-    "build:clean": "rimraf lib",
-    "clean": "yarn build:clean",
     "sass": "sass src/index.scss:lib/index.css",
     "sass:dev": "yarn sass --style=expanded --embed-source-map",
     "sass:prod": "yarn sass --style=compressed --no-source-map",
