@@ -22,13 +22,9 @@
     }
   },
   "scripts": {
-    "clean": "yarn clean:build && yarn clean:coverage",
-    "clean:build": "lerna exec rimraf lib dist",
-    "clean:coverage": "rimraf coverage",
     "create": "ts-node scripts/create-package",
     "commit": "cz",
     "deploy": "lerna run deploy",
-    "prebuild": "yarn clean:build",
     "build": "lerna run build",
     "lint": "yarn lint:es && yarn lint:markdown && yarn lint:style",
     "lint:es": "eslint .",

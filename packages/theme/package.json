@@ -30,11 +30,8 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
-    "prebuild": "yarn build:clean",
     "build": "tsc",
-    "build:clean": "rimraf lib",
-    "build:watch": "tsc --watch",
-    "clean": "yarn build:clean && yarn test:clean"
+    "build:watch": "tsc --watch"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
