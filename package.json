@@ -22,7 +22,6 @@
     }
   },
   "scripts": {
-    "check": "prettier --check .",
     "clean": "yarn clean:build && yarn clean:coverage",
     "clean:build": "lerna exec rimraf lib dist",
     "clean:coverage": "rimraf coverage",
@@ -33,11 +32,12 @@
     "coverage": "jest --coverage",
     "prebuild": "yarn clean:build",
     "build": "lerna run build",
-    "format": "prettier --write .",
     "lint": "yarn lint:es && yarn lint:markdown && yarn lint:style",
     "lint:es": "eslint .",
     "lint:markdown": "markdownlint **/*.md --ignore node_modules",
     "lint:style": "stylelint **/*.scss",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
     "prepublish": "yarn run build",
     "publish": "lerna publish",
     "start": "lerna run start",
