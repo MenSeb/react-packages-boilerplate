@@ -35,8 +35,6 @@
     "build:clean": "rimraf lib",
     "build:watch": "tsc --watch",
     "clean": "yarn build:clean && yarn test:clean",
-    "lint": "eslint . --parser-options=project:../../tsconfig.eslint.json --ignore-path=../../.eslintignore",
-    "lint:fix": "yarn lint --fix",
     "test": "jest --config=../../jest.config.ts",
     "test:clean": "rimraf coverage",
     "pretest:coverage": "yarn test:clean",
