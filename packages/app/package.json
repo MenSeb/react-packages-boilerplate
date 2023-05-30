@@ -27,8 +27,7 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "build:watch": "yarn build && yarn start",
-    "predeploy": "rimraf dist && yarn build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d dist",
     "start": "webpack serve --hot --open --mode development"
   },
