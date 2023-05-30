@@ -34,12 +34,7 @@
     "build": "tsc",
     "build:clean": "rimraf lib",
     "build:watch": "tsc --watch",
-    "clean": "yarn build:clean && yarn test:clean",
-    "test": "jest --config=../../jest.config.ts",
-    "test:clean": "rimraf coverage",
-    "pretest:coverage": "yarn test:clean",
-    "test:coverage": "yarn test --coverage",
-    "test:watch": "yarn test --watch"
+    "clean": "yarn build:clean && yarn test:clean"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
