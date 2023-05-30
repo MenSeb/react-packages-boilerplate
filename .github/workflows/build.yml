@@ -34,16 +34,10 @@ jobs:
         run: yarn install --prefer-offline
 
       - name: Lint
-        run: yarn run lint
-
-      - name: Lint Markdown
-        run: yarn run lint:markdown
-
-      - name: Lint Styles
-        run: yarn run lint:styles
+        run: yarn lint
 
       - name: Test
-        run: yarn run coverage
+        run: yarn coverage
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
