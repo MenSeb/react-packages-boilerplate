@@ -31,8 +31,6 @@
     "build": "yarn sass:prod",
     "build:clean": "rimraf lib",
     "clean": "yarn build:clean",
-    "lint": "stylelint ./src",
-    "lint:fix": "yarn lint --fix",
     "sass": "sass src/index.scss:lib/index.css",
     "sass:dev": "yarn sass --style=expanded --embed-source-map",
     "sass:prod": "yarn sass --style=compressed --no-source-map",
