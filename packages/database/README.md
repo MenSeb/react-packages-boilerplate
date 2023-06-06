@@ -9,7 +9,7 @@
         Database
     </h1>
     <p>
-        Database with MongoDB
+        Database with MongoDB and Mongoose
     </p>
 </div>
 
@@ -29,5 +29,7 @@ npm install --save @menseb/database
 ## Import
 
 ```js
-import * as Database from '@menseb/database';
+import * as DB from '@menseb/database';
+
+const { connectDatabase, createModelSchema, createMongoClient, database } = DB;
 ```
