@@ -35,6 +35,7 @@
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
   },
   "devDependencies": {
-    "mongodb": "^5.6.0"
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.2.2"
   }
 }
