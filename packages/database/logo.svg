@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<ellipse id="db-top" cx="0" cy="0" rx="10" ry="3" />
+		<circle id="db-dot" r="1" />
+		<path id="db-line" d="M-10 0 a 10 3 0 0 0 20 0" stroke-dasharray="0 3 4 5" />
+		<path id="db-row" d="M-10 -1 a 10 3 0 0 0 20 0 v4 a 10 3 0 0 1 -20 0 z" />
+		<g id="db-body" stroke-linecap="round" stroke-linejoin="round">
+			<use xlink:href="#db-row" />
+			<use xlink:href="#db-dot" y="4" />
+			<use xlink:href="#db-line" y="1" />
+		</g>
+	</defs>
+	<g fill="none" stroke="#5fd4f4" stroke-width=".25">
+		<use xlink:href="#db-top" y="-8" />
+		<use xlink:href="#db-body" y="-7" />
+		<use xlink:href="#db-body" y="-1" />
+		<use xlink:href="#db-body" y="5" />
+	</g>
+</svg>
