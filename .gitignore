@@ -6,3 +6,5 @@ lib
 lerna-debug.log
 yarn-debug.log
 yarn-error.log
+
+.env
