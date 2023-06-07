@@ -1,14 +1,16 @@
 {
-  "name": "app",
-  "version": "0.0.0",
+  "name": "@react/app",
+  "version": "1.0.0",
   "description": "React app.",
   "keywords": [
     "app",
     "react"
   ],
+  "homepage": "https://github.com/MenSeb/react-packages-boilerplate#readme",
   "author": "MenSeb <sebastien.menard.github@gmail.com>",
-  "license": "MIT",
+  "license": "ISC",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "type": "module",
   "directories": {
     "lib": "lib",
@@ -18,6 +20,7 @@
   "files": [
     "lib"
   ],
+  "private": true,
   "publishConfig": {
     "access": "public"
   },
@@ -28,19 +31,17 @@
   "scripts": {
     "build": "webpack --mode production",
     "build:watch": "yarn build && yarn start",
-    "predeploy": "rimraf dist && yarn build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d dist",
     "start": "webpack serve --hot --open --mode development"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
   },
-  "homepage": "https://github.com/MenSeb/react-packages-boilerplate#readme",
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "typings": "lib/app.d.ts",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
