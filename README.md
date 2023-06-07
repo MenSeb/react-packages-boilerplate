@@ -1,15 +1,48 @@
-# react-packages-boilerplate
+<div align="center">
+    <img
+        alt="react boilerplate logo"
+        height="250"
+        src="logo.svg"
+        width="250"
+    />
+    <h1>
+        React Boilerplate
+    </h1>
+    <p>
+        Project boilerplate for React applications.
+    </p>
+</div>
 
-[![Coverage Status](https://coveralls.io/repos/github/MenSeb/react-packages-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/MenSeb/react-packages-boilerplate?branch=master)
+<hr>
 
-[![CodeFactor](https://www.codefactor.io/repository/github/menseb/react-packages-boilerplate/badge)](https://www.codefactor.io/repository/github/menseb/react-packages-boilerplate)
+<div align="center">
 
-[![Build Status](https://github.com/MenSeb/react-packages-boilerplate/workflows/build/badge.svg)](https://github.com/MenSeb/react-packages-boilerplate/actions)
+<a src="https://github.com/MenSeb/react-packages-boilerplate/actions">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/MenSeb/react-packages-boilerplate/build.yml">
+</a>
 
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+<a src="https://coveralls.io/github/MenSeb/react-packages-boilerplate?branch=master">
+    <img alt="Coveralls" src="https://img.shields.io/coverallsCoverage/github/MenSeb/react-packages-boilerplate">
+</a>
 
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+<a src="https://www.codefactor.io/repository/github/menseb/react-packages-boilerplate">
+    <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/MenSeb/react-packages-boilerplate">
+</a>
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+<a src="https://opensource.org/licenses/ISC">
+    <img alt="License" src="https://img.shields.io/badge/License-ISC-forest.svg">
+</a>
 
-[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
+<a src="https://renovatebot.com/">
+    <img alt="Renovate" src="https://img.shields.io/badge/renovate-enabled-brightgreen.svg">
+</a>
+
+<a src="http://commitizen.github.io/cz-cli/">
+    <img alt="Commitizen" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg">
+</a>
+
+<a src=".github/CODE_OF_CONDUCT.md">
+    <img alt="Contributor Covenant" src="https://img.shields.io/badge/Contributor%20Covenant-2.1-0.svg">
+</a>
+
+</div>
