@@ -22,9 +22,9 @@ export function createPathCommands({
 
   const step = width / (numberOfWaves + 1);
 
-  const yStart = ratioStart * height;
+  const heightStart = ratioStart * height;
 
-  if (yStart !== height) points.push(`V${fixedNumber(yStart)}`);
+  if (heightStart !== height) points.push(`V${fixedNumber(heightStart)}`);
 
   for (let i = 0; i < numberOfWaves; i++) {
     const x = fixedNumber(step * (i + 1));
@@ -34,11 +34,13 @@ export function createPathCommands({
     points.push(point);
   }
 
-  const yEnd = ratioEnd * height;
+  const heightEnd = ratioEnd * height;
 
-  points.push(`L${width} ${yEnd === height ? height : fixedNumber(yEnd)}`);
+  points.push(
+    `L${width} ${heightEnd === height ? height : fixedNumber(heightEnd)}`,
+  );
 
-  if (yEnd !== height) points.push(`V${height}`);
+  if (heightEnd !== height) points.push(`V${height}`);
 
   return points.join('') + 'z';
 }
