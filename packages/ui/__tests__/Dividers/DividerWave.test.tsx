@@ -96,7 +96,7 @@ describe('<DividerWave />', () => {
     });
 
     it('renders with path commands', () => {
-      renderDivider();
+      renderDivider({ ratioEnd: 0.5, ratioStart: 0.5 });
 
       expect(queryDividerPath()).toHaveAttribute('d');
     });
