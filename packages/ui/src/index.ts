@@ -1,1 +1,1 @@
-export * from './Dividers';
+export * from './Separators';

@@ -24,24 +24,24 @@ export function createRender<Props>(
   };
 }
 
-export function getDivider() {
+export function getSeparator() {
   return screen.getByRole('separator');
 }
 
-export function getDividerChild() {
-  return within(getDivider()).getByRole('presentation');
+export function getSeparatorChild() {
+  return within(getSeparator()).getByRole('presentation');
 }
 
-export function queryDividerElement(
+export function querySeparatorElement(
   selector: keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap,
 ) {
-  return getDivider().querySelector(selector);
+  return getSeparator().querySelector(selector);
 }
 
-export function queryDividerRect() {
-  return queryDividerElement('rect');
+export function querySeparatorRect() {
+  return querySeparatorElement('rect');
 }
 
-export function queryDividerPath() {
-  return queryDividerElement('path');
+export function querySeparatorPath() {
+  return querySeparatorElement('path');
 }

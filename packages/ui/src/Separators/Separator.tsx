@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-export type DividerProps = React.ComponentProps<'div'> & {
+export type SeparatorProps = React.ComponentProps<'div'> & {
   orientation?: 'horizontal' | 'vertical';
 };
 
-export function Divider({ children, orientation, ...props }: DividerProps) {
+export function Separator({ children, orientation, ...props }: SeparatorProps) {
   return (
     <div {...props} aria-orientation={orientation} role="separator">
       {children}

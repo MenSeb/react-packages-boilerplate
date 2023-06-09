@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { Divider, DividerProps } from './Divider';
+import { Separator, SeparatorProps } from './Separator';
 import {
   createPathCommands,
   ratioFullScreen,
   ratioWideScreen,
 } from './utilities';
 
-export type DividerWaveProps = {
+export type SeparatorColorsProps = {
   colorBackground: string;
   colorForeground: string;
   numberOfWaves: number;
   ratioScreen?: 'full' | 'wide';
   ratioStart?: number;
   ratioEnd?: number;
-} & DividerProps;
+} & SeparatorProps;
 
-export function DividerWave({
+export function SeparatorColors({
   colorBackground,
   colorForeground,
   numberOfWaves,
@@ -23,7 +23,7 @@ export function DividerWave({
   ratioStart = 1,
   ratioEnd = 1,
   ...props
-}: DividerWaveProps) {
+}: SeparatorColorsProps) {
   const [width, height] =
     ratioScreen === 'full' ? ratioFullScreen : ratioWideScreen;
 
@@ -36,7 +36,7 @@ export function DividerWave({
   });
 
   return (
-    <Divider {...props}>
+    <Separator {...props}>
       <svg
         height="100%"
         width="100%"
@@ -48,6 +48,6 @@ export function DividerWave({
         <rect fill={colorBackground} width="100%" height="100%" />
         <path fill={colorForeground} d={pathCommands} />
       </svg>
-    </Divider>
+    </Separator>
   );
 }
