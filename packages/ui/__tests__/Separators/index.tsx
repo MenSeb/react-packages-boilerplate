@@ -28,7 +28,7 @@ export function getSeparator() {
   return screen.getByRole('separator');
 }
 
-export function getSeparatorChild() {
+export function getPresentation() {
   return within(getSeparator()).getByRole('presentation');
 }
 

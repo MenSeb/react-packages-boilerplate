@@ -6,7 +6,7 @@ import {
 import {
   createRender,
   getSeparator,
-  getSeparatorChild,
+  getPresentation,
   querySeparatorPath,
   querySeparatorRect,
 } from '.';
@@ -33,27 +33,27 @@ describe('<SeparatorColors />', () => {
     it('renders with role presentation', () => {
       renderSeparator();
 
-      expect(getSeparatorChild()).toBeInTheDocument();
+      expect(getPresentation()).toBeInTheDocument();
     });
 
     it('renders with viewBox to screen ratio', () => {
       const { rerender } = renderSeparator();
 
-      expect(getSeparatorChild()).toHaveAttribute(
+      expect(getPresentation()).toHaveAttribute(
         'viewBox',
         `0 0 ${ratioFullScreen.join(' ')}`,
       );
 
       rerender({ ratioScreen: 'full' });
 
-      expect(getSeparatorChild()).toHaveAttribute(
+      expect(getPresentation()).toHaveAttribute(
         'viewBox',
         `0 0 ${ratioFullScreen.join(' ')}`,
       );
 
       rerender({ ratioScreen: 'wide' });
 
-      expect(getSeparatorChild()).toHaveAttribute(
+      expect(getPresentation()).toHaveAttribute(
         'viewBox',
         `0 0 ${ratioWideScreen.join(' ')}`,
       );
@@ -62,14 +62,14 @@ describe('<SeparatorColors />', () => {
     it('renders with stroke to none', () => {
       renderSeparator();
 
-      expect(getSeparatorChild()).toHaveAttribute('stroke', 'none');
+      expect(getPresentation()).toHaveAttribute('stroke', 'none');
     });
 
     it('renders with height and width to 100%', () => {
       renderSeparator();
 
-      expect(getSeparatorChild()).toHaveAttribute('height', '100%');
-      expect(getSeparatorChild()).toHaveAttribute('width', '100%');
+      expect(getPresentation()).toHaveAttribute('height', '100%');
+      expect(getPresentation()).toHaveAttribute('width', '100%');
     });
   });
 
