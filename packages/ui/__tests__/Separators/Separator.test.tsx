@@ -1,5 +1,6 @@
 import { Separator, SeparatorProps } from '../../src';
-import { createRender, getSeparator, otherProps } from '.';
+import { createRender, otherProps } from '../';
+import { getSeparator } from '.';
 
 const renderSeparator = createRender<SeparatorProps>(Separator);
 

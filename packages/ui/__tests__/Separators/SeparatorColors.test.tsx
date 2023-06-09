@@ -3,8 +3,8 @@ import {
   ratioFullScreen,
   ratioWideScreen,
 } from '../../src/Separators/utilities';
+import { createRender } from '../';
 import {
-  createRender,
   getPresentation,
   getSeparator,
   queryPath,
