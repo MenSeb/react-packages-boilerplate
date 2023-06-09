@@ -5,10 +5,11 @@ import {
 } from '../../src/Separators/utilities';
 import {
   createRender,
-  getSeparator,
   getPresentation,
-  querySeparatorPath,
-  querySeparatorRect,
+  getSeparator,
+  queryPath,
+  queryRect,
+  querySvg,
 } from '.';
 
 const defaultProps = {
@@ -33,27 +34,27 @@ describe('<SeparatorColors />', () => {
     it('renders with role presentation', () => {
       renderSeparator();
 
-      expect(getPresentation()).toBeInTheDocument();
+      expect(querySvg()).toBe(getPresentation());
     });
 
     it('renders with viewBox to screen ratio', () => {
       const { rerender } = renderSeparator();
 
-      expect(getPresentation()).toHaveAttribute(
+      expect(querySvg()).toHaveAttribute(
         'viewBox',
         `0 0 ${ratioFullScreen.join(' ')}`,
       );
 
       rerender({ ratioScreen: 'full' });
 
-      expect(getPresentation()).toHaveAttribute(
+      expect(querySvg()).toHaveAttribute(
         'viewBox',
         `0 0 ${ratioFullScreen.join(' ')}`,
       );
 
       rerender({ ratioScreen: 'wide' });
 
-      expect(getPresentation()).toHaveAttribute(
+      expect(querySvg()).toHaveAttribute(
         'viewBox',
         `0 0 ${ratioWideScreen.join(' ')}`,
       );
@@ -62,14 +63,14 @@ describe('<SeparatorColors />', () => {
     it('renders with stroke to none', () => {
       renderSeparator();
 
-      expect(getPresentation()).toHaveAttribute('stroke', 'none');
+      expect(querySvg()).toHaveAttribute('stroke', 'none');
     });
 
     it('renders with height and width to 100%', () => {
       renderSeparator();
 
-      expect(getPresentation()).toHaveAttribute('height', '100%');
-      expect(getPresentation()).toHaveAttribute('width', '100%');
+      expect(querySvg()).toHaveAttribute('height', '100%');
+      expect(querySvg()).toHaveAttribute('width', '100%');
     });
   });
 
@@ -77,17 +78,14 @@ describe('<SeparatorColors />', () => {
     it('renders with fill to backgroundColor', () => {
       renderSeparator();
 
-      expect(querySeparatorRect()).toHaveAttribute(
-        'fill',
-        defaultProps.colorBackground,
-      );
+      expect(queryRect()).toHaveAttribute('fill', defaultProps.colorBackground);
     });
 
     it('renders with height and width to 100%', () => {
       renderSeparator();
 
-      expect(querySeparatorRect()).toHaveAttribute('height', '100%');
-      expect(querySeparatorRect()).toHaveAttribute('width', '100%');
+      expect(queryRect()).toHaveAttribute('height', '100%');
+      expect(queryRect()).toHaveAttribute('width', '100%');
     });
   });
 
@@ -95,16 +93,13 @@ describe('<SeparatorColors />', () => {
     it('renders with fill to foregroundColor', () => {
       renderSeparator();
 
-      expect(querySeparatorPath()).toHaveAttribute(
-        'fill',
-        defaultProps.colorForeground,
-      );
+      expect(queryPath()).toHaveAttribute('fill', defaultProps.colorForeground);
     });
 
     it('renders with path commands', () => {
       renderSeparator({ ratioEnd: 0.5, ratioStart: 0.5 });
 
-      expect(querySeparatorPath()).toHaveAttribute('d');
+      expect(queryPath()).toHaveAttribute('d');
     });
   });
 });

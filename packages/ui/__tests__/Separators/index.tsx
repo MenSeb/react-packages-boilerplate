@@ -32,16 +32,20 @@ export function getPresentation() {
   return within(getSeparator()).getByRole('presentation');
 }
 
-export function querySeparatorElement(
+export function queryElement(
   selector: keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap,
 ) {
   return getSeparator().querySelector(selector);
 }
 
-export function querySeparatorRect() {
-  return querySeparatorElement('rect');
+export function queryPath() {
+  return queryElement('path');
 }
 
-export function querySeparatorPath() {
-  return querySeparatorElement('path');
+export function queryRect() {
+  return queryElement('rect');
+}
+
+export function querySvg() {
+  return queryElement('svg');
 }
