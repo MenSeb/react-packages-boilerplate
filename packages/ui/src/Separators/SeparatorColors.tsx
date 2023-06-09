@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { Separator, SeparatorProps } from './Separator';
+import { Separator, SeparatorProps } from './';
 import {
   createPathCommands,
   ratioFullScreen,
   ratioWideScreen,
 } from './utilities';
 
-export type SeparatorColorsProps = {
+export type SeparatorColorsProps = SeparatorProps & {
   colorBackground: string;
   colorForeground: string;
   numberOfWaves: number;
   ratioScreen?: 'full' | 'wide';
   ratioStart?: number;
   ratioEnd?: number;
-} & SeparatorProps;
+};
 
 export function SeparatorColors({
   colorBackground,
