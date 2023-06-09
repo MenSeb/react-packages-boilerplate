@@ -10,18 +10,18 @@ export type SeparatorColorsProps = SeparatorProps & {
   colorBackground: string;
   colorForeground: string;
   numberOfWaves: number;
-  ratioScreen?: 'full' | 'wide';
-  ratioStart?: number;
   ratioEnd?: number;
+  ratioStart?: number;
+  ratioScreen?: 'full' | 'wide';
 };
 
 export function SeparatorColors({
   colorBackground,
   colorForeground,
   numberOfWaves,
-  ratioScreen = 'full',
-  ratioStart = 1,
   ratioEnd = 1,
+  ratioStart = 1,
+  ratioScreen = 'full',
   ...props
 }: SeparatorColorsProps) {
   const [width, height] =
@@ -29,20 +29,20 @@ export function SeparatorColors({
 
   const pathCommands = createPathCommands({
     height,
-    width,
     numberOfWaves,
-    ratioStart,
     ratioEnd,
+    ratioStart,
+    width,
   });
 
   return (
     <Separator {...props}>
       <svg
         height="100%"
-        width="100%"
         role="presentation"
         stroke="none"
         viewBox={`0 0 ${width} ${height}`}
+        width="100%"
         xmlns="http://www.w3.org/2000/svg"
       >
         <rect fill={colorBackground} width="100%" height="100%" />

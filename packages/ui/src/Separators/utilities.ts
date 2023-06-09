@@ -7,10 +7,10 @@ export function fixedNumber(number: number, digits = 2) {
 
 export function createPathCommands({
   height,
-  width,
   numberOfWaves,
-  ratioStart,
   ratioEnd,
+  ratioStart,
+  width,
 }: {
   height: number;
   numberOfWaves: number;
