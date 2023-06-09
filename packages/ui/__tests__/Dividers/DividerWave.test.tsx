@@ -3,9 +3,9 @@ import { ratioFullScreen, ratioWideScreen } from '../../src/Dividers/utilities';
 import {
   createRender,
   getDivider,
+  getDividerChild,
   queryDividerPath,
   queryDividerRect,
-  queryDividerSvg,
 } from './';
 
 const defaultProps = {
@@ -24,24 +24,30 @@ describe('<DividerWave />', () => {
   });
 
   describe('<svg />', () => {
+    it('renders with role presentation', () => {
+      renderDivider();
+
+      expect(getDividerChild()).toBeInTheDocument();
+    });
+
     it('renders with viewBox to screen ratio', () => {
       const { rerender } = renderDivider();
 
-      expect(queryDividerSvg()).toHaveAttribute(
+      expect(getDividerChild()).toHaveAttribute(
         'viewBox',
         `0 0 ${ratioFullScreen.join(' ')}`,
       );
 
       rerender({ ratioScreen: 'full' });
 
-      expect(queryDividerSvg()).toHaveAttribute(
+      expect(getDividerChild()).toHaveAttribute(
         'viewBox',
         `0 0 ${ratioFullScreen.join(' ')}`,
       );
 
       rerender({ ratioScreen: 'wide' });
 
-      expect(queryDividerSvg()).toHaveAttribute(
+      expect(getDividerChild()).toHaveAttribute(
         'viewBox',
         `0 0 ${ratioWideScreen.join(' ')}`,
       );
@@ -50,20 +56,14 @@ describe('<DividerWave />', () => {
     it('renders with stroke to none', () => {
       renderDivider();
 
-      expect(queryDividerSvg()).toHaveAttribute('stroke', 'none');
-    });
-
-    it('renders with aria-hidden to true', () => {
-      renderDivider();
-
-      expect(queryDividerSvg()).toHaveAttribute('aria-hidden', 'true');
+      expect(getDividerChild()).toHaveAttribute('stroke', 'none');
     });
 
     it('renders with height and width to 100%', () => {
       renderDivider();
 
-      expect(queryDividerSvg()).toHaveAttribute('height', '100%');
-      expect(queryDividerSvg()).toHaveAttribute('width', '100%');
+      expect(getDividerChild()).toHaveAttribute('height', '100%');
+      expect(getDividerChild()).toHaveAttribute('width', '100%');
     });
   });
 

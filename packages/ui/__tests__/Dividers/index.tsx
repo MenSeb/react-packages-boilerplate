@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 
 export const otherProps = {
   className: 'className',
@@ -28,14 +28,14 @@ export function getDivider() {
   return screen.getByRole('separator');
 }
 
+export function getDividerChild() {
+  return within(getDivider()).getByRole('presentation');
+}
+
 export function queryDividerElement(
   selector: keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap,
 ) {
   return getDivider().querySelector(selector);
-}
-
-export function queryDividerSvg() {
-  return queryDividerElement('svg');
 }
 
 export function queryDividerRect() {

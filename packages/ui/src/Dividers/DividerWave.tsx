@@ -38,9 +38,9 @@ export function DividerWave({
   return (
     <Divider {...props}>
       <svg
-        aria-hidden="true"
         height="100%"
         width="100%"
+        role="presentation"
         stroke="none"
         viewBox={`0 0 ${width} ${height}`}
         xmlns="http://www.w3.org/2000/svg"
