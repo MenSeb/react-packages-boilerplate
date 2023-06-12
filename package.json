@@ -25,6 +25,7 @@
     "create": "ts-node scripts/create-package",
     "commit": "cz",
     "deploy": "lerna run deploy",
+    "docs": "typedoc",
     "build": "lerna run build",
     "lint": "yarn lint:es && yarn lint:markdown && yarn lint:style",
     "lint:es": "eslint .",
@@ -81,6 +82,7 @@
     "stylelint-config-standard-scss": "^9.0.0",
     "ts-jest": "^29.0.0",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.24.8",
     "typescript": "^5.0.0"
   }
 }
