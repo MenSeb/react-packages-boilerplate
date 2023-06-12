@@ -20,7 +20,7 @@ export default function logo(app: Application) {
     const [, packageName] = text.split('/');
 
     document
-      .querySelector('img[src="logo.svg"]')
+      .querySelector(`img[src="${app.options.getValue('logo') as string}"]`)
       ?.setAttribute('src', `${packageName}.svg`);
 
     page.contents = dom.serialize();
