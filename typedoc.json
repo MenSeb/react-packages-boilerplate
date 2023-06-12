@@ -1,0 +1,9 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["packages/*"],
+  "entryPointStrategy": "packages",
+  "includeVersion": true,
+  "logLevel": "Verbose",
+  "name": "React Packages",
+  "out": "docs"
+}
