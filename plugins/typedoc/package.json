@@ -1,5 +1,5 @@
 {
-  "name": "@menseb/plugins-typedoc",
+  "name": "@plugins/typedoc",
   "version": "1.0.0",
   "description": "Custom plugins for typedoc.",
   "keywords": [
