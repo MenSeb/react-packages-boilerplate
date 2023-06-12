@@ -31,7 +31,7 @@
     "build": "lerna run build",
     "lint": "yarn lint:es && yarn lint:markdown && yarn lint:style",
     "lint:es": "eslint .",
-    "lint:markdown": "markdownlint **/*.md --ignore node_modules",
+    "lint:markdown": "markdownlint **/*.md",
     "lint:style": "stylelint **/*.scss",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
