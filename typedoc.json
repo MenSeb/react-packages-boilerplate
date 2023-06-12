@@ -1,9 +1,9 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["packages/*"],
+  "entryPoints": ["packages/*", "plugins/*"],
   "entryPointStrategy": "packages",
   "includeVersion": true,
   "logLevel": "Verbose",
-  "name": "React Packages",
+  "name": "React Boilerplate",
   "out": "docs"
 }
