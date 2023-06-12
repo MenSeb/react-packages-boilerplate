@@ -32,5 +32,8 @@
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
+  },
+  "devDependencies": {
+    "@xmldom/xmldom": "^0.8.8"
   }
 }
