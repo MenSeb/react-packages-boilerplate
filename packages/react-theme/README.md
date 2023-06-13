@@ -36,7 +36,7 @@
 ## Installation
 
 ```bash
-npm install --save @react/theme
+npm install --save @packages/react-theme
 ```
 
 **N.B.** This package depends on React.
@@ -81,7 +81,7 @@ You can pass any additional props, i.e. `className`, `style`, `id`, etc. onto ea
 ### Import
 
 ```jsx
-import * as Theme from '@react/theme';
+import * as Theme from '@packages/react-theme';
 
 const {
   ButtonDark,
@@ -103,7 +103,7 @@ const {
 
 ```jsx
 import * as React from 'react';
-import * as Theme from '@react/theme';
+import * as Theme from '@packages/react-theme';
 
 export function App() {
   return <Theme.Provider>{...}</Theme.Provider>;
@@ -116,7 +116,7 @@ export function App() {
 
 ```jsx
 import * as React from 'react';
-import * as Theme from '@react/theme';
+import * as Theme from '@packages/react-theme';
 
 export function Component() {
   return (
@@ -132,7 +132,7 @@ export function Component() {
 
 ```jsx
 import * as React from 'react';
-import * as Theme from '@react/theme';
+import * as Theme from '@packages/react-theme';
 
 export function Component() {
   return (
@@ -148,7 +148,7 @@ export function Component() {
 
 ```jsx
 import * as React from 'react';
-import * as Theme from '@react/theme';
+import * as Theme from '@packages/react-theme';
 
 export function Component() {
   return (

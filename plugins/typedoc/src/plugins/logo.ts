@@ -1,49 +1,98 @@
-import { Application, PageEvent, ParameterType, Renderer } from 'typedoc';
-import { copyFileSync, mkdirSync, readdirSync } from 'node:fs';
-import lernaConfig from '../../../../lerna.json';
+import {
+  Application,
+  PageEvent,
+  ParameterType,
+  Renderer,
+  RendererEvent,
+} from 'typedoc';
+import { copyFileSync, existsSync, mkdirSync } from 'node:fs';
 
-export default function logo(app: Application) {
+export const PATH_ASSETS = 'assets/icons';
+export const PATH_DOCS = 'docs';
+export const PATH_ICONS = `${PATH_DOCS}/${PATH_ASSETS}`;
+export const PATH_LOGO = 'logo.svg';
+export const PATH_MODULES = 'modules/_';
+
+export function extractFileName(url: string) {
+  return url.substring(
+    url.indexOf('_', PATH_MODULES.length) + 1,
+    url.lastIndexOf('.'),
+  );
+}
+
+export function extractPackageName(url: string) {
+  return url.substring(
+    PATH_MODULES.length,
+    url.indexOf('_', PATH_MODULES.length),
+  );
+}
+
+export function createPathLogo({
+  file,
+  folder,
+  format = '.svg',
+  path = PATH_ASSETS,
+}: {
+  file: string;
+  folder: string;
+  format?: string;
+  path?: string;
+}) {
+  return `${path}/${folder}/${file}${file.endsWith(format) ? '' : format}`;
+}
+
+export default function pluginLogo(app: Application) {
   app.options.addDeclaration({
-    name: 'logo',
-    help: 'Specify the path to the logo file.',
+    name: 'url',
+    help: 'Specify the logo url.',
     type: ParameterType.String,
-    defaultValue: 'logo.svg',
+    defaultValue: PATH_LOGO,
   });
 
-  const logoFileName = app.options.getValue('logo') as string;
+  const urlLogo = app.options.getValue('url') as string;
 
   app.renderer.on(PageEvent.END, (page: PageEvent) => {
-    const { filename } = page;
+    const { url } = page;
 
-    const filePath = filename.substring(
-      filename.lastIndexOf('_') + 1,
-      filename.lastIndexOf('.'),
-    );
+    const file = extractFileName(url);
+    const folder = extractPackageName(url);
 
-    page.contents = page.contents?.replace(
-      'src="logo.svg"',
-      `src="assets/logos/${
-        filename.includes('index.html') ? logoFileName : `${filePath}.svg`
-      }"`,
-    );
+    const path =
+      url === 'index.html'
+        ? createPathLogo({ file: urlLogo, folder: PATH_ASSETS })
+        : `../${createPathLogo({ file, folder })}`;
+
+    page.contents = page.contents?.replace(`src="${urlLogo}"`, `src="${path}"`);
   });
 
-  app.renderer.on(Renderer.EVENT_END, () => {
-    mkdirSync('docs/assets/logos');
+  app.renderer.on(Renderer.EVENT_END, (event: RendererEvent) => {
+    const { urls = [] } = event;
 
-    copyFileSync(logoFileName, `docs/assets/logos/${logoFileName}`);
+    mkdirSync(PATH_ICONS);
 
-    const { packages: pathPackages } = lernaConfig;
+    if (existsSync(urlLogo)) copyFileSync(urlLogo, `${PATH_ICONS}/${urlLogo}`);
 
-    for (const pathPackage of pathPackages) {
-      const packageNames = readdirSync(pathPackage);
+    for (const { url } of urls) {
+      if (url === 'index.html') continue;
 
-      for (const packageName of packageNames) {
-        copyFileSync(
-          `${pathPackage}/${packageName}/${logoFileName}`,
-          `docs/assets/logos/${packageName}.svg`,
-        );
-      }
+      const fileName = extractFileName(url);
+      const packageName = extractPackageName(url);
+      const pathPackage = `${PATH_ICONS}/${packageName}`;
+
+      if (!existsSync(pathPackage)) mkdirSync(pathPackage);
+
+      copyFileSync(
+        createPathLogo({
+          file: urlLogo,
+          folder: fileName.replace(/_/g, '-'),
+          path: packageName,
+        }),
+        createPathLogo({
+          file: fileName,
+          folder: packageName,
+          path: PATH_ICONS,
+        }),
+      );
     }
   });
 }

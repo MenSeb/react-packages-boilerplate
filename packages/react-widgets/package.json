@@ -1,11 +1,10 @@
 {
-  "name": "@react/theme",
+  "name": "@packages/react-widgets",
   "version": "1.0.0",
-  "description": "Dark and light theme with React.",
+  "description": "Accessible widgets for React.",
   "keywords": [
-    "theme",
-    "dark",
-    "light",
+    "accessible",
+    "widgets",
     "react"
   ],
   "author": "MenSeb <sebastien.menard.github@gmail.com>",
@@ -40,7 +39,6 @@
     "react": "^18.2.0"
   },
   "dependencies": {
-    "@react/context-reducer": "*",
-    "@react/hooks": "*"
+    "@packages/react-context-reducer": "*"
   }
 }

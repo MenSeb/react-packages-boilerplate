@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactHooks from '@react/hooks';
+import * as ReactHooks from '@packages/react-hooks';
 import ContextReducer from '../setup';
 import { THEME_QUERY_DARK, THEME_STORAGE_KEY } from '../utilities';
 

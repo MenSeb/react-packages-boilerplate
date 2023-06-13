@@ -28,7 +28,7 @@
 ## Installation
 
 ```bash
-npm install --save @react/widgets
+npm install --save @packages/react-widgets
 ```
 
 **N.B.** This package depends on React.
@@ -42,7 +42,7 @@ See how to use each hooks and consumers from [react-context-reducer](../context-
 ### Import
 
 ```jsx
-import * as Widgets from '@react/widgets';
+import * as Widgets from '@packages/react-widgets';
 
 const { Sliders, Tabs } = Widgets;
 ```

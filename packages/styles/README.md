@@ -25,13 +25,13 @@
 ## Installation
 
 ```bash
-npm install --save @react/styles
+npm install --save @packages/styles
 ```
 
 ## Import
 
 ```js
-import '@react/styles';
+import '@packages/styles';
 ```
 
 ## Styles

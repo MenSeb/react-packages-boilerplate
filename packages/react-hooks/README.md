@@ -24,13 +24,13 @@
 ## Installation
 
 ```bash
-npm install --save @react/hooks
+npm install --save @packages/react-hooks
 ```
 
 ## Import
 
 ```js
-import * as ReactHooks from '@react/hooks';
+import * as ReactHooks from '@packages/react-hooks';
 
 const { useMatchMedia } = ReactHooks;
 ```
@@ -41,7 +41,7 @@ const { useMatchMedia } = ReactHooks;
 
 ```js
 import * as React from 'react';
-import * as ReactHooks from '@react/hooks';
+import * as ReactHooks from '@packages/react-hooks';
 
 function Component() {
   const mediaListener = React.useCallback((event) => {

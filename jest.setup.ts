@@ -1,1 +1,1 @@
-import './packages/hooks/lib/match-media/mock';
+import './packages/react-hooks/lib/match-media/mock';

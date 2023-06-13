@@ -1,10 +1,9 @@
 {
-  "name": "@react/styles",
+  "name": "@packages/styles",
   "version": "1.0.0",
-  "description": "Styles for React development.",
+  "description": "Styles for app development.",
   "keywords": [
     "styles",
-    "react",
     "css",
     "sass"
   ],

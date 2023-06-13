@@ -1,11 +1,12 @@
 {
-  "name": "@react/widgets",
+  "name": "@packages/react-context-reducer",
   "version": "1.0.0",
-  "description": "Accessible widgets for React.",
+  "description": "React context with reducer and actions",
   "keywords": [
-    "accessible",
-    "widgets",
-    "react"
+    "react",
+    "context",
+    "reducer",
+    "actions"
   ],
   "author": "MenSeb <sebastien.menard.github@gmail.com>",
   "homepage": "https://github.com/MenSeb/react-packages-boilerplate#readme",
@@ -37,8 +38,5 @@
   },
   "peerDependencies": {
     "react": "^18.2.0"
-  },
-  "dependencies": {
-    "@react/context-reducer": "*"
   }
 }

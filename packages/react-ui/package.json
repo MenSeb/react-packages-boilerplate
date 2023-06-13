@@ -1,11 +1,10 @@
 {
-  "name": "@react/hooks",
+  "name": "@packages/react-ui",
   "version": "1.0.0",
-  "description": "Functional hooks for React components.",
+  "description": "UI components for React.",
   "keywords": [
     "react",
-    "hooks",
-    "functions",
+    "ui",
     "components"
   ],
   "author": "MenSeb <sebastien.menard.github@gmail.com>",
