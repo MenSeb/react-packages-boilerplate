@@ -1,5 +1,5 @@
 {
-  "name": "@react/app",
+  "name": "@packages/react-app",
   "version": "1.0.0",
   "description": "React app.",
   "keywords": [

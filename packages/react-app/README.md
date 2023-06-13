@@ -1,15 +1,15 @@
 <div align="center">
     <img
-        alt="react ui logo"
+        alt="react app logo"
         height="250"
         src="logo.svg"
         width="250"
     />
     <h1>
-        React UI
+        React App
     </h1>
     <p>
-        UI components for React.
+        Utilities for React applications.
     </p>
 </div>
 
@@ -19,20 +19,15 @@
 
 - [Installation](#installation)
 - [Import](#import)
-- [Components](#components)
 
 ## Installation
 
 ```bash
-npm install --save @react/ui
+npm install --save @packages/react-app
 ```
 
 ## Import
 
 ```js
-import * as ReactUI from '@react/ui';
-
-const { WaveDivider } = ReactUI;
+import * as ReactApp from '@packages/react-app';
 ```
-
-## Components

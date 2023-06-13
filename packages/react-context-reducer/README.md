@@ -34,7 +34,7 @@
 ## Installation
 
 ```bash
-npm install --save @react/context-reducer
+npm install --save @packages/react-context-reducer
 ```
 
 **N.B.** This package depends on React.
@@ -92,7 +92,7 @@ export function initializer(initialState) {
 ### Import
 
 ```js
-import { createContextReducer } from '@react/context-reducer';
+import { createContextReducer } from '@packages/react-context-reducer';
 ```
 
 ### Setup

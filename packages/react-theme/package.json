@@ -1,12 +1,12 @@
 {
-  "name": "@react/context-reducer",
+  "name": "@packages/react-theme",
   "version": "1.0.0",
-  "description": "React context with reducer and actions",
+  "description": "Dark and light theme with React.",
   "keywords": [
-    "react",
-    "context",
-    "reducer",
-    "actions"
+    "theme",
+    "dark",
+    "light",
+    "react"
   ],
   "author": "MenSeb <sebastien.menard.github@gmail.com>",
   "homepage": "https://github.com/MenSeb/react-packages-boilerplate#readme",
@@ -38,5 +38,9 @@
   },
   "peerDependencies": {
     "react": "^18.2.0"
+  },
+  "dependencies": {
+    "@packages/react-context-reducer": "*",
+    "@packages/react-hooks": "*"
   }
 }
