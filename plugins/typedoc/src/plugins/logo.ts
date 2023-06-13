@@ -1,6 +1,6 @@
 import { Application, PageEvent, ParameterType, Renderer } from 'typedoc';
-import { copyFileSync, readdirSync } from 'node:fs';
-import { JSDOM } from 'jsdom';
+import { copyFileSync, mkdirSync, readdirSync } from 'node:fs';
+import lernaConfig from '../../../../lerna.json';
 
 export default function logo(app: Application) {
   app.options.addDeclaration({
@@ -10,30 +10,40 @@ export default function logo(app: Application) {
     defaultValue: 'logo.svg',
   });
 
+  const logoFileName = app.options.getValue('logo') as string;
+
   app.renderer.on(PageEvent.END, (page: PageEvent) => {
-    const dom = new JSDOM(page.contents);
-    const {
-      window: { document },
-    } = dom;
-    const title = document.querySelector('h1') as HTMLHeadingElement;
-    const text = title.textContent as string;
-    const [, packageName] = text.split('/');
+    const { filename } = page;
 
-    document
-      .querySelector(`img[src="${app.options.getValue('logo') as string}"]`)
-      ?.setAttribute('src', `${packageName}.svg`);
+    const filePath = filename.substring(
+      filename.lastIndexOf('_') + 1,
+      filename.lastIndexOf('.'),
+    );
 
-    page.contents = dom.serialize();
+    page.contents = page.contents?.replace(
+      'src="logo.svg"',
+      `src="assets/logos/${
+        filename.includes('index.html') ? logoFileName : `${filePath}.svg`
+      }"`,
+    );
   });
 
   app.renderer.on(Renderer.EVENT_END, () => {
-    const packages = readdirSync('packages');
+    mkdirSync('docs/assets/logos');
 
-    packages.forEach((packageName: string) => {
-      copyFileSync(
-        `packages/${packageName}/${app.options.getValue('logo') as string}`,
-        `docs/modules/${packageName}.svg`,
-      );
-    });
+    copyFileSync(logoFileName, `docs/assets/logos/${logoFileName}`);
+
+    const { packages: pathPackages } = lernaConfig;
+
+    for (const pathPackage of pathPackages) {
+      const packageNames = readdirSync(pathPackage);
+
+      for (const packageName of packageNames) {
+        copyFileSync(
+          `${pathPackage}/${packageName}/${logoFileName}`,
+          `docs/assets/logos/${packageName}.svg`,
+        );
+      }
+    }
   });
 }
