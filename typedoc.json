@@ -1,6 +1,6 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["packages/*", "plugins/*"],
+  "entryPoints": ["apps/*", "packages/*", "plugins/*"],
   "entryPointStrategy": "packages",
   "includeVersion": true,
   "logLevel": "Verbose",
