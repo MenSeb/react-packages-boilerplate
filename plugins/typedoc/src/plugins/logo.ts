@@ -1,6 +1,5 @@
 import { Application, PageEvent, ParameterType, Renderer } from 'typedoc';
 import { copyFileSync, mkdirSync, readdirSync } from 'node:fs';
-import lernaConfig from '../../../../lerna.json';
 
 export default function logo(app: Application) {
   app.options.addDeclaration({
@@ -33,7 +32,7 @@ export default function logo(app: Application) {
 
     copyFileSync(logoFileName, `docs/assets/logos/${logoFileName}`);
 
-    const { packages: pathPackages } = lernaConfig;
+    const pathPackages = ['apps', 'packages', 'plugins'];
 
     for (const pathPackage of pathPackages) {
       const packageNames = readdirSync(pathPackage);
