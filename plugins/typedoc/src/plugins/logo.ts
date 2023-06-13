@@ -56,10 +56,9 @@ export default function pluginLogo(app: Application) {
 
     const file = extractFileName(url);
     const folder = extractPackageName(url);
-
     const path =
       url === 'index.html'
-        ? createPathLogo({ file: urlLogo, folder: PATH_ASSETS })
+        ? `${PATH_ASSETS}/${urlLogo}`
         : `../${createPathLogo({ file, folder })}`;
 
     page.contents = page.contents?.replace(`src="${urlLogo}"`, `src="${path}"`);
