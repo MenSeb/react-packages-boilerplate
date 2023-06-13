@@ -1,9 +1,9 @@
 {
-  "name": "@apps/cv",
+  "name": "@apps/react-cv",
   "version": "1.0.0",
-  "description": "MenSeb curriculum vitae.",
+  "description": "Curriculum Vitae made with React.",
   "keywords": [
-    "menseb",
+    "react",
     "cv",
     "curriculum",
     "vitae"
