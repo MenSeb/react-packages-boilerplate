@@ -20,10 +20,10 @@
 - [Installation](#installation)
 - [How it works](#how-it-works)
 - [How to use](#how-to-use)
-  - [Import](#import)
-  - [Widgets](#widgets)
-    - [Sliders](#sliders)
-    - [Tabs](./src/tabs/README.md)
+- [Import](#import)
+- [Widgets](#widgets)
+  - [Sliders](#sliders)
+  - [Tabs](./src/tabs/README.md)
 
 ## Installation
 
