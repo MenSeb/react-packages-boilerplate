@@ -1,5 +1,6 @@
 import { Application, PageEvent, ParameterType, Renderer } from 'typedoc';
 import { copyFileSync, mkdirSync, readdirSync } from 'node:fs';
+import lernaConfig from '../../../../lerna.json';
 
 export default function logo(app: Application) {
   app.options.addDeclaration({
@@ -32,15 +33,15 @@ export default function logo(app: Application) {
 
     copyFileSync(logoFileName, `docs/assets/logos/${logoFileName}`);
 
-    const paths = ['packages', 'plugins'];
+    const { packages: pathPackages } = lernaConfig;
 
-    for (const path of paths) {
-      const folders = readdirSync(path);
+    for (const pathPackage of pathPackages) {
+      const packageNames = readdirSync(pathPackage);
 
-      for (const folder of folders) {
+      for (const packageName of packageNames) {
         copyFileSync(
-          `${path}/${folder}/${logoFileName}`,
-          `docs/assets/logos/${folder}.svg`,
+          `${pathPackage}/${packageName}/${logoFileName}`,
+          `docs/assets/logos/${packageName}.svg`,
         );
       }
     }
