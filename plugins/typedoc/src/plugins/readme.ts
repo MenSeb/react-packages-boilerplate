@@ -1,6 +1,6 @@
 import { Application, PageEvent } from 'typedoc';
 
-const REGEXP_LINK = /<li><a href="#(?!md:).*">.+<\/a>/g;
+export const REGEXP_LINK = /<li><a href="#(?!md:).*">.+<\/a>/g;
 
 export default function pluginReadme(app: Application) {
   app.renderer.on(PageEvent.END, (page: PageEvent) => {
