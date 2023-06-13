@@ -1,0 +1,10 @@
+name: 'Trigger Documentation'
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  trigger-documentation:
+    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, '/docs') }}
+    uses: ./.github/workflows/docs.yml
