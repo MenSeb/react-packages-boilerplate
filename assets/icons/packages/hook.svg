@@ -1,0 +1,15 @@
+<svg version="2.0" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<path id="hook" d="
+				M3 -2 v8
+				a 5 5 0 0 1 -10 0
+				v-5 l5 5 h-3
+				a 3 3 0 0 0 6 0
+				v-8
+				a 4.5 4.5 0 1 1 2 0 z
+        M2 -9 a 2.5 2.5 0 0 0 0 5 a 2.5 2.5 0 0 0 0 -5 z" />
+	</defs>
+	<g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
+		<use href="#hook" />
+	</g>
+</svg>

@@ -1,0 +1,47 @@
+<svg version="2.0" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<path id="debug" fill="none" stroke="red" stroke-width=".25" d="M-12 0 h24 M0 -12 v24 M-12 -12 h24 v24 h-24 z" />
+		<svg id="script-icon" version="2.0" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<path id="script" d="
+          M-8 -7.5 h-3 v-2
+          a 1.5 1.5 0 0 1 3 0
+          v19
+          a 1.5 1.5 0 0 0 3 0
+          v-2 h16 v2
+          a 1.5 1.5 0 0 1 -1.5 1.5
+          h-16
+          M-9.5 -11 h15.5
+          a 2 2 0 0 1 2 2
+          v16" />
+			</defs>
+			<g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
+				<use href="#script" />
+			</g>
+		</svg>
+		<svg id="icon-icon" version="2.0" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<circle id="outline" r="11" />
+				<path id="file" d="
+          M-11 -8 
+          a 3 3 0 0 1 3 -3 h14
+          l5 5 v14
+          a 3 3 0 0 1 -3 3 h-16
+          a 3 3 0 0 1 -3 -3 z
+          M6 -11 v4 a 1 1 0 0 0 1 1 h4 z" />
+				<text id="text" text-anchor="middle" dominant-baseline="central" fill="currentColor" font-family="sans-serif" font-size="9" lengthAdjust="spacingAndGlyphs" stroke-width=".5" textLength="18">
+					SVG
+				</text>
+			</defs>
+			<g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
+				<use href="#file" />
+				<use href="#text" />
+			</g>
+		</svg>
+	</defs>
+	<g color="red">
+		<!-- <use href="#debug" /> -->
+		<use href="#script-icon" x="-12" y="-12" />
+		<use href="#icon-icon" x="-12" y="-15" transform="scale(.5)" />
+	</g>
+</svg>

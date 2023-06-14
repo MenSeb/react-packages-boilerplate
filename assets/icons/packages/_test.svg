@@ -1,0 +1,38 @@
+<svg version="2.0" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<path id="debug" fill="none" stroke="red" stroke-width=".25" d="M-12 0 h24 M0 -12 v24 M-12 -12 h24 v24 h-24 z" />
+		<svg id="react-icon" version="2.0" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<ellipse id="orbit" rx="12" ry="6" />
+				<g id="react">
+					<ellipse rx="11" ry="6" />
+					<use href="#orbit" transform="rotate(60)" />
+					<use href="#orbit" transform="rotate(-60)" />
+				</g>
+			</defs>
+			<g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
+				<use href="#react" />
+			</g>
+		</svg>
+		<svg id="hook-icon" version="2.0" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<path id="hook" d="
+          M3 -2 v8 
+          a 5 5 0 0 1 -10 0 
+          v-5 l5 5 h-3 
+          a 3 3 0 0 0 6 0
+          v-8
+          a 4.5 4.5 0 1 1 2 0 z
+          M2 -9 a 2.5 2.5 0 0 0 0 5 a 2.5 2.5 0 0 0 0 -5 z" />
+			</defs>
+			<g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
+				<use href="#hook" />
+			</g>
+		</svg>
+	</defs>
+	<g color="red">
+		<!-- <use href="#debug" /> -->
+		<use href="#react-icon" x="-12" y="-12" />
+		<use href="#hook-icon" x="-12" y="-12" transform="scale(.4)" />
+	</g>
+</svg>
