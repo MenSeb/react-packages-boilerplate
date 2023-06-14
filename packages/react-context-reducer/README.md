@@ -18,8 +18,7 @@
 ## Table of contents
 
 - [Installation](#installation)
-- [How it works](#how-it-works)
-- [How to use](#how-to-use)
+- [Usage](#usage)
 - [Import](#import)
 - [Provider](#provider)
 - [Hooks](#hooks)
@@ -39,7 +38,7 @@ npm install --save @packages/react-context-reducer
 
 **N.B.** This package depends on React.
 
-## How it works
+## Usage
 
 The main goal of this package was to avoid having to define your own reducer function using a javascript [switch](https://react.dev/reference/react/useReducer#writing-the-reducer-function). Instead, it creates the reducer function with your own actions using the reducer hook from React, [useReducer](https://react.dev/reference/react/useReducer). It also enhance the `dispatch` function by binding it to your actions names.
 
@@ -87,15 +86,13 @@ export function initializer(initialState) {
 }
 ```
 
-## How to use
-
-### Import
+## Import
 
 ```js
 import { createContextReducer } from '@packages/react-context-reducer';
 ```
 
-### Setup
+## Setup
 
 ```js
 const ContextReducer = createContextReducer({
@@ -117,7 +114,7 @@ const {
 export default ContextReducer;
 ```
 
-### Provider
+## Provider
 
 Setup the provider with your actions, initial state and initializer function.
 
@@ -130,9 +127,9 @@ export function ComponentProvider({ children }) {
 }
 ```
 
-### Hooks
+## Hooks
 
-#### useContextReducer
+### useContextReducer
 
 ```jsx
 import * as React from 'react';
@@ -149,7 +146,7 @@ export function ComponentHook() {
 }
 ```
 
-#### useContextDispatch
+### useContextDispatch
 
 ```jsx
 import * as React from 'react';
@@ -166,7 +163,7 @@ export function ComponentHookDispatch() {
 }
 ```
 
-#### useContextState
+### useContextState
 
 ```jsx
 import * as React from 'react';
@@ -184,9 +181,9 @@ export function ComponentHookState() {
 }
 ```
 
-### Consumers
+## Consumers
 
-#### Consumer
+### Consumer
 
 ```jsx
 import * as React from 'react';
@@ -205,7 +202,7 @@ export function ComponentConsumer() {
 }
 ```
 
-#### ConsumerDispatch
+### ConsumerDispatch
 
 ```jsx
 import * as React from 'react';
@@ -224,7 +221,7 @@ export function ComponentConsumerDispatch() {
 }
 ```
 
-#### ConsumerState
+### ConsumerState
 
 ```jsx
 import * as React from 'react';

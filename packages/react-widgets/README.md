@@ -18,8 +18,7 @@
 ## Table of contents
 
 - [Installation](#installation)
-- [How it works](#how-it-works)
-- [How to use](#how-to-use)
+- [Usage](#usage)
 - [Import](#import)
 - [Widgets](#widgets)
   - [Sliders](#sliders)
@@ -33,13 +32,11 @@ npm install --save @packages/react-widgets
 
 **N.B.** This package depends on React.
 
-## How it works
-
-## How to use
+## Usage
 
 See how to use each hooks and consumers from [react-context-reducer](../context-reducer/README.md).
 
-### Import
+## Import
 
 ```jsx
 import * as Widgets from '@packages/react-widgets';
@@ -47,12 +44,12 @@ import * as Widgets from '@packages/react-widgets';
 const { Sliders, Tabs } = Widgets;
 ```
 
-### Widgets
+## Widgets
 
-#### Sliders
+### Sliders
 
 <!-- See [README](./src/sliders/README.md) -->
 
-#### Tabs
+### Tabs
 
 <!-- See [README](./src/tabs/README.md) -->

@@ -14,18 +14,3 @@
 </div>
 
 <hr>
-
-## Table of contents
-
-- [How to use](#how-to-use)
-
-## How to use
-
-```bash
-yarn build
-yarn start
-```
-
-```bash
-yarn deploy
-```

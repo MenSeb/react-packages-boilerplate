@@ -78,7 +78,7 @@ You can pass any additional props, i.e. `className`, `style`, `id`, etc. onto ea
 - `IconDark`
 - `IconLight`
 
-### Import
+## Import
 
 ```jsx
 import * as Theme from '@packages/react-theme';
@@ -99,7 +99,7 @@ const {
 } = Theme;
 ```
 
-### Provider
+## Provider
 
 ```jsx
 import * as React from 'react';
@@ -110,9 +110,9 @@ export function App() {
 }
 ```
 
-### Examples
+## Examples
 
-#### ButtonDark with IconDark
+### ButtonDark with IconDark
 
 ```jsx
 import * as React from 'react';
@@ -128,7 +128,7 @@ export function Component() {
 }
 ```
 
-#### ButtonLight with IconLight
+### ButtonLight with IconLight
 
 ```jsx
 import * as React from 'react';
@@ -144,7 +144,7 @@ export function Component() {
 }
 ```
 
-#### ButtonToggle with icons
+### ButtonToggle with icons
 
 ```jsx
 import * as React from 'react';
@@ -161,9 +161,9 @@ export function Component() {
 }
 ```
 
-### Selectors
+## Selectors
 
-#### ButtonDark
+### ButtonDark
 
 ```css
 [data-theme="dark"]
@@ -176,7 +176,7 @@ export function Component() {
 [aria-pressed="false"]
 ```
 
-#### ButtonLight
+### ButtonLight
 
 ```css
 [data-theme="light"]
@@ -189,7 +189,7 @@ export function Component() {
 [aria-pressed="true"]
 ```
 
-#### ButtonToggle
+### ButtonToggle
 
 ```css
 [type="button"]
@@ -203,7 +203,7 @@ export function Component() {
 [aria-pressed="false"]
 ```
 
-#### IconDark
+### IconDark
 
 ```css
 [data-theme="dark"]
@@ -216,7 +216,7 @@ export function Component() {
 [data-hidden="true"]
 ```
 
-#### IconLight
+### IconLight
 
 ```css
 [data-theme="light"]
