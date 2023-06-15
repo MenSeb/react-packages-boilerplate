@@ -2,36 +2,79 @@ import * as React from 'react';
 import { Separator, SeparatorProps } from './';
 import {
   createPathCommands,
-  ratioFullScreen,
-  ratioWideScreen,
+  screenRatioFull,
+  screenRatioWide,
 } from './utilities';
 
+/**
+ * The ratio of a point in the separator. Should be in range of [0-1].
+ *
+ * 0: representing the top of the separator.
+ *
+ * 1: representing the bottom of the separator.
+ */
+export type RatioPoint = number;
+
+/**
+ * The props types for component {@link SeparatorColors}
+ */
 export type SeparatorColorsProps = SeparatorProps & {
+  /**
+   * The background color of the section preceding the separator.
+   */
   colorBackground: string;
+  /**
+   * The background color of the section following the separator.
+   */
   colorForeground: string;
+  /**
+   * The number of waves represented in the separator.
+   */
   numberOfWaves: number;
-  ratioEnd?: number;
-  ratioStart?: number;
-  ratioScreen?: 'full' | 'wide';
+  /**
+   * The ratio of the separator ending point.
+   *
+   * @defaultValue 1
+   */
+  ratioEndingPoint?: RatioPoint;
+  /**
+   * The ratio of the separator starting point.
+   *
+   * @defaultValue 1
+   */
+  ratioStartingPoint?: RatioPoint;
+  /**
+   * The screen ratio for the separator.
+   *
+   * @defaultValue full
+   */
+  screenRatio?: 'full' | 'wide';
 };
 
+/**
+ * Renders a content separator with colors.
+ *
+ * Displays as a wave using the colors of the divided sections.
+ *
+ * @category Component
+ */
 export function SeparatorColors({
   colorBackground,
   colorForeground,
   numberOfWaves,
-  ratioEnd = 1,
-  ratioStart = 1,
-  ratioScreen = 'full',
+  ratioEndingPoint = 1,
+  ratioStartingPoint = 1,
+  screenRatio = 'full',
   ...props
 }: SeparatorColorsProps) {
   const [width, height] =
-    ratioScreen === 'full' ? ratioFullScreen : ratioWideScreen;
+    screenRatio === 'full' ? screenRatioFull : screenRatioWide;
 
   const pathCommands = createPathCommands({
     height,
     numberOfWaves,
-    ratioEnd,
-    ratioStart,
+    ratioEndingPoint,
+    ratioStartingPoint,
     width,
   });
 

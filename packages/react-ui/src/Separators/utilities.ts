@@ -1,5 +1,5 @@
-export const ratioFullScreen = [400, 300];
-export const ratioWideScreen = [1600, 900];
+export const screenRatioFull = [400, 300];
+export const screenRatioWide = [1600, 900];
 
 export function fixedNumber(number: number, digits = 2) {
   return Number.isInteger(number) ? number : number.toFixed(digits);
@@ -8,21 +8,21 @@ export function fixedNumber(number: number, digits = 2) {
 export function createPathCommands({
   height,
   numberOfWaves,
-  ratioEnd,
-  ratioStart,
+  ratioEndingPoint,
+  ratioStartingPoint,
   width,
 }: {
   height: number;
   numberOfWaves: number;
-  ratioEnd: number;
-  ratioStart: number;
+  ratioEndingPoint: number;
+  ratioStartingPoint: number;
   width: number;
 }) {
   const points = [`M0 ${height}`];
 
   const step = width / (numberOfWaves + 1);
 
-  const heightStart = ratioStart * height;
+  const heightStart = ratioStartingPoint * height;
 
   if (heightStart !== height) points.push(`V${fixedNumber(heightStart)}`);
 
@@ -34,7 +34,7 @@ export function createPathCommands({
     points.push(point);
   }
 
-  const heightEnd = ratioEnd * height;
+  const heightEnd = ratioEndingPoint * height;
 
   points.push(
     `L${width} ${heightEnd === height ? height : fixedNumber(heightEnd)}`,

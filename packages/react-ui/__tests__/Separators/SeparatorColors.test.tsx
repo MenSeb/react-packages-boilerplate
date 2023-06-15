@@ -1,7 +1,7 @@
 import { SeparatorColors, SeparatorColorsProps } from '../../src';
 import {
-  ratioFullScreen,
-  ratioWideScreen,
+  screenRatioFull,
+  screenRatioWide,
 } from '../../src/Separators/utilities';
 import { createRender } from '../';
 import {
@@ -42,21 +42,21 @@ describe('<SeparatorColors />', () => {
 
       expect(querySvg()).toHaveAttribute(
         'viewBox',
-        `0 0 ${ratioFullScreen.join(' ')}`,
+        `0 0 ${screenRatioFull.join(' ')}`,
       );
 
-      rerender({ ratioScreen: 'full' });
+      rerender({ screenRatio: 'full' });
 
       expect(querySvg()).toHaveAttribute(
         'viewBox',
-        `0 0 ${ratioFullScreen.join(' ')}`,
+        `0 0 ${screenRatioFull.join(' ')}`,
       );
 
-      rerender({ ratioScreen: 'wide' });
+      rerender({ screenRatio: 'wide' });
 
       expect(querySvg()).toHaveAttribute(
         'viewBox',
-        `0 0 ${ratioWideScreen.join(' ')}`,
+        `0 0 ${screenRatioWide.join(' ')}`,
       );
     });
 
@@ -97,7 +97,7 @@ describe('<SeparatorColors />', () => {
     });
 
     it('renders with path commands', () => {
-      renderSeparator({ ratioEnd: 0.5, ratioStart: 0.5 });
+      renderSeparator({ ratioEndingPoint: 0.5, ratioStartingPoint: 0.5 });
 
       expect(queryPath()).toHaveAttribute('d');
     });

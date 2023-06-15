@@ -13,6 +13,8 @@ export const PATH_ICONS = `${PATH_DOCS}/${PATH_ASSETS}`;
 export const PATH_LOGO = 'logo.svg';
 export const PATH_MODULES = 'modules/_';
 
+export const REGEXP_MODULES = /modules/;
+
 export function extractFileName(url: string) {
   return url.substring(
     url.indexOf('_', PATH_MODULES.length) + 1,
@@ -72,7 +74,7 @@ export default function pluginLogo(app: Application) {
     if (existsSync(urlLogo)) copyFileSync(urlLogo, `${PATH_ICONS}/${urlLogo}`);
 
     for (const { url } of urls) {
-      if (url === 'index.html') continue;
+      if (!REGEXP_MODULES.test(url)) continue;
 
       const fileName = extractFileName(url);
       const packageName = extractPackageName(url);
