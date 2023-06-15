@@ -10,7 +10,8 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-    "plugins/*"
+    "plugins/*",
+    "scripts/*"
   ],
   "commitlint": {
     "extends": [
