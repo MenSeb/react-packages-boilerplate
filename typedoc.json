@@ -1,5 +1,5 @@
 {
-  "entryPoints": ["packages/*"],
+  "entryPoints": ["apps/*", "packages/*", "plugins/*", "scripts/*"],
   "entryPointStrategy": "packages",
   "logLevel": "Verbose",
   "name": "React Boilerplate",
