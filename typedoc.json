@@ -3,5 +3,10 @@
   "entryPointStrategy": "packages",
   "logLevel": "Verbose",
   "name": "React Boilerplate",
+  "navigation": {
+    "fullTree": true,
+    "includeCategories": true,
+    "includeGroups": true
+  },
   "out": "docs"
 }

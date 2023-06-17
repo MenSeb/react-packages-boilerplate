@@ -3,6 +3,7 @@
  *
  * @param segments the url segments.
  * @returns the url with slashes.
+ * @category utilities
  */
 export function createURL(...segments: string[]): string {
   return segments
@@ -18,6 +19,7 @@ export function createURL(...segments: string[]): string {
  * @param url the file url.
  * @param path the url path.
  * @returns the file name.
+ * @category utilities
  */
 export function extractFileName(url: string, path: string): string {
   return url.substring(url.indexOf('_', path.length) + 1, url.lastIndexOf('.'));
@@ -31,6 +33,7 @@ export function extractFileName(url: string, path: string): string {
  * @param url the file url.
  * @param path the url path.
  * @returns the folder name.
+ * @category utilities
  */
 export function extractFolderName(url: string, path: string): string {
   return url.substring(path.length, url.indexOf('_', path.length));
@@ -46,6 +49,7 @@ export function extractFolderName(url: string, path: string): string {
  * @param file the file name or url.
  * @param format the file format.
  * @returns the formatted file.
+ * @category utilities
  */
 export function formatFileExtension(file: string, format: string): string {
   if (file.endsWith(format)) return file;
