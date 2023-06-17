@@ -6,6 +6,7 @@
   "repository": "https://github.com/MenSeb/react-packages-boilerplate.git",
   "author": "Sébastien Menard",
   "license": "ISC",
+  "packageManager": "yarn@3.6.0",
   "private": true,
   "workspaces": [
     "apps/*",
