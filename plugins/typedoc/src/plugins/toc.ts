@@ -2,7 +2,12 @@ import { Application, PageEvent } from 'typedoc';
 
 export const REGEXP_LINK = /<li><a href="#(?!md:).*">.+<\/a>/g;
 
-export default function pluginReadme(app: Application) {
+/**
+ * Prefixes each table of contents link of the readme file.
+ *
+ * @param app the Typedoc application.
+ */
+export default function pluginTableOfContents(app: Application): void {
   app.renderer.on(PageEvent.END, (page: PageEvent) => {
     if (page.contents === undefined) return;
 
