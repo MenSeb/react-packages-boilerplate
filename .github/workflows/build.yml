@@ -31,7 +31,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install
-        run: yarn --immutable --immutable-cache --check-cache
+        run: yarn
 
       - name: Lint
         run: yarn lint
