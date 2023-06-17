@@ -1,0 +1,23 @@
+name: Validate
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: yarn install --prefer-offline
+      - run: yarn lint
+      - run: yarn test:coverage
+      - uses: coverallsapp/github-action@master
+        with:
+          debug: true
+          github-token: ${{ github.token }}
