@@ -1,98 +1,83 @@
-import {
-  Application,
-  PageEvent,
-  ParameterType,
-  Renderer,
-  RendererEvent,
-} from 'typedoc';
+import { Application, PageEvent, Renderer, RendererEvent } from 'typedoc';
 import { copyFileSync, existsSync, mkdirSync } from 'node:fs';
+import {
+  createURL,
+  extractFileName,
+  extractFolderName,
+  formatFileExtension,
+} from '../utilities';
 
-export const PATH_ASSETS = 'assets/icons';
-export const PATH_DOCS = 'docs';
-export const PATH_ICONS = `${PATH_DOCS}/${PATH_ASSETS}`;
-export const PATH_LOGO = 'logo.svg';
-export const PATH_MODULES = 'modules/_';
+/**
+ * The logo file name for each workspace packages.
+ */
+export const FILE_LOGO = 'logo.svg';
+/**
+ * The assets folder.
+ */
+export const SEGMENT_ASSETS = 'assets';
+/**
+ * The icons folder.
+ */
+export const SEGMENT_DOCS = 'docs';
+export const SEGMENT_ICONS = 'icons';
+export const SEGMENT_MODULES = 'modules';
+export const PATH_ICONS = createURL(SEGMENT_ASSETS, SEGMENT_ICONS);
+export const PATH_LOGOS = createURL(SEGMENT_DOCS, PATH_ICONS);
+export const PATH_MODULES = createURL(SEGMENT_MODULES, '_');
+export const URL_LOGO = createURL(PATH_LOGOS, FILE_LOGO);
 
-export const REGEXP_MODULES = /modules/;
+/**
+ * Creates the logo url of a Typedoc page.
+ *
+ * @param url the page url.
+ * @returns the logo url.
+ * @internal
+ */
+export function createLogoURL(url: string): string {
+  const file = extractFileName(url, PATH_MODULES);
+  const folder = extractFolderName(url, PATH_MODULES);
 
-export function extractFileName(url: string) {
-  return url.substring(
-    url.indexOf('_', PATH_MODULES.length) + 1,
-    url.lastIndexOf('.'),
-  );
+  return createURL('..', PATH_LOGOS, folder, file);
 }
 
-export function extractPackageName(url: string) {
-  return url.substring(
-    PATH_MODULES.length,
-    url.indexOf('_', PATH_MODULES.length),
-  );
-}
-
-export function createPathLogo({
-  file,
-  folder,
-  format = '.svg',
-  path = PATH_ASSETS,
-}: {
-  file: string;
-  folder: string;
-  format?: string;
-  path?: string;
-}) {
-  return `${path}/${folder}/${file}${file.endsWith(format) ? '' : format}`;
-}
-
-export default function pluginLogo(app: Application) {
-  app.options.addDeclaration({
-    name: 'url',
-    help: 'Specify the logo url.',
-    type: ParameterType.String,
-    defaultValue: PATH_LOGO,
-  });
-
-  const urlLogo = app.options.getValue('url') as string;
-
+/**
+ * Creates and loads each module logo.
+ *
+ * @param app the Typedoc application.
+ */
+export default function pluginLogo(app: Application): void {
   app.renderer.on(PageEvent.END, (page: PageEvent) => {
-    const { url } = page;
+    if (page.contents === undefined) return;
 
-    const file = extractFileName(url);
-    const folder = extractPackageName(url);
-    const path =
-      url === 'index.html'
-        ? `${PATH_ASSETS}/${urlLogo}`
-        : `../${createPathLogo({ file, folder })}`;
+    const source = page.url.includes('index.html')
+      ? URL_LOGO
+      : createLogoURL(page.url);
 
-    page.contents = page.contents?.replace(`src="${urlLogo}"`, `src="${path}"`);
+    page.contents = page.contents.replace(
+      `src="${FILE_LOGO}"`,
+      `src="${source}"`,
+    );
   });
 
   app.renderer.on(Renderer.EVENT_END, (event: RendererEvent) => {
-    const { urls = [] } = event;
+    if (event.urls === undefined) return;
 
-    mkdirSync(PATH_ICONS);
+    mkdirSync(PATH_LOGOS);
 
-    if (existsSync(urlLogo)) copyFileSync(urlLogo, `${PATH_ICONS}/${urlLogo}`);
+    if (existsSync(URL_LOGO)) copyFileSync(URL_LOGO, PATH_LOGOS);
 
-    for (const { url } of urls) {
-      if (!REGEXP_MODULES.test(url)) continue;
+    for (const { url } of event.urls) {
+      if (!url.includes(PATH_MODULES)) continue;
 
-      const fileName = extractFileName(url);
-      const packageName = extractPackageName(url);
-      const pathPackage = `${PATH_ICONS}/${packageName}`;
+      const file = extractFileName(url, PATH_MODULES);
+      const folder = extractFolderName(url, PATH_MODULES);
+      const path = createURL(PATH_LOGOS, folder);
 
-      if (!existsSync(pathPackage)) mkdirSync(pathPackage);
+      if (!existsSync(path)) mkdirSync(path);
 
       copyFileSync(
-        createPathLogo({
-          file: urlLogo,
-          folder: fileName.replace(/_/g, '-'),
-          path: packageName,
-        }),
-        createPathLogo({
-          file: fileName,
-          folder: packageName,
-          path: PATH_ICONS,
-        }),
+        createURL(folder, file.replace(/_/g, '-'), FILE_LOGO),
+        createURL(path, formatFileExtension(file, 'svg')),
       );
     }
   });
