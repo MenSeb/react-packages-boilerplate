@@ -1,0 +1,29 @@
+name: Create Pull Request
+
+on:
+  push:
+    branches:
+      - feature/*
+      - fix/*
+      - release/*
+  pull_request:
+
+jobs:
+  create-pull-request:
+    name: create-pull-request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+      - name: Build Workflows
+        uses: yarn build --scope=@scripts/workflows
+      - name: Create Pull Request
+        uses: actions/github-script@v6
+        with:
+          debug: true
+          script: |
+            const { createPullRequest } = await import('${{ github.workspace }}/scripts/workflows/lib/index.js');
+
+            console.log(createPullRequest());
