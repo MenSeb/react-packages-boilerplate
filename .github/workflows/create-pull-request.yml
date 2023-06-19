@@ -20,10 +20,10 @@ jobs:
       - name: Build Workflows
         run: yarn build --scope=@scripts/workflows
       - name: Create Pull Request
-        uses: actions/github-script@v6
-        with:
-          debug: true
-          script: |
-            const { createPullRequest } = await import('${{ github.workspace }}/scripts/workflows/lib/index.js');
+        run: yarn node scripts/workflows
+        # uses: actions/github-script@v6
+        # with:
+        #   script: |
+        #     const { createPullRequest } = await import('${{ github.workspace }}/scripts/workflows/lib/index.js');
 
-            console.log(createPullRequest());
+        #     console.log(createPullRequest());
