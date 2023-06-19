@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
       - name: Build Workflows
-        uses: yarn build --scope=@scripts/workflows
+        run: yarn build --scope=@scripts/workflows
       - name: Create Pull Request
         uses: actions/github-script@v6
         with:
