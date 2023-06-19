@@ -1,15 +1,16 @@
-name: Documentation
+name: Deploy Documentation
 
 on:
   push:
     branches:
       - master
-  pull_request:
+  # pull_request:
   workflow_call:
   workflow_dispatch:
 
 jobs:
-  documentation:
+  deploy-documentation:
+    name: deploy-documentation
     runs-on: ubuntu-latest
     needs: ./.github/workflows/validate.yml
     steps:
