@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - master
-  pull_request:
+      - 'releases/**'
+  # pull_request:
+  #   branches:
+  #     - master
+  #     - 'releases/**'
   workflow_call:
   workflow_dispatch:
 
