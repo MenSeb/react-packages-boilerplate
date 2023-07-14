@@ -22,7 +22,7 @@ describe('Provider', () => {
   it('loads with the initial theme otherwise', () => {
     jest
       .spyOn(window, 'matchMedia')
-      .mockImplementationOnce(() => ({ matches: false } as MediaQueryList));
+      .mockImplementationOnce(() => ({ matches: false }) as MediaQueryList);
 
     const { result } = renderThemeHook(Theme.useContextReducer);
 
