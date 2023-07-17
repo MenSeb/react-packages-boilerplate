@@ -31,6 +31,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          local-dir: ./apps/react-cv/
+          local-dir: ./apps/webfolio/dist/
+          server-dir: ./
           log-level: verbose
-          dry-run: true
