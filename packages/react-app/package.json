@@ -30,30 +30,9 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "build:watch": "yarn build && yarn start",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist",
-    "start": "webpack serve --hot --open --mode development"
+    "serve": "webpack serve --hot --open --mode development"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.7.3",
-    "gh-pages": "^5.0.0",
-    "react-router-dom": "^6.8.1",
-    "sass": "^1.62.1",
-    "sass-loader": "^13.2.0",
-    "style-loader": "^3.3.1",
-    "ts-loader": "^9.4.2",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1",
-    "webpack-merge": "^5.8.0"
   }
 }
