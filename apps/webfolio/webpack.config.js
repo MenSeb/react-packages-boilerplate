@@ -33,7 +33,7 @@ export default {
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{ from: 'public' }],
+      patterns: [{ from: 'public' }, { from: 'lib/server.js' }],
     }),
   ],
   resolve: {

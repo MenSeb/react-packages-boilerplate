@@ -27,7 +27,7 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "tsc && webpack --mode production",
     "serve": "webpack serve --hot --open --mode development"
   },
   "bugs": {
