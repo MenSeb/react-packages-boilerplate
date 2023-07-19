@@ -1,3 +1,4 @@
 export * from './Copyright';
-export * from './Separators';
 export * from './Navigation';
+export * from './Separators';
+export * from './Signature';
