@@ -12,7 +12,7 @@ describe('<Separator />', () => {
   });
 
   it('renders with children', () => {
-    renderSeparator({ children: 'children' });
+    renderSeparator({ props: { children: 'children' } });
 
     expect(getSeparator()).toHaveTextContent('children');
   });
@@ -32,7 +32,7 @@ describe('<Separator />', () => {
   });
 
   it('renders with additional props', () => {
-    renderSeparator(otherProps);
+    renderSeparator({ props: otherProps });
 
     expect(getSeparator()).toHaveAttribute('id', otherProps.id);
     expect(getSeparator()).toHaveClass(otherProps.className);
