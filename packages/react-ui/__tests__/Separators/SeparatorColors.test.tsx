@@ -18,10 +18,9 @@ const defaultProps = {
   numberOfWaves: 5,
 };
 
-const renderSeparator = createRender<SeparatorColorsProps>(
-  SeparatorColors,
-  defaultProps,
-);
+const renderSeparator = createRender<SeparatorColorsProps>(SeparatorColors, {
+  props: defaultProps,
+});
 
 describe('<SeparatorColors />', () => {
   it('renders the divider', () => {
@@ -97,7 +96,9 @@ describe('<SeparatorColors />', () => {
     });
 
     it('renders with path commands', () => {
-      renderSeparator({ ratioEndingPoint: 0.5, ratioStartingPoint: 0.5 });
+      renderSeparator({
+        props: { ratioEndingPoint: 0.5, ratioStartingPoint: 0.5 },
+      });
 
       expect(queryPath()).toHaveAttribute('d');
     });

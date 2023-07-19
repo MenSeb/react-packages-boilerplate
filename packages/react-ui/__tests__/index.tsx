@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { RenderOptions, render } from '@testing-library/react';
 
 export const otherProps = {
   className: 'className',
@@ -7,17 +7,33 @@ export const otherProps = {
   style: { display: 'flex' },
 };
 
+export const propsLabel = {
+  label: 'label',
+};
+
+export const propsLabelledy = {
+  labelledby: 'labelledby',
+};
+
+export type Settings<Props> = {
+  props?: Partial<Props>;
+  options?: RenderOptions;
+};
+
 export function createRender<Props>(
   UIElement: React.ElementType,
-  defaultProps?: Partial<Props>,
+  defaultSettings?: Settings<Props>,
 ) {
-  return function renderElement(customProps?: Partial<Props>) {
-    const result = render(<UIElement {...defaultProps} {...customProps} />);
+  return function renderElement(customSettings?: Settings<Props>) {
+    const props = { ...defaultSettings?.props, ...customSettings?.props };
+
+    const result = render(<UIElement {...props} />, {
+      ...defaultSettings?.options,
+      ...customSettings?.options,
+    });
 
     function rerender(rerenderProps?: Partial<Props>) {
-      return result.rerender(
-        <UIElement {...defaultProps} {...customProps} {...rerenderProps} />,
-      );
+      return result.rerender(<UIElement {...props} {...rerenderProps} />);
     }
 
     return { ...result, rerender };
