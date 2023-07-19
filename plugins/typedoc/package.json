@@ -19,9 +19,6 @@
     "lib"
   ],
   "private": true,
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
