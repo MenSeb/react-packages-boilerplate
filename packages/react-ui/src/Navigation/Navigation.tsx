@@ -19,9 +19,8 @@ export type Labelledby = {
 /**
  * The props types for component {@link Navigation}
  */
-export type NavigationProps = React.ComponentProps<'nav'> & {
-  listed?: boolean;
-} & (Label | Labelledby);
+export type NavigationProps = React.ComponentProps<'nav'> &
+  (Label | Labelledby);
 
 /**
  * Renders a navigation.
@@ -32,20 +31,11 @@ export function Navigation({
   children,
   label,
   labelledby,
-  listed = false,
   ...props
 }: NavigationProps) {
   return (
     <nav {...props} aria-label={label} aria-labelledby={labelledby}>
-      {listed ? (
-        <ul>
-          {React.Children.map(children, (child, index) => (
-            <li key={index}>{child}</li>
-          ))}
-        </ul>
-      ) : (
-        children
-      )}
+      {children}
     </nav>
   );
 }
