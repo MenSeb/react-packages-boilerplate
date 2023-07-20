@@ -1,3 +1,5 @@
+import userEvent from '@testing-library/user-event';
+import { act } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { NavigationRouter, NavigationRouterProps } from '../../src';
 import { createRender } from '../';
@@ -26,5 +28,21 @@ describe('<NavigationRouter />', () => {
     getLinks().forEach((link) => {
       expect(getNavigation()).toContainElement(link);
     });
+  });
+
+  it('redirects to the page url', async () => {
+    renderNavigation();
+
+    const user = userEvent.setup();
+
+    for (const link of getLinks()) {
+      await act(async () => {
+        await user.click(link);
+      });
+
+      expect(location.href).toBe(
+        `http://localhost${link.getAttribute('href')}`,
+      );
+    }
   });
 });
