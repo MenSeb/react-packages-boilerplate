@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
-import { Navigation, NavigationProps } from './';
+import { Navigation, NavigationProps } from '.';
+import { ListU } from '..';
 
 /**
  * The props types for component {@link NavigationRouter}
@@ -17,9 +18,11 @@ export type NavigationRouterProps = NavigationProps & {
 export function NavigationRouter({ links, ...props }: NavigationRouterProps) {
   return (
     <Navigation {...props}>
-      {links.map((link, index) => (
-        <NavLink {...link} key={index} />
-      ))}
+      <ListU>
+        {links.map((link, index) => (
+          <NavLink {...link} key={index} />
+        ))}
+      </ListU>
     </Navigation>
   );
 }

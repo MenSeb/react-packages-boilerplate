@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 
 export function getNavigation() {
   return screen.getByRole('navigation');
@@ -14,4 +14,8 @@ export function getItems() {
 
 export function getLinks() {
   return screen.getAllByRole('link');
+}
+
+export function getLink(item: HTMLElement) {
+  return within(item).getByRole('link');
 }
