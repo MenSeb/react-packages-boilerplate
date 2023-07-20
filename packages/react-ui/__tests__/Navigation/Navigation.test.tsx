@@ -1,6 +1,6 @@
 import { Navigation, NavigationProps } from '../../src';
 import { createRender, otherProps, propsLabel, propsLabelledy } from '../';
-import { getItems, getList, getNavigation } from '.';
+import { getNavigation } from '.';
 
 const renderNavigation = createRender<NavigationProps>(Navigation);
 
@@ -30,22 +30,6 @@ describe('<Navigation />', () => {
       'aria-labelledby',
       propsLabelledy.labelledby,
     );
-  });
-
-  it('renders with a list and items', () => {
-    renderNavigation({
-      props: {
-        children: new Array(5).fill('children'),
-        listed: true,
-      },
-    });
-
-    expect(getNavigation()).toContainElement(getList());
-
-    getItems().forEach((item) => {
-      expect(getList()).toContainElement(item);
-      expect(item).toHaveTextContent('children');
-    });
   });
 
   it('renders with additional props', () => {

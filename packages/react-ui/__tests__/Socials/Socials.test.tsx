@@ -1,7 +1,7 @@
 import { AiFillYoutube, AiFillLinkedin } from 'react-icons/ai';
 import { Socials, SocialsProps } from '../../src';
 import { createRender, otherProps } from '..';
-import { getIcon, getLinks, getSocials } from '.';
+import { getIcon, getItems, getLink, getList, getSocials } from '.';
 
 const props = {
   socials: [
@@ -19,12 +19,17 @@ describe('<Socials />', () => {
     expect(getSocials()).toBeInTheDocument();
   });
 
-  it('renders with socials links', () => {
+  it('renders with a list of socials links', () => {
     renderSocials();
 
-    getLinks().forEach((link, index) => {
+    expect(getSocials()).toContainElement(getList());
+
+    getItems().forEach((item, index) => {
+      const link = getLink(item);
       const social = props.socials[index];
 
+      expect(getList()).toContainElement(item);
+      expect(item).toContainElement(link);
       expect(link).toHaveAttribute('href', social.link);
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
       expect(link).toHaveAttribute('target', '_blank');

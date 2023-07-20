@@ -3,7 +3,7 @@ import { act } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { NavigationRouter, NavigationRouterProps } from '../../src';
 import { createRender } from '../';
-import { getLinks, getNavigation } from '.';
+import { getItems, getLink, getLinks, getList, getNavigation } from '.';
 
 const links = [
   { to: 'home', children: 'home' },
@@ -22,11 +22,14 @@ describe('<NavigationRouter />', () => {
     expect(getNavigation()).toBeInTheDocument();
   });
 
-  it('renders with router links', () => {
+  it('renders with a list of links', () => {
     renderNavigation();
 
-    getLinks().forEach((link) => {
-      expect(getNavigation()).toContainElement(link);
+    expect(getNavigation()).toContainElement(getList());
+
+    getItems().forEach((item, index) => {
+      expect(getList()).toContainElement(item);
+      expect(getLink(item)).toHaveTextContent(links[index].children);
     });
   });
 
