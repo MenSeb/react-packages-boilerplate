@@ -1,0 +1,13 @@
+@use '@packages/styles';
+
+@forward './components/';
+@forward './containers/';
+
+:root {
+  --color-background: FloralWhite;
+  --color-text: MidnightBlue;
+  --color-link: darkcyan;
+  --color-link-hover: cyan;
+  --color-link-active: goldenrod;
+  --color-link-active-hover: gold;
+}
