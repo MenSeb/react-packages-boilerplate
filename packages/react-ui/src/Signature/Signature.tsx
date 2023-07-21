@@ -33,7 +33,15 @@ export function Signature({
   return (
     <div {...props} data-testid="signature">
       <span>{statement}</span>
-      <span>{link ? <a href={link}>{author}</a> : author}</span>
+      <span>
+        {link ? (
+          <a href={link} rel="noopener noreferrer" target="_blank">
+            {author}
+          </a>
+        ) : (
+          author
+        )}
+      </span>
       {children}
     </div>
   );
