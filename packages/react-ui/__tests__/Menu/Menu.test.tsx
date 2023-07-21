@@ -1,31 +1,31 @@
 import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { NavigationRouter, NavigationRouterProps } from '../../src';
-import { createRender } from '../';
-import { getItems, getLink, getLinks, getList, getNavigation } from '.';
+import { Menu, MenuProps } from '../../src';
+import { createRender } from '..';
+import { getItems, getLink, getLinks, getList, getMenu } from '.';
 
 const links = [
   { to: 'home', children: 'home' },
   { to: 'about', children: 'about' },
 ];
 
-const renderNavigation = createRender<NavigationRouterProps>(NavigationRouter, {
+const renderMenu = createRender<MenuProps>(Menu, {
   props: { links },
   options: { wrapper: BrowserRouter },
 });
 
-describe('<NavigationRouter />', () => {
+describe('<Menu />', () => {
   it('renders with role navigation', () => {
-    renderNavigation();
+    renderMenu();
 
-    expect(getNavigation()).toBeInTheDocument();
+    expect(getMenu()).toBeInTheDocument();
   });
 
   it('renders with a list of links', () => {
-    renderNavigation();
+    renderMenu();
 
-    expect(getNavigation()).toContainElement(getList());
+    expect(getMenu()).toContainElement(getList());
 
     getItems().forEach((item, index) => {
       expect(getList()).toContainElement(item);
@@ -34,7 +34,7 @@ describe('<NavigationRouter />', () => {
   });
 
   it('redirects to the page url', async () => {
-    renderNavigation();
+    renderMenu();
 
     const user = userEvent.setup();
 
