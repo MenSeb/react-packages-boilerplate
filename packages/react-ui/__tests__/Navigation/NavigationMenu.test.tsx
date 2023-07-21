@@ -1,8 +1,8 @@
 import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { NavigationRouter, NavigationRouterProps } from '../../src';
-import { createRender } from '../';
+import { NavigationMenu, NavigationMenuProps } from '../../src';
+import { createRender } from '..';
 import { getItems, getLink, getLinks, getList, getNavigation } from '.';
 
 const links = [
@@ -10,12 +10,12 @@ const links = [
   { to: 'about', children: 'about' },
 ];
 
-const renderNavigation = createRender<NavigationRouterProps>(NavigationRouter, {
+const renderNavigation = createRender<NavigationMenuProps>(NavigationMenu, {
   props: { links },
   options: { wrapper: BrowserRouter },
 });
 
-describe('<NavigationRouter />', () => {
+describe('<NavigationMenu />', () => {
   it('renders with role navigation', () => {
     renderNavigation();
 
