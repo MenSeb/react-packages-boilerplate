@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
-import { Navigation, NavigationProps } from '..';
+import { Navigation, NavigationProps } from '.';
 import { ListU } from '..';
 
 /**
- * The props types for component {@link Menu}
+ * The props types for component {@link NavigationMenu}
  */
-export type MenuProps = NavigationProps & {
+export type NavigationMenuProps = NavigationProps & {
   links: NavLinkProps[];
 };
 
@@ -15,7 +15,7 @@ export type MenuProps = NavigationProps & {
  *
  * @category Component
  */
-export function Menu({ links, ...props }: MenuProps) {
+export function NavigationMenu({ links, ...props }: NavigationMenuProps) {
   return (
     <Navigation {...props}>
       <ListU>

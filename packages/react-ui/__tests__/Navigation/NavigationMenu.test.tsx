@@ -1,31 +1,31 @@
 import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { Menu, MenuProps } from '../../src';
+import { NavigationMenu, NavigationMenuProps } from '../../src';
 import { createRender } from '..';
-import { getItems, getLink, getLinks, getList, getMenu } from '.';
+import { getItems, getLink, getLinks, getList, getNavigation } from '.';
 
 const links = [
   { to: 'home', children: 'home' },
   { to: 'about', children: 'about' },
 ];
 
-const renderMenu = createRender<MenuProps>(Menu, {
+const renderNavigation = createRender<NavigationMenuProps>(NavigationMenu, {
   props: { links },
   options: { wrapper: BrowserRouter },
 });
 
-describe('<Menu />', () => {
+describe('<NavigationMenu />', () => {
   it('renders with role navigation', () => {
-    renderMenu();
+    renderNavigation();
 
-    expect(getMenu()).toBeInTheDocument();
+    expect(getNavigation()).toBeInTheDocument();
   });
 
   it('renders with a list of links', () => {
-    renderMenu();
+    renderNavigation();
 
-    expect(getMenu()).toContainElement(getList());
+    expect(getNavigation()).toContainElement(getList());
 
     getItems().forEach((item, index) => {
       expect(getList()).toContainElement(item);
@@ -34,7 +34,7 @@ describe('<Menu />', () => {
   });
 
   it('redirects to the page url', async () => {
-    renderMenu();
+    renderNavigation();
 
     const user = userEvent.setup();
 
