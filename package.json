@@ -38,7 +38,7 @@
     "prettier:write": "prettier --write .",
     "prepublish": "yarn run build",
     "publish": "lerna publish",
-    "start": "lerna run start",
+    "serve": "lerna run serve",
     "test": "jest",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test --coverage"
