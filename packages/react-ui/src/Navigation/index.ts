@@ -1,2 +1,2 @@
 export * from './Navigation';
-export * from './NavigationRouter';
+export * from './NavigationMenu';

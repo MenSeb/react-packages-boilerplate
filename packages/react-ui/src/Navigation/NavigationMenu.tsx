@@ -4,18 +4,18 @@ import { Navigation, NavigationProps } from '.';
 import { ListU } from '..';
 
 /**
- * The props types for component {@link NavigationRouter}
+ * The props types for component {@link NavigationMenu}
  */
-export type NavigationRouterProps = NavigationProps & {
+export type NavigationMenuProps = NavigationProps & {
   links: NavLinkProps[];
 };
 
 /**
- * Renders a navigation with router.
+ * Renders a navigation menu.
  *
  * @category Component
  */
-export function NavigationRouter({ links, ...props }: NavigationRouterProps) {
+export function NavigationMenu({ links, ...props }: NavigationMenuProps) {
   return (
     <Navigation {...props}>
       <ListU>
