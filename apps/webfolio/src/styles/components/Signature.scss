@@ -1,0 +1,13 @@
+.signature {
+  margin: 0 5vmin;
+
+  @media (width <= 400px) {
+    width: 100%;
+  }
+
+  span {
+    &:not(:first-child) {
+      text-indent: 0.25em;
+    }
+  }
+}
