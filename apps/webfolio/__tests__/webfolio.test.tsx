@@ -12,7 +12,7 @@ import {
 import { routes } from '../src/router';
 import { About, Error as ErrorPage, Home, Layout, Lost } from '../src/pages';
 
-describe('<App />', () => {
+describe('<WebFolio />', () => {
   describe('<Layout />', () => {
     beforeEach(() =>
       render(
@@ -64,7 +64,7 @@ describe('<App />', () => {
       const user = userEvent.setup();
 
       await act(async () => {
-        await user.click(screen.getByText(/about/i));
+        await user.click(screen.getAllByText(/about/i)[0]);
       });
 
       expect(
