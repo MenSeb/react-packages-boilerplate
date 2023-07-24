@@ -1,6 +1,15 @@
 [class*='navigation'] {
-  margin-bottom: 5vmin;
-  width: 100%;
+  ul,
+  li,
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  ul {
+    flex-wrap: wrap;
+  }
 
   li {
     margin: 0 2.5vmin;

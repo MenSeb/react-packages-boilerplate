@@ -1,16 +1,12 @@
 import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Logo } from '@packages/react-ui';
+import { NavigationMain } from '../components';
 
 export default function Header() {
   return (
     <header>
-      <Link to=".">#Logo</Link>
-      <nav>
-        <NavLink to="." end>
-          Home
-        </NavLink>
-        <NavLink to="about">About</NavLink>
-      </nav>
+      <Logo className="logo" brand="MenSeb" image="logo.svg" />
+      <NavigationMain />
     </header>
   );
 }
