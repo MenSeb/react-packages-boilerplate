@@ -1,4 +1,4 @@
-footer {
+#root > footer {
   background: var(--color-background);
   color: var(--color-text);
   line-height: 1.5;
@@ -19,22 +19,22 @@ footer {
     width: 100%;
   }
 
-  .copyright,
-  .signature {
-    justify-content: center;
-
-    @media (width <= 400px) {
-      width: 100%;
-    }
-
-    span {
-      &:not(:first-child) {
-        text-indent: 0.25em;
-      }
-    }
-  }
-
   .signature {
     margin-left: 5vmin;
+  }
+}
+
+.copyright,
+.signature {
+  justify-content: center;
+
+  @media (width <= 400px) {
+    width: 100%;
+  }
+
+  span {
+    &:not(:first-child) {
+      text-indent: 0.25em;
+    }
   }
 }

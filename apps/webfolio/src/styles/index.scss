@@ -1,6 +1,7 @@
 @use '@packages/styles';
 @forward './components/';
 @forward './containers/';
+@forward './pages/';
 
 $visited-links: false;
 

@@ -1,0 +1,40 @@
+.page-home {
+  display: flex;
+  flex-direction: column;
+
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 50%;
+    }
+
+    .title,
+    .subtitle {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .title-span {
+      width: 100%;
+    }
+
+    .subtitle {
+      width: 100%;
+      margin: 5vmin 0;
+    }
+
+    img {
+      width: 50%;
+    }
+  }
+}
