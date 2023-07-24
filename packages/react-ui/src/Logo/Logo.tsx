@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 
-export type LogoProps = LinkProps & {
+export type LogoProps = Omit<LinkProps, 'to'> & {
   brand: string;
   image?: string;
 };
