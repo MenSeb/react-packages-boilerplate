@@ -1,0 +1,21 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 10vh;
+  }
+
+  span {
+    margin-left: 2.5vmin;
+  }
+
+  @media (width <= 400px) {
+    flex-wrap: wrap;
+
+    span {
+      margin-left: 0;
+    }
+  }
+}

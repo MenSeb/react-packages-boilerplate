@@ -2,18 +2,39 @@ footer {
   background: var(--color-background);
   color: var(--color-text);
   line-height: 1.5;
-  padding: 5vmin 0;
+  padding: 5vmin;
   width: 100%;
+  justify-content: space-evenly;
 
   &,
   .copyright,
-  .signature,
-  ul,
-  li,
-  a {
+  .signature {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  [class*='navigation'] {
+    margin-bottom: 5vmin;
+    width: 100%;
+  }
+
+  .copyright,
+  .signature {
     justify-content: center;
+
+    @media (width <= 400px) {
+      width: 100%;
+    }
+
+    span {
+      &:not(:first-child) {
+        text-indent: 0.25em;
+      }
+    }
+  }
+
+  .signature {
+    margin-left: 5vmin;
   }
 }
