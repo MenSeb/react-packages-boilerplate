@@ -2,5 +2,14 @@
   "extends": [
     "stylelint-config-standard-scss",
     "stylelint-config-sass-guidelines"
-  ]
+  ],
+  "rules": {
+    "max-nesting-depth": [
+      2,
+      { "ignore": ["blockless-at-rules", "pseudo-classes"] }
+    ],
+    "no-descending-specificity": null,
+    "selector-max-id": 1,
+    "selector-no-qualifying-type": null
+  }
 }

@@ -1,0 +1,16 @@
+[class*='navigation'] {
+  margin-bottom: 5vmin;
+  width: 100%;
+
+  li {
+    margin: 0 2.5vmin;
+  }
+
+  svg {
+    font-size: 2em;
+  }
+
+  a {
+    text-transform: capitalize;
+  }
+}

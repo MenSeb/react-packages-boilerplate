@@ -1,0 +1,47 @@
+@use '@packages/styles';
+@forward './components/';
+@forward './containers/';
+
+$visited-links: false;
+
+:root {
+  --color-background: #fffaf0;
+  --color-text: #191970;
+  --color-link: #008b8b;
+  --color-link-hover: #0ff;
+  --color-link-active: #daa520;
+  --color-link-active-hover: #ffd700;
+  --color-link-visited: #000080;
+  --color-link-visited-hover: #00f;
+}
+
+a {
+  color: var(--color-link);
+  text-underline-offset: 0.25em;
+
+  &:hover,
+  &:focus {
+    color: var(--color-link-hover);
+  }
+
+  @if $visited-links {
+    &:visited {
+      color: var(--color-link-visited);
+
+      &:hover,
+      &:focus {
+        color: var(--color-link-visited-hover);
+      }
+    }
+  }
+
+  &.active,
+  &[aria-current='page'] {
+    color: var(--color-link-active);
+
+    &:hover,
+    &:focus {
+      color: var(--color-link-active-hover);
+    }
+  }
+}

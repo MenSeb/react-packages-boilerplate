@@ -1,0 +1,19 @@
+footer {
+  background: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.5;
+  padding: 5vmin 0;
+  width: 100%;
+
+  &,
+  .copyright,
+  .signature,
+  ul,
+  li,
+  a {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
