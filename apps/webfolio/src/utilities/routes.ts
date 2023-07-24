@@ -38,6 +38,6 @@ export function createRoutesLinks(routes: string[]): NavLinkProps[] {
   return routes.map((route) => {
     const to = route.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
 
-    return { children: route, to };
+    return { children: route, to: to === 'home' ? '.' : to };
   });
 }
