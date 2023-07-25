@@ -12,55 +12,23 @@ const props = {
 const renderCopyright = createRender<CopyrightProps>(Copyright, { props });
 
 describe('<Copyright />', () => {
-  it('renders with data-testid', () => {
-    renderCopyright();
-
-    expect(getCopyright()).toBeInTheDocument();
-  });
-
-  it('renders with the copyright symbol', () => {
-    renderCopyright();
-
-    expect(getCopyright()).toHaveTextContent('©');
-  });
-
-  it('renders with the copyright year', () => {
+  it('renders correctly', () => {
     const { rerender } = renderCopyright();
 
+    expect(getCopyright()).toBeInTheDocument();
+    expect(getCopyright()).toHaveClass('copyright');
+    expect(getCopyright()).toHaveTextContent('©');
+    expect(getCopyright()).toHaveTextContent(props.author);
     expect(getCopyright()).toHaveTextContent(props.year);
+    expect(getCopyright()).toHaveTextContent(props.statement);
+    expect(getCopyright()).toHaveTextContent(props.children);
 
-    rerender({ year: undefined });
+    rerender({ statement: undefined, year: undefined, ...otherProps });
 
+    expect(getCopyright()).not.toHaveTextContent(props.statement);
     expect(getCopyright()).toHaveTextContent(
       new Date().getFullYear().toString(),
     );
-  });
-
-  it('renders with the copyright author', () => {
-    renderCopyright();
-
-    expect(getCopyright()).toHaveTextContent(props.author);
-  });
-
-  it('renders with the copyright statement', () => {
-    const { rerender } = renderCopyright();
-
-    expect(getCopyright()).toHaveTextContent(props.statement);
-
-    rerender({ statement: undefined });
-
-    expect(getCopyright()).not.toHaveTextContent(props.statement);
-  });
-
-  it('renders with children', () => {
-    renderCopyright();
-
-    expect(getCopyright()).toHaveTextContent(props.children);
-  });
-
-  it('renders with additional props', () => {
-    renderCopyright({ props: otherProps });
-
     expect(getCopyright()).toHaveAttribute('id', otherProps.id);
     expect(getCopyright()).toHaveClass(otherProps.className);
     expect(getCopyright()).toHaveStyle(otherProps.style);
