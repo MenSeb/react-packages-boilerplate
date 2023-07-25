@@ -13,35 +13,28 @@ const props = {
 const renderSocials = createRender<SocialsProps>(Socials, { props });
 
 describe('<Socials />', () => {
-  it('renders with role navigation', () => {
-    renderSocials();
+  it('renders correctly', () => {
+    renderSocials({ props: otherProps });
 
     expect(getSocials()).toBeInTheDocument();
-  });
+    expect(getSocials()).toHaveClass('navigation-socials');
 
-  it('renders with a list of socials links', () => {
-    renderSocials();
+    expect(getSocials()).toHaveAttribute('id', otherProps.id);
+    expect(getSocials()).toHaveClass(otherProps.className);
+    expect(getSocials()).toHaveStyle(otherProps.style);
 
-    expect(getSocials()).toContainElement(getList());
+    expect(getList()).toHaveClass('navigation-socials-list');
 
     getItems().forEach((item, index) => {
       const link = getLink(item);
       const social = props.socials[index];
 
-      expect(getList()).toContainElement(item);
-      expect(item).toContainElement(link);
       expect(link).toHaveAttribute('href', social.link);
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
       expect(link).toHaveAttribute('target', '_blank');
+      expect(link).toHaveClass('navigation-socials-link');
       expect(link).toContainElement(getIcon(link));
+      expect(getIcon(link)).toHaveClass('navigation-socials-icon');
     });
-  });
-
-  it('renders with additional props', () => {
-    renderSocials({ props: otherProps });
-
-    expect(getSocials()).toHaveAttribute('id', otherProps.id);
-    expect(getSocials()).toHaveClass(otherProps.className);
-    expect(getSocials()).toHaveStyle(otherProps.style);
   });
 });
