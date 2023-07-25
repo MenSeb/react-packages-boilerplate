@@ -1,15 +1,10 @@
 import React from 'react';
-import classNames, { Argument } from 'classnames';
+import { classNames, ClassNames } from '..';
 
 /**
  * The props types for component {@link Text}
  */
-export type TextProps = React.ComponentProps<'p'> & {
-  /**
-   * The heading className.
-   */
-  className?: Argument;
-};
+export type TextProps = React.ComponentProps<'p'> & ClassNames;
 
 /**
  * Renders a text paragraph.

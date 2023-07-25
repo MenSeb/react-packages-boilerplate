@@ -1,16 +1,11 @@
 import * as React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
-import classNames, { Argument } from 'classnames';
+import { classNames, ClassNames } from '..';
 
 /**
  * The props types for component {@link CallToAction}
  */
-export type CallToActionProps = LinkProps & {
-  /**
-   * The link className.
-   */
-  className?: Argument;
-};
+export type CallToActionProps = LinkProps & ClassNames;
 
 /**
  * Renders a call to action link.

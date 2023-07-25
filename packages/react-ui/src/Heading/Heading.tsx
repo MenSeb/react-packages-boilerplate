@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames, { Argument } from 'classnames';
+import { classNames, ClassNames } from '..';
 
 export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -8,14 +8,10 @@ export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
  */
 export type HeadingProps = React.ComponentProps<HeadingTag> & {
   /**
-   * The heading className.
-   */
-  className?: Argument;
-  /**
    * The heading level.
    */
   level?: 1 | 2 | 3 | 4 | 5 | 6;
-};
+} & ClassNames;
 
 /**
  * Renders a heading (i.e. h1, h2, h3, h4, h5 or h6).
