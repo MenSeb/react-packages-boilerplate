@@ -16,10 +16,11 @@ describe('<Navigation />', () => {
 
     expect(getNavigation()).toBeInTheDocument();
     expect(getNavigation()).toHaveTextContent('children');
+    expect(getNavigation()).toHaveAttribute('aria-label', propsLabel.label);
+
     expect(getNavigation()).toHaveAttribute('id', otherProps.id);
     expect(getNavigation()).toHaveClass(otherProps.className);
     expect(getNavigation()).toHaveStyle(otherProps.style);
-    expect(getNavigation()).toHaveAttribute('aria-label', propsLabel.label);
 
     rerender({ ...propsLabelledy, label: undefined });
 

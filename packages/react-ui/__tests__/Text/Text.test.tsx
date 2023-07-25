@@ -14,12 +14,10 @@ function getText() {
 
 describe('<Text />', () => {
   it('renders correctly', () => {
-    const { rerender } = renderText();
+    renderText({ props: otherProps });
 
     expect(getText()).toBeInTheDocument();
     expect(getText()).toHaveClass('text');
-
-    rerender({ ...otherProps });
 
     expect(getText()).toHaveAttribute('id', otherProps.id);
     expect(getText()).toHaveClass(otherProps.className);

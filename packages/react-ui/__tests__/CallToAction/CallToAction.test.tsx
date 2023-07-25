@@ -17,13 +17,11 @@ const renderCallToAction = createRender<CallToActionProps>(CallToAction, {
 
 describe('<CallToAction />', () => {
   it('renders correctly', () => {
-    const { rerender } = renderCallToAction();
+    renderCallToAction({ props: otherProps });
 
     expect(getCallToAction()).toBeInTheDocument();
     expect(getCallToAction()).toHaveClass('cta');
     expect(getCallToAction()).toHaveTextContent(props.children);
-
-    rerender(otherProps);
 
     expect(getCallToAction()).toHaveAttribute('id', otherProps.id);
     expect(getCallToAction()).toHaveClass(otherProps.className);

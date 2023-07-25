@@ -6,7 +6,6 @@ import { createRender, otherProps } from '..';
 import { getBrand, getImage, getLogo, queryImage } from '.';
 
 const props = {
-  ...otherProps,
   brand: 'brand',
   children: 'children',
   image: 'image',
@@ -19,11 +18,12 @@ const renderLogo = createRender<LogoProps>(Logo, {
 
 describe('<Logo />', () => {
   it('renders correctly', () => {
-    const { rerender } = renderLogo();
+    const { rerender } = renderLogo({ props: otherProps });
 
     expect(getLogo()).toBeInTheDocument();
     expect(getLogo()).toHaveClass('logo');
     expect(getLogo()).toHaveTextContent(props.children);
+
     expect(getLogo()).toHaveAttribute('id', otherProps.id);
     expect(getLogo()).toHaveClass(otherProps.className);
     expect(getLogo()).toHaveStyle(otherProps.style);

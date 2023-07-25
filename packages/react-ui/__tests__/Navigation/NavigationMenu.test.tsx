@@ -24,6 +24,7 @@ describe('<NavigationMenu />', () => {
     renderNavigation({ props: otherProps });
 
     expect(getNavigation()).toBeInTheDocument();
+
     expect(getNavigation()).toHaveAttribute('id', otherProps.id);
     expect(getNavigation()).toHaveClass(otherProps.className);
     expect(getNavigation()).toHaveStyle(otherProps.style);

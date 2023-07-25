@@ -13,7 +13,7 @@ const renderCopyright = createRender<CopyrightProps>(Copyright, { props });
 
 describe('<Copyright />', () => {
   it('renders correctly', () => {
-    const { rerender } = renderCopyright();
+    const { rerender } = renderCopyright({ props: otherProps });
 
     expect(getCopyright()).toBeInTheDocument();
     expect(getCopyright()).toHaveClass('copyright');
@@ -23,14 +23,15 @@ describe('<Copyright />', () => {
     expect(getCopyright()).toHaveTextContent(props.statement);
     expect(getCopyright()).toHaveTextContent(props.children);
 
-    rerender({ statement: undefined, year: undefined, ...otherProps });
+    expect(getCopyright()).toHaveAttribute('id', otherProps.id);
+    expect(getCopyright()).toHaveClass(otherProps.className);
+    expect(getCopyright()).toHaveStyle(otherProps.style);
+
+    rerender({ statement: undefined, year: undefined });
 
     expect(getCopyright()).not.toHaveTextContent(props.statement);
     expect(getCopyright()).toHaveTextContent(
       new Date().getFullYear().toString(),
     );
-    expect(getCopyright()).toHaveAttribute('id', otherProps.id);
-    expect(getCopyright()).toHaveClass(otherProps.className);
-    expect(getCopyright()).toHaveStyle(otherProps.style);
   });
 });
