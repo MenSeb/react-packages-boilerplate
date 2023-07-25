@@ -3,9 +3,10 @@ import { act } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Logo, LogoProps } from '../../src';
 import { createRender, otherProps } from '..';
-import { getImage, getLogo, queryImage } from '.';
+import { getBrand, getImage, getLogo, queryImage } from '.';
 
 const props = {
+  ...otherProps,
   brand: 'brand',
   children: 'children',
   image: 'image',
@@ -17,45 +18,28 @@ const renderLogo = createRender<LogoProps>(Logo, {
 });
 
 describe('<Logo />', () => {
-  it('renders with role link', () => {
-    renderLogo();
-
-    expect(getLogo()).toBeInTheDocument();
-  });
-
-  it('renders with the logo brand', () => {
-    renderLogo();
-
-    expect(getLogo()).toHaveTextContent(props.brand);
-  });
-
-  it('renders with the logo image when provided', () => {
+  it('renders correctly', () => {
     const { rerender } = renderLogo();
 
-    expect(getLogo()).toContainElement(getImage());
+    expect(getLogo()).toBeInTheDocument();
+    expect(getLogo()).toHaveClass('logo');
+    expect(getLogo()).toHaveTextContent(props.children);
+    expect(getLogo()).toHaveAttribute('id', otherProps.id);
+    expect(getLogo()).toHaveClass(otherProps.className);
+    expect(getLogo()).toHaveStyle(otherProps.style);
+
+    expect(getImage()).toHaveClass('logo-image');
     expect(getImage()).toHaveAttribute('src', props.image);
     expect(getImage()).toHaveAttribute('alt', `Logo ${props.brand}`);
+
+    expect(getBrand(props.brand)).toHaveClass('logo-brand');
 
     rerender({ image: undefined });
 
     expect(queryImage()).not.toBeInTheDocument();
   });
 
-  it('renders with children', () => {
-    renderLogo();
-
-    expect(getLogo()).toHaveTextContent(props.children);
-  });
-
-  it('renders with additional props', () => {
-    renderLogo({ props: otherProps });
-
-    expect(getLogo()).toHaveAttribute('id', otherProps.id);
-    expect(getLogo()).toHaveClass(otherProps.className);
-    expect(getLogo()).toHaveStyle(otherProps.style);
-  });
-
-  it('redirects to the home page', async () => {
+  it('redirects correctly', async () => {
     renderLogo();
 
     const user = userEvent.setup();
