@@ -3,38 +3,27 @@ import { createRender, otherProps } from '..';
 import { getItems, getList, items } from '.';
 
 const props = {
+  ...otherProps,
   children: items,
 };
 
 const renderList = createRender<ListOProps>(ListO, { props });
 
 describe('<ListO />', () => {
-  it('renders with role list', () => {
+  it('renders correctly', () => {
     renderList();
 
     expect(getList()).toBeInTheDocument();
-  });
-
-  it('renders with tag ol', () => {
-    renderList();
-
+    expect(getList()).toHaveClass('list list-ordered');
     expect(getList().tagName.toLowerCase()).toBe('ol');
-  });
-
-  it('renders with items', () => {
-    renderList();
 
     getItems().forEach((item, index) => {
       expect(getList()).toContainElement(item);
       expect(item).toHaveTextContent(props.children[index]);
     });
-  });
 
-  it('renders with additional props', () => {
-    renderList({ props: otherProps });
-
-    expect(getList()).toHaveAttribute('id', otherProps.id);
-    expect(getList()).toHaveClass(otherProps.className);
-    expect(getList()).toHaveStyle(otherProps.style);
+    expect(getList()).toHaveAttribute('id', props.id);
+    expect(getList()).toHaveClass(props.className);
+    expect(getList()).toHaveStyle(props.style);
   });
 });

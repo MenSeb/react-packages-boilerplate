@@ -3,28 +3,23 @@ import { createRender, otherProps } from '..';
 import { getItems, items } from '.';
 
 const props = {
+  ...otherProps,
   children: items,
 };
 
 const renderItems = createRender<ListItemsProps>(ListItems, { props });
 
 describe('<ListItems />', () => {
-  it('renders with items', () => {
+  it('renders correctly', () => {
     renderItems();
 
     getItems().forEach((item, index) => {
       expect(item).toBeInTheDocument();
+      expect(item).toHaveClass('list-item');
       expect(item).toHaveTextContent(props.children[index]);
-    });
-  });
-
-  it('renders with additional props', () => {
-    renderItems({ props: otherProps });
-
-    getItems().forEach((item) => {
-      expect(item).toHaveAttribute('id', otherProps.id);
-      expect(item).toHaveClass(otherProps.className);
-      expect(item).toHaveStyle(otherProps.style);
+      expect(item).toHaveAttribute('id', props.id);
+      expect(item).toHaveClass(props.className);
+      expect(item).toHaveStyle(props.style);
     });
   });
 });
