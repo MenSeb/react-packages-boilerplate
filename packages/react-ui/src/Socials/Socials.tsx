@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ListU, Navigation, NavigationProps } from '..';
+import { ListUnordered, Navigation, NavigationProps } from '..';
 
 export type Social = {
   /**
@@ -30,13 +30,13 @@ export type SocialsProps = NavigationProps & {
 export function Socials({ socials, ...props }: SocialsProps) {
   return (
     <Navigation {...props}>
-      <ListU>
+      <ListUnordered>
         {socials.map(({ link, icon: Icon }) => (
           <a href={link} key={link} rel="noopener noreferrer" target="_blank">
             {<Icon />}
           </a>
         ))}
-      </ListU>
+      </ListUnordered>
     </Navigation>
   );
 }

@@ -1,4 +1,4 @@
-import { ListO, ListOProps } from '../../src';
+import { ListUnordered, ListUnorderedProps } from '../../src';
 import { createRender, otherProps } from '..';
 import { getItems, getList, items } from '.';
 
@@ -7,15 +7,15 @@ const props = {
   children: items,
 };
 
-const renderList = createRender<ListOProps>(ListO, { props });
+const renderList = createRender<ListUnorderedProps>(ListUnordered, { props });
 
-describe('<ListO />', () => {
+describe('<ListUnordered />', () => {
   it('renders correctly', () => {
     renderList();
 
     expect(getList()).toBeInTheDocument();
-    expect(getList()).toHaveClass('list list-ordered');
-    expect(getList().tagName.toLowerCase()).toBe('ol');
+    expect(getList()).toHaveClass('list list-unordered');
+    expect(getList().tagName.toLowerCase()).toBe('ul');
 
     getItems().forEach((item, index) => {
       expect(getList()).toContainElement(item);

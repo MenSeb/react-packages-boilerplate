@@ -3,9 +3,9 @@ import { classNames, ClassNames } from '..';
 import { ListItems } from '.';
 
 /**
- * The props types for component {@link ListU}
+ * The props types for component {@link ListUnordered}
  */
-export type ListUProps = React.ComponentProps<'ul'> & {
+export type ListUnorderedProps = React.ComponentProps<'ul'> & {
   children: React.ReactNode[];
 } & ClassNames;
 
@@ -14,7 +14,11 @@ export type ListUProps = React.ComponentProps<'ul'> & {
  *
  * @category Component
  */
-export function ListU({ children, className, ...props }: ListUProps) {
+export function ListUnordered({
+  children,
+  className,
+  ...props
+}: ListUnorderedProps) {
   return (
     <ul {...props} className={classNames('list list-unordered', className)}>
       <ListItems>{children}</ListItems>

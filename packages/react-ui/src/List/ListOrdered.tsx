@@ -3,9 +3,9 @@ import { classNames, ClassNames } from '..';
 import { ListItems } from '.';
 
 /**
- * The props types for component {@link ListO}
+ * The props types for component {@link ListOrdered}
  */
-export type ListOProps = React.ComponentProps<'ol'> & {
+export type ListOrderedProps = React.ComponentProps<'ol'> & {
   children: React.ReactNode[];
 } & ClassNames;
 
@@ -14,7 +14,11 @@ export type ListOProps = React.ComponentProps<'ol'> & {
  *
  * @category Component
  */
-export function ListO({ children, className, ...props }: ListOProps) {
+export function ListOrdered({
+  children,
+  className,
+  ...props
+}: ListOrderedProps) {
   return (
     <ol {...props} className={classNames('list list-ordered', className)}>
       <ListItems>{children}</ListItems>

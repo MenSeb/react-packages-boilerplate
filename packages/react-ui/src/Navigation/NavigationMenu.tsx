@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 import { Navigation, NavigationProps } from '.';
-import { ListU } from '..';
+import { ListUnordered } from '..';
 
 /**
  * The props types for component {@link NavigationMenu}
@@ -18,11 +18,11 @@ export type NavigationMenuProps = NavigationProps & {
 export function NavigationMenu({ links, ...props }: NavigationMenuProps) {
   return (
     <Navigation {...props}>
-      <ListU>
+      <ListUnordered>
         {links.map((link, index) => (
           <NavLink {...link} key={index} />
         ))}
-      </ListU>
+      </ListUnordered>
     </Navigation>
   );
 }
