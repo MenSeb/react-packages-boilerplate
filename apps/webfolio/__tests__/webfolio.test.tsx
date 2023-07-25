@@ -23,7 +23,7 @@ describe('<WebFolio />', () => {
     );
 
     it('renders with header', () => {
-      expect(screen.getByRole('banner')).toBeInTheDocument();
+      expect(screen.getAllByRole('banner')[0]).toBeInTheDocument();
     });
 
     it('renders with main', () => {
