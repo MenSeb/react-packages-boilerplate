@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { classNames, ClassNames } from '..';
 
 /**
  * The props types for component {@link Signature}
@@ -16,7 +17,7 @@ export type SignatureProps = React.ComponentProps<'div'> & {
    * The copyright statement (e.g. Powered by).
    */
   statement: string;
-};
+} & ClassNames;
 
 /**
  * Renders a signature notice.
@@ -26,16 +27,26 @@ export type SignatureProps = React.ComponentProps<'div'> & {
 export function Signature({
   author,
   children,
+  className,
   link,
   statement,
   ...props
 }: SignatureProps) {
   return (
-    <div {...props} data-testid="signature">
-      <span>{statement}</span>
-      <span>
+    <div
+      {...props}
+      className={classNames('signature', className)}
+      data-testid="signature"
+    >
+      <span className="signature-statement">{statement}</span>
+      <span className="signature-author">
         {link ? (
-          <a href={link} rel="noopener noreferrer" target="_blank">
+          <a
+            className="signature-link"
+            href={link}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             {author}
           </a>
         ) : (
