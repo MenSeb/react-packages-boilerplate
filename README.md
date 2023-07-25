@@ -46,3 +46,11 @@
 </a>
 
 </div>
+
+## Scripts
+
+```bash
+yarn serve --scope=@apps/webfolio
+~~
+yarn show
+```
