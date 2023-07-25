@@ -3,15 +3,17 @@
   color: var(--color-text);
   line-height: 1.5;
   padding: 5vmin;
-  width: 100%;
-  justify-content: space-evenly;
 
-  &,
+  .wrapper,
   .copyright,
   .signature {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .wrapper {
+    justify-content: space-evenly;
   }
 
   [class*='navigation'] {

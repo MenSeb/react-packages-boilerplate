@@ -35,6 +35,21 @@
 
     img {
       width: 50%;
+      padding-left: 5vmin;
+    }
+
+    @media (width <= 550px) {
+      flex-direction: column;
+
+      img {
+        padding-left: 0;
+        margin-top: 10vmin;
+      }
+
+      .container,
+      img {
+        width: 100%;
+      }
     }
   }
 }
