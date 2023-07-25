@@ -1,5 +1,6 @@
 export * from './CallToAction';
 export * from './Copyright';
+export * from './Heading';
 export * from './List';
 export * from './Logo';
 export * from './Navigation';
