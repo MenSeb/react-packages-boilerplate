@@ -1,3 +1,4 @@
+export * from './classnames';
 export * from './CallToAction';
 export * from './Copyright';
 export * from './Heading';
