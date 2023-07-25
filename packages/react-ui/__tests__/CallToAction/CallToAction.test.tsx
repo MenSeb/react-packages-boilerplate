@@ -16,13 +16,21 @@ const renderCallToAction = createRender<CallToActionProps>(CallToAction, {
 });
 
 describe('<CallToAction />', () => {
-  it('renders with role link', () => {
-    renderCallToAction();
+  it('renders correctly', () => {
+    const { rerender } = renderCallToAction();
 
     expect(getCallToAction()).toBeInTheDocument();
+    expect(getCallToAction()).toHaveClass('cta');
+    expect(getCallToAction()).toHaveTextContent(props.children);
+
+    rerender(otherProps);
+
+    expect(getCallToAction()).toHaveAttribute('id', otherProps.id);
+    expect(getCallToAction()).toHaveClass(otherProps.className);
+    expect(getCallToAction()).toHaveStyle(otherProps.style);
   });
 
-  it('renders with a link to the path provided', async () => {
+  it('redirects correctly', async () => {
     renderCallToAction();
 
     const user = userEvent.setup();
@@ -32,19 +40,5 @@ describe('<CallToAction />', () => {
     });
 
     expect(location.href).toBe(`http://localhost/${props.to}`);
-  });
-
-  it('renders with children', () => {
-    renderCallToAction();
-
-    expect(getCallToAction()).toHaveTextContent(props.children);
-  });
-
-  it('renders with additional props', () => {
-    renderCallToAction({ props: otherProps });
-
-    expect(getCallToAction()).toHaveAttribute('id', otherProps.id);
-    expect(getCallToAction()).toHaveClass(otherProps.className);
-    expect(getCallToAction()).toHaveStyle(otherProps.style);
   });
 });
