@@ -1,22 +1,24 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { CallToAction, Heading, Text } from '@packages/react-ui';
 
 export default function Home() {
   return (
     <section aria-label="home page" className="page-home">
       <header>
         <div className="container">
-          <h1 className="title">
+          <Heading className="title">
             <span className="title-span">Application, Website &</span>
             <span className="title-span">WordPress Developper</span>
-          </h1>
-          <p className="subtitle">
+          </Heading>
+          <Text className="subtitle">
             Let&apos;s bring your ideas to life in the digital realm!
-          </p>
-          <Link to="contact">get in touch</Link>
-          <Link to="services">see services</Link>
+          </Text>
+          <CallToAction to="contact">get in touch</CallToAction>
+          <CallToAction to="services">see services</CallToAction>
         </div>
-        <img alt="web development" src="assets/banner-home.svg" />
+        <div className="container">
+          <img alt="web development" src="assets/banner-home.svg" />
+        </div>
       </header>
     </section>
   );
