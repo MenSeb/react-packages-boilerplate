@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <Container className="wrapper">
-        <Logo className="logo" brand="MenSeb" image="logo.svg" />
+        <Logo className="link" brand="MenSeb" image="logo.svg" />
         <NavigationMain />
       </Container>
     </header>
