@@ -27,6 +27,7 @@ describe('<SeparatorColors />', () => {
     renderSeparator();
 
     expect(getSeparator()).toBeInTheDocument();
+    expect(getSeparator()).toHaveClass('separator-colors');
   });
 
   describe('<svg />', () => {

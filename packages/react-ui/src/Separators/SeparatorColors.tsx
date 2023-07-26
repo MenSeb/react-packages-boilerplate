@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Separator, SeparatorProps } from './';
+import { classNames } from '..';
 import {
   createPathCommands,
   screenRatioFull,
@@ -59,6 +60,7 @@ export type SeparatorColorsProps = SeparatorProps & {
  * @category Component
  */
 export function SeparatorColors({
+  className,
   colorBackground,
   colorForeground,
   numberOfWaves,
@@ -79,7 +81,7 @@ export function SeparatorColors({
   });
 
   return (
-    <Separator {...props}>
+    <Separator {...props} className={classNames('separator-colors', className)}>
       <svg
         height="100%"
         role="presentation"
