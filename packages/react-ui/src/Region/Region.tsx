@@ -2,32 +2,32 @@ import * as React from 'react';
 import { classNames, ClassNames, Labelled } from '..';
 
 /**
- * The props types for component {@link Navigation}
+ * The props types for component {@link Region}
  */
-export type NavigationProps = React.ComponentProps<'nav'> &
+export type RegionProps = React.ComponentProps<'section'> &
   Labelled &
   ClassNames;
 
 /**
- * Renders a navigation.
+ * Renders a region.
  *
  * @category Component
  */
-export function Navigation({
+export function Region({
   children,
   className,
   label,
   labelledby,
   ...props
-}: NavigationProps) {
+}: RegionProps) {
   return (
-    <nav
+    <section
       {...props}
-      className={classNames('navigation', className)}
+      className={classNames('region', className)}
       aria-label={label}
       aria-labelledby={labelledby}
     >
       {children}
-    </nav>
+    </section>
   );
 }
