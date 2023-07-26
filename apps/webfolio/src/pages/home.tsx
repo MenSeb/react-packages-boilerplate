@@ -27,7 +27,10 @@ export default function Home() {
           </CallToAction>
           <CallToAction to="services">see services</CallToAction>
         </Container>
-        <Image alt="web development" src="assets/banner-home.svg" />
+        <Image
+          alt="web development"
+          src="assets/svgo/undraw_progressive_app.svg"
+        />
       </header>
 
       <Separator />
@@ -47,7 +50,7 @@ export default function Home() {
           </Text>
           <CallToAction to="projects">see projects</CallToAction>
         </Container>
-        <Image alt="projects" src="projects.svg" />
+        <Image alt="projects" src="assets/svgo/undraw_feeling_proud.svg" />
       </Region>
 
       <Separator />
@@ -60,8 +63,10 @@ export default function Home() {
           </Text>
           <CallToAction to="blog">see blog</CallToAction>
         </Container>
-        <Image alt="blog" src="blog.svg" />
+        <Image alt="blog" src="assets/svgo/undraw_online_learning.svg" />
       </Region>
+
+      <Separator />
     </Page>
   );
 }
