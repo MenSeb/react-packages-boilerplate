@@ -2,11 +2,25 @@ import * as React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { classNames, ClassNames } from '..';
 
+/**
+ * The props types for component {@link Logo}
+ */
 export type LogoProps = Omit<LinkProps, 'to'> & {
+  /**
+   * The logo brand.
+   */
   brand: string;
+  /**
+   * The logo image.
+   */
   image?: string;
 } & ClassNames;
 
+/**
+ * Renders a logo with image and brand.
+ *
+ * @category Component
+ */
 export function Logo({
   brand,
   children,
