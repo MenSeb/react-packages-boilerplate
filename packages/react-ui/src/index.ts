@@ -2,6 +2,7 @@ export * from './CallToAction';
 export * from './Container';
 export * from './Copyright';
 export * from './Heading';
+export * from './Image';
 export * from './List';
 export * from './Logo';
 export * from './Navigation';
