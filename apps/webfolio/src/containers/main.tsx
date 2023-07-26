@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Outlet } from 'react-router-dom';
+import { Container } from '@packages/react-ui';
 
 export default function Main() {
   return (
     <main>
-      <div className="wrapper">
+      <Container className="wrapper">
         <Outlet />
-      </div>
+      </Container>
     </main>
   );
 }

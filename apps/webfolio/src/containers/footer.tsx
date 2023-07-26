@@ -4,12 +4,12 @@ import {
   NavigationMain,
   NavigationSocials,
 } from '../components';
-import { Copyright, Signature } from '@packages/react-ui';
+import { Container, Copyright, Signature } from '@packages/react-ui';
 
 export default function Footer() {
   return (
     <footer>
-      <div className="wrapper">
+      <Container className="wrapper">
         <NavigationSocials />
         <NavigationMain />
         <NavigationInfos />
@@ -24,7 +24,7 @@ export default function Footer() {
           link="https://www.linkedin.com/in/menseb/"
           statement="Proudly made by"
         />
-      </div>
+      </Container>
     </footer>
   );
 }
