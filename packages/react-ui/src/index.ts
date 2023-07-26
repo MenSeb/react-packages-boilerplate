@@ -5,6 +5,7 @@ export * from './Heading';
 export * from './List';
 export * from './Logo';
 export * from './Navigation';
+export * from './Region';
 export * from './Separators';
 export * from './Signature';
 export * from './Socials';
