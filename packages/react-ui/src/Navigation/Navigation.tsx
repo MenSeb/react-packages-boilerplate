@@ -1,27 +1,11 @@
 import * as React from 'react';
-import { classNames, ClassNames } from '..';
-
-export type Label = {
-  labelledby?: never;
-  /**
-   * The label of the navigation.
-   */
-  label: string;
-};
-
-export type Labelledby = {
-  label?: never;
-  /**
-   * The id of the element which label the navigation.
-   */
-  labelledby: string;
-};
+import { classNames, ClassNames, Labelled } from '..';
 
 /**
  * The props types for component {@link Navigation}
  */
 export type NavigationProps = React.ComponentProps<'nav'> &
-  (Label | Labelledby) &
+  Labelled &
   ClassNames;
 
 /**

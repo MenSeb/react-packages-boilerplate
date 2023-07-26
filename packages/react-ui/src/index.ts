@@ -1,4 +1,3 @@
-export * from './classnames';
 export * from './CallToAction';
 export * from './Container';
 export * from './Copyright';
@@ -10,3 +9,4 @@ export * from './Separators';
 export * from './Signature';
 export * from './Socials';
 export * from './Text';
+export * from './utilities';
