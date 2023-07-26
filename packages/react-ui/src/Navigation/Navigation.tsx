@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { classNames, ClassNames } from '..';
 
 export type Label = {
   labelledby?: never;
@@ -20,7 +21,8 @@ export type Labelledby = {
  * The props types for component {@link Navigation}
  */
 export type NavigationProps = React.ComponentProps<'nav'> &
-  (Label | Labelledby);
+  (Label | Labelledby) &
+  ClassNames;
 
 /**
  * Renders a navigation.
@@ -29,12 +31,18 @@ export type NavigationProps = React.ComponentProps<'nav'> &
  */
 export function Navigation({
   children,
+  className,
   label,
   labelledby,
   ...props
 }: NavigationProps) {
   return (
-    <nav {...props} aria-label={label} aria-labelledby={labelledby}>
+    <nav
+      {...props}
+      className={classNames('navigation', className)}
+      aria-label={label}
+      aria-labelledby={labelledby}
+    >
       {children}
     </nav>
   );

@@ -2,23 +2,23 @@ import { Separator, SeparatorProps } from '../../src';
 import { createRender, otherProps } from '../';
 import { getSeparator } from '.';
 
-const renderSeparator = createRender<SeparatorProps>(Separator);
+const props = {
+  children: 'children',
+};
+
+const renderSeparator = createRender<SeparatorProps>(Separator, { props });
 
 describe('<Separator />', () => {
-  it('renders with role separator', () => {
-    renderSeparator();
+  it('renders correctly', () => {
+    const { rerender } = renderSeparator({ props: otherProps });
 
     expect(getSeparator()).toBeInTheDocument();
-  });
-
-  it('renders with children', () => {
-    renderSeparator({ props: { children: 'children' } });
-
     expect(getSeparator()).toHaveTextContent('children');
-  });
+    expect(getSeparator()).toHaveClass('separator');
 
-  it('renders with attribute aria-orientation when provided', () => {
-    const { rerender } = renderSeparator();
+    expect(getSeparator()).toHaveAttribute('id', otherProps.id);
+    expect(getSeparator()).toHaveClass(otherProps.className);
+    expect(getSeparator()).toHaveStyle(otherProps.style);
 
     expect(getSeparator()).not.toHaveAttribute('aria-orientation');
 
@@ -29,13 +29,5 @@ describe('<Separator />', () => {
     rerender({ orientation: 'vertical' });
 
     expect(getSeparator()).toHaveAttribute('aria-orientation', 'vertical');
-  });
-
-  it('renders with additional props', () => {
-    renderSeparator({ props: otherProps });
-
-    expect(getSeparator()).toHaveAttribute('id', otherProps.id);
-    expect(getSeparator()).toHaveClass(otherProps.className);
-    expect(getSeparator()).toHaveStyle(otherProps.style);
   });
 });

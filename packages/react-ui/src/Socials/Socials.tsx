@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ListU, Navigation, NavigationProps } from '..';
+import {
+  classNames,
+  ClassNames,
+  ListUnordered,
+  Navigation,
+  NavigationProps,
+} from '..';
 
 export type Social = {
   /**
@@ -20,23 +26,32 @@ export type SocialsProps = NavigationProps & {
    * The socials links.
    */
   socials: Social[];
-};
+} & ClassNames;
 
 /**
  * Renders a social follow navigation.
  *
  * @category Component
  */
-export function Socials({ socials, ...props }: SocialsProps) {
+export function Socials({ className, socials, ...props }: SocialsProps) {
   return (
-    <Navigation {...props}>
-      <ListU>
+    <Navigation
+      {...props}
+      className={classNames('navigation-socials', className)}
+    >
+      <ListUnordered className="navigation-socials-list">
         {socials.map(({ link, icon: Icon }) => (
-          <a href={link} key={link} rel="noopener noreferrer" target="_blank">
-            {<Icon />}
+          <a
+            className="navigation-socials-link"
+            href={link}
+            key={link}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {<Icon className="navigation-socials-icon" />}
           </a>
         ))}
-      </ListU>
+      </ListUnordered>
     </Navigation>
   );
 }

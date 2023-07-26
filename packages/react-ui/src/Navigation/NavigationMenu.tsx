@@ -1,28 +1,32 @@
 import * as React from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 import { Navigation, NavigationProps } from '.';
-import { ListU } from '..';
+import { classNames, ClassNames, ListUnordered } from '..';
 
 /**
  * The props types for component {@link NavigationMenu}
  */
 export type NavigationMenuProps = NavigationProps & {
   links: NavLinkProps[];
-};
+} & ClassNames;
 
 /**
  * Renders a navigation menu.
  *
  * @category Component
  */
-export function NavigationMenu({ links, ...props }: NavigationMenuProps) {
+export function NavigationMenu({
+  className,
+  links,
+  ...props
+}: NavigationMenuProps) {
   return (
-    <Navigation {...props}>
-      <ListU>
+    <Navigation {...props} className={classNames('navigation-menu', className)}>
+      <ListUnordered className="navigation-menu-list">
         {links.map((link, index) => (
-          <NavLink {...link} key={index} />
+          <NavLink {...link} className="navigation-menu-link" key={index} />
         ))}
-      </ListU>
+      </ListUnordered>
     </Navigation>
   );
 }

@@ -5,15 +5,15 @@ export function getNavigation() {
 }
 
 export function getList() {
-  return screen.getByRole('list');
+  return within(getNavigation()).getByRole('list');
 }
 
 export function getItems() {
-  return screen.getAllByRole('listitem');
+  return within(getList()).getAllByRole('listitem');
 }
 
 export function getLinks() {
-  return screen.getAllByRole('link');
+  return within(getList()).getAllByRole('link');
 }
 
 export function getLink(item: HTMLElement) {

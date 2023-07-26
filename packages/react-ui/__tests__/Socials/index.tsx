@@ -9,15 +9,15 @@ export function getLink(item: HTMLElement) {
 }
 
 export function getLinks() {
-  return screen.getAllByRole('link');
+  return within(getList()).getAllByRole('link');
 }
 
 export function getList() {
-  return screen.getByRole('list');
+  return within(getSocials()).getByRole('list');
 }
 
 export function getItems() {
-  return screen.getAllByRole('listitem');
+  return within(getList()).getAllByRole('listitem');
 }
 
 export function getIcon(link: HTMLElement) {

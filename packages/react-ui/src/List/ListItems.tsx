@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { ListItem, ListItemProps } from '.';
 
 /**
  * The props types for component {@link ListItems}
  */
-export type ListItemsProps = React.ComponentProps<'li'> & {
+export type ListItemsProps = Omit<ListItemProps, 'children'> & {
   children: React.ReactNode[];
 };
 
@@ -16,9 +17,9 @@ export function ListItems({ children, ...props }: ListItemsProps) {
   return (
     <>
       {React.Children.map(children, (child, index) => (
-        <li {...props} key={index}>
+        <ListItem {...props} key={index}>
           {child}
-        </li>
+        </ListItem>
       ))}
     </>
   );

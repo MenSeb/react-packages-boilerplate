@@ -99,6 +99,9 @@ export default function pluginLogo(app: Application): void {
     for (const { url } of event.urls) {
       if (!url.includes(PATH_MODULES)) continue;
 
+      // fix conflict and remove this line
+      if (url.includes('classNames')) continue;
+
       const module = extractModule(url);
       const workspace = extractWorkspace(url);
       const path = createURL(PATH_LOGOS, workspace);

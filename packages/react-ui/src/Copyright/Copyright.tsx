@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { classNames, ClassNames } from '..';
 
 /**
  * The props types for component {@link Copyright}
@@ -16,7 +17,7 @@ export type CopyrightProps = React.ComponentProps<'div'> & {
    * The copyright year.
    */
   year?: string;
-};
+} & ClassNames;
 
 /**
  * Renders a copyright notice.
@@ -26,12 +27,17 @@ export type CopyrightProps = React.ComponentProps<'div'> & {
 export function Copyright({
   author,
   children,
+  className,
   statement,
   year = new Date().getFullYear().toString(),
   ...props
 }: CopyrightProps) {
   return (
-    <div {...props} data-testid="copyright">
+    <div
+      {...props}
+      className={classNames('copyright', className)}
+      data-testid="copyright"
+    >
       <span>©</span>
       <span>{year}</span>
       <span>{author}</span>
