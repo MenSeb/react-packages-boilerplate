@@ -16,24 +16,24 @@
       width: 50%;
     }
 
-    .title,
-    .subtitle {
+    .heading,
+    .text {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       text-align: center;
     }
 
-    .title-span {
+    .span {
       width: 100%;
     }
 
-    .subtitle {
+    .text {
       width: 100%;
       margin: 5vmin 0;
     }
 
-    img {
+    .image {
       width: 50%;
       padding-left: 5vmin;
     }
@@ -41,13 +41,13 @@
     @media (width <= 550px) {
       flex-direction: column;
 
-      img {
+      .image {
         padding-left: 0;
         margin-top: 10vmin;
       }
 
       .container,
-      img {
+      .image {
         width: 100%;
       }
     }

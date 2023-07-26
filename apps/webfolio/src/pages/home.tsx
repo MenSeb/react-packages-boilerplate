@@ -14,16 +14,14 @@ export default function Home() {
       <header>
         <Container>
           <Heading>
-            <span>Application, Website &</span>
-            <span>WordPress Developper</span>
+            <span className="span">Application, Website &</span>
+            <span className="span">WordPress Developper</span>
           </Heading>
           <Text>Let&apos;s bring your ideas to life in the digital realm!</Text>
           <CallToAction to="contact">get in touch</CallToAction>
           <CallToAction to="services">see services</CallToAction>
         </Container>
-        <Container>
-          <Image alt="web development" src="assets/banner-home.svg" />
-        </Container>
+        <Image alt="web development" src="assets/banner-home.svg" />
       </header>
     </Page>
   );
