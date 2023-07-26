@@ -1,0 +1,26 @@
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  gap: 2.5vmin;
+
+  > * {
+    // margin-bottom: 2.5vmin;
+  }
+
+  &-heading {
+    // width: 100%;
+  }
+
+  &-icon {
+    font-size: 2em;
+    color: var(--color-link);
+  }
+
+  &-text {
+    display: flex;
+    flex: 2;
+  }
+}
