@@ -1,5 +1,6 @@
 export * from './classnames';
 export * from './CallToAction';
+export * from './Container';
 export * from './Copyright';
 export * from './Heading';
 export * from './List';
