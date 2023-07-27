@@ -6,6 +6,7 @@ export * from './Figure';
 export * from './Form';
 export * from './Heading';
 export * from './Image';
+export * from './Input';
 export * from './Link';
 export * from './List';
 export * from './Logo';
