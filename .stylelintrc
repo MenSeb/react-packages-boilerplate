@@ -5,7 +5,7 @@
   ],
   "rules": {
     "max-nesting-depth": [
-      2,
+      3,
       {
         "ignore": ["blockless-at-rules", "pseudo-classes"],
         "ignoreAtRules": ["media"]
