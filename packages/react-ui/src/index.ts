@@ -1,3 +1,4 @@
+export * from './Blockquote';
 export * from './CallToAction';
 export * from './Container';
 export * from './Copyright';
