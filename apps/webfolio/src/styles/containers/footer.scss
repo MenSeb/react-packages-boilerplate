@@ -1,12 +1,10 @@
-footer {
+#root > footer {
   background: var(--color-background);
   color: var(--color-text);
   line-height: 1.5;
   padding: 5vmin;
-  width: 100%;
-  justify-content: space-evenly;
 
-  &,
+  .wrapper,
   .copyright,
   .signature {
     align-items: center;
@@ -14,27 +12,31 @@ footer {
     flex-wrap: wrap;
   }
 
-  [class*='navigation'] {
+  .wrapper {
+    justify-content: space-evenly;
+  }
+
+  .navigation {
     margin-bottom: 5vmin;
     width: 100%;
   }
 
-  .copyright,
-  .signature {
-    justify-content: center;
-
-    @media (width <= 400px) {
-      width: 100%;
-    }
-
-    span {
-      &:not(:first-child) {
-        text-indent: 0.25em;
-      }
-    }
-  }
-
   .signature {
     margin-left: 5vmin;
+  }
+}
+
+.copyright,
+.signature {
+  justify-content: center;
+
+  @media (width <= 400px) {
+    width: 100%;
+  }
+
+  span {
+    &:not(:first-child) {
+      text-indent: 0.25em;
+    }
   }
 }

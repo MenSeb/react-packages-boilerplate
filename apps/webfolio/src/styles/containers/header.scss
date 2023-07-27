@@ -1,14 +1,16 @@
-header {
+#root > header {
   background: var(--color-background);
   color: var(--color-text);
   line-height: 1.5;
   padding: 5vmin;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 
-  [class*='navigation'] {
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .navigation {
     margin-left: 5vmin;
   }
 }

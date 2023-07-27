@@ -1,25 +1,21 @@
-[class*='navigation'] {
-  ul,
-  li,
-  a {
+.navigation {
+  .list,
+  .list-item,
+  [class*='link'] {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  ul {
+  .list {
     flex-wrap: wrap;
   }
 
-  li {
+  .list-item {
     margin: 0 2.5vmin;
   }
 
   svg {
     font-size: 2em;
-  }
-
-  a {
-    text-transform: capitalize;
   }
 }
