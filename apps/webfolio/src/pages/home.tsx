@@ -2,8 +2,10 @@ import * as React from 'react';
 import {
   CallToAction,
   Container,
+  Form,
   Heading,
   Image,
+  Input,
   Page,
   Region,
   Separator,
@@ -50,7 +52,9 @@ export default function Home() {
           <Text>
             Feel free to consult my previous projects and achievements.
           </Text>
-          <CallToAction to="projects">consult projects</CallToAction>
+          <CallToAction emphasize to="projects">
+            consult projects
+          </CallToAction>
         </Container>
         <Image alt="projects" src="assets/svgo/undraw_feeling_proud.svg" />
       </Region>
@@ -63,7 +67,9 @@ export default function Home() {
           <Text>
             Feel free to browse my blog for various web development articles.
           </Text>
-          <CallToAction to="blog">browse blog</CallToAction>
+          <CallToAction emphasize to="blog">
+            browse blog
+          </CallToAction>
         </Container>
         <Image alt="blog" src="assets/svgo/undraw_online_learning.svg" />
       </Region>
@@ -84,6 +90,40 @@ export default function Home() {
       </Region>
 
       <Separator />
+
+      <Region className="region-newsletter newsletter" label="newsletter">
+        <Heading className="newsletter-heading" level={2}>
+          Newsletter
+        </Heading>
+        <Text className="newsletter-text">
+          Get notified of the new articles in my blog, the exclusive promotions
+          on my services and the latest projects brought to life, all
+          conveniently in your inbox.
+        </Text>
+        <Form
+          onSubmit={(e: React.FormEvent) => e.preventDefault()}
+          className="newsletter-form"
+        >
+          <Input
+            className="newsletter-form-input"
+            type="email"
+            placeholder="Your email..."
+          />
+          <Input
+            className="newsletter-form-input"
+            type="text"
+            placeholder="Your name..."
+          />
+          <Input
+            className="newsletter-form-input"
+            type="submit"
+            value="subscribe"
+          />
+          <Text className="newsletter-form-text">
+            You may unsubscribe at any time.
+          </Text>
+        </Form>
+      </Region>
     </Page>
   );
 }
