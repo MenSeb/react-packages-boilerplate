@@ -1,6 +1,7 @@
 #root > main {
   line-height: 1.5;
-  padding: 5vmin;
+  padding: 10vmin 5vmin;
+  overflow-wrap: break-word;
 
   .wrapper {
     display: flex;

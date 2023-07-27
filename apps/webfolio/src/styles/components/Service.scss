@@ -6,21 +6,22 @@
   text-align: center;
   gap: 2.5vmin;
 
-  > * {
-    // margin-bottom: 2.5vmin;
-  }
-
-  &-heading {
-    // width: 100%;
-  }
-
   &-icon {
     font-size: 2em;
     color: var(--color-link);
   }
 
   &-text {
-    display: flex;
-    flex: 2;
+    text-align: center;
+  }
+
+  @media (width <= 600px) {
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 5vmin;
+
+    &-text {
+      width: 100%;
+    }
   }
 }
