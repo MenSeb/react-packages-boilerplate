@@ -5,6 +5,7 @@ export * from './Copyright';
 export * from './Figure';
 export * from './Heading';
 export * from './Image';
+export * from './Link';
 export * from './List';
 export * from './Logo';
 export * from './Navigation';
