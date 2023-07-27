@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   classNames,
   ClassNames,
+  LinkNewTab,
   ListUnordered,
   Navigation,
   NavigationProps,
@@ -35,21 +36,12 @@ export type SocialsProps = NavigationProps & {
  */
 export function Socials({ className, socials, ...props }: SocialsProps) {
   return (
-    <Navigation
-      {...props}
-      className={classNames('navigation-socials', className)}
-    >
-      <ListUnordered className="navigation-socials-list">
+    <Navigation {...props} className={classNames('socials', className)}>
+      <ListUnordered className="socials-list">
         {socials.map(({ link, icon: Icon }) => (
-          <a
-            className="navigation-socials-link"
-            href={link}
-            key={link}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {<Icon className="navigation-socials-icon" />}
-          </a>
+          <LinkNewTab className="socials-link" href={link} key={link}>
+            {<Icon className="socials-icon" />}
+          </LinkNewTab>
         ))}
       </ListUnordered>
     </Navigation>
