@@ -17,13 +17,13 @@ describe('<Socials />', () => {
     renderSocials({ props: otherProps });
 
     expect(getSocials()).toBeInTheDocument();
-    expect(getSocials()).toHaveClass('navigation-socials');
+    expect(getSocials()).toHaveClass('socials');
 
     expect(getSocials()).toHaveAttribute('id', otherProps.id);
     expect(getSocials()).toHaveClass(otherProps.className);
     expect(getSocials()).toHaveStyle(otherProps.style);
 
-    expect(getList()).toHaveClass('navigation-socials-list');
+    expect(getList()).toHaveClass('socials-list');
 
     getItems().forEach((item, index) => {
       const link = getLink(item);
@@ -32,9 +32,9 @@ describe('<Socials />', () => {
       expect(link).toHaveAttribute('href', social.link);
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
       expect(link).toHaveAttribute('target', '_blank');
-      expect(link).toHaveClass('navigation-socials-link');
+      expect(link).toHaveClass('socials-link');
       expect(link).toContainElement(getIcon(link));
-      expect(getIcon(link)).toHaveClass('navigation-socials-icon');
+      expect(getIcon(link)).toHaveClass('socials-icon');
     });
   });
 });
