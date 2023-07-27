@@ -3,6 +3,7 @@ export * from './CallToAction';
 export * from './Container';
 export * from './Copyright';
 export * from './Figure';
+export * from './Form';
 export * from './Heading';
 export * from './Image';
 export * from './Link';
