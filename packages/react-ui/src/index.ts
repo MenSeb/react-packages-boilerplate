@@ -2,6 +2,7 @@ export * from './Blockquote';
 export * from './CallToAction';
 export * from './Container';
 export * from './Copyright';
+export * from './Figure';
 export * from './Heading';
 export * from './Image';
 export * from './List';
