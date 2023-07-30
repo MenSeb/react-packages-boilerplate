@@ -1,37 +1,28 @@
 import * as React from 'react';
-import {
-  CallToAction,
-  Container,
-  Heading,
-  Image,
-  Page,
-  Region,
-  Separator,
-  Text,
-} from '@packages/react-ui';
+import * as UI from '@packages/react-ui';
 
 export default function PageContact() {
   return (
-    <Page label="contact page" className="page-contact">
-      <header>
-        <Container>
-          <Heading>Contact</Heading>
-          <Text>I look forward to hearing about your project. </Text>
-          <CallToAction emphasize to="/contact">
+    <UI.Page label="contact page" className="page-contact">
+      <UI.Header>
+        <UI.Container className="content">
+          <UI.Heading>Contact</UI.Heading>
+          <UI.Text>I look forward to hearing about your project.</UI.Text>
+          <UI.CallToAction emphasize to="/contact">
             get in touch
-          </CallToAction>
-        </Container>
-        <Image
+          </UI.CallToAction>
+        </UI.Container>
+        <UI.Image
           alt="contact informations"
           src="assets/svgo/undraw_contact_us.svg"
         />
-      </header>
+      </UI.Header>
 
-      <Separator />
+      <UI.Separator />
 
-      <Region className="region-contact" label="contact">
-        <Heading level={2}>Contact me</Heading>
-      </Region>
-    </Page>
+      <UI.Region className="region-contact" label="contact">
+        <UI.Heading level={2}>Contact me</UI.Heading>
+      </UI.Region>
+    </UI.Page>
   );
 }

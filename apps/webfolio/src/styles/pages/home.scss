@@ -8,28 +8,9 @@
 
   .header {
     .span {
+      display: flex;
       width: 100%;
     }
-
-    // .text {
-    //   width: 100%;
-    // }
-
-    // .image {
-    //   max-height: 50vmin;
-    // }
-
-    // .ctas {
-    //   display: flex;
-    //   width: 100%;
-    //   justify-content: space-evenly;
-    // }
-  }
-
-  .separator {
-    margin: calc(var(--spacing) * 2) 0;
-    border: 1px solid var(--color-text);
-    width: 75%;
   }
 
   .region-services {

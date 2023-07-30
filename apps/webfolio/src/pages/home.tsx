@@ -1,129 +1,124 @@
 import * as React from 'react';
-import {
-  CallToAction,
-  Container,
-  Form,
-  Heading,
-  Image,
-  Input,
-  Page,
-  Region,
-  Separator,
-  Text,
-} from '@packages/react-ui';
+import * as UI from '@packages/react-ui';
 import { About, Services } from '../components';
 import { SERVICES } from '../utilities/services';
 
 export default function Home() {
   return (
-    <Page label="home page" className="page-home">
-      <header>
-        <Container>
-          <Heading>
+    <UI.Page label="home page" className="page-home">
+      <UI.Header>
+        <UI.Container className="content">
+          <UI.Heading>
             <span className="span">Application, Website &</span>
             <span className="span">WordPress Developper</span>
-          </Heading>
-          <Text>Let&apos;s bring your ideas to life in the digital realm!</Text>
-          <Container className="ctas">
-            <CallToAction emphasize to="/contact">
+          </UI.Heading>
+          <UI.Text>
+            Let&apos;s bring your ideas to life in the digital realm!
+          </UI.Text>
+          <UI.Container className="ctas">
+            <UI.CallToAction emphasize to="/contact">
               get in touch
-            </CallToAction>
-            <CallToAction to="/services">see services</CallToAction>
-          </Container>
-        </Container>
-        <Image
+            </UI.CallToAction>
+            <UI.CallToAction to="/services">see services</UI.CallToAction>
+          </UI.Container>
+        </UI.Container>
+        <UI.Image
           alt="web development"
           src="assets/svgo/undraw_progressive_app.svg"
         />
-      </header>
+      </UI.Header>
 
-      <Separator />
+      <UI.Separator />
 
-      <Region className="region-services" label="services">
-        <Heading level={2}>Some of my services</Heading>
+      <UI.Region className="region-services" label="services">
+        <UI.Heading level={2}>Some of my services</UI.Heading>
         <Services services={SERVICES.slice(0, 3)} />
-      </Region>
+      </UI.Region>
 
-      <Separator />
+      <UI.Separator />
 
-      <Region className="region-projects" label="projects">
-        <Container>
-          <Heading level={2}>Learn why people put trust in my work!</Heading>
-          <Text>
+      <UI.Region className="region-projects" label="projects">
+        <UI.Container>
+          <UI.Heading level={2}>
+            Learn why people put trust in my work!
+          </UI.Heading>
+          <UI.Text>
             Feel free to consult my previous projects and achievements.
-          </Text>
-          <CallToAction emphasize to="/projects">
+          </UI.Text>
+          <UI.CallToAction emphasize to="/projects">
             consult projects
-          </CallToAction>
-        </Container>
-        <Image alt="projects" src="assets/svgo/undraw_feeling_proud.svg" />
-      </Region>
+          </UI.CallToAction>
+        </UI.Container>
+        <UI.Image alt="projects" src="assets/svgo/undraw_feeling_proud.svg" />
+      </UI.Region>
 
-      <Separator />
+      <UI.Separator />
 
-      <Region className="region-blog" label="blog">
-        <Container>
-          <Heading level={2}>Eager to learn about web development?</Heading>
-          <Text>
+      <UI.Region className="region-blog" label="blog">
+        <UI.Container>
+          <UI.Heading level={2}>
+            Eager to learn about web development?
+          </UI.Heading>
+          <UI.Text>
             Feel free to browse my blog for various web development articles.
-          </Text>
-          <CallToAction emphasize to="/blog">
+          </UI.Text>
+          <UI.CallToAction emphasize to="/blog">
             browse blog
-          </CallToAction>
-        </Container>
-        <Image alt="blog" src="assets/svgo/undraw_online_learning.svg" />
-      </Region>
+          </UI.CallToAction>
+        </UI.Container>
+        <UI.Image alt="blog" src="assets/svgo/undraw_online_learning.svg" />
+      </UI.Region>
 
-      <Separator />
+      <UI.Separator />
 
-      <Region className="region-about" label="about">
+      <UI.Region className="region-about" label="about">
         <About
           author="Sébastien Menard"
           image="assets/svgo/undraw_programming.svg"
           title="Something about me"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et malesuada libero. Duis in metus erat. Vivamus accumsan mi ac nibh dapibus placerat. Maecenas facilisis ex eu magna finibus, at porta nulla vehicula."
         >
-          <CallToAction className="about-cta" emphasize to="/about">
+          <UI.CallToAction className="about-cta" emphasize to="/about">
             about me
-          </CallToAction>
+          </UI.CallToAction>
         </About>
-      </Region>
+      </UI.Region>
 
-      <Separator />
+      <UI.Separator />
 
-      <Region className="region-newsletter newsletter" label="newsletter">
-        <Heading className="newsletter-heading" level={2}>
+      <UI.Region className="region-newsletter newsletter" label="newsletter">
+        <UI.Heading className="newsletter-heading" level={2}>
           Newsletter
-        </Heading>
-        <Text className="newsletter-text">
+        </UI.Heading>
+        <UI.Text className="newsletter-text">
           Get notified of the new articles in my blog, the exclusive promotions
           on my services and the latest projects brought to life, all
           conveniently in your inbox.
-        </Text>
-        <Form
+        </UI.Text>
+        <UI.Form
           onSubmit={(e: React.FormEvent) => e.preventDefault()}
           className="newsletter-form"
         >
-          <Input
+          <UI.Input
             className="newsletter-form-input"
             type="email"
             placeholder="Your email..."
           />
-          <Input
+          <UI.Input
             className="newsletter-form-input"
             type="text"
             placeholder="Your name..."
           />
-          <Input
+          <UI.Input
             className="newsletter-form-input"
             type="submit"
             value="subscribe"
           />
-          <Text className="newsletter-form-text">
+          <UI.Text className="newsletter-form-text">
             You may unsubscribe at any time.
-          </Text>
-        </Form>
-      </Region>
-    </Page>
+          </UI.Text>
+        </UI.Form>
+      </UI.Region>
+    </UI.Page>
   );
 }

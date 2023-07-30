@@ -1,42 +1,33 @@
 import * as React from 'react';
-import {
-  CallToAction,
-  Container,
-  Heading,
-  Image,
-  Page,
-  Region,
-  Separator,
-  Text,
-} from '@packages/react-ui';
+import * as UI from '@packages/react-ui';
 // import { Projects } from '../components';
 // import { PROJECTS } from '../utilities/projects';
 
 export default function PageProjects() {
   return (
-    <Page label="projects page" className="page-projects">
-      <header>
-        <Container>
-          <Heading>projects</Heading>
-          <Text>
+    <UI.Page label="projects page" className="page-projects">
+      <UI.Header>
+        <UI.Container className="content">
+          <UI.Heading>projects</UI.Heading>
+          <UI.Text>
             I work diligently to ensure your project becomes a reality.
-          </Text>
-          <CallToAction emphasize to="/contact">
+          </UI.Text>
+          <UI.CallToAction emphasize to="/contact">
             get in touch
-          </CallToAction>
-        </Container>
-        <Image
+          </UI.CallToAction>
+        </UI.Container>
+        <UI.Image
           alt="working closely with client"
           src="assets/svgo/undraw_online_stats.svg"
         />
-      </header>
+      </UI.Header>
 
-      <Separator />
+      <UI.Separator />
 
-      <Region className="region-projects" label="projects">
-        <Heading level={2}>Achievements I did</Heading>
+      <UI.Region className="region-projects" label="projects">
+        <UI.Heading level={2}>Achievements I did</UI.Heading>
         {/* <Projects projects={PROJECTS} /> */}
-      </Region>
-    </Page>
+      </UI.Region>
+    </UI.Page>
   );
 }

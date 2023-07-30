@@ -1,14 +1,16 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
 .header:not(.banner) {
   width: 100%;
   display: flex;
   gap: var(--spacing);
 
-  .container,
+  .content,
   .image {
     width: calc(50% - calc(var(--spacing) / 2));
   }
 
-  .container {
+  .content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,15 +19,25 @@
     text-align: center;
   }
 
+  .image {
+    max-height: 50vmin;
+  }
+
   .heading {
     text-transform: uppercase;
   }
 
+  .ctas {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
   @media (width < breakpoint(md)) {
-    flex-direction: column-reverse;
+    flex-direction: column-reverse !important;
     gap: calc(var(--spacing) * 2);
 
-    .container,
+    .content,
     .image {
       width: 100%;
     }
