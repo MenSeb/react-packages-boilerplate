@@ -1,35 +1,6 @@
 @use 'sass:map';
 @use 'sass:math';
 @use 'error';
-@use 'number';
-@use 'unit';
-
-@function clamped(
-  $value-min,
-  $value-max,
-  $breakpoint-min,
-  $breakpoint-max,
-  $unit-value,
-  $unit-slope,
-  $decimals: 2
-) {
-  $slope: math.div($value-max - $value-min, $breakpoint-max - $breakpoint-min);
-  $intercept: $value-min - $slope * $breakpoint-min;
-  $value-slope: number.to-fixed(
-    unit.convert(unit.strip($slope) * 100, $unit-slope),
-    $decimals
-  );
-  $value-intercept: number.to-fixed(
-    unit.convert($intercept, $unit-value),
-    $decimals
-  );
-
-  @return clamp(
-    #{unit.convert($value-min, $unit-value)},
-    #{$value-slope} + #{$value-intercept},
-    #{unit.convert($value-max, $unit-value)}
-  );
-}
 
 @function map-getter($map, $key) {
   @if map.has-key($map, $key) {

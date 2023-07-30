@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use './breakpoints.scss' as *;
+
+$fluid: () !default;
+$fluid: map.merge(
+  (
+    breakpoint-min: breakpoint(xs),
+    breakpoint-max: breakpoint(xl),
+    unit-value: rem,
+    unit-slope: vw,
+  ),
+  $fluid
+);
