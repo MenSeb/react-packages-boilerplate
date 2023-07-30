@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use '../functions/utils.scss' as *;
 
 $breakpoints: () !default;
 $breakpoints: map.merge(
@@ -11,3 +12,7 @@ $breakpoints: map.merge(
   ),
   $breakpoints
 );
+
+@function breakpoint($key) {
+  @return map-getter($breakpoints, $key);
+}

@@ -1,14 +1,14 @@
 @use 'sass:map';
 @use '../functions/utils';
-@use '../variables/breakpoints';
+@use '../variables/breakpoints' as *;
 
 html {
   line-height: 1.5;
   font-size: utils.clamped(
     $value-min: 16px,
     $value-max: 24px,
-    $breakpoint-min: breakpoints.get(xs),
-    $breakpoint-max: breakpoints.get(xl),
+    $breakpoint-min: breakpoint(xs),
+    $breakpoint-max: breakpoint(xl),
     $unit-value: rem,
     $unit-slope: vw
   );
@@ -39,6 +39,6 @@ h6 {
 }
 
 .wrapper {
-  max-width: breakpoints.get(xl);
+  max-width: breakpoint(xl);
   margin: auto;
 }
