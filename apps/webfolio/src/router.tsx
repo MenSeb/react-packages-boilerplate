@@ -7,6 +7,7 @@ import {
 import {
   About,
   Blog,
+  Contact,
   Error,
   Home,
   Layout,
@@ -23,6 +24,7 @@ export const routes = (
       <Route element={<Projects />} path="projects" />
       <Route element={<Blog />} path="blog" />
       <Route element={<About />} path="about" />
+      <Route element={<Contact />} path="contact" />
       <Route element={<Lost />} path="*" />
     </Route>
   </Route>
