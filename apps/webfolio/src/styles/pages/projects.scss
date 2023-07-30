@@ -31,6 +31,7 @@
 
     @media (width < breakpoint(md)) {
       flex-direction: column-reverse;
+      gap: calc(var(--spacing) * 2);
 
       .container,
       .image {

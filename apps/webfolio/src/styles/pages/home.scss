@@ -1,4 +1,4 @@
-$breakpoint: 600px;
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
 
 .page-home {
   display: flex;
@@ -51,8 +51,9 @@ $breakpoint: 600px;
       justify-content: space-evenly;
     }
 
-    @media (width <= $breakpoint) {
+    @media (width < breakpoint(md)) {
       flex-direction: column-reverse;
+      gap: calc(var(--spacing) * 2);
 
       .container,
       .image {
@@ -92,7 +93,7 @@ $breakpoint: 600px;
       width: calc(100% / 3 - var(--spacing) * 2 / 3);
     }
 
-    @media (width <= $breakpoint) {
+    @media (width < breakpoint(md)) {
       .services-list {
         flex-direction: column;
         gap: calc(var(--spacing) * 2);
@@ -134,7 +135,7 @@ $breakpoint: 600px;
     flex-direction: row-reverse;
   }
 
-  @media (width <= $breakpoint) {
+  @media (width < breakpoint(md)) {
     .region-projects,
     .region-blog {
       flex-direction: column-reverse;
@@ -202,7 +203,7 @@ $breakpoint: 600px;
         align-self: center;
       }
 
-      @media (width <= $breakpoint) {
+      @media (width < breakpoint(md)) {
         flex-direction: column;
 
         &-figure,
