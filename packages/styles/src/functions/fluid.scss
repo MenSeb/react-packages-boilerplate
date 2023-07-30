@@ -25,9 +25,9 @@
   );
 
   @return clamp(
-    #{unit.convert($value-min, $unit-value)},
+    #{number.to-fixed(unit.convert($value-min, $unit-value), $decimals)},
     #{$value-slope} + #{$value-intercept},
-    #{unit.convert($value-max, $unit-value)}
+    #{number.to-fixed(unit.convert($value-max, $unit-value), $decimals)}
   );
 }
 
