@@ -20,7 +20,7 @@
   }
 
   .image {
-    max-height: 50vmin;
+    max-height: 35vmin;
   }
 
   .heading {
@@ -40,6 +40,10 @@
     .content,
     .image {
       width: 100%;
+    }
+
+    .image {
+      max-height: 40vmin;
     }
   }
 }
