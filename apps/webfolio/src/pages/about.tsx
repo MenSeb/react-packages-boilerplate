@@ -25,6 +25,7 @@ export default function AboutPage() {
       <UI.Separator />
 
       <UI.Region className="region-about" label="about">
+        <UI.Heading level={2}>About Myself</UI.Heading>
         <About
           author="Sébastien Menard"
           image="assets/svgo/undraw_programming.svg"
