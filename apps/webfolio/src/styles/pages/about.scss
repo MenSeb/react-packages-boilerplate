@@ -6,40 +6,6 @@
   align-items: center;
   width: 100%;
 
-  header {
-    width: 100%;
-    display: flex;
-    gap: var(--spacing);
-
-    .container,
-    .image {
-      width: calc(50% - calc(var(--spacing) / 2));
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing);
-      text-align: center;
-    }
-
-    .heading {
-      text-transform: uppercase;
-    }
-
-    @media (width < breakpoint(md)) {
-      flex-direction: column-reverse;
-      gap: calc(var(--spacing) * 2);
-
-      .container,
-      .image {
-        width: 100%;
-      }
-    }
-  }
-
   .region-about {
     display: flex;
     flex-direction: column;
