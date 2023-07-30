@@ -18,7 +18,7 @@ export default function AboutPage() {
         <Container>
           <Heading>about</Heading>
           <Text>Please allow me to introduce myself.</Text>
-          <CallToAction emphasize to="contact">
+          <CallToAction emphasize to="/contact">
             get in touch
           </CallToAction>
         </Container>
@@ -37,7 +37,7 @@ export default function AboutPage() {
           title="Something about me"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et malesuada libero. Duis in metus erat. Vivamus accumsan mi ac nibh dapibus placerat. Maecenas facilisis ex eu magna finibus, at porta nulla vehicula."
         >
-          <CallToAction className="about-cta" emphasize to="about">
+          <CallToAction className="about-cta" emphasize to="/about">
             about me
           </CallToAction>
         </About>

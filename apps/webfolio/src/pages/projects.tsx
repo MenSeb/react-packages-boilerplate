@@ -21,7 +21,7 @@ export default function PageProjects() {
           <Text>
             I work diligently to ensure your project becomes a reality.
           </Text>
-          <CallToAction emphasize to="contact">
+          <CallToAction emphasize to="/contact">
             get in touch
           </CallToAction>
         </Container>

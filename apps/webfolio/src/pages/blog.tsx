@@ -19,7 +19,7 @@ export default function PageBlog() {
         <Container>
           <Heading>Blog</Heading>
           <Text>Learn web development with great articles.</Text>
-          <CallToAction emphasize to="contact">
+          <CallToAction emphasize to="/contact">
             get in touch
           </CallToAction>
         </Container>

@@ -19,7 +19,7 @@ export default function PageServices() {
         <Container>
           <Heading>services</Heading>
           <Text>I offer personalized solutions for your needs on the web.</Text>
-          <CallToAction emphasize to="contact">
+          <CallToAction emphasize to="/contact">
             get in touch
           </CallToAction>
         </Container>

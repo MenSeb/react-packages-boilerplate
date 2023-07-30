@@ -25,10 +25,10 @@ export default function Home() {
           </Heading>
           <Text>Let&apos;s bring your ideas to life in the digital realm!</Text>
           <Container className="ctas">
-            <CallToAction emphasize to="contact">
+            <CallToAction emphasize to="/contact">
               get in touch
             </CallToAction>
-            <CallToAction to="services">see services</CallToAction>
+            <CallToAction to="/services">see services</CallToAction>
           </Container>
         </Container>
         <Image
@@ -52,7 +52,7 @@ export default function Home() {
           <Text>
             Feel free to consult my previous projects and achievements.
           </Text>
-          <CallToAction emphasize to="projects">
+          <CallToAction emphasize to="/projects">
             consult projects
           </CallToAction>
         </Container>
@@ -67,7 +67,7 @@ export default function Home() {
           <Text>
             Feel free to browse my blog for various web development articles.
           </Text>
-          <CallToAction emphasize to="blog">
+          <CallToAction emphasize to="/blog">
             browse blog
           </CallToAction>
         </Container>
@@ -83,7 +83,7 @@ export default function Home() {
           title="Something about me"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et malesuada libero. Duis in metus erat. Vivamus accumsan mi ac nibh dapibus placerat. Maecenas facilisis ex eu magna finibus, at porta nulla vehicula."
         >
-          <CallToAction className="about-cta" emphasize to="about">
+          <CallToAction className="about-cta" emphasize to="/about">
             about me
           </CallToAction>
         </About>
