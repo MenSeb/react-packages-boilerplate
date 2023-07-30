@@ -1,13 +1,23 @@
+@use 'sass:map';
+@use '../functions/utils';
+@use '../variables/breakpoints';
+
+html {
+  line-height: 1.5;
+  font-size: utils.clamped(
+    $value-min: 16px,
+    $value-max: 24px,
+    $breakpoint-min: breakpoints.get(xs),
+    $breakpoint-max: breakpoints.get(xl),
+    $unit-value: rem,
+    $unit-slope: vw
+  );
+}
+
 body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  line-height: 1.5;
-}
-
-#root {
-  height: 100%;
-  width: 100%;
 }
 
 p,
@@ -20,4 +30,15 @@ h5,
 h6 {
   overflow-wrap: break-word;
   hyphens: auto;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.wrapper {
+  max-width: breakpoints.get(xl);
+  margin: auto;
 }
