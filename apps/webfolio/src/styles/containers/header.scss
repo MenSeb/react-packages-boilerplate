@@ -2,14 +2,4 @@
   background: var(--color-background);
   color: var(--color-text);
   padding: var(--spacing);
-
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-
-  .navigation {
-    margin-left: var(--spacing);
-  }
 }

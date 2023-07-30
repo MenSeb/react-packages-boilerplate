@@ -3,7 +3,10 @@
   color: var(--color-text);
   padding: var(--spacing);
 
-  .wrapper,
+  .wrapper {
+    flex-wrap: wrap;
+  }
+
   .copyright,
   .signature {
     align-items: center;
@@ -11,12 +14,7 @@
     flex-wrap: wrap;
   }
 
-  .wrapper {
-    justify-content: space-evenly;
-  }
-
   .navigation {
-    margin-bottom: var(--spacing);
     width: 100%;
   }
 }
