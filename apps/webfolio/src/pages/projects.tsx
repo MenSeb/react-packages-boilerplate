@@ -27,7 +27,7 @@ export default function PageProjects() {
         </Container>
         <Image
           alt="working closely with client"
-          src="assets/svgo/undraw_working.svg"
+          src="assets/svgo/undraw_online_stats.svg"
         />
       </header>
 

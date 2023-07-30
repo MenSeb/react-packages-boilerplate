@@ -23,10 +23,7 @@ export default function PageServices() {
             get in touch
           </CallToAction>
         </Container>
-        <Image
-          alt="online web services"
-          src="assets/svgo/undraw_online_stats.svg"
-        />
+        <Image alt="online web services" src="assets/svgo/undraw_working.svg" />
       </header>
 
       <Separator />
