@@ -1,0 +1,5 @@
+@mixin css-variables($variables) {
+  @each $key, $val in $variables {
+    --#{$key}: #{$val};
+  }
+}
