@@ -12,9 +12,12 @@ export default function PageServices() {
           <UI.Text>
             I offer personalized solutions for your needs on the web.
           </UI.Text>
-          <UI.CallToAction emphasize to="/contact">
-            get in touch
-          </UI.CallToAction>
+          <UI.Container className="ctas">
+            <UI.CallToAction emphasize to="/contact">
+              get in touch
+            </UI.CallToAction>
+            <UI.CallToAction to="/projects">see projects</UI.CallToAction>
+          </UI.Container>
         </UI.Container>
         <UI.Image
           alt="online web services"

@@ -8,9 +8,12 @@ export default function PageContact() {
         <UI.Container className="content">
           <UI.Heading>Contact</UI.Heading>
           <UI.Text>I look forward to hearing about your project.</UI.Text>
-          <UI.CallToAction emphasize to="/contact">
-            get in touch
-          </UI.CallToAction>
+          <UI.Container className="ctas">
+            <UI.CallToAction emphasize to="/services">
+              see services
+            </UI.CallToAction>
+            <UI.CallToAction to="/projects">see projects</UI.CallToAction>
+          </UI.Container>
         </UI.Container>
         <UI.Image
           alt="contact informations"

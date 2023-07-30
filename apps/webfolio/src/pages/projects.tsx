@@ -12,9 +12,12 @@ export default function PageProjects() {
           <UI.Text>
             I work diligently to ensure your project becomes a reality.
           </UI.Text>
-          <UI.CallToAction emphasize to="/contact">
-            get in touch
-          </UI.CallToAction>
+          <UI.Container className="ctas">
+            <UI.CallToAction emphasize to="/contact">
+              get in touch
+            </UI.CallToAction>
+            <UI.CallToAction to="/services">see services</UI.CallToAction>
+          </UI.Container>
         </UI.Container>
         <UI.Image
           alt="working closely with client"

@@ -9,10 +9,12 @@ export default function AboutPage() {
         <UI.Container className="content">
           <UI.Heading>about</UI.Heading>
           <UI.Text>Please allow me to introduce myself.</UI.Text>
-          <UI.CallToAction emphasize to="/contact">
-            get in touch
-          </UI.CallToAction>
-          <UI.CallToAction to="#">about me</UI.CallToAction>
+          <UI.Container className="ctas">
+            <UI.CallToAction emphasize to="/contact">
+              get in touch
+            </UI.CallToAction>
+            <UI.CallToAction to="/blog">browse blog</UI.CallToAction>
+          </UI.Container>
         </UI.Container>
         <UI.Image
           alt="profile section overview"
