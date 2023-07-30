@@ -3,6 +3,7 @@ import {
   CallToAction,
   Container,
   Heading,
+  Image,
   Page,
   Region,
   Separator,
@@ -16,11 +17,15 @@ export default function AboutPage() {
       <header>
         <Container>
           <Heading>about</Heading>
-          <Text>Something about me.</Text>
+          <Text>Please allow me to introduce myself.</Text>
           <CallToAction emphasize to="contact">
             get in touch
           </CallToAction>
         </Container>
+        <Image
+          alt="profile section overview"
+          src="assets/svgo/undraw_profile.svg"
+        />
       </header>
 
       <Separator />
