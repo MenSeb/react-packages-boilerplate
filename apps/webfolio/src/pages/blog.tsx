@@ -24,8 +24,8 @@ export default function PageBlog() {
           </CallToAction>
         </Container>
         <Image
-          alt="website blog article"
-          src="assets/svgo/undraw_content.svg"
+          alt="typewriter blog article"
+          src="assets/svgo/undraw_typewriter.svg"
         />
       </header>
 
