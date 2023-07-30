@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Footer, Banner, Main } from '.';
+import { Banner, ContentInfo, Main } from '.';
 
 export default function Layout() {
   return (
     <>
       <Banner />
       <Main />
-      <Footer />
+      <ContentInfo />
     </>
   );
 }
