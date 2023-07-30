@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  gap: 2.5vmin;
+  gap: calc(var(--spacing) / 2);
 
   &-icon {
     font-size: 2em;
@@ -18,7 +18,7 @@
   @media (width <= 600px) {
     flex-flow: row wrap;
     justify-content: center;
-    gap: 5vmin;
+    gap: var(--spacing);
 
     &-text {
       width: 100%;

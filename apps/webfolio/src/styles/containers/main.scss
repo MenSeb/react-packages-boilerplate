@@ -1,5 +1,5 @@
 #root > main {
-  padding: 10vmin 5vmin;
+  padding: calc(var(--spacing) * 2) var(--spacing);
   overflow-wrap: break-word;
 
   .wrapper {
