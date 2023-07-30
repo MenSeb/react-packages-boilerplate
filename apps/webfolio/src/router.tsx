@@ -4,13 +4,13 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+import { Layout } from './containers';
 import {
   About,
   Blog,
   Contact,
   Error,
   Home,
-  Layout,
   Lost,
   Projects,
   Services,
