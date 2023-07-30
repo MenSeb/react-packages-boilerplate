@@ -12,6 +12,7 @@ export * from './Input';
 export * from './Link';
 export * from './List';
 export * from './Logo';
+export * from './Main';
 export * from './Navigation';
 export * from './Page';
 export * from './Region';
