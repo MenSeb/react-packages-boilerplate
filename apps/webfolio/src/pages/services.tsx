@@ -3,6 +3,7 @@ import {
   CallToAction,
   Container,
   Heading,
+  Image,
   Page,
   Region,
   Separator,
@@ -22,6 +23,10 @@ export default function PageServices() {
             get in touch
           </CallToAction>
         </Container>
+        <Image
+          alt="online web services"
+          src="assets/svgo/undraw_online_stats.svg"
+        />
       </header>
 
       <Separator />
