@@ -12,7 +12,7 @@
   }
 
   .list-item {
-    margin: 0 2.5vmin;
+    margin: 0 calc(var(--spacing) / 2);
   }
 
   svg {

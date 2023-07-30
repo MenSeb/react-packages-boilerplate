@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use '../functions/utils.scss' as *;
+
+$breakpoints: () !default;
+$breakpoints: map.merge(
+  (
+    xs: 320px,
+    sm: 480px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+  ),
+  $breakpoints
+);
+
+@function breakpoint($key) {
+  @return map-getter($breakpoints, $key);
+}

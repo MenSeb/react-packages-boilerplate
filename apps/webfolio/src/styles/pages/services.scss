@@ -16,27 +16,27 @@
     }
 
     .text {
-      margin: 5vmin 0;
+      margin: var(--spacing) 0;
     }
   }
 
   .separator {
-    margin: 10vmin 0;
+    margin: calc(var(--spacing) * 2) 0;
     border: 1px solid var(--color-text);
     width: 75%;
   }
 
   .region-services {
-    .heading {
+    > .heading {
       text-align: center;
-      margin-bottom: 5vmin;
+      margin-bottom: var(--spacing);
     }
 
     .list {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
-      gap: 5vmin;
+      gap: var(--spacing);
     }
   }
 }

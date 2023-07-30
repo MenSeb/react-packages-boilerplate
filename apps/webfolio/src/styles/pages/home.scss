@@ -11,18 +11,18 @@ $breakpoint: 600px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 5vmin;
+    gap: var(--spacing);
 
     > .container,
     .image {
-      width: calc(50% - 2.5vmin);
+      width: calc(50% - calc(var(--spacing) / 2));
     }
 
     > .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5vmin;
+      gap: var(--spacing);
     }
 
     .heading,
@@ -62,7 +62,7 @@ $breakpoint: 600px;
   }
 
   .separator {
-    margin: 10vmin 0;
+    margin: calc(var(--spacing) * 2) 0;
     border: 1px solid var(--color-text);
     width: 75%;
   }
@@ -71,7 +71,7 @@ $breakpoint: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5vmin;
+    gap: var(--spacing);
 
     .services {
       width: 100%;
@@ -85,17 +85,17 @@ $breakpoint: 600px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 5vmin;
+      gap: var(--spacing);
     }
 
     .list-item {
-      width: calc(100% / 3 - 10vmin / 3);
+      width: calc(100% / 3 - var(--spacing) * 2 / 3);
     }
 
     @media (width <= $breakpoint) {
       .services-list {
         flex-direction: column;
-        gap: 10vmin;
+        gap: calc(var(--spacing) * 2);
       }
 
       .list-item {
@@ -111,18 +111,18 @@ $breakpoint: 600px;
     align-items: center;
     justify-content: space-between;
     text-align: center;
-    gap: 5vmin;
+    gap: var(--spacing);
 
     .container,
     .image {
-      width: calc(50% - 2.5vmin);
+      width: calc(50% - var(--spacing) / 2);
     }
 
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5vmin;
+      gap: var(--spacing);
     }
 
     .image {
@@ -150,17 +150,17 @@ $breakpoint: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5vmin;
+    gap: var(--spacing);
 
     .about {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 5vmin;
+      gap: var(--spacing);
 
       &-figure,
       &-content {
-        width: calc(50% - 2.5vmin);
+        width: calc(50% - var(--spacing) / 2);
       }
 
       &-figure {
@@ -180,11 +180,11 @@ $breakpoint: 600px;
       }
 
       &-content {
-        gap: 5vmin;
+        gap: var(--spacing);
       }
 
       &-blockquote {
-        gap: 2.5vmin;
+        gap: calc(var(--spacing) / 2);
       }
 
       &-text {
@@ -222,7 +222,7 @@ $breakpoint: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5vmin;
+  gap: var(--spacing);
 
   &-text {
     width: 75%;
@@ -235,7 +235,7 @@ $breakpoint: 600px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 5vmin;
+    gap: var(--spacing);
 
     &-input {
       width: 35%;

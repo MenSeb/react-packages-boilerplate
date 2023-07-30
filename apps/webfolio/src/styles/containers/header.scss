@@ -1,8 +1,7 @@
 #root > header {
   background: var(--color-background);
   color: var(--color-text);
-  line-height: 1.5;
-  padding: 5vmin;
+  padding: var(--spacing);
 
   .wrapper {
     display: flex;
@@ -11,6 +10,6 @@
   }
 
   .navigation {
-    margin-left: 5vmin;
+    margin-left: var(--spacing);
   }
 }

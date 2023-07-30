@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'error';
+
+@function map-getter($map, $key) {
+  @if map.has-key($map, $key) {
+    @return map.get($map, $key);
+  }
+
+  @error error.message(key, $key, map.keys($map));
+}
