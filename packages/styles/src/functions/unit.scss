@@ -20,7 +20,7 @@ $_units: (
 );
 
 @function convert($value, $unit, $base: 16) {
-  @if math.unit($value) == $unit {
+  @if not $unit or math.unit($value) == $unit {
     @return $value;
   }
 
