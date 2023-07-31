@@ -1,10 +1,17 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
 .service {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  height: 100%;
   text-align: center;
+  display: grid;
+  justify-items: center;
+  align-items: center;
   gap: calc(var(--spacing) / 2);
+  background: var(--color-background);
+  padding: var(--spacing) calc(var(--spacing) / 2);
+  border-radius: calc(var(--spacing) / 2);
+  box-shadow: calc(var(--spacing) / 6) calc(var(--spacing) / 6)
+    calc(var(--spacing) / 6) 0 var(--color-link);
 
   &-icon {
     font-size: 2em;
@@ -15,12 +22,33 @@
     text-align: center;
   }
 
-  @media (width <= 600px) {
-    flex-flow: row wrap;
-    justify-content: center;
+  @media (width < breakpoint(tablet)) {
+    grid-auto-rows: auto;
     gap: var(--spacing);
+    padding: var(--spacing);
 
     &-text {
+      width: 100%;
+    }
+  }
+}
+
+.services {
+  width: 100%;
+
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing);
+  }
+
+  @media (width < breakpoint(tablet)) {
+    &-list {
+      grid-template-columns: 1fr;
+      gap: calc(var(--spacing) * 2);
+    }
+
+    .list-item {
       width: 100%;
     }
   }

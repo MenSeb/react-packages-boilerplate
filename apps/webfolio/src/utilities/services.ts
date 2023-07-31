@@ -23,7 +23,7 @@ export const SERVICES = [
   {
     name: 'WordPress Development',
     description:
-      'Let me help you with one of your WordPress website. From WordPress environment, plugins and templates, to online web, e-commerce and hosting!',
+      'Let me help you with one of your WordPress website. From website plugins and templates, to online web, e-commerce and hosting!',
     icon: FaWordpress,
   },
   {
