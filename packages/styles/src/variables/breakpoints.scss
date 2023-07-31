@@ -4,11 +4,15 @@
 $breakpoints: () !default;
 $breakpoints: map.merge(
   (
-    xs: 320px,
-    sm: 480px,
-    md: 768px,
-    lg: 1024px,
-    xl: 1280px,
+    xsmall: 320px,
+    mobile: 480px,
+    small: 640px,
+    tablet: 768px,
+    medium: 896px,
+    desktop: 1024px,
+    large: 1280px,
+    monitor: 1536px,
+    xlarge: 1920px,
   ),
   $breakpoints
 );

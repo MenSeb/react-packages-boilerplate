@@ -1,6 +1,10 @@
+@use '@packages/styles/src/variables/breakpoints' as *;
+
 .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: var(--spacing);
+  max-width: breakpoint(monitor);
+  margin: auto;
 }

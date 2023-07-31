@@ -4,8 +4,8 @@
 $fluid: () !default;
 $fluid: map.merge(
   (
-    breakpoint-min: breakpoint(xs),
-    breakpoint-max: breakpoint(xl),
+    breakpoint-min: breakpoint(xsmall),
+    breakpoint-max: breakpoint(xlarge),
     unit-value: rem,
     unit-slope: vw,
   ),

@@ -33,7 +33,7 @@
     justify-content: space-evenly;
   }
 
-  @media (width < breakpoint(md)) {
+  @media (width < breakpoint(tablet)) {
     flex-direction: column-reverse !important;
     gap: calc(var(--spacing) * 2);
 
