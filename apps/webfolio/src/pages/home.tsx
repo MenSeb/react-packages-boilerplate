@@ -9,8 +9,8 @@ export default function Home() {
       <UI.Header>
         <UI.Container className="content">
           <UI.Heading>
-            <span className="span">Application, Website &</span>
-            <span className="span">WordPress Developper</span>
+            <span className="heading-span">Web</span>
+            <span className="heading-span">Developper</span>
           </UI.Heading>
           <UI.Text>
             Let&apos;s bring your ideas to life in the digital realm!
