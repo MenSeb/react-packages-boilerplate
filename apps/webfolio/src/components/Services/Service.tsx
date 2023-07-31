@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CallToAction, Container, Heading, Text } from '@packages/react-ui';
+import * as UI from '@packages/react-ui';
 
 export type ServiceProps = {
   description: string;
@@ -9,15 +9,15 @@ export type ServiceProps = {
 
 export function Service({ description, icon: Icon, name }: ServiceProps) {
   return (
-    <Container className="service">
+    <UI.Container className="service">
       <Icon className="service-icon" role="presentation" />
-      <Heading className="service-heading" level={3}>
+      <UI.Heading className="service-heading" level={3}>
         {name}
-      </Heading>
-      <Text className="service-text">{description}</Text>
-      <CallToAction className="service-cta" to="services">
+      </UI.Heading>
+      <UI.Text className="service-text">{description}</UI.Text>
+      <UI.CallToAction className="service-cta" to="services">
         learn more
-      </CallToAction>
-    </Container>
+      </UI.CallToAction>
+    </UI.Container>
   );
 }

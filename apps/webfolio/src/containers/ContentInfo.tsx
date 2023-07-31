@@ -1,30 +1,30 @@
 import * as React from 'react';
+import * as UI from '@packages/react-ui';
 import {
   NavigationInfos,
   NavigationMain,
   NavigationSocials,
 } from '../components';
-import { Container, Copyright, Signature } from '@packages/react-ui';
 
-export default function Footer() {
+export function ContentInfo() {
   return (
-    <footer>
-      <Container className="wrapper">
+    <UI.Footer className="content-info">
+      <UI.Container className="wrapper">
         <NavigationSocials />
         <NavigationMain />
         <NavigationInfos />
-        <Copyright
+        <UI.Copyright
           author="MenSeb."
           className="copyright"
           statement="All righs reserved."
         />
-        <Signature
+        <UI.Signature
           author="Sébastien Menard"
           className="signature"
           link="https://www.linkedin.com/in/menseb/"
           statement="Proudly made by"
         />
-      </Container>
-    </footer>
+      </UI.Container>
+    </UI.Footer>
   );
 }

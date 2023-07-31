@@ -1,15 +1,49 @@
-#root > header {
-  background: var(--color-background);
-  color: var(--color-text);
-  padding: var(--spacing);
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
 
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.header:not(.banner) {
+  width: 100%;
+  display: flex;
+  gap: var(--spacing);
+
+  .content,
+  .image {
+    width: calc(50% - calc(var(--spacing) / 2));
   }
 
-  .navigation {
-    margin-left: var(--spacing);
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing);
+    text-align: center;
+  }
+
+  .image {
+    max-height: 35vmin;
+  }
+
+  .heading {
+    text-transform: uppercase;
+  }
+
+  .ctas {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  @media (width < breakpoint(md)) {
+    flex-direction: column-reverse !important;
+    gap: calc(var(--spacing) * 2);
+
+    .content,
+    .image {
+      width: 100%;
+    }
+
+    .image {
+      max-height: 40vmin;
+    }
   }
 }

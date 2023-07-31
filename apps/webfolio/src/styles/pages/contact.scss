@@ -1,6 +1,6 @@
 @use '@packages/styles/src/variables/breakpoints.scss' as *;
 
-.page-services {
+.page-contact {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@
     flex-direction: row-reverse;
   }
 
-  .region-services {
+  .region-contact {
     display: flex;
     flex-direction: column;
     align-items: center;

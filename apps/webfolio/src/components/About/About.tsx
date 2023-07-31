@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {
-  Blockquote,
-  Cite,
-  Container,
-  Figure,
-  Figcaption,
-  Heading,
-  Image,
-  LinkNewTab,
-  Text,
-} from '@packages/react-ui';
+import * as UI from '@packages/react-ui';
 
 export type Credit = {
   link: string;
@@ -34,34 +24,34 @@ export function About({
   title,
 }: AboutProps) {
   return (
-    <Container className="about">
-      <Figure className="about-figure">
-        <Image className="about-image" alt={`Image ${author}`} src={image} />
+    <UI.Container className="about">
+      <UI.Figure className="about-figure">
+        <UI.Image className="about-image" alt={`Image ${author}`} src={image} />
         {credit ? (
-          <Figcaption className="about-figcaption">
+          <UI.Figcaption className="about-figcaption">
             Credit:
-            <Cite className="about-cite">
+            <UI.Cite className="about-cite">
               {credit.link ? (
-                <LinkNewTab className="about-link" href={credit.link}>
+                <UI.LinkNewTab className="about-link" href={credit.link}>
                   {credit.name}
-                </LinkNewTab>
+                </UI.LinkNewTab>
               ) : (
                 credit.name
               )}
-            </Cite>
-          </Figcaption>
+            </UI.Cite>
+          </UI.Figcaption>
         ) : null}
-      </Figure>
-      <Container className="about-content">
-        <Heading className="about-heading" level={2}>
+      </UI.Figure>
+      <UI.Container className="about-content">
+        <UI.Heading className="about-heading" level={2}>
           {title}
-        </Heading>
-        <Blockquote className="about-blockquote">
-          <Text className="about-text">{text}</Text>
-          <Cite className="about-cite">{author}</Cite>
-        </Blockquote>
+        </UI.Heading>
+        <UI.Blockquote className="about-blockquote">
+          <UI.Text className="about-text">{text}</UI.Text>
+          <UI.Cite className="about-cite">{author}</UI.Cite>
+        </UI.Blockquote>
         {children}
-      </Container>
-    </Container>
+      </UI.Container>
+    </UI.Container>
   );
 }

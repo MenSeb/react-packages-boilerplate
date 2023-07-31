@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, ListUnordered } from '@packages/react-ui';
+import * as UI from '@packages/react-ui';
 import { Service, ServiceProps } from '.';
 
 export type ServicesProps = {
@@ -8,12 +8,12 @@ export type ServicesProps = {
 
 export function Services({ services }: ServicesProps) {
   return (
-    <Container className="services">
-      <ListUnordered className="services-list">
+    <UI.Container className="services">
+      <UI.ListUnordered className="services-list">
         {services.map((service, index) => (
           <Service {...service} key={index} />
         ))}
-      </ListUnordered>
-    </Container>
+      </UI.ListUnordered>
+    </UI.Container>
   );
 }

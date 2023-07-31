@@ -10,7 +10,8 @@ import {
   createMemoryRouter,
 } from 'react-router-dom';
 import { routes } from '../src/router';
-import { About, Error as ErrorPage, Home, Layout, Lost } from '../src/pages';
+import { Layout } from '../src/containers';
+import { About, Error as ErrorPage, Home, Lost } from '../src/pages';
 
 describe('<WebFolio />', () => {
   describe('<Layout />', () => {

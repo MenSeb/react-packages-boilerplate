@@ -1,16 +1,12 @@
 @use '@packages/styles/src/variables/breakpoints.scss' as *;
 
-.page-services {
+.page-projects {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 
-  .header {
-    flex-direction: row-reverse;
-  }
-
-  .region-services {
+  .region-projects {
     display: flex;
     flex-direction: column;
     align-items: center;

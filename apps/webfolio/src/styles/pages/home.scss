@@ -1,4 +1,4 @@
-$breakpoint: 600px;
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
 
 .page-home {
   display: flex;
@@ -6,65 +6,15 @@ $breakpoint: 600px;
   align-items: center;
   width: 100%;
 
-  header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing);
-
-    > .container,
-    .image {
-      width: calc(50% - calc(var(--spacing) / 2));
-    }
-
-    > .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--spacing);
-    }
-
-    .heading,
-    .text {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      text-align: center;
-    }
-
+  .header {
     .span {
-      width: 100%;
-    }
-
-    .text {
-      width: 100%;
-    }
-
-    .image {
-      max-height: 50vmin;
-    }
-
-    .ctas {
       display: flex;
       width: 100%;
-      justify-content: space-evenly;
-    }
-
-    @media (width <= $breakpoint) {
-      flex-direction: column-reverse;
-
-      .container,
-      .image {
-        width: 100%;
-      }
     }
   }
 
-  .separator {
-    margin: calc(var(--spacing) * 2) 0;
-    border: 1px solid var(--color-text);
-    width: 75%;
+  .image {
+    max-height: 40vmin;
   }
 
   .region-services {
@@ -92,7 +42,7 @@ $breakpoint: 600px;
       width: calc(100% / 3 - var(--spacing) * 2 / 3);
     }
 
-    @media (width <= $breakpoint) {
+    @media (width < breakpoint(md)) {
       .services-list {
         flex-direction: column;
         gap: calc(var(--spacing) * 2);
@@ -124,17 +74,13 @@ $breakpoint: 600px;
       align-items: center;
       gap: var(--spacing);
     }
-
-    .image {
-      max-height: 50vmin;
-    }
   }
 
   .region-projects {
     flex-direction: row-reverse;
   }
 
-  @media (width <= $breakpoint) {
+  @media (width < breakpoint(md)) {
     .region-projects,
     .region-blog {
       flex-direction: column-reverse;
@@ -167,11 +113,6 @@ $breakpoint: 600px;
         display: flex;
       }
 
-      &-image {
-        max-height: 50vmin;
-        width: 100%;
-      }
-
       &-content,
       &-blockquote {
         display: flex;
@@ -202,10 +143,11 @@ $breakpoint: 600px;
         align-self: center;
       }
 
-      @media (width <= $breakpoint) {
+      @media (width < breakpoint(md)) {
         flex-direction: column;
 
         &-figure,
+        &-image,
         &-content {
           width: 100%;
         }
