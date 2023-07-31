@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { About, Services } from '../components';
+import { Services } from '../components';
 import { SERVICES } from '../utilities/services';
 
 export default function Home() {
@@ -33,6 +33,9 @@ export default function Home() {
       <UI.Region className="region-services" label="services">
         <UI.Heading level={2}>Some of my services</UI.Heading>
         <Services services={SERVICES.slice(0, 3)} />
+        <UI.CallToAction emphasize to="/services">
+          see services
+        </UI.CallToAction>
       </UI.Region>
 
       <UI.Separator />
@@ -72,16 +75,26 @@ export default function Home() {
       <UI.Separator />
 
       <UI.Region className="region-about" label="about">
-        <About
-          author="Sébastien Menard"
-          image="assets/svgo/undraw_programming.svg"
-          title="Something about me"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et malesuada libero. Duis in metus erat. Vivamus accumsan mi ac nibh dapibus placerat. Maecenas facilisis ex eu magna finibus, at porta nulla vehicula."
-        >
+        <UI.Container>
+          <UI.Heading level={2}>Something about me</UI.Heading>
+          <UI.Blockquote className="about-blockquote">
+            <UI.Text className="about-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et
+              malesuada libero. Duis in metus erat. Vivamus accumsan mi ac nibh
+              dapibus placerat. Maecenas facilisis ex eu magna finibus, at porta
+              nulla vehicula.
+            </UI.Text>
+            <UI.Cite className="about-cite">Sébastien Menard</UI.Cite>
+          </UI.Blockquote>
           <UI.CallToAction className="about-cta" emphasize to="/about">
-            about me
+            about myself
           </UI.CallToAction>
-        </About>
+        </UI.Container>
+        <UI.Image
+          className="about-image"
+          alt="programming with coffee & view"
+          src="assets/svgo/undraw_programming.svg"
+        />
       </UI.Region>
 
       <UI.Separator />
