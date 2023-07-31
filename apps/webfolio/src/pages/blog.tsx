@@ -9,7 +9,7 @@ export default function PageBlog() {
       <UI.Header>
         <UI.Container className="content">
           <UI.Heading>Blog</UI.Heading>
-          <UI.Text>Learn web development with great articles.</UI.Text>
+          <UI.Text>Learn about web development with great articles.</UI.Text>
           <UI.Container className="ctas">
             <UI.CallToAction emphasize to="/contact">
               get in touch
