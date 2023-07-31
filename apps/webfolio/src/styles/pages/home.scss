@@ -13,6 +13,10 @@
     }
   }
 
+  .image {
+    max-height: 40vmin;
+  }
+
   .region-services {
     display: flex;
     flex-direction: column;
@@ -70,10 +74,6 @@
       align-items: center;
       gap: var(--spacing);
     }
-
-    .image {
-      max-height: 50vmin;
-    }
   }
 
   .region-projects {
@@ -113,11 +113,6 @@
         display: flex;
       }
 
-      &-image {
-        max-height: 50vmin;
-        width: 100%;
-      }
-
       &-content,
       &-blockquote {
         display: flex;
@@ -152,6 +147,7 @@
         flex-direction: column;
 
         &-figure,
+        &-image,
         &-content {
           width: 100%;
         }
