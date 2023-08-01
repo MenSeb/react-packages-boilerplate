@@ -28,13 +28,6 @@
     max-height: 40vmin;
   }
 
-  .region-services {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: calc(var(--spacing) * 2);
-  }
-
   .region-projects,
   .region-blog,
   .region-about {
