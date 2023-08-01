@@ -28,7 +28,7 @@ export default function AboutPage() {
         <UI.Heading level={2}>About Myself</UI.Heading>
         <About
           author="Sébastien Menard"
-          image="assets/svgo/undraw_programming.svg"
+          image="assets/svgo/undraw_source_code.svg"
           title="Something about me"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et malesuada libero. Duis in metus erat. Vivamus accumsan mi ac nibh dapibus placerat. Maecenas facilisis ex eu magna finibus, at porta nulla vehicula."
         />
