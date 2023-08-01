@@ -1,0 +1,125 @@
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing);
+
+  &-text {
+    width: 75%;
+    text-align: center;
+  }
+
+  &-form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing);
+
+    &-text {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .input {
+    width: 35%;
+    border-radius: 0.25em;
+    padding: 0.5em;
+    font-size: 1em;
+    outline: thin solid var(--color-accent-dark);
+    outline-offset: 0.5em;
+
+    &:not(:focus) {
+      outline: none;
+    }
+
+    &[type='text'],
+    &[type='email'] {
+      background: var(--color-background-dark);
+      border: 0.125em solid var(--color-accent);
+
+      &,
+      &::placeholder {
+        color: var(--color-text);
+      }
+
+      &:focus {
+        border-color: var(--color-accent-light);
+
+        &,
+        &::placeholder {
+          color: var(--color-text-light);
+        }
+      }
+    }
+
+    &[type='submit'] {
+      width: 30%;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      text-transform: capitalize;
+      font-weight: bold;
+      color: var(--color-background-dark);
+      background: var(--color-accent);
+
+      &:hover,
+      &:focus {
+        color: var(--color-background-light);
+        background: var(--color-accent-light);
+      }
+    }
+  }
+
+  @media (width <= 800px) {
+    &-form {
+      &-input {
+        &[type='text'],
+        &[type='email'] {
+          width: 60%;
+        }
+
+        &[type='submit'] {
+          width: 40%;
+        }
+      }
+    }
+  }
+
+  @media (width <= 600px) {
+    &-text {
+      width: 100%;
+    }
+
+    &-form {
+      flex-direction: column;
+
+      &-input {
+        &[type='text'],
+        &[type='email'] {
+          width: 80%;
+        }
+
+        &[type='submit'] {
+          width: 60%;
+        }
+      }
+    }
+  }
+
+  @media (width <= 400px) {
+    &-form {
+      &-input {
+        &[type='text'],
+        &[type='email'] {
+          width: 100%;
+        }
+
+        &[type='submit'] {
+          width: 80%;
+        }
+      }
+    }
+  }
+}

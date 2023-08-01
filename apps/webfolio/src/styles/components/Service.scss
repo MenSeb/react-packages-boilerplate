@@ -8,14 +8,15 @@
   text-align: center;
   gap: var(--spacing);
   padding: var(--spacing) calc(var(--spacing) / 2);
-  background: var(--color-background);
+  color: var(--color-text-light);
+  background: var(--color-background-light);
   border-radius: calc(var(--spacing) / 2);
   box-shadow: calc(var(--spacing) / 6) calc(var(--spacing) / 6)
-    calc(var(--spacing) / 6) 0 var(--color-link);
+    calc(var(--spacing) / 6) 0 var(--color-background-dark);
 
   &-icon {
     font-size: 3em;
-    color: var(--color-link);
+    color: var(--color-accent-light);
   }
 
   &-text {

@@ -1,32 +1,49 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
 .cta {
-  border-radius: 4vmin;
-  padding: 1vmin 2vmin;
+  border-radius: 2em;
+  padding: 0.5em 1em;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.75em;
+  font-size: 0.9em;
   font-weight: bold;
   font-family: sans-serif;
-  border: 0.25vmin solid var(--color-text);
+  letter-spacing: 0.025em;
+  border: 0.125em solid var(--color-accent-dark);
+  background: var(--color-background-light);
+  color: var(--color-accent-dark);
+  outline: thin solid var(--color-accent-dark);
+  outline-offset: 0.5em;
 
-  &.emphasize {
-    background: var(--color-text);
-    color: var(--color-background);
-
-    &:hover,
-    &:focus {
-      background: #fff;
-      color: var(--color-text);
-    }
+  &:hover,
+  &:focus {
+    background: var(--color-accent-dark);
+    color: var(--color-background-dark);
   }
 
-  &:not(.emphasize) {
-    background: #fff;
-    color: var(--color-text);
+  &:not(:focus) {
+    outline: none;
+  }
+
+  &.emphasize {
+    background: var(--color-accent-dark);
+    color: var(--color-background-dark);
 
     &:hover,
     &:focus {
-      background: var(--color-text);
-      color: var(--color-background);
+      background: var(--color-background-light);
+      color: var(--color-accent-dark);
     }
+  }
+}
+
+.ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing);
+
+  @media (width < breakpoint(mobile)) {
+    flex-direction: column;
   }
 }

@@ -1,15 +1,23 @@
 @use '@packages/styles';
+@use '@packages/styles/src/mixins' as *;
 @forward './components/';
 @forward './containers/';
 @forward './pages/';
 
 :root {
-  --color-background: #fffaf0;
-  --color-text: #191970;
-  --color-link: #008b8b;
-  --color-link-hover: #0ff;
-  --color-link-active: #daa520;
-  --color-link-active-hover: #ffd700;
-  --color-link-visited: #000080;
-  --color-link-visited-hover: #00f;
+  @include theme(
+    $color-background: #164b60,
+    $color-text: #4fc0d0,
+    $color-accent: #a2ff86
+  );
+}
+
+body {
+  @include highlight(
+    $color: var(--color-background-dark),
+    $background: var(--color-accent-light)
+  );
+
+  color: var(--color-text);
+  background-color: var(--color-background);
 }

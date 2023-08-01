@@ -1,6 +1,8 @@
 @use '@packages/styles/src/variables/breakpoints.scss' as *;
 
-#root > main {
+.main {
+  background: var(--color-background);
+  color: var(--color-text);
   padding: calc(var(--spacing) * 2) var(--spacing);
 
   @media (width >= breakpoint(tablet)) {

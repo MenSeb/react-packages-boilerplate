@@ -1,4 +1,6 @@
 @use '@packages/styles/src/variables/breakpoints.scss' as *;
+@use 'sass:color';
+@use 'sass:list';
 
 .page-services {
   display: flex;

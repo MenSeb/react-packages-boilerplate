@@ -1,20 +1,34 @@
 [class*='link'] {
   text-transform: capitalize;
-  color: var(--color-link);
-  text-underline-offset: 0.25em;
+  text-decoration: none;
+  text-underline-offset: 0.5em;
+  color: var(--color-text-light);
+  outline: thin solid var(--color-accent-dark);
+  outline-offset: 0.5em;
+  border-radius: 0.25em;
 
   &:hover,
   &:focus {
-    color: var(--color-link-hover);
+    color: var(--color-accent);
+  }
+
+  &:focus {
+    &:hover {
+      color: var(--color-accent-light);
+    }
+  }
+
+  &:not(:focus) {
+    outline: none;
   }
 
   &.active,
   &[aria-current='page'] {
-    color: var(--color-link-active);
+    color: var(--color-accent);
 
     &:hover,
     &:focus {
-      color: var(--color-link-active-hover);
+      color: var(--color-accent-light);
     }
   }
 }
