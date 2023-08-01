@@ -14,10 +14,10 @@ export default function Home() {
             Let&apos;s bring your ideas to life in the digital realm!
           </UI.Text>
           <UI.Container className="ctas">
-            <UI.CallToAction emphasize to="/contact">
-              get in touch
+            <UI.CallToAction emphasize to="/services">
+              explore services
             </UI.CallToAction>
-            <UI.CallToAction to="/services">see services</UI.CallToAction>
+            <UI.CallToAction to="/projects">view projects</UI.CallToAction>
           </UI.Container>
         </UI.Container>
         <UI.Image
@@ -37,7 +37,7 @@ export default function Home() {
             Find the web services adapted to your needs and requirements.
           </UI.Text>
           <UI.CallToAction emphasize to="/services">
-            see services
+            find your service
           </UI.CallToAction>
         </UI.Container>
         <UI.Image alt="services" src="assets/svgo/undraw_services.svg" />
@@ -92,7 +92,7 @@ export default function Home() {
             <UI.Cite className="about-cite">Sébastien Menard</UI.Cite>
           </UI.Blockquote>
           <UI.CallToAction className="about-cta" emphasize to="/about">
-            about myself
+            learn about me
           </UI.CallToAction>
         </UI.Container>
         <UI.Image

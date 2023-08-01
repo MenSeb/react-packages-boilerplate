@@ -16,7 +16,7 @@ export default function PageProjects() {
             <UI.CallToAction emphasize to="/contact">
               get in touch
             </UI.CallToAction>
-            <UI.CallToAction to="/services">see services</UI.CallToAction>
+            <UI.CallToAction to="/services">explore services</UI.CallToAction>
           </UI.Container>
         </UI.Container>
         <UI.Image
