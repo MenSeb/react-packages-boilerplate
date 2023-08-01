@@ -8,7 +8,7 @@ export default function Home() {
         <UI.Container className="content">
           <UI.Heading>
             <span className="heading-span">Web</span>
-            <span className="heading-span">Developper</span>
+            <span className="heading-span">Designer & Developper</span>
           </UI.Heading>
           <UI.Text>
             Let&apos;s bring your ideas to life in the digital realm!

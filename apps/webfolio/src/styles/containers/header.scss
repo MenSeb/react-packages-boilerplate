@@ -11,6 +11,10 @@
     width: calc(50% - calc(var(--spacing) / 2));
   }
 
+  .image {
+    max-height: 45vmin;
+  }
+
   .content {
     display: flex;
     flex-direction: column;
@@ -20,11 +24,8 @@
     text-align: center;
   }
 
-  .image {
-    max-height: 35vmin;
-  }
-
   .heading {
+    font-size: 3em;
     text-transform: uppercase;
   }
 
@@ -34,9 +35,8 @@
     justify-content: space-evenly;
   }
 
-  @media (width < breakpoint(tablet)) {
+  @media (width < breakpoint(desktop)) {
     flex-direction: column-reverse !important;
-    gap: calc(var(--spacing) * 2);
 
     .content,
     .image {
@@ -45,6 +45,12 @@
 
     .image {
       max-height: 40vmin;
+    }
+  }
+
+  @media (width < breakpoint(mobile)) {
+    .heading {
+      font-size: 2em;
     }
   }
 }

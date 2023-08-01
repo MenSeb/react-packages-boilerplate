@@ -14,18 +14,10 @@
 
       &-span {
         &:first-child {
-          font-size: 4em;
-        }
-
-        &:last-child {
           font-size: 2em;
         }
       }
     }
-  }
-
-  .image {
-    max-height: 40vmin;
   }
 
   .region-services,
@@ -49,6 +41,10 @@
       flex-direction: column;
       align-items: center;
       gap: var(--spacing);
+    }
+
+    .image {
+      max-height: 40vmin;
     }
   }
 
