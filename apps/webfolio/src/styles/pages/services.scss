@@ -9,13 +9,13 @@
   .header {
     flex-direction: row-reverse;
   }
-}
 
-.region-services {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing);
+  .region-services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing);
+  }
 }
 
 .services {

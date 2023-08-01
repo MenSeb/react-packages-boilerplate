@@ -28,6 +28,7 @@
     max-height: 40vmin;
   }
 
+  .region-services,
   .region-projects,
   .region-blog,
   .region-about {
@@ -57,6 +58,7 @@
   }
 
   @media (width < breakpoint(tablet)) {
+    .region-services,
     .region-projects,
     .region-blog,
     .region-about {

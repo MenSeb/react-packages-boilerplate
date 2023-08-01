@@ -1,7 +1,5 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { Services } from '../components';
-import { SERVICES } from '../utilities/services';
 
 export default function Home() {
   return (
@@ -31,11 +29,18 @@ export default function Home() {
       <UI.Separator />
 
       <UI.Region className="region-services" label="services">
-        <UI.Heading level={2}>Some of my services</UI.Heading>
-        <Services services={SERVICES.slice(0, 3)} />
-        <UI.CallToAction emphasize to="/services">
-          see services
-        </UI.CallToAction>
+        <UI.Container>
+          <UI.Heading level={2}>
+            Are you looking for a specific web service?
+          </UI.Heading>
+          <UI.Text>
+            Find the web services adapted to your needs and requirements.
+          </UI.Text>
+          <UI.CallToAction emphasize to="/services">
+            see services
+          </UI.CallToAction>
+        </UI.Container>
+        <UI.Image alt="services" src="assets/svgo/undraw_services.svg" />
       </UI.Region>
 
       <UI.Separator />
