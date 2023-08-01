@@ -41,7 +41,7 @@
     }
   }
 
-  @media (width >= breakpoint(desktop)) {
+  @media (width >= breakpoint(large)) {
     &-list {
       grid-template-columns: repeat(3, 1fr);
     }

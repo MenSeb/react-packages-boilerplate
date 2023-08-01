@@ -7,7 +7,7 @@
   align-items: center;
   text-align: center;
   gap: var(--spacing);
-  padding: var(--spacing);
+  padding: var(--spacing) calc(var(--spacing) / 2);
   background: var(--color-background);
   border-radius: calc(var(--spacing) / 2);
   box-shadow: calc(var(--spacing) / 6) calc(var(--spacing) / 6)
@@ -16,6 +16,10 @@
   &-icon {
     font-size: 3em;
     color: var(--color-link);
+  }
+
+  &-text {
+    text-align: center;
   }
 
   @media (width > breakpoint(tablet)) {

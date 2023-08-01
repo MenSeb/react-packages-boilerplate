@@ -41,7 +41,7 @@ export const SERVICES = [
   {
     name: 'Support & Maintenance',
     description:
-      'From WordPress backups or updating plugins and templates, to managing the code and its dependencies of your application or website.',
+      'Let me help you stay up to date before it gets critical. From WordPress, backups and updates, to application management, code and its dependencies.',
     icon: FaScrewdriverWrench,
   },
 ];
