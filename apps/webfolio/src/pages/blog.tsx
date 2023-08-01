@@ -14,7 +14,7 @@ export default function PageBlog() {
             <UI.CallToAction emphasize to="/contact">
               get in touch
             </UI.CallToAction>
-            <UI.CallToAction to="/about">about myself</UI.CallToAction>
+            <UI.CallToAction to="/about">learn about me</UI.CallToAction>
           </UI.Container>
         </UI.Container>
         <UI.Image

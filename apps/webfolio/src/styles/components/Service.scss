@@ -1,13 +1,20 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
 .service {
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  display: grid;
+  justify-items: center;
   align-items: center;
-  justify-content: space-between;
   text-align: center;
-  gap: calc(var(--spacing) / 2);
+  gap: var(--spacing);
+  padding: var(--spacing) calc(var(--spacing) / 2);
+  background: var(--color-background);
+  border-radius: calc(var(--spacing) / 2);
+  box-shadow: calc(var(--spacing) / 6) calc(var(--spacing) / 6)
+    calc(var(--spacing) / 6) 0 var(--color-link);
 
   &-icon {
-    font-size: 2em;
+    font-size: 3em;
     color: var(--color-link);
   }
 
@@ -15,13 +22,7 @@
     text-align: center;
   }
 
-  @media (width <= 600px) {
-    flex-flow: row wrap;
-    justify-content: center;
-    gap: var(--spacing);
-
-    &-text {
-      width: 100%;
-    }
+  @media (width > breakpoint(tablet)) {
+    gap: calc(var(--spacing) / 2);
   }
 }

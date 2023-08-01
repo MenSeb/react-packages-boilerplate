@@ -15,12 +15,35 @@
     flex-direction: column;
     align-items: center;
     gap: var(--spacing);
+  }
+}
 
-    .list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
+.services {
+  width: 100%;
+
+  &-list {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing) * 2);
+  }
+
+  @media (width >= breakpoint(mobile)) and (width < breakpoint(tablet)) {
+    .list-item {
+      max-width: 85%;
+    }
+  }
+
+  @media (width >= breakpoint(tablet)) {
+    &-list {
+      grid-template-columns: repeat(2, 1fr);
       gap: var(--spacing);
+    }
+  }
+
+  @media (width >= breakpoint(large)) {
+    &-list {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }

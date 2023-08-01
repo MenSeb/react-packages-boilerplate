@@ -10,9 +10,9 @@ export default function PageContact() {
           <UI.Text>I look forward to hearing about your project.</UI.Text>
           <UI.Container className="ctas">
             <UI.CallToAction emphasize to="/services">
-              see services
+              explore services
             </UI.CallToAction>
-            <UI.CallToAction to="/projects">see projects</UI.CallToAction>
+            <UI.CallToAction to="/projects">view projects</UI.CallToAction>
           </UI.Container>
         </UI.Container>
         <UI.Image

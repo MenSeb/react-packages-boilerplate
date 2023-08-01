@@ -1,5 +1,5 @@
 .banner {
   background: var(--color-background);
   color: var(--color-text);
-  padding: var(--spacing);
+  padding: calc(var(--spacing) / 2);
 }

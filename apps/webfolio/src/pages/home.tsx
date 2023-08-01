@@ -1,7 +1,5 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { About, Services } from '../components';
-import { SERVICES } from '../utilities/services';
 
 export default function Home() {
   return (
@@ -9,17 +7,17 @@ export default function Home() {
       <UI.Header>
         <UI.Container className="content">
           <UI.Heading>
-            <span className="span">Application, Website &</span>
-            <span className="span">WordPress Developper</span>
+            <span className="heading-span">Web</span>
+            <span className="heading-span">Designer & Developper</span>
           </UI.Heading>
           <UI.Text>
             Let&apos;s bring your ideas to life in the digital realm!
           </UI.Text>
           <UI.Container className="ctas">
-            <UI.CallToAction emphasize to="/contact">
-              get in touch
+            <UI.CallToAction emphasize to="/services">
+              explore services
             </UI.CallToAction>
-            <UI.CallToAction to="/services">see services</UI.CallToAction>
+            <UI.CallToAction to="/projects">view projects</UI.CallToAction>
           </UI.Container>
         </UI.Container>
         <UI.Image
@@ -31,8 +29,18 @@ export default function Home() {
       <UI.Separator />
 
       <UI.Region className="region-services" label="services">
-        <UI.Heading level={2}>Some of my services</UI.Heading>
-        <Services services={SERVICES.slice(0, 3)} />
+        <UI.Container>
+          <UI.Heading level={2}>
+            Are you looking for a specific web service?
+          </UI.Heading>
+          <UI.Text>
+            Find the web services adapted to your needs and requirements.
+          </UI.Text>
+          <UI.CallToAction emphasize to="/services">
+            find your service
+          </UI.CallToAction>
+        </UI.Container>
+        <UI.Image alt="services" src="assets/svgo/undraw_services.svg" />
       </UI.Region>
 
       <UI.Separator />
@@ -72,16 +80,26 @@ export default function Home() {
       <UI.Separator />
 
       <UI.Region className="region-about" label="about">
-        <About
-          author="Sébastien Menard"
-          image="assets/svgo/undraw_programming.svg"
-          title="Something about me"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et malesuada libero. Duis in metus erat. Vivamus accumsan mi ac nibh dapibus placerat. Maecenas facilisis ex eu magna finibus, at porta nulla vehicula."
-        >
+        <UI.Container>
+          <UI.Heading level={2}>Something about me</UI.Heading>
+          <UI.Blockquote className="about-blockquote">
+            <UI.Text className="about-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et
+              malesuada libero. Duis in metus erat. Vivamus accumsan mi ac nibh
+              dapibus placerat. Maecenas facilisis ex eu magna finibus, at porta
+              nulla vehicula.
+            </UI.Text>
+            <UI.Cite className="about-cite">Sébastien Menard</UI.Cite>
+          </UI.Blockquote>
           <UI.CallToAction className="about-cta" emphasize to="/about">
-            about me
+            learn about me
           </UI.CallToAction>
-        </About>
+        </UI.Container>
+        <UI.Image
+          className="about-image"
+          alt="programming with coffee & view"
+          src="assets/svgo/undraw_programming.svg"
+        />
       </UI.Region>
 
       <UI.Separator />
