@@ -1,7 +1,7 @@
 [class*='link'] {
   text-transform: capitalize;
   text-decoration: none;
-  text-underline-offset: 0.5em;
+  text-underline-offset: 0.25em;
   color: var(--color-text-light);
   outline: thin solid var(--color-accent-dark);
   outline-offset: 0.5em;
@@ -15,6 +15,7 @@
   &:focus {
     &:hover {
       color: var(--color-accent-light);
+      outline-color: var(--color-accent-light);
     }
   }
 
@@ -22,13 +23,20 @@
     outline: none;
   }
 
+  &:active,
   &.active,
   &[aria-current='page'] {
-    color: var(--color-accent);
+    color: var(--color-accent-dark);
 
     &:hover,
     &:focus {
-      color: var(--color-accent-light);
+      color: var(--color-accent);
+    }
+
+    &:focus {
+      &:hover {
+        color: var(--color-accent-light);
+      }
     }
   }
 }
