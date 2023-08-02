@@ -1,3 +1,5 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
 .newsletter {
   display: flex;
   flex-direction: column;
@@ -99,53 +101,49 @@
     }
   }
 
-  @media (width <= 800px) {
-    &-form {
-      &-input {
-        &[type='text'],
-        &[type='email'] {
-          width: 60%;
-        }
+  @media (width < breakpoint(tablet)) {
+    .input {
+      &[type='text'],
+      &[type='email'] {
+        width: 60%;
+      }
 
-        &[type='submit'] {
-          width: 40%;
-        }
+      &[type='submit'] {
+        width: 40%;
       }
     }
   }
 
-  @media (width <= 600px) {
+  @media (width < breakpoint(small)) {
     &-text {
       width: 100%;
     }
 
     &-form {
       flex-direction: column;
+    }
 
-      &-input {
-        &[type='text'],
-        &[type='email'] {
-          width: 80%;
-        }
+    .input {
+      &[type='text'],
+      &[type='email'] {
+        width: 80%;
+      }
 
-        &[type='submit'] {
-          width: 60%;
-        }
+      &[type='submit'] {
+        width: 60%;
       }
     }
   }
 
-  @media (width <= 400px) {
-    &-form {
-      &-input {
-        &[type='text'],
-        &[type='email'] {
-          width: 100%;
-        }
+  @media (width < breakpoint(mobile)) {
+    .input {
+      &[type='text'],
+      &[type='email'] {
+        width: 100%;
+      }
 
-        &[type='submit'] {
-          width: 80%;
-        }
+      &[type='submit'] {
+        width: 80%;
       }
     }
   }

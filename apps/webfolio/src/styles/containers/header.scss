@@ -25,7 +25,6 @@
   }
 
   .heading {
-    font-size: 3em;
     text-transform: uppercase;
   }
 
@@ -39,12 +38,6 @@
 
     .image {
       max-height: 40vmin;
-    }
-  }
-
-  @media (width < breakpoint(mobile)) {
-    .heading {
-      font-size: 2em;
     }
   }
 }

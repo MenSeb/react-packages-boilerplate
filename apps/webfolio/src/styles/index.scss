@@ -1,5 +1,6 @@
 @use '@packages/styles';
 @use '@packages/styles/src/mixins' as *;
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
 @forward './components/';
 @forward './containers/';
 @forward './pages/';
@@ -42,4 +43,43 @@
   stroke: var(--color-stroke, currentColor);
   transition: 0.25s ease-in-out;
   transition-property: fill, stroke;
+}
+
+// Update this using logic with clamp and breakpoints?
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+.text {
+  font-size: 1.25em;
+}
+
+@media (width < breakpoint(mobile)) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
 }
