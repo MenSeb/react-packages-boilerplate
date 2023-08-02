@@ -1,12 +1,12 @@
 .socials {
   &-link {
     .icon {
-      fill: var(--color-fill-dark);
+      fill: var(--color-fill);
     }
 
     &:focus {
       .icon {
-        fill: var(--color-fill);
+        fill: var(--color-fill-dark);
       }
     }
 

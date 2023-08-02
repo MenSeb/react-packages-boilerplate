@@ -85,17 +85,13 @@
       letter-spacing: 0.05em;
       text-transform: capitalize;
       font-weight: bold;
-      color: var(--color-stroke-dark);
-      background: var(--color-accent-dark);
-
-      &:focus {
-        color: var(--color-stroke);
-        background: var(--color-accent);
-      }
+      color: var(--color-background-dark);
+      background: var(--color-accent);
 
       &:hover,
+      &:focus,
       &:focus:hover {
-        color: var(--color-stroke-light);
+        color: var(--color-background-light);
         background: var(--color-accent-light);
       }
     }

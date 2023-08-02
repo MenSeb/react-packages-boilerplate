@@ -36,7 +36,7 @@
     &:hover,
     &:focus {
       background: var(--color-accent);
-      color: var(--color-stroke);
+      color: var(--color-background);
     }
   }
 
@@ -44,7 +44,7 @@
     &,
     &:focus:hover {
       background: var(--color-accent);
-      color: var(--color-stroke);
+      color: var(--color-background);
     }
 
     &:hover,

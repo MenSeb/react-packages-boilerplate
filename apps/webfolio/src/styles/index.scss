@@ -7,14 +7,46 @@
 
 :root {
   @include theme(
+    // (
+    //   (name: 'background', color: #004643, ratio: 5%),
+    //   (name: 'heading', color: #fffffe, ratio: 10%),
+    //   (name: 'text', color: #abd1c6, ratio: 10%),
+    //   (name: 'accent', color: #f9bc60, ratio: 10%),
+    //   (name: 'fill', color: #e16162, ratio: 10%),
+    //   (name: 'stroke', color: #001e1d, ratio: 5%)
+    // ),
+    // (
+    //     (name: 'background', color: #232946, ratio: 5%),
+    //     (name: 'heading', color: #fffffe, ratio: 10%),
+    //     (name: 'text', color: #b8c1ec, ratio: 10%),
+    //     (name: 'accent', color: #eebbc3, ratio: 10%),
+    //     (name: 'fill', color: #eebbc3, ratio: 10%),
+    //     (name: 'stroke', color: #121629, ratio: 5%)
+    //   ),
     (
-      (name: 'background', color: #004643, ratio: 5%),
-      (name: 'text', color: #abd1c6, ratio: 10%),
-      (name: 'heading', color: #fffffe, ratio: 10%),
-      (name: 'accent', color: #f9bc60, ratio: 10%),
-      (name: 'fill', color: #e16162, ratio: 10%),
-      (name: 'stroke', color: #001e1d, ratio: 5%)
-    )
+        (name: 'background', color: #16161a, ratio: 5%),
+        (name: 'heading', color: #fffffe, ratio: 10%),
+        (name: 'text', color: #94a1b2, ratio: 10%),
+        (name: 'accent', color: #2cb67d, ratio: 10%),
+        (name: 'fill', color: #7f5af0, ratio: 10%),
+        (name: 'stroke', color: #72757e, ratio: 5%)
+      ),
+    // (
+    //   (name: 'background', color: #16161a, ratio: 5%),
+    //   (name: 'heading', color: #fffffe, ratio: 10%),
+    //   (name: 'text', color: #94a1b2, ratio: 10%),
+    //   (name: 'accent', color: #7f5af0, ratio: 10%),
+    //   (name: 'fill', color: #2cb67d, ratio: 10%),
+    //   (name: 'stroke', color: #72757e, ratio: 5%)
+    // ),
+    // (
+    //   (name: 'background', color: #55423d, ratio: 5%),
+    //   (name: 'heading', color: #fffffe, ratio: 10%),
+    //   (name: 'text', color: #fff3ec, ratio: 10%),
+    //   (name: 'accent', color: #ffc0ad, ratio: 10%),
+    //   (name: 'fill', color: #9656a1, ratio: 10%),
+    //   (name: 'stroke', color: #140d0b, ratio: 5%)
+    // )
   );
   @include highlight(
     $color: var(--color-background-dark),
@@ -62,8 +94,12 @@ h4 {
   font-size: 1.5em;
 }
 
-.text {
+p {
   font-size: 1.25em;
+}
+
+a {
+  font-size: 1.125em;
 }
 
 @media (width < breakpoint(mobile)) {
@@ -80,6 +116,14 @@ h4 {
   }
 
   h4 {
+    font-size: 1em;
+  }
+
+  p {
+    font-size: 1.125em;
+  }
+
+  a {
     font-size: 1em;
   }
 }
