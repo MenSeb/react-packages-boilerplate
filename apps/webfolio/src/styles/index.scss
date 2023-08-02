@@ -6,18 +6,38 @@
 
 :root {
   @include theme(
-    $color-background: #164b60,
-    $color-text: #4fc0d0,
-    $color-accent: #a2ff86
+    (
+      (name: 'background', color: #004643, ratio: 10%),
+      (name: 'text', color: #abd1c6, ratio: 10%),
+      (name: 'heading', color: #fffffe, ratio: 10%),
+      (name: 'accent', color: #f9bc60, ratio: 10%),
+      (name: 'fill', color: #e16162, ratio: 10%),
+      (name: 'stroke', color: #001e1d, ratio: 10%)
+    )
   );
-}
-
-body {
   @include highlight(
     $color: var(--color-background-dark),
     $background: var(--color-accent-light)
   );
 
+  color-scheme: dark light;
   color: var(--color-text);
   background-color: var(--color-background);
+}
+
+.heading {
+  color: var(--color-heading);
+}
+
+.text {
+  color: var(--color-text);
+}
+
+.image {
+  @include theme-image;
+}
+
+.icon {
+  fill: var(--color-fill, currentColor);
+  stroke: var(--color-stroke, currentColor);
 }
