@@ -28,7 +28,6 @@ export default {
       {
         exclude: /node_modules/,
         test: /\.svg$/,
-        issuer: /\.[jt]sx?$/,
         use: ['@svgr/webpack'],
       },
     ],
