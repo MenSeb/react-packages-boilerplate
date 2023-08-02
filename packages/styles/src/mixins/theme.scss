@@ -1,46 +1,24 @@
-@use 'sass:color';
 @use '../functions/color.scss' as *;
 @use './utils.scss' as *;
 
-$color-schemes: (light, dark);
-
-@mixin theme-color($color, $color-name, $color-ratio: 5%) {
+@mixin theme-color($name, $color, $ratio: 5%) {
   @include css-variables(
     (
-      color-#{$color-name}: $color,
-      color-#{$color-name}-dark: color-theme($color, -$color-ratio),
-      color-#{$color-name}-light: color-theme($color, $color-ratio)
+      color-#{$name}: $color,
+      color-#{$name}-dark: color-theme($color, -$ratio),
+      color-#{$name}-light: color-theme($color, $ratio)
     )
   );
 }
 
-@mixin theme(
-  $color-background,
-  $ratio-background: 5%,
-  $color-text,
-  $ratio-text: 5%,
-  $color-accent,
-  $ratio-accent: 5%,
-  $color-scheme: dark light,
-  $image-scheme: true,
-  $image-brightness: 0.75,
-  $image-contrast: 1.25
-) {
-  color-scheme: #{$color-scheme};
-
-  @include theme-color($color-background, background, $ratio-background);
-  @include theme-color($color-text, text, $ratio-text);
-  @include theme-color($color-accent, accent, $ratio-accent);
-
+@mixin theme-image($brightness: 0.75, $contrast: 1.25) {
   @media (prefers-color-scheme: dark) {
-    // @include theme-color($color-background, background, -$ratio-background);
-    // @include theme-color($color-text, text, -$ratio-text);
-    // @include theme-color($color-accent, accent, -$ratio-accent);
+    filter: brightness(#{$brightness}) contrast(#{$contrast});
+  }
+}
 
-    @if $image-scheme {
-      img {
-        filter: brightness(#{$image-brightness}) contrast(#{$image-contrast});
-      }
-    }
+@mixin theme($colors) {
+  @each $color in $colors {
+    @include theme-color($color...);
   }
 }
