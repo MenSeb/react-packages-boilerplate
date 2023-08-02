@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
+import { ImageSVG } from '../components';
 
 export default function Home() {
   return (
@@ -20,9 +21,9 @@ export default function Home() {
             <UI.CallToAction to="/projects">view projects</UI.CallToAction>
           </UI.Container>
         </UI.Container>
-        <UI.Image
-          alt="web development"
-          src="assets/svgo/undraw_progressive_app.svg"
+        <ImageSVG
+          label="progressive app development"
+          name="ImageProgressiveApp"
         />
       </UI.Header>
 
