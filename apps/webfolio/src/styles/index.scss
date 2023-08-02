@@ -7,12 +7,12 @@
 :root {
   @include theme(
     (
-      (name: 'background', color: #004643, ratio: 10%),
+      (name: 'background', color: #004643, ratio: 5%),
       (name: 'text', color: #abd1c6, ratio: 10%),
       (name: 'heading', color: #fffffe, ratio: 10%),
       (name: 'accent', color: #f9bc60, ratio: 10%),
       (name: 'fill', color: #e16162, ratio: 10%),
-      (name: 'stroke', color: #001e1d, ratio: 10%)
+      (name: 'stroke', color: #001e1d, ratio: 5%)
     )
   );
   @include highlight(
@@ -40,4 +40,6 @@
 .icon {
   fill: var(--color-fill, currentColor);
   stroke: var(--color-stroke, currentColor);
+  transition: 0.25s ease-in-out;
+  transition-property: fill, stroke;
 }

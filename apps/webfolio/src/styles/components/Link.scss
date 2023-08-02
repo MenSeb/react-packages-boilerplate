@@ -3,9 +3,11 @@
   text-decoration: none;
   text-underline-offset: 0.25em;
   color: var(--color-text-light);
-  outline: thin solid var(--color-accent-dark);
+  outline: 0.1rem solid var(--color-accent-dark);
   outline-offset: 0.5em;
   border-radius: 0.25em;
+  transition: 0.25s ease-in-out;
+  transition-property: color, background-color, border-color, outline-color;
 
   &:hover,
   &:focus {
@@ -21,6 +23,7 @@
 
   &:not(:focus) {
     outline: none;
+    outline-color: var(--color-accent-dark);
   }
 
   &:active,

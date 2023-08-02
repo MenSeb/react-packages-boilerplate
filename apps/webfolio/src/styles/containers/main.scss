@@ -2,7 +2,6 @@
 
 .main {
   background: var(--color-background);
-  color: var(--color-text);
   padding: calc(var(--spacing) * 2) var(--spacing);
 
   @media (width >= breakpoint(tablet)) {

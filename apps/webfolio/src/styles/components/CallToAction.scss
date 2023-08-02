@@ -9,30 +9,48 @@
   font-weight: bold;
   font-family: sans-serif;
   letter-spacing: 0.025em;
-  border: 0.125em solid var(--color-accent-dark);
-  background: var(--color-background-light);
-  color: var(--color-accent-dark);
-  outline: thin solid var(--color-accent-dark);
+  border: medium solid var(--color-accent);
+  outline: 0.1rem solid var(--color-accent-dark);
   outline-offset: 0.5em;
-
-  &:hover,
-  &:focus {
-    background: var(--color-accent-dark);
-    color: var(--color-background-dark);
-  }
+  transition: 0.25s ease-in-out;
+  transition-property: color, background-color, border-color, outline-color;
 
   &:not(:focus) {
     outline: none;
+    outline-color: var(--color-accent-dark);
   }
 
-  &.emphasize {
-    background: var(--color-accent-dark);
-    color: var(--color-background-dark);
+  &:focus {
+    &:hover {
+      outline-color: var(--color-accent-light);
+    }
+  }
+
+  &:not(.emphasize) {
+    &,
+    &:focus:hover {
+      background: transparent;
+      color: var(--color-accent);
+    }
 
     &:hover,
     &:focus {
-      background: var(--color-background-light);
-      color: var(--color-accent-dark);
+      background: var(--color-accent);
+      color: var(--color-stroke);
+    }
+  }
+
+  &.emphasize {
+    &,
+    &:focus:hover {
+      background: var(--color-accent);
+      color: var(--color-stroke);
+    }
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      color: var(--color-accent);
     }
   }
 }

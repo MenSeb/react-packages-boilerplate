@@ -25,24 +25,46 @@
 
   .input {
     width: 35%;
-    border-radius: 0.25em;
+    border-radius: 0.25rem;
     padding: 0.5em;
     font-size: 1em;
-    outline: thin solid var(--color-accent-dark);
-    outline-offset: 0.5em;
+    outline: 0.1rem solid var(--color-accent-dark);
+    outline-offset: 0.5rem;
+
+    &,
+    &::placeholder {
+      transition: 0.25s ease-in-out;
+      transition-property: color, background-color, border-color, outline-color;
+    }
 
     &:not(:focus) {
       outline: none;
+      outline-color: var(--color-accent-dark);
+    }
+
+    &:focus {
+      &:hover {
+        outline-color: var(--color-accent-light);
+      }
     }
 
     &[type='text'],
     &[type='email'] {
       background: var(--color-background-dark);
-      border: 0.125em solid var(--color-accent);
+      border: medium solid var(--color-accent-dark);
 
       &,
       &::placeholder {
-        color: var(--color-text);
+        color: var(--color-text-dark);
+      }
+
+      &:hover {
+        border-color: var(--color-accent);
+
+        &,
+        &::placeholder {
+          color: var(--color-text);
+        }
       }
 
       &:focus {
@@ -61,12 +83,17 @@
       letter-spacing: 0.05em;
       text-transform: capitalize;
       font-weight: bold;
-      color: var(--color-background-dark);
-      background: var(--color-accent);
+      color: var(--color-stroke-dark);
+      background: var(--color-accent-dark);
+
+      &:focus {
+        color: var(--color-stroke);
+        background: var(--color-accent);
+      }
 
       &:hover,
-      &:focus {
-        color: var(--color-background-light);
+      &:focus:hover {
+        color: var(--color-stroke-light);
         background: var(--color-accent-light);
       }
     }
