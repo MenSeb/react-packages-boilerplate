@@ -28,7 +28,7 @@ export default {
       {
         exclude: /node_modules/,
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: [{ loader: '@svgr/webpack', options: { svgo: false } }],
       },
     ],
   },
