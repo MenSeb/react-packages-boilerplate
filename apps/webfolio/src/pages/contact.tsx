@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
+import { ImageSVG } from '../components';
 
 export default function PageContact() {
   return (
@@ -15,9 +16,9 @@ export default function PageContact() {
             <UI.CallToAction to="/projects">view projects</UI.CallToAction>
           </UI.Container>
         </UI.Container>
-        <UI.Image
-          alt="contact informations"
-          src="assets/svgo/undraw_contact_us.svg"
+        <ImageSVG
+          label="different ways to get in touch"
+          name="ImageContactHeader"
         />
       </UI.Header>
 

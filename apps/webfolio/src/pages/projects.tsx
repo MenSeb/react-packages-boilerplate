@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-// import { Projects } from '../components';
-// import { PROJECTS } from '../utilities/projects';
+import { ImageSVG } from '../components';
 
 export default function PageProjects() {
   return (
@@ -19,9 +18,9 @@ export default function PageProjects() {
             <UI.CallToAction to="/services">explore services</UI.CallToAction>
           </UI.Container>
         </UI.Container>
-        <UI.Image
-          alt="working closely with client"
-          src="assets/svgo/undraw_online_stats.svg"
+        <ImageSVG
+          label="developer showing projects"
+          name="ImageProjectsHeader"
         />
       </UI.Header>
 
@@ -29,7 +28,6 @@ export default function PageProjects() {
 
       <UI.Region className="region-projects" label="projects">
         <UI.Heading level={2}>Achievements I did</UI.Heading>
-        {/* <Projects projects={PROJECTS} /> */}
       </UI.Region>
     </UI.Page>
   );

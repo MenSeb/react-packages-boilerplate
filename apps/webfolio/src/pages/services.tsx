@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { Services } from '../components';
+import { ImageSVG, Services } from '../components';
 import { SERVICES } from '../utilities/services';
 
 export default function PageServices() {
@@ -19,9 +19,9 @@ export default function PageServices() {
             <UI.CallToAction to="/projects">view projects</UI.CallToAction>
           </UI.Container>
         </UI.Container>
-        <UI.Image
-          alt="online web services"
-          src="assets/svgo/undraw_working.svg"
+        <ImageSVG
+          label="developer working with client"
+          name="ImageServicesHeader"
         />
       </UI.Header>
 
