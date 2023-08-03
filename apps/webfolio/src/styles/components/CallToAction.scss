@@ -60,7 +60,7 @@
   justify-content: center;
   gap: var(--spacing);
 
-  @media (width < breakpoint(mobile)) {
+  @media (width < breakpoint(xsmall)) {
     flex-direction: column;
   }
 }
