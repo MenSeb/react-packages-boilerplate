@@ -9,6 +9,7 @@ import ImageProjectsHeader from '../../public/assets/svgo/undraw_online_stats.sv
 import ImageAboutMe from '../../public/assets/svgo/undraw_source_code.svg';
 import ImageBlogHeader from '../../public/assets/svgo/undraw_typewriter.svg';
 import ImageServicesHeader from '../../public/assets/svgo/undraw_working.svg';
+import ImageLogoReact from '../../public/assets/images/logo-react.svg';
 
 export {
   ImageAboutHeader,
@@ -20,6 +21,7 @@ export {
   ImageHomeProgramming,
   ImageHomeProjects,
   ImageHomeServices,
+  ImageLogoReact,
   ImageProjectsHeader,
   ImageServicesHeader,
 };
