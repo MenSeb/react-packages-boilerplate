@@ -1,32 +1,66 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
 .cta {
-  border-radius: 4vmin;
-  padding: 1vmin 2vmin;
+  border-radius: 2em;
+  padding: 0.5em 1em;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 0.75em;
   font-weight: bold;
-  font-family: sans-serif;
-  border: 0.25vmin solid var(--color-text);
+  letter-spacing: 0.025em;
+  border: medium solid var(--color-accent);
+  outline: 0.1rem solid var(--color-accent-dark);
+  outline-offset: 0.5em;
+  transition: 0.25s ease-in-out;
+  transition-property: color, background-color, border-color, outline-color;
 
-  &.emphasize {
-    background: var(--color-text);
-    color: var(--color-background);
+  &:not(:focus) {
+    outline: none;
+    outline-color: var(--color-accent-dark);
+  }
 
-    &:hover,
-    &:focus {
-      background: #fff;
-      color: var(--color-text);
+  &:focus {
+    &:hover {
+      outline-color: var(--color-accent-light);
     }
   }
 
   &:not(.emphasize) {
-    background: #fff;
-    color: var(--color-text);
+    &,
+    &:focus:hover {
+      background: transparent;
+      color: var(--color-accent);
+    }
 
     &:hover,
     &:focus {
-      background: var(--color-text);
+      background: var(--color-accent);
       color: var(--color-background);
     }
+  }
+
+  &.emphasize {
+    &,
+    &:focus:hover {
+      background: var(--color-accent);
+      color: var(--color-background);
+    }
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      color: var(--color-accent);
+    }
+  }
+}
+
+.ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing);
+
+  @media (width < breakpoint(mobile)) {
+    flex-direction: column;
   }
 }

@@ -25,6 +25,11 @@ export default {
         test: /\.s[ac]ss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        exclude: /node_modules/,
+        test: /\.svg$/,
+        use: [{ loader: '@svgr/webpack', options: { svgo: false } }],
+      },
     ],
   },
   output: {

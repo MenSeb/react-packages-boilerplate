@@ -14,7 +14,7 @@
 
       &-span {
         &:first-child {
-          font-size: 2em;
+          font-size: 1.5em;
         }
       }
     }
@@ -82,116 +82,5 @@
 
   &-cite {
     text-align: right;
-  }
-}
-
-.newsletter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing);
-
-  &-text {
-    width: 75%;
-    text-align: center;
-  }
-
-  &-form {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing);
-
-    &-input {
-      width: 35%;
-      color: var(--color-link-visited);
-      background: var(--color-background);
-      border: 0.5vmin solid var(--color-link);
-      border-radius: 0.5vmin;
-      padding: 1vmin;
-      outline: none;
-      font-size: 1.05em;
-
-      &:focus {
-        border-color: var(--color-link-hover);
-        color: var(--color-link-visited-hover);
-      }
-    }
-
-    &-input[type='submit'] {
-      width: 30%;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      text-transform: capitalize;
-      font-weight: bold;
-      color: var(--color-link-active-hover);
-      background: var(--color-link);
-      border: 0.5vmin solid var(--color-link);
-
-      &:hover,
-      &:focus {
-        border: 0.5vmin solid var(--color-link-hover);
-        color: var(--color-link);
-        background: var(--color-background);
-      }
-    }
-
-    &-text {
-      width: 100%;
-      text-align: center;
-    }
-  }
-
-  @media (width <= 800px) {
-    &-form {
-      &-input {
-        &[type='text'],
-        &[type='email'] {
-          width: 60%;
-        }
-
-        &[type='submit'] {
-          width: 40%;
-        }
-      }
-    }
-  }
-
-  @media (width <= 600px) {
-    &-text {
-      width: 100%;
-    }
-
-    &-form {
-      flex-direction: column;
-
-      &-input {
-        &[type='text'],
-        &[type='email'] {
-          width: 80%;
-        }
-
-        &[type='submit'] {
-          width: 60%;
-        }
-      }
-    }
-  }
-
-  @media (width <= 400px) {
-    &-form {
-      &-input {
-        &[type='text'],
-        &[type='email'] {
-          width: 100%;
-        }
-
-        &[type='submit'] {
-          width: 80%;
-        }
-      }
-    }
   }
 }

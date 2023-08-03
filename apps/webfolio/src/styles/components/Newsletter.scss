@@ -1,0 +1,146 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing);
+
+  &-text {
+    width: 75%;
+    text-align: center;
+  }
+
+  &-form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing);
+
+    &-text {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .input {
+    width: 35%;
+    border-radius: 0.25rem;
+    padding: 0.5em;
+    font-size: 1em;
+    outline: 0.1rem solid var(--color-accent-dark);
+    outline-offset: 0.5rem;
+
+    &,
+    &::placeholder {
+      transition: 0.25s ease-in-out;
+      transition-property: color, background-color, border-color, outline-color;
+    }
+
+    &:not(:focus) {
+      outline: none;
+      outline-color: var(--color-accent-dark);
+    }
+
+    &:focus {
+      &:hover {
+        outline-color: var(--color-accent-light);
+      }
+    }
+
+    &[type='text'],
+    &[type='email'] {
+      background: var(--color-background-dark);
+      border: medium solid var(--color-accent-dark);
+
+      &,
+      &::placeholder {
+        color: var(--color-text-dark);
+      }
+
+      &:hover {
+        border-color: var(--color-accent);
+
+        &,
+        &::placeholder {
+          color: var(--color-text);
+        }
+      }
+
+      &:focus {
+        border-color: var(--color-accent-light);
+
+        &,
+        &::placeholder {
+          color: var(--color-text-light);
+        }
+      }
+    }
+
+    &[type='submit'] {
+      width: 30%;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      text-transform: capitalize;
+      font-weight: bold;
+      color: var(--color-background-dark);
+      background: var(--color-accent);
+
+      &:hover,
+      &:focus,
+      &:focus:hover {
+        color: var(--color-background-light);
+        background: var(--color-accent-light);
+      }
+    }
+  }
+
+  @media (width < breakpoint(tablet)) {
+    .input {
+      &[type='text'],
+      &[type='email'] {
+        width: 60%;
+      }
+
+      &[type='submit'] {
+        width: 40%;
+      }
+    }
+  }
+
+  @media (width < breakpoint(small)) {
+    &-text {
+      width: 100%;
+    }
+
+    &-form {
+      flex-direction: column;
+    }
+
+    .input {
+      &[type='text'],
+      &[type='email'] {
+        width: 80%;
+      }
+
+      &[type='submit'] {
+        width: 60%;
+      }
+    }
+  }
+
+  @media (width < breakpoint(mobile)) {
+    .input {
+      &[type='text'],
+      &[type='email'] {
+        width: 100%;
+      }
+
+      &[type='submit'] {
+        width: 80%;
+      }
+    }
+  }
+}

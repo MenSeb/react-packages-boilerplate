@@ -1,0 +1,19 @@
+.socials {
+  &-link {
+    .icon {
+      fill: var(--color-fill);
+    }
+
+    &:focus {
+      .icon {
+        fill: var(--color-fill-dark);
+      }
+    }
+
+    &:hover {
+      .icon {
+        fill: var(--color-fill-light);
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
+import { ImageSVG } from '../components';
 
 export default function Home() {
   return (
@@ -20,10 +21,7 @@ export default function Home() {
             <UI.CallToAction to="/projects">view projects</UI.CallToAction>
           </UI.Container>
         </UI.Container>
-        <UI.Image
-          alt="web development"
-          src="assets/svgo/undraw_progressive_app.svg"
-        />
+        <ImageSVG label="progressive app development" name="ImageHomeHeader" />
       </UI.Header>
 
       <UI.Separator />
@@ -40,7 +38,7 @@ export default function Home() {
             find your service
           </UI.CallToAction>
         </UI.Container>
-        <UI.Image alt="services" src="assets/svgo/undraw_services.svg" />
+        <ImageSVG label="looking for a service" name="ImageHomeServices" />
       </UI.Region>
 
       <UI.Separator />
@@ -57,7 +55,7 @@ export default function Home() {
             consult projects
           </UI.CallToAction>
         </UI.Container>
-        <UI.Image alt="projects" src="assets/svgo/undraw_feeling_proud.svg" />
+        <ImageSVG label="developer present projects" name="ImageHomeProjects" />
       </UI.Region>
 
       <UI.Separator />
@@ -74,7 +72,7 @@ export default function Home() {
             browse blog
           </UI.CallToAction>
         </UI.Container>
-        <UI.Image alt="blog" src="assets/svgo/undraw_online_learning.svg" />
+        <ImageSVG label="learning web from articles" name="ImageHomeBlog" />
       </UI.Region>
 
       <UI.Separator />
@@ -95,11 +93,7 @@ export default function Home() {
             learn about me
           </UI.CallToAction>
         </UI.Container>
-        <UI.Image
-          className="about-image"
-          alt="programming with coffee & view"
-          src="assets/svgo/undraw_programming.svg"
-        />
+        <ImageSVG label="developer programming" name="ImageHomeProgramming" />
       </UI.Region>
 
       <UI.Separator />

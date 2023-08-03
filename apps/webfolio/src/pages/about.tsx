@@ -18,7 +18,7 @@ export default function AboutPage() {
         </UI.Container>
         <UI.Image
           alt="profile section overview"
-          src="assets/svgo/undraw_profile.svg"
+          src="assets/svgo/undraw_hello.svg"
         />
       </UI.Header>
 

@@ -8,6 +8,9 @@ const config: Config = {
     '!<rootDir>/packages/**/src/index.{ts,tsx}',
     '!<rootDir>/packages/**/src/**/index.{ts,tsx}',
   ],
+  moduleNameMapper: {
+    '\\.svg$': '<rootDir>/mocks/svg.tsx',
+  },
   setupFiles: ['./jest.setup.ts'],
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   testEnvironment: 'jsdom',

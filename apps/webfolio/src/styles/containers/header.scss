@@ -25,14 +25,7 @@
   }
 
   .heading {
-    font-size: 3em;
     text-transform: uppercase;
-  }
-
-  .ctas {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
   }
 
   @media (width < breakpoint(desktop)) {
@@ -45,12 +38,6 @@
 
     .image {
       max-height: 40vmin;
-    }
-  }
-
-  @media (width < breakpoint(mobile)) {
-    .heading {
-      font-size: 2em;
     }
   }
 }

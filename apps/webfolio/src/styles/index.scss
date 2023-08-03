@@ -1,15 +1,95 @@
 @use '@packages/styles';
+@use '@packages/styles/src/functions' as *;
+@use '@packages/styles/src/mixins' as *;
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
 @forward './components/';
 @forward './containers/';
 @forward './pages/';
 
 :root {
-  --color-background: #fffaf0;
-  --color-text: #191970;
-  --color-link: #008b8b;
-  --color-link-hover: #0ff;
-  --color-link-active: #daa520;
-  --color-link-active-hover: #ffd700;
-  --color-link-visited: #000080;
-  --color-link-visited-hover: #00f;
+  @include theme(
+    // (
+    //   (name: 'background', color: #004643, ratio: 5%),
+    //   (name: 'heading', color: #fffffe, ratio: 10%),
+    //   (name: 'text', color: #abd1c6, ratio: 10%),
+    //   (name: 'accent', color: #f9bc60, ratio: 10%),
+    //   (name: 'fill', color: #e16162, ratio: 10%),
+    //   (name: 'stroke', color: #001e1d, ratio: 5%)
+    // ),
+    // (
+    //     (name: 'background', color: #232946, ratio-dark: 5%, ratio-light: 10%),
+    //     (name: 'heading', color: #fffffe, ratio-dark: 10%, ratio-light: 10%),
+    //     (name: 'text', color: #b8c1ec, ratio-dark: 10%, ratio-light: 10%),
+    //     (name: 'accent', color: #eebbc3, ratio-dark: 10%, ratio-light: 10%),
+    //     (name: 'fill', color: #eebbc3, ratio-dark: 10%, ratio-light: 10%),
+    //     (name: 'stroke', color: #121629, ratio-dark: 5%, ratio-light: 10%)
+    //   ),
+    (
+        (name: 'background', color: #16161a, ratio-dark: 5%, ratio-light: 10%),
+        (name: 'heading', color: #fffffe, ratio-dark: 10%, ratio-light: 10%),
+        (name: 'text', color: #94a1b2, ratio-dark: 10%, ratio-light: 10%),
+        (name: 'accent', color: #2cb67d, ratio-dark: 10%, ratio-light: 10%),
+        (name: 'fill', color: #7f5af0, ratio-dark: 5%, ratio-light: 10%),
+        (name: 'stroke', color: #72757e, ratio-dark: 5%, ratio-light: 25%)
+      ),
+    // (
+    //   (name: 'background', color: #16161a, ratio: 5%),
+    //   (name: 'heading', color: #fffffe, ratio: 10%),
+    //   (name: 'text', color: #94a1b2, ratio: 10%),
+    //   (name: 'accent', color: #7f5af0, ratio: 10%),
+    //   (name: 'fill', color: #2cb67d, ratio: 10%),
+    //   (name: 'stroke', color: #72757e, ratio: 5%)
+    // ),
+    // (
+    //   (name: 'background', color: #55423d, ratio: 5%),
+    //   (name: 'heading', color: #fffffe, ratio: 10%),
+    //   (name: 'text', color: #fff3ec, ratio: 10%),
+    //   (name: 'accent', color: #ffc0ad, ratio: 10%),
+    //   (name: 'fill', color: #9656a1, ratio: 10%),
+    //   (name: 'stroke', color: #140d0b, ratio: 5%)
+    // )
+  );
+  @include highlight(
+    $color: var(--color-background-dark),
+    $background: var(--color-accent-light)
+  );
+
+  color-scheme: dark light;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+.heading {
+  color: var(--color-heading);
+}
+
+.text {
+  color: var(--color-text);
+}
+
+.image {
+  @include theme-image;
+}
+
+.icon {
+  fill: var(--color-fill, currentColor);
+  stroke: var(--color-stroke, currentColor);
+  transition: 0.25s ease-in-out;
+  transition-property: fill, stroke;
 }
