@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
+import { ImageSVG, ImageSVGType } from '..';
 
 export type Credit = {
   link: string;
@@ -10,7 +11,7 @@ export type AboutProps = {
   author: string;
   children?: React.ReactNode;
   credit?: Credit;
-  image: string;
+  image: ImageSVGType;
   text: string;
   title: string;
 };
@@ -26,7 +27,11 @@ export function About({
   return (
     <UI.Container className="about">
       <UI.Figure className="about-figure">
-        <UI.Image className="about-image" alt={`Image ${author}`} src={image} />
+        <ImageSVG
+          className="about-image"
+          label={image.label}
+          name={image.name}
+        />
         {credit ? (
           <UI.Figcaption className="about-figcaption">
             Credit:

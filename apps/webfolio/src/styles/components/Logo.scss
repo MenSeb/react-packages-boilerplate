@@ -1,22 +1,39 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
 .logo {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   color: var(--color-text-light);
 
-  img {
-    width: 10vh;
+  &-image {
+    height: 5em;
+    width: 5em;
   }
 
-  span {
-    margin-left: calc(var(--spacing) / 2);
+  &-brand {
+    border-bottom: 0.125em solid var(--color-heading);
   }
 
-  @media (width <= 400px) {
-    flex-wrap: wrap;
+  &-letter {
+    font-size: 1.5em;
+    font-weight: bold;
 
-    span {
-      margin-left: 0;
+    &:nth-child(-n + 3) {
+      color: var(--color-accent);
+    }
+
+    &:nth-child(n + 4) {
+      color: var(--color-fill);
+    }
+  }
+
+  @media (width > breakpoint(mobile)) {
+    flex-wrap: nowrap;
+
+    &-brand {
+      margin-left: calc(var(--spacing) / 2);
     }
   }
 }

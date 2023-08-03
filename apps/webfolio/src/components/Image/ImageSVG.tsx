@@ -2,13 +2,16 @@ import * as React from 'react';
 import classNames, { Argument } from 'classnames';
 import * as Images from '../../utilities/images';
 
-export type ImageSVG = React.ComponentProps<'svg'> & {
-  className?: Argument;
+export type ImageSVGType = {
   label: string;
   name: keyof typeof Images;
 };
 
-export function ImageSVG({ className, label, name, ...props }: ImageSVG) {
+export type ImageSVGProps = React.ComponentProps<'svg'> & {
+  className?: Argument;
+} & ImageSVGType;
+
+export function ImageSVG({ className, label, name, ...props }: ImageSVGProps) {
   const ImageComponent = Images[name];
 
   return (

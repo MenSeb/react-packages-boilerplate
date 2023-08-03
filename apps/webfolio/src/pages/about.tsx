@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { About } from '../components';
+import { About, ImageSVG } from '../components';
 
 export default function AboutPage() {
   return (
@@ -16,9 +16,9 @@ export default function AboutPage() {
             <UI.CallToAction to="/blog">browse blog</UI.CallToAction>
           </UI.Container>
         </UI.Container>
-        <UI.Image
-          alt="profile section overview"
-          src="assets/svgo/undraw_hello.svg"
+        <ImageSVG
+          label="developer waving in greeting"
+          name="ImageAboutHeader"
         />
       </UI.Header>
 
@@ -28,7 +28,10 @@ export default function AboutPage() {
         <UI.Heading level={2}>About Myself</UI.Heading>
         <About
           author="Sébastien Menard"
-          image="assets/svgo/undraw_source_code.svg"
+          image={{
+            label: 'developer introducing itself with info bubble',
+            name: 'ImageAboutMe',
+          }}
           title="Something about me"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et malesuada libero. Duis in metus erat. Vivamus accumsan mi ac nibh dapibus placerat. Maecenas facilisis ex eu magna finibus, at porta nulla vehicula."
         />
