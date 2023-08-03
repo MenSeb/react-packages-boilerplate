@@ -16,20 +16,20 @@
     //   (name: 'stroke', color: #001e1d, ratio: 5%)
     // ),
     // (
-    //     (name: 'background', color: #232946, ratio: 5%),
-    //     (name: 'heading', color: #fffffe, ratio: 10%),
-    //     (name: 'text', color: #b8c1ec, ratio: 10%),
-    //     (name: 'accent', color: #eebbc3, ratio: 10%),
-    //     (name: 'fill', color: #eebbc3, ratio: 10%),
-    //     (name: 'stroke', color: #121629, ratio: 5%)
+    //     (name: 'background', color: #232946, ratio-dark: 5%, ratio-light: 10%),
+    //     (name: 'heading', color: #fffffe, ratio-dark: 10%, ratio-light: 10%),
+    //     (name: 'text', color: #b8c1ec, ratio-dark: 10%, ratio-light: 10%),
+    //     (name: 'accent', color: #eebbc3, ratio-dark: 10%, ratio-light: 10%),
+    //     (name: 'fill', color: #eebbc3, ratio-dark: 10%, ratio-light: 10%),
+    //     (name: 'stroke', color: #121629, ratio-dark: 5%, ratio-light: 10%)
     //   ),
     (
-        (name: 'background', color: #16161a, ratio: 5%),
-        (name: 'heading', color: #fffffe, ratio: 10%),
-        (name: 'text', color: #94a1b2, ratio: 10%),
-        (name: 'accent', color: #2cb67d, ratio: 10%),
-        (name: 'fill', color: #7f5af0, ratio: 10%),
-        (name: 'stroke', color: #72757e, ratio: 5%)
+        (name: 'background', color: #16161a, ratio-dark: 5%, ratio-light: 10%),
+        (name: 'heading', color: #fffffe, ratio-dark: 10%, ratio-light: 10%),
+        (name: 'text', color: #94a1b2, ratio-dark: 10%, ratio-light: 10%),
+        (name: 'accent', color: #2cb67d, ratio-dark: 10%, ratio-light: 10%),
+        (name: 'fill', color: #7f5af0, ratio-dark: 5%, ratio-light: 10%),
+        (name: 'stroke', color: #72757e, ratio-dark: 5%, ratio-light: 25%)
       ),
     // (
     //   (name: 'background', color: #16161a, ratio: 5%),

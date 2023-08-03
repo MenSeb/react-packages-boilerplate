@@ -1,12 +1,12 @@
 @use '../functions/color.scss' as *;
 @use './utils.scss' as *;
 
-@mixin theme-color($name, $color, $ratio: 5%) {
+@mixin theme-color($name, $color, $ratio-dark: 5%, $ratio-light: 5%) {
   @include css-variables(
     (
       color-#{$name}: $color,
-      color-#{$name}-dark: color-theme($color, -$ratio),
-      color-#{$name}-light: color-theme($color, $ratio)
+      color-#{$name}-dark: color-theme($color, -$ratio-dark),
+      color-#{$name}-light: color-theme($color, $ratio-light)
     )
   );
 }
