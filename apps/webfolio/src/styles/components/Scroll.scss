@@ -1,0 +1,59 @@
+@use '@packages/styles/src/functions' as *;
+
+.scroll {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background: none;
+  outline: none;
+  bottom: calc(var(--spacing) / 4);
+  right: calc(var(--spacing) / 4);
+  padding: 0.5em;
+  border: 0.1rem solid var(--color-background-light);
+  transition: border-color 0.25s ease-in-out;
+
+  &,
+  &::before {
+    border-radius: 50%;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-background-light);
+    opacity: 0.75;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--color-accent);
+
+    .icon {
+      fill: var(--color-accent);
+    }
+  }
+
+  &:focus {
+    &:hover {
+      border-color: var(--color-accent-light);
+
+      .icon {
+        fill: var(--color-accent-light);
+      }
+    }
+  }
+
+  &-icon {
+    position: relative;
+    font-size: fluid(
+      (
+        value-min: 24px,
+        value-max: 32px,
+      )
+    );
+  }
+}
