@@ -39,6 +39,8 @@
     "react": "^18.2.0"
   },
   "dependencies": {
-    "@packages/react-context-reducer": "*"
+    "@packages/react-context-reducer": "*",
+    "@packages/react-hooks": "*",
+    "@packages/react-ui": "*"
   }
 }
