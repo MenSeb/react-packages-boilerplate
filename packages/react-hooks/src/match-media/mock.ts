@@ -1,5 +1,3 @@
-defineMatchMedia();
-
 export const mapMatchMedia = new Map<string, MediaQueryList>();
 
 export function dispatchMatchMedia(

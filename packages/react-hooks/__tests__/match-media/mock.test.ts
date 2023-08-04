@@ -1,5 +1,10 @@
-import { dispatchMatchMedia } from '../../src/match-media/mock';
+import {
+  defineMatchMedia,
+  dispatchMatchMedia,
+} from '../../src/match-media/mock';
 import { listener, query } from './index';
+
+defineMatchMedia();
 
 describe('Match Media Mock', () => {
   it('defines matchMedia on window', () => {
