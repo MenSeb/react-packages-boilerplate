@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as Widgets from '@packages/react-widgets';
 import { IconContext } from 'react-icons';
 import { ScrollRestoration } from 'react-router-dom';
 import { Banner, ContentInfo, Main } from '.';
@@ -15,6 +16,7 @@ export function Layout() {
         <Banner />
         <Main />
         <ContentInfo />
+        <Widgets.ScrollToTop scrollHidden={true} />
         <ScrollRestoration />
       </IconContext.Provider>
     </>

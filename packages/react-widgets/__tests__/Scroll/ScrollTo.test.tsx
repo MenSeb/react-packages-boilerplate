@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import { act } from '@testing-library/react';
+import { act, fireEvent } from '@testing-library/react';
 import { dispatchMatchMedia } from '@packages/react-hooks/src/match-media/mock';
 import { resetScroll } from '../../src/Scroll/mock';
 import {
@@ -10,7 +10,7 @@ import {
   ScrollToTop,
 } from '../../src';
 import { createRender } from '..';
-import { getIcon, getScroll, scrollOptions } from '.';
+import { getIcon, getScroll, queryScroll, scrollOptions } from '.';
 
 const props = {
   children: 'children',
@@ -29,6 +29,55 @@ describe('<ScrollTo />', () => {
 
     expect(getScroll()).toBeInTheDocument();
     expect(getScroll()).toHaveTextContent(props.children);
+    expect(getScroll()).toHaveClass('scrolled');
+  });
+
+  it('hides and shows on window scroll Y', async () => {
+    const user = userEvent.setup();
+
+    renderScrollTo({
+      props: { scrollDirection: 'scrollTop', scrollHidden: true },
+    });
+
+    expect(queryScroll()).not.toBeInTheDocument();
+
+    act(() => {
+      window.scroll({ top: 500 });
+      fireEvent.scroll(window);
+    });
+
+    expect(getScroll()).toBeInTheDocument();
+
+    await act(async () => {
+      await user.click(getScroll());
+      fireEvent.scroll(window);
+    });
+
+    expect(queryScroll()).not.toBeInTheDocument();
+  });
+
+  it('hides and shows on window scroll X', async () => {
+    const user = userEvent.setup();
+
+    renderScrollTo({
+      props: { scrollDirection: 'scrollLeft', scrollHidden: true },
+    });
+
+    expect(queryScroll()).not.toBeInTheDocument();
+
+    act(() => {
+      window.scroll({ left: 500 });
+      fireEvent.scroll(window);
+    });
+
+    expect(getScroll()).toBeInTheDocument();
+
+    await act(async () => {
+      await user.click(getScroll());
+      fireEvent.scroll(window);
+    });
+
+    expect(queryScroll()).not.toBeInTheDocument();
   });
 
   it('scrolls with the user preference behavior', async () => {
@@ -78,6 +127,7 @@ describe('<ScrollToLeft />', () => {
 
     expect(getScroll()).toBeInTheDocument();
     expect(getScroll()).toHaveClass('scroll-left');
+    expect(getScroll()).toHaveAttribute('aria-label', 'scroll to left');
 
     expect(getIcon()).toBeInTheDocument();
     expect(getIcon()).toHaveClass('scroll-icon');
@@ -102,6 +152,7 @@ describe('<ScrollToTop />', () => {
 
     expect(getScroll()).toBeInTheDocument();
     expect(getScroll()).toHaveClass('scroll-top');
+    expect(getScroll()).toHaveAttribute('aria-label', 'scroll to top');
 
     expect(getIcon()).toBeInTheDocument();
     expect(getIcon()).toHaveClass('scroll-icon');

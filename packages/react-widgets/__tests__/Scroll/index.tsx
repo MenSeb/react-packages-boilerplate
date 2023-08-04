@@ -8,6 +8,10 @@ export function getIcon() {
   return within(getScroll()).getByRole('presentation');
 }
 
+export function queryScroll() {
+  return screen.queryByRole('button');
+}
+
 export const scrollOptions: ScrollToOptions = {
   behavior: 'auto',
   left: 0,
