@@ -25,7 +25,10 @@ export function ScrollTo({ scrollOptions, ...props }: ScrollToProps) {
   );
 }
 
-export function ScrollToTop({ scrollOptions, ...props }: ScrollToProps) {
+export function ScrollToTop({
+  scrollOptions,
+  ...props
+}: Partial<ScrollToProps>) {
   return (
     <ScrollTo
       {...props}
@@ -37,7 +40,10 @@ export function ScrollToTop({ scrollOptions, ...props }: ScrollToProps) {
   );
 }
 
-export function ScrollToLeft({ scrollOptions, ...props }: ScrollToProps) {
+export function ScrollToLeft({
+  scrollOptions,
+  ...props
+}: Partial<ScrollToProps>) {
   return (
     <ScrollTo
       {...props}
