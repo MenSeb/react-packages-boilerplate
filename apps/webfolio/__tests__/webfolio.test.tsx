@@ -2,9 +2,7 @@ import * as React from 'react';
 import { act, screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
-  MemoryRouter,
   Route,
-  Routes,
   RouterProvider,
   createRoutesFromElements,
   createMemoryRouter,
@@ -13,15 +11,22 @@ import { routes } from '../src/router';
 import { Layout } from '../src/containers';
 import { About, Error as ErrorPage, Home, Lost } from '../src/pages';
 
+type RouterSettings = {
+  routes: React.ReactNode;
+  initialEntries?: (string | Partial<Location>)[];
+};
+
+function renderRouter({ routes, initialEntries }: RouterSettings) {
+  const router = createMemoryRouter(createRoutesFromElements(routes), {
+    initialEntries,
+  });
+
+  return render(<RouterProvider router={router} />);
+}
+
 describe('<WebFolio />', () => {
   describe('<Layout />', () => {
-    beforeEach(() =>
-      render(
-        <MemoryRouter>
-          <Routes>{routes}</Routes>
-        </MemoryRouter>,
-      ),
-    );
+    beforeEach(() => renderRouter({ routes }));
 
     it('renders with header', () => {
       expect(screen.getAllByRole('banner')[0]).toBeInTheDocument();
@@ -37,13 +42,7 @@ describe('<WebFolio />', () => {
   });
 
   describe('<Home />', () => {
-    beforeEach(() =>
-      render(
-        <MemoryRouter>
-          <Routes>{routes}</Routes>
-        </MemoryRouter>,
-      ),
-    );
+    beforeEach(() => renderRouter({ routes }));
 
     it('renders with home page', () => {
       expect(
@@ -53,13 +52,7 @@ describe('<WebFolio />', () => {
   });
 
   describe('<About />', () => {
-    beforeEach(() =>
-      render(
-        <MemoryRouter>
-          <Routes>{routes}</Routes>
-        </MemoryRouter>,
-      ),
-    );
+    beforeEach(() => renderRouter({ routes }));
 
     it('renders with about page', async () => {
       const user = userEvent.setup();
@@ -75,13 +68,7 @@ describe('<WebFolio />', () => {
   });
 
   describe('<Lost />', () => {
-    beforeEach(() =>
-      render(
-        <MemoryRouter initialEntries={['/test']}>
-          <Routes>{routes}</Routes>
-        </MemoryRouter>,
-      ),
-    );
+    beforeEach(() => renderRouter({ routes, initialEntries: ['/test'] }));
 
     it('renders with lost page', () => {
       expect(

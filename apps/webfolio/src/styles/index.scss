@@ -53,10 +53,29 @@
     $color: var(--color-background-dark),
     $background: var(--color-accent-light)
   );
+  @include css-variables(
+    (
+      spacing:
+        fluid(
+          (
+            value-min: 20px,
+            value-max: 60px,
+            unit-value: px,
+          )
+        ),
+    )
+  );
 
   color-scheme: dark light;
   color: var(--color-text);
   background-color: var(--color-background);
+  line-height: 1.5;
+  font-size: fluid(
+    (
+      value-min: 16px,
+      value-max: 24px,
+    )
+  );
   font-family:
     system-ui,
     -apple-system,
@@ -73,6 +92,11 @@
 
 h1 {
   font-size: 3em;
+}
+
+.heading,
+.text {
+  overflow-wrap: break-word;
 }
 
 .heading {
