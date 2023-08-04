@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@packages/react-ui": "*",
+    "@packages/react-widgets": "*",
     "@packages/styles": "*"
   }
 }
