@@ -16,7 +16,7 @@ export function Layout() {
         <Banner />
         <Main />
         <ContentInfo />
-        <Widgets.ScrollToTop />
+        <Widgets.ScrollToTop scrollHidden={true} />
         <ScrollRestoration />
       </IconContext.Provider>
     </>
