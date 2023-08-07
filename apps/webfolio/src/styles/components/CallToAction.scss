@@ -9,48 +9,32 @@
   font-weight: bold;
   letter-spacing: 0.025em;
   border: medium solid var(--color-accent);
-  outline: 0.1rem solid var(--color-accent-dark);
-  outline-offset: 0.5em;
+  outline: none;
   transition: 0.25s ease-in-out;
-  transition-property: color, background-color, border-color, outline-color;
-
-  &:not(:focus) {
-    outline: none;
-    outline-color: var(--color-accent-dark);
-  }
-
-  &:focus {
-    &:hover {
-      outline-color: var(--color-accent-light);
-    }
-  }
+  transition-property: color, background-color, border-color, box-shadow;
 
   &:not(.emphasize) {
-    &,
-    &:focus:hover {
-      background: transparent;
-      color: var(--color-accent);
-    }
+    background: transparent;
+    color: var(--color-accent);
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: var(--color-accent);
       color: var(--color-background);
     }
   }
 
   &.emphasize {
-    &,
-    &:focus:hover {
-      background: var(--color-accent);
-      color: var(--color-background);
-    }
+    background: var(--color-accent);
+    color: var(--color-background);
 
-    &:hover,
-    &:focus {
+    &:hover {
       background: transparent;
       color: var(--color-accent);
     }
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0.5em 0.125em var(--color-accent-dark);
   }
 }
 
