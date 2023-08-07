@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { ImageSVG } from '../components';
+import { ImageSVG, Newsletter } from '../components';
 
 export default function Home() {
   return (
@@ -98,38 +98,8 @@ export default function Home() {
 
       <UI.Separator />
 
-      <UI.Region className="region-newsletter newsletter" label="newsletter">
-        <UI.Heading className="newsletter-heading" level={2}>
-          Newsletter
-        </UI.Heading>
-        <UI.Text className="newsletter-text">
-          Get notified of the new articles in my blog, the exclusive promotions
-          on my services and the latest projects brought to life, all
-          conveniently in your inbox.
-        </UI.Text>
-        <UI.Form
-          onSubmit={(e: React.FormEvent) => e.preventDefault()}
-          className="newsletter-form"
-        >
-          <UI.Input
-            className="newsletter-form-input"
-            type="email"
-            placeholder="Your email..."
-          />
-          <UI.Input
-            className="newsletter-form-input"
-            type="text"
-            placeholder="Your name..."
-          />
-          <UI.Input
-            className="newsletter-form-input"
-            type="submit"
-            value="subscribe"
-          />
-          <UI.Text className="newsletter-form-text">
-            You may unsubscribe at any time.
-          </UI.Text>
-        </UI.Form>
+      <UI.Region className="region-newsletter" label="newsletter">
+        <Newsletter />
       </UI.Region>
     </UI.Page>
   );

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { ImageSVG } from '../components';
+import { ImageSVG, Newsletter } from '../components';
 
 export default function PageProjects() {
   return (
@@ -28,6 +28,12 @@ export default function PageProjects() {
 
       <UI.Region className="region-projects" label="projects">
         <UI.Heading level={2}>Achievements I did</UI.Heading>
+      </UI.Region>
+
+      <UI.Separator />
+
+      <UI.Region className="region-newsletter" label="newsletter">
+        <Newsletter />
       </UI.Region>
     </UI.Page>
   );

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { ImageSVG } from '../components';
+import { ImageSVG, Newsletter } from '../components';
 
 export default function PageContact() {
   return (
@@ -26,6 +26,12 @@ export default function PageContact() {
 
       <UI.Region className="region-contact" label="contact">
         <UI.Heading level={2}>Contact me</UI.Heading>
+      </UI.Region>
+
+      <UI.Separator />
+
+      <UI.Region className="region-newsletter" label="newsletter">
+        <Newsletter />
       </UI.Region>
     </UI.Page>
   );
