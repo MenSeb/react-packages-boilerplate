@@ -1,0 +1,123 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
+.project {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: var(--spacing);
+  padding: var(--spacing);
+  color: var(--color-text-light);
+  background: var(--color-background-light);
+  border-radius: calc(var(--spacing) / 2);
+  box-shadow: calc(var(--spacing) / 6) calc(var(--spacing) / 6)
+    calc(var(--spacing) / 6) 0 var(--color-background-dark);
+
+  &-image {
+    max-height: 5em;
+    width: 100%;
+  }
+
+  [class*='icon'] {
+    font-size: 1.5em;
+  }
+
+  &-name {
+    text-align: center;
+    width: 100%;
+    // flex: 1 0 auto;
+  }
+
+  &-text {
+    text-transform: capitalize;
+  }
+
+  &-tasks,
+  &-technos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+
+    &-list {
+      display: flex;
+      gap: var(--spacing);
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing) / 2);
+    }
+  }
+
+  &-tasks {
+    &-list {
+      flex-direction: column;
+    }
+  }
+
+  &-technos {
+    flex: 1 0 auto;
+
+    &-list {
+      flex-wrap: wrap;
+    }
+  }
+
+  &-link {
+    text-align: center;
+  }
+
+  @media (width > breakpoint(xsmall)) {
+    &-technos {
+      &-list {
+        justify-content: space-evenly;
+      }
+    }
+  }
+
+  @media (width >= breakpoint(mobile)) and (width < breakpoint(tablet)) {
+    flex-flow: row wrap;
+    align-items: flex-start;
+
+    &-tasks,
+    &-technos {
+      &-list {
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+    }
+
+    &-tasks {
+      width: calc(55% - var(--spacing) / 2);
+    }
+
+    &-technos {
+      width: calc(45% - var(--spacing) / 2);
+    }
+  }
+
+  @media (width >= breakpoint(tablet)) {
+    &-tasks,
+    &-technos {
+      &-list {
+        gap: calc(var(--spacing) / 2);
+      }
+    }
+  }
+
+  @media (width >= breakpoint(desktop)) {
+    &-tasks,
+    &-technos {
+      gap: calc(var(--spacing) / 2);
+    }
+  }
+
+  @media (width >= breakpoint(large)) {
+    gap: calc(var(--spacing) / 2);
+    padding: var(--spacing) calc(var(--spacing) / 2);
+  }
+}
