@@ -8,7 +8,7 @@ import {
   FaSass,
 } from 'react-icons/fa6';
 import { MdImportantDevices } from 'react-icons/md';
-import { SiReactrouter, SiWebpack, SiTypescript } from 'react-icons/si';
+import { SiWebpack, SiTypescript } from 'react-icons/si';
 
 export const PROJECTS = [
   {

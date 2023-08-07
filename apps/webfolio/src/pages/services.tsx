@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
 import { ImageSVG, Newsletter, Services } from '../components';
-import { SERVICES } from '../utilities/services';
+import { SERVICES } from '../utilities';
 
 export default function PageServices() {
   return (
