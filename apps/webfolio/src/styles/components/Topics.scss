@@ -1,0 +1,57 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
+.topic {
+  all: unset;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: normal;
+  display: flex;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  color: var(--color-background);
+  background: var(--color-fill-dark);
+  transition: 0.25s ease-in-out;
+  transition-property: color, background-color, border-color, box-shadow;
+
+  &:focus-visible {
+    color: var(--color-background-dark);
+    background: var(--color-fill);
+    box-shadow: 0 0 0.5em 0.125em var(--color-fill-dark);
+
+    .icon {
+      fill: var(--color-accent-light);
+    }
+  }
+
+  &,
+  &:focus-visible {
+    &:hover {
+      background: var(--color-fill-light);
+
+      .icon {
+        fill: var(--color-accent-light);
+      }
+    }
+  }
+
+  .icon {
+    fill: var(--color-accent);
+    font-size: 1.5em;
+    margin-right: 0.5em;
+  }
+}
+
+.topics {
+  width: 100%;
+
+  &-list {
+    display: flex;
+    gap: var(--spacing);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (width >= breakpoint(desktop)) {
+    width: 75%;
+  }
+}
