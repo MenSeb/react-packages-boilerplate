@@ -1,0 +1,33 @@
+.select {
+  border-radius: 0.25rem;
+  padding: 0.5em;
+  font-size: 1em;
+  outline: none;
+  background: var(--color-background-dark);
+  border: medium solid var(--color-accent-dark);
+  color: var(--color-text-dark);
+  transition: 0.25s ease-in-out;
+  transition-property: color, background-color, border-color, box-shadow;
+
+  &:focus-visible {
+    box-shadow: 0 0 0.25em 0.125em var(--color-accent-dark);
+  }
+
+  &:hover {
+    border-color: var(--color-accent);
+
+    &,
+    &::placeholder {
+      color: var(--color-text);
+    }
+  }
+
+  &:focus {
+    border-color: var(--color-accent-light);
+
+    &,
+    &::placeholder {
+      color: var(--color-text-light);
+    }
+  }
+}
