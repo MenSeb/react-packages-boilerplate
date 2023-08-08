@@ -10,6 +10,7 @@ export * from './Header';
 export * from './Heading';
 export * from './Image';
 export * from './Input';
+export * from './Label';
 export * from './Link';
 export * from './List';
 export * from './Logo';

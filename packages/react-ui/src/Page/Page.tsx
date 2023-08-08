@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { classNames, Label, Region, RegionProps } from '..';
+import { classNames, LabelType, Region, RegionProps } from '..';
 
 /**
  * The props types for component {@link Page}
  */
-export type PageProps = RegionProps & Label;
+export type PageProps = RegionProps & LabelType;
 
 /**
  * Renders a page region.

@@ -15,7 +15,7 @@ export type ClassNames = {
 /**
  * The props types for a label without labelledby.
  */
-export type Label = {
+export type LabelType = {
   labelledby?: never;
   /**
    * The label of the navigation.
@@ -26,7 +26,7 @@ export type Label = {
 /**
  * The props types for a labelledby without label.
  */
-export type Labelledby = {
+export type LabelledbyType = {
   label?: never;
   /**
    * The id of the element which label the navigation.
@@ -37,4 +37,4 @@ export type Labelledby = {
 /**
  * The props types for a label or a labelledby.
  */
-export type Labelled = Label | Labelledby;
+export type Labelled = LabelType | LabelledbyType;
