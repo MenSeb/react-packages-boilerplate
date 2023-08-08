@@ -18,6 +18,7 @@ export * from './Main';
 export * from './Navigation';
 export * from './Page';
 export * from './Region';
+export * from './Select';
 export * from './Separators';
 export * from './Signature';
 export * from './Socials';
