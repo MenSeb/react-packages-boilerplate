@@ -3,5 +3,7 @@ export * from './Image';
 export * from './Logo';
 export * from './Navigation';
 export * from './Newsletter';
+export * from './Posts';
 export * from './Projects';
 export * from './Services';
+export * from './Topics';
