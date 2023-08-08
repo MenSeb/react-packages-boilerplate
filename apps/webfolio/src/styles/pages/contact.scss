@@ -10,17 +10,14 @@
     flex-direction: row-reverse;
   }
 
+  .text {
+    text-align: center;
+  }
+
   .region-contact {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing);
-
-    .list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: var(--spacing);
-    }
   }
 }
