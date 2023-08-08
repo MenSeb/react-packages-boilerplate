@@ -1,0 +1,167 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
+.post {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing);
+  padding: var(--spacing);
+  color: var(--color-text-light);
+  background: var(--color-background-light);
+  border-radius: calc(var(--spacing) / 2);
+  box-shadow: calc(var(--spacing) / 6) calc(var(--spacing) / 6)
+    calc(var(--spacing) / 6) 0 var(--color-background-dark);
+
+  &-title {
+    text-align: center;
+  }
+
+  &-image {
+    width: 75%;
+  }
+
+  &-text {
+    text-align: center;
+  }
+
+  &-infos {
+    width: 100%;
+    display: flex;
+    gap: calc(var(--spacing) / 2);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    > *:nth-child(even) {
+      align-items: flex-end;
+    }
+  }
+
+  &-date,
+  &-time,
+  &-author,
+  &-like {
+    width: calc(50% - var(--spacing) / 4);
+    display: flex;
+    flex-direction: column;
+  }
+
+  span {
+    &:first-child {
+      color: var(--color-heading);
+    }
+  }
+
+  &-like {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-input,
+    &-icon {
+      height: 1em;
+      width: 1em;
+      font-size: 1.5em;
+    }
+
+    &-input {
+      appearance: none;
+      position: absolute;
+      cursor: pointer;
+      transition: 0.25s ease-in-out;
+      transition-property: outline-color;
+
+      &:not(:focus-visible) {
+        outline: none;
+        outline-color: var(--color-accent-dark);
+      }
+
+      &:focus-visible {
+        outline: 0.1rem solid var(--color-accent-dark);
+        outline-offset: 0.25em;
+        border-radius: 50%;
+
+        + .icon {
+          stroke: var(--color-fill);
+        }
+
+        &:checked + .icon {
+          fill: var(--color-fill);
+        }
+
+        &:hover {
+          outline-color: var(--color-accent-light);
+
+          + .icon {
+            stroke: var(--color-fill-light);
+          }
+        }
+      }
+
+      &:checked + .icon {
+        fill: var(--color-fill-dark);
+      }
+
+      &:hover {
+        + .icon {
+          stroke: var(--color-fill-light);
+        }
+
+        &:checked + .icon {
+          fill: var(--color-fill-light);
+        }
+      }
+    }
+
+    .icon {
+      fill: none;
+      stroke: var(--color-fill-dark);
+      pointer-events: none;
+    }
+  }
+
+  @media (width >= breakpoint(large)) {
+    padding: calc(var(--spacing) / 2);
+    gap: calc(var(--spacing) / 2);
+
+    &-date,
+    &-time,
+    &-author,
+    &-like {
+      width: auto;
+    }
+  }
+}
+
+.posts {
+  width: 100%;
+
+  &-list {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing) * 2);
+  }
+
+  @media (width >= breakpoint(mobile)) and (width < breakpoint(tablet)) {
+    .list-item {
+      max-width: 85%;
+    }
+  }
+
+  @media (width >= breakpoint(tablet)) {
+    &-list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing);
+    }
+  }
+
+  @media (width >= breakpoint(large)) {
+    &-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
