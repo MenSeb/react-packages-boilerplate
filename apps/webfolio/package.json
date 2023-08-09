@@ -30,13 +30,17 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
-    "build": "tsc && webpack --mode production",
-    "serve": "webpack serve --hot --open --mode development"
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "deploy": "yarn build && yarn webpack:build",
+    "webpack:build": "webpack --mode production",
+    "webpack:serve": "webpack serve --hot --open --mode development"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
   },
   "dependencies": {
+    "@packages/react-form": "*",
     "@packages/react-ui": "*",
     "@packages/react-widgets": "*",
     "@packages/styles": "*"
