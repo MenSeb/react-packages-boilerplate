@@ -30,7 +30,10 @@ export default function PageContact() {
           Please select the services you would require and briefly describe the
           project for which they are required.
         </UI.Text>
-        <UI.Form className="contact-form">
+        <UI.Form
+          className="contact-form"
+          onSubmit={(event) => event.preventDefault()}
+        >
           <UI.Label>
             First Name
             <UI.Input type="text" placeholder="Your first name..." />
