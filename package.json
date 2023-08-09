@@ -39,7 +39,7 @@
     "prepublish": "yarn run build",
     "publish": "lerna publish",
     "serve": "lerna run serve",
-    "show": "yarn serve --scope=@apps/webfolio",
+    "show": "lerna --scope=@apps/webfolio run webpack:serve",
     "test": "jest",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test --coverage"
