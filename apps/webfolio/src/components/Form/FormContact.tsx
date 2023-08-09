@@ -1,17 +1,18 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
+import { SentMessageInfo } from 'nodemailer';
 
-export type FetchContactData = {
-  data: { status: string };
+export type FetchContactInfo = {
+  info: SentMessageInfo;
   error?: never;
 };
 
 export type FetchContactError = {
-  data?: never;
-  error: { message: string };
+  info?: never;
+  error: Error | null;
 };
 
-export type FetchContactEmail = FetchContactData | FetchContactError;
+export type FetchContactEmail = FetchContactInfo | FetchContactError;
 
 export type ContactEmailResponse = Omit<Response, 'json'> & {
   json: () => Promise<FetchContactEmail>;
