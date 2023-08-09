@@ -15,9 +15,6 @@ export type ContactMailRequest = Omit<Request, 'body'> & {
   };
 };
 
-const app = express();
-const port = 3001;
-
 const transporter = nodemailer.createTransport({
   host: process.env.NODE_MAILER_HOST,
   port: Number(process.env.NODE_MAILER_PORT),
@@ -26,6 +23,9 @@ const transporter = nodemailer.createTransport({
     pass: process.env.NODE_MAILER_PASSWORD,
   },
 });
+
+const app = express();
+const port = 3001;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -38,17 +38,42 @@ app.listen(port, () => {
   log(`Listening on port: ${port}`);
 });
 
-app.post('/form-contact', function (req: ContactMailRequest, res: Response) {
+function sendMailContact(req: ContactMailRequest, res: Response) {
   const { body } = req;
 
   const sendMailOptions: SendMailOptions = {
     from: body.email,
     to: process.env.NODE_MAILER_EMAIL,
-    subject: `${body.website} - ${body.firstname}, ${body.lastname}`,
+    subject: `${body.firstname}, ${body.lastname} - ${body.website}`,
     text: body.project,
   };
 
-  transporter.sendMail(sendMailOptions, function (error, data) {
-    res.json(error ? error : { data });
+  transporter.sendMail(sendMailOptions, function (error, info) {
+    log({ error, info });
+
+    res.json(error ? { error } : { info });
   });
+}
+
+function sendMailUser(req: ContactMailRequest, res: Response) {
+  const { body } = req;
+
+  transporter.sendMail(
+    {
+      from: process.env.NODE_MAILER_EMAIL,
+      to: body.email,
+      subject: `request received - ${body.website}`,
+    },
+    function (error, info) {
+      log('user notified', { error, info });
+
+      res.json(error ? { error } : { info });
+    },
+  );
+}
+
+app.post('/form-contact', function (req: ContactMailRequest, res: Response) {
+  sendMailContact(req, res);
+
+  sendMailUser(req, res);
 });
