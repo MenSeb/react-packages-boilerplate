@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { log } from 'console';
 
 export type FetchContactData = {
   data: { status: string };
@@ -38,9 +37,7 @@ export function FormContact() {
 
       const formData = new FormData(event.currentTarget);
 
-      const { data, error } = await sendContactEmail(formData);
-
-      log({ data, error });
+      await sendContactEmail(formData);
     },
     [],
   );
