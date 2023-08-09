@@ -22,6 +22,7 @@ export * from './Select';
 export * from './Separators';
 export * from './Signature';
 export * from './Socials';
+export * from './Span';
 export * from './Text';
 export * from './Textarea';
 export * from './utilities';
