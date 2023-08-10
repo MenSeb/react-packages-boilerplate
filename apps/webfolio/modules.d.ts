@@ -7,7 +7,8 @@ declare module '*.svg' {
 declare module NodeJS {
   export interface ProcessEnv {
     [key: string]: string | undefined;
-    EXPRESS_PORT: string;
+    BACKEND_PORT: string;
+    FRONTEND_PORT: string;
     NODE_MAILER_EMAIL: string;
     NODE_MAILER_HOST: string;
     NODE_MAILER_PORT: string;
