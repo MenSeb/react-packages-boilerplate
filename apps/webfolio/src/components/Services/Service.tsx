@@ -15,7 +15,7 @@ export function Service({ description, icon: Icon, name }: ServiceProps) {
         {name}
       </UI.Heading>
       <UI.Text className="service-text">{description}</UI.Text>
-      <UI.CallToAction className="service-cta" to="contact">
+      <UI.CallToAction className="service-cta" to="/contact">
         contact me
       </UI.CallToAction>
     </UI.Container>
