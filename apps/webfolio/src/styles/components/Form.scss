@@ -19,6 +19,10 @@
     }
   }
 
+  .option {
+    text-transform: capitalize;
+  }
+
   .input[type='submit'] {
     width: 75%;
     align-self: center;
