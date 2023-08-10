@@ -30,7 +30,7 @@ const port = process.env.BACKEND_PORT;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+app.get('/webfolio', (req, res) => {
   res.send('Hello World!');
 });
 
@@ -72,8 +72,11 @@ function sendMailUser(req: ContactMailRequest, res: Response) {
   );
 }
 
-app.post('/api/contact', function (req: ContactMailRequest, res: Response) {
-  sendMailContact(req, res);
+app.post(
+  '/webfolio/api/contact',
+  function (req: ContactMailRequest, res: Response) {
+    sendMailContact(req, res);
 
-  sendMailUser(req, res);
-});
+    sendMailUser(req, res);
+  },
+);
