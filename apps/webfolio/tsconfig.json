@@ -1,10 +1,12 @@
 {
+  "compilerOptions": { "outDir": "./lib" },
   "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "module": "ES6",
-    "moduleResolution": "Node",
-    "outDir": "./lib"
-  },
+  "files": ["modules.d.ts"],
   "include": ["src"],
-  "files": ["modules.d.ts"]
+  "ts-node": {
+    "compilerOptions": {
+      "module": "ES6",
+      "moduleResolution": "Node"
+    }
+  }
 }
