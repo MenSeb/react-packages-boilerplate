@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import { act, screen } from '@testing-library/react';
 import { Input, InputProps } from '../../src';
 import { createRender } from '..';
@@ -6,8 +5,6 @@ import { createRender } from '..';
 const props = {};
 
 const renderInput = createRender<InputProps>(Input, { props });
-
-const user = userEvent.setup();
 
 function getInput() {
   return screen.getByRole('textbox');
@@ -39,7 +36,7 @@ describe('<Input />', () => {
   it('updates with the user onChange value', async () => {
     const value = 'value';
 
-    renderInput();
+    const { user } = renderInput();
 
     await act(() => user.type(getInput(), value));
 

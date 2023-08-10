@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import { act, screen, within } from '@testing-library/react';
 import { Select, SelectProps } from '../../src';
 import { createRender } from '..';
@@ -9,8 +8,6 @@ const props = {
 };
 
 const renderSelect = createRender<SelectProps>(Select, { props });
-
-const user = userEvent.setup();
 
 function getSelect() {
   return screen.getByRole('combobox');
@@ -71,7 +68,7 @@ describe('<Select />', () => {
   it('updates with the user onChange value', async () => {
     const value = props.options[0];
 
-    renderSelect();
+    const { user } = renderSelect();
 
     await act(() => user.selectOptions(getSelect(), value));
 
