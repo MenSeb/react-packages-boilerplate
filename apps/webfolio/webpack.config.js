@@ -7,6 +7,14 @@ export const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 export default {
   devServer: {
     historyApiFallback: true,
+    port: process.env.FRONTEND_PORT,
+    proxy: {
+      '/api': {
+        target: `http://localhost:${process.env.BACKEND_PORT}`,
+        router: () => `http://localhost:${process.env.FRONTEND_PORT}`,
+        logLevel: 'debug',
+      },
+    },
     static: {
       directory: path.resolve(__dirname, 'public'),
     },

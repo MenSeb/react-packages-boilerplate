@@ -30,7 +30,7 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build:ts": "tsc",
     "build:watch": "tsc --watch"
   },
   "bugs": {

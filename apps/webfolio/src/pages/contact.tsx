@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { ImageSVG, Newsletter } from '../components';
+import { FormContact, ImageSVG, Newsletter } from '../components';
 
 export default function PageContact() {
   return (
@@ -27,34 +27,10 @@ export default function PageContact() {
       <UI.Region className="region-contact" label="contact">
         <UI.Heading level={2}>Contact me</UI.Heading>
         <UI.Text>
-          Please select the services you would require and briefly describe the
-          project for which they are required.
+          Please select the type of website you would require and briefly
+          describe its use case in the project section.
         </UI.Text>
-        <UI.Form className="contact-form">
-          <UI.Label>
-            First Name
-            <UI.Input type="text" placeholder="Your first name..." />
-          </UI.Label>
-          <UI.Label>
-            Last Name
-            <UI.Input type="text" placeholder="Your last name..." />
-          </UI.Label>
-          <UI.Label>
-            Email
-            <UI.Input type="email" placeholder="Your email..." />
-          </UI.Label>
-          <UI.Label>
-            Services
-            <UI.Select>
-              <option value="">Your services...</option>
-            </UI.Select>
-          </UI.Label>
-          <UI.Label>
-            Project
-            <UI.Textarea placeholder="Your project..." />
-          </UI.Label>
-          <UI.Input type="submit" value="Send message" />
-        </UI.Form>
+        <FormContact />
       </UI.Region>
 
       <UI.Separator />

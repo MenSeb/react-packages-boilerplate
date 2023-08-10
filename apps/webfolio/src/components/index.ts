@@ -1,4 +1,5 @@
 export * from './About';
+export * from './Form';
 export * from './Image';
 export * from './Logo';
 export * from './Navigation';
