@@ -19,14 +19,11 @@ export type ContactEmailResponse = Omit<Response, 'json'> & {
 };
 
 async function sendContactEmail(formData: FormData) {
-  const response: ContactEmailResponse = await fetch(
-    'http://localhost:3001/form-contact',
-    {
-      body: JSON.stringify(Object.fromEntries(formData)),
-      headers: { 'Content-type': 'application/json' },
-      method: 'POST',
-    },
-  );
+  const response: ContactEmailResponse = await fetch('/api/contact', {
+    body: JSON.stringify(Object.fromEntries(formData)),
+    headers: { 'Content-type': 'application/json' },
+    method: 'POST',
+  });
 
   return response.json();
 }
