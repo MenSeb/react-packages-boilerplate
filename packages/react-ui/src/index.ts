@@ -25,5 +25,5 @@ export * from './Signature';
 export * from './Socials';
 export * from './Span';
 export * from './Text';
-export * from './Textarea';
+export * from './TextArea';
 export * from './utilities';

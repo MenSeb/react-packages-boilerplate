@@ -78,7 +78,7 @@ export function FormContact() {
       </UI.Label>
       <UI.Label>
         Project
-        <UI.Textarea name="project" placeholder="Your project..." />
+        <UI.TextArea name="project" placeholder="Your project..." />
       </UI.Label>
       <UI.Input type="submit" value="Send message" />
     </UI.Form>
