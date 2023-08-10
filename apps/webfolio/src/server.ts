@@ -25,7 +25,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const app = express();
-const port = 3001;
+const port = process.env.BACKEND_PORT;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -49,7 +49,7 @@ function sendMailContact(req: ContactMailRequest, res: Response) {
   };
 
   transporter.sendMail(sendMailOptions, function (error, info) {
-    log({ error, info });
+    log('request received', { error, info });
 
     res.json(error ? { error } : { info });
   });
@@ -72,7 +72,7 @@ function sendMailUser(req: ContactMailRequest, res: Response) {
   );
 }
 
-app.post('/form-contact', function (req: ContactMailRequest, res: Response) {
+app.post('/api/contact', function (req: ContactMailRequest, res: Response) {
   sendMailContact(req, res);
 
   sendMailUser(req, res);
