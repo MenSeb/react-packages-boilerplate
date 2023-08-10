@@ -9,9 +9,9 @@ export default {
     historyApiFallback: true,
     port: process.env.FRONTEND_PORT,
     proxy: {
-      '/api': {
-        target: `http://localhost:${process.env.BACKEND_PORT}`,
-        router: () => `http://localhost:${process.env.FRONTEND_PORT}`,
+      '/webfolio/api': {
+        target: `http://localhost:${process.env.FRONTEND_PORT}`,
+        router: () => `http://localhost:${process.env.BACKEND_PORT}`,
         logLevel: 'debug',
       },
     },

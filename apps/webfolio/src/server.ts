@@ -32,6 +32,7 @@ app.use(bodyParser.json());
 
 app.get('/webfolio', (req, res) => {
   res.send('Hello World!');
+  log('Hello World! WebFolio!');
 });
 
 app.listen(port, () => {

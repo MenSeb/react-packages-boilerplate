@@ -19,7 +19,7 @@ export type ContactEmailResponse = Omit<Response, 'json'> & {
 };
 
 async function sendContactEmail(formData: FormData) {
-  const response: ContactEmailResponse = await fetch('/webfolio/api/contact', {
+  const response: ContactEmailResponse = await fetch('webfolio/api/contact', {
     body: JSON.stringify(Object.fromEntries(formData)),
     headers: { 'Content-type': 'application/json' },
     method: 'POST',
