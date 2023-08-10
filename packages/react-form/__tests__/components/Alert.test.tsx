@@ -1,18 +1,18 @@
 import { screen } from '@testing-library/react';
-import { InputError, InputErrorProps } from '../../src';
+import { Alert, AlertProps } from '../../src';
 import { createRender } from '..';
 
 const props = {
   children: 'children',
 };
 
-const renderError = createRender<InputErrorProps>(InputError, { props });
+const renderError = createRender<AlertProps>(Alert, { props });
 
 function getError() {
   return screen.getByRole('alert');
 }
 
-describe('<InputError />', () => {
+describe('<Alert />', () => {
   it('renders correctly', () => {
     renderError();
 

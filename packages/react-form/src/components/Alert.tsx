@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
 
-export type InputErrorProps = UI.SpanProps;
+export type AlertProps = UI.SpanProps;
 
-export function InputError({ children, ...props }: InputErrorProps) {
+export function Alert({ children, ...props }: AlertProps) {
   return (
     <UI.Span {...props} role="alert">
       {children}
