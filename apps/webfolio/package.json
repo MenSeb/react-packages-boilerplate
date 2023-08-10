@@ -30,6 +30,7 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
+    "start": "nodemon",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "deploy": "yarn build && yarn webpack:build",
