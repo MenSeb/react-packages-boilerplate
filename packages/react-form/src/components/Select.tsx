@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
+import { useValue } from '..';
 
 export type SelectProps = Omit<UI.SelectProps, 'defaultValue'> & {
   defaultValue?: string;
@@ -13,19 +14,12 @@ export function Select({
   placeholder,
   ...props
 }: SelectProps) {
-  const [value, setValue] = React.useState(
-    options.includes(defaultValue) ? defaultValue : '',
-  );
-
-  const updateValue = React.useCallback(
-    (event: React.ChangeEvent<HTMLSelectElement>) => {
-      setValue(event.currentTarget.value);
-    },
-    [],
+  const { changeValue, value } = useValue<HTMLSelectElement>(
+    options.indexOf(defaultValue) > -1 ? defaultValue : '',
   );
 
   return (
-    <UI.Select {...props} value={value} onChange={updateValue}>
+    <UI.Select {...props} value={value} onChange={changeValue}>
       <UI.Option value="">{placeholder}</UI.Option>
       {options.map((option) => {
         return (
