@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
+import * as ReactForm from '@packages/react-form';
 import { SentMessageInfo } from 'nodemailer';
 
 export type FetchContactInfo = {
@@ -29,58 +30,65 @@ async function sendContactEmail(formData: FormData) {
 }
 
 export function FormContact() {
-  const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
-    async (event) => {
-      event.preventDefault();
-
-      const formData = new FormData(event.currentTarget);
-
-      await sendContactEmail(formData);
-    },
-    [],
-  );
-
   return (
-    <UI.Form className="contact-form" onSubmit={onSubmit}>
+    <ReactForm.Form
+      className="contact-form"
+      aria-label="request for a project"
+      onSubmit={sendContactEmail}
+    >
       <UI.Label>
         First Name
-        <UI.Input
+        <ReactForm.Input
           name="firstname"
-          type="text"
           placeholder="Your first name..."
+          required
+          type="text"
         />
       </UI.Label>
       <UI.Label>
         Last Name
-        <UI.Input name="lastname" type="text" placeholder="Your last name..." />
+        <ReactForm.Input
+          name="lastname"
+          placeholder="Your last name..."
+          required
+          type="text"
+        />
       </UI.Label>
       <UI.Label>
         Email
-        <UI.Input name="email" type="email" placeholder="Your email..." />
+        <ReactForm.Input
+          name="email"
+          placeholder="Your email..."
+          required
+          type="email"
+        />
       </UI.Label>
       <UI.Label>
         Website
-        <UI.Select name="website">
-          <option value="">Your website...</option>
-          <option>Blog</option>
-          <option>Business</option>
-          <option>E-Commerce</option>
-          <option>Portfolio</option>
-          <option>Brochure</option>
-          <option>Catalogue</option>
-          <option>Educational</option>
-          <option>Informational</option>
-          <option>Infopreneur</option>
-          <option>Non-profit</option>
-          <option>Personal</option>
-          <option>Other</option>
-        </UI.Select>
+        <ReactForm.Select
+          name="website"
+          options={[
+            'blog',
+            'business',
+            'e-commerce',
+            'portfolio',
+            'brochure',
+            'catalogue',
+            'educational',
+            'infopreneur',
+            'non-profit',
+            'personal',
+            'other',
+          ]}
+          placeholder="Your website..."
+          required
+        />
       </UI.Label>
       <UI.Label>
         Project
-        <UI.TextArea name="project" placeholder="Your project..." />
+        <ReactForm.TextArea name="project" placeholder="Your project..." />
       </UI.Label>
-      <UI.Input type="submit" value="Send message" />
-    </UI.Form>
+      <ReactForm.Input type="submit" defaultValue="Send message" />
+    </ReactForm.Form>
   );
 }
