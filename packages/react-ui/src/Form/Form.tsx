@@ -1,32 +1,19 @@
 import React from 'react';
-import { classNames, ClassNames, Labelled } from '..';
+import { classNames, ClassNames } from '..';
 
 /**
  * The props types for component {@link Form}
  */
-export type FormProps = React.ComponentProps<'form'> &
-  ClassNames &
-  Partial<Labelled>;
+export type FormProps = React.ComponentProps<'form'> & ClassNames;
 
 /**
  * Renders a form.
  *
  * @category Component
  */
-export function Form({
-  children,
-  className,
-  label,
-  labelledby,
-  ...props
-}: FormProps) {
+export function Form({ children, className, ...props }: FormProps) {
   return (
-    <form
-      {...props}
-      aria-label={label}
-      aria-labelledby={labelledby}
-      className={classNames('form', className)}
-    >
+    <form {...props} className={classNames('form', className)}>
       {children}
     </form>
   );
