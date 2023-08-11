@@ -7,13 +7,17 @@ import {
 import { Layout } from './containers';
 import {
   About,
+  Accessibility,
   Blog,
+  Conditions,
   Contact,
   Error,
   Home,
   Lost,
+  Privacy,
   Projects,
   Services,
+  Sitemap,
 } from './pages';
 
 export const routes = (
@@ -25,6 +29,10 @@ export const routes = (
       <Route element={<Blog />} path="blog" />
       <Route element={<About />} path="about" />
       <Route element={<Contact />} path="contact" />
+      <Route element={<Privacy />} path="privacy-policy" />
+      <Route element={<Conditions />} path="terms-conditions" />
+      <Route element={<Accessibility />} path="accessibility" />
+      <Route element={<Sitemap />} path="sitemap" />
       <Route element={<Lost />} path="*" />
     </Route>
   </Route>
