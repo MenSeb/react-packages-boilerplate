@@ -34,7 +34,11 @@ describe('<ButtonLight />', () => {
 
     renderButtonLight();
 
-    await act(() => userEvent.click(getButton()));
+    const user = userEvent.setup();
+
+    await act(async () => {
+      await user.click(getButton());
+    });
 
     expect(getButton()).toHaveAttribute('aria-pressed', 'true');
   });
