@@ -16,7 +16,6 @@
     "jest": true,
     "node": true
   },
-  "ignorePatterns": ["node_modules", "coverage", "packages/**/lib"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": { "jsx": true },
@@ -35,6 +34,14 @@
     "no-cond-assign": ["error", "always"],
     "no-console": "error",
     "no-unused-vars": "off",
+    "@typescript-eslint/no-misused-promises": [
+      2,
+      {
+        "checksVoidReturn": {
+          "attributes": false
+        }
+      }
+    ],
     "@typescript-eslint/no-unused-vars": ["error"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error"

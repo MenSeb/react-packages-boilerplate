@@ -1,18 +1,18 @@
 import { screen } from '@testing-library/react';
-import { Textarea, TextareaProps } from '../../src';
+import { TextArea, TextAreaProps } from '../../src';
 import { createRender, otherProps } from '..';
 
 const props = {
   defaultValue: 'children',
 };
 
-const renderTextarea = createRender<TextareaProps>(Textarea, { props });
+const renderTextarea = createRender<TextAreaProps>(TextArea, { props });
 
 function getTextarea() {
   return screen.getByRole('textbox');
 }
 
-describe('<Textarea />', () => {
+describe('<TextArea />', () => {
   it('renders correctly', () => {
     renderTextarea({ props: otherProps });
 

@@ -23,6 +23,9 @@ jobs:
       - name: Install
         run: yarn install --prefer-offline
 
+      - name: Deploy App
+        run: yarn deploy --scope=@apps/webfolio
+
       - name: Deploy FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:

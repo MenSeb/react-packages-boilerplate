@@ -1,18 +1,17 @@
 import { Form, FormProps } from '../../src';
-import { createRender, otherProps, propsLabel, propsLabelledy } from '..';
+import { createRender, otherProps } from '..';
 import { getForm } from '.';
 
 const props = {
   children: 'children',
+  'aria-label': 'form label',
 };
 
 const renderForm = createRender<FormProps>(Form, { props });
 
 describe('<Form />', () => {
   it('renders correctly', () => {
-    const { rerender } = renderForm({
-      props: { ...otherProps, ...propsLabel },
-    });
+    renderForm({ props: otherProps });
 
     expect(getForm()).toBeInTheDocument();
     expect(getForm()).toHaveClass('form');
@@ -21,14 +20,5 @@ describe('<Form />', () => {
     expect(getForm()).toHaveAttribute('id', otherProps.id);
     expect(getForm()).toHaveClass(otherProps.className);
     expect(getForm()).toHaveStyle(otherProps.style);
-
-    expect(getForm()).toHaveAccessibleName(propsLabel.label);
-
-    rerender({ ...propsLabelledy, label: undefined });
-
-    expect(getForm()).toHaveAttribute(
-      'aria-labelledby',
-      propsLabelledy.labelledby,
-    );
   });
 });

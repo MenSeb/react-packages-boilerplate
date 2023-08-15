@@ -32,6 +32,7 @@ app.use(bodyParser.json());
 
 app.get('/webfolio', (req, res) => {
   res.send('Hello World!');
+  log('Hello World! WebFolio!');
 });
 
 app.listen(port, () => {
@@ -67,7 +68,7 @@ function sendMailUser(req: ContactMailRequest, res: Response) {
     function (error, info) {
       log('user notified', { error, info });
 
-      res.json(error ? { error } : { info });
+      res.json({ error, info });
     },
   );
 }
