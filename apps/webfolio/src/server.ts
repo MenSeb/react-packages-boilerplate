@@ -68,7 +68,7 @@ function sendMailUser(req: ContactMailRequest, res: Response) {
     function (error, info) {
       log('user notified', { error, info });
 
-      res.json(error ? { error } : { info });
+      res.json({ error, info });
     },
   );
 }

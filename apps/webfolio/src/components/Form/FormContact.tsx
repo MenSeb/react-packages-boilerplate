@@ -3,17 +3,10 @@ import * as UI from '@packages/react-ui';
 import * as ReactForm from '@packages/react-form';
 import { SentMessageInfo } from 'nodemailer';
 
-export type FetchContactInfo = {
+export type FetchContactEmail = {
   info: SentMessageInfo;
-  error?: never;
-};
-
-export type FetchContactError = {
-  info?: never;
   error: Error | null;
 };
-
-export type FetchContactEmail = FetchContactInfo | FetchContactError;
 
 export type ContactEmailResponse = Omit<Response, 'json'> & {
   json: () => Promise<FetchContactEmail>;
@@ -26,15 +19,21 @@ async function sendContactEmail(formData: FormData) {
     method: 'POST',
   });
 
-  return response.json();
+  return await response.json();
 }
 
 export function FormContact() {
+  const [, setData] = React.useState<FetchContactEmail | null>(null);
+
+  const submitForm = React.useCallback(async (formData: FormData) => {
+    setData(await sendContactEmail(formData));
+  }, []);
+
   return (
     <ReactForm.Form
       className="contact-form"
       aria-label="request for a project"
-      onSubmit={sendContactEmail}
+      onSubmit={submitForm}
     >
       <UI.Label>
         First Name
