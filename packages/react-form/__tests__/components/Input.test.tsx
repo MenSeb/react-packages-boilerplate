@@ -38,7 +38,7 @@ describe('<Input />', () => {
 
     const { user } = renderInput();
 
-    await act(() => user.type(getInput(), value));
+    await act(async () => await user.type(getInput(), value));
 
     expect(getInput()).toHaveValue(value);
     expect(getInput()).toHaveDisplayValue(value);

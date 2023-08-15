@@ -70,7 +70,7 @@ describe('<Select />', () => {
 
     const { user } = renderSelect();
 
-    await act(() => user.selectOptions(getSelect(), value));
+    await act(async () => await user.selectOptions(getSelect(), value));
 
     expect(getSelect()).toHaveValue(value);
     expect(getSelect()).toHaveDisplayValue(value);
