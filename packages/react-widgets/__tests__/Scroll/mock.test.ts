@@ -3,7 +3,9 @@ import { defineScroll, resetScroll } from '../../src/Scroll/mock';
 defineScroll();
 
 describe('Window Scroll Mock', () => {
-  afterEach(() => resetScroll());
+  afterEach(() => {
+    resetScroll();
+  });
 
   it('defines scroll and scrollTo on window', () => {
     expect(window.scroll).toBeDefined();

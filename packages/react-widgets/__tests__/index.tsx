@@ -7,10 +7,10 @@ export const otherProps = {
   style: { display: 'flex' },
 };
 
-export type Settings<Props> = {
+export interface Settings<Props> {
   props?: Partial<Props>;
   options?: RenderOptions;
-};
+}
 
 export function createRender<Props>(
   UIElement: React.ElementType,
@@ -25,7 +25,7 @@ export function createRender<Props>(
     });
 
     function rerender(rerenderProps?: Partial<Props>) {
-      return result.rerender(<UIElement {...props} {...rerenderProps} />);
+      result.rerender(<UIElement {...props} {...rerenderProps} />);
     }
 
     return { ...result, rerender };

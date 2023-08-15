@@ -2,10 +2,10 @@ import * as React from 'react';
 import userEvent from '@testing-library/user-event';
 import { RenderOptions, render } from '@testing-library/react';
 
-export type Settings<Props> = {
+export interface Settings<Props> {
   props: Props;
   options?: RenderOptions;
-};
+}
 
 export function createRender<Props>(
   UIElement: React.ElementType,
@@ -22,7 +22,7 @@ export function createRender<Props>(
     });
 
     function rerender(rerenderProps?: Partial<Props>) {
-      return result.rerender(<UIElement {...props} {...rerenderProps} />);
+      result.rerender(<UIElement {...props} {...rerenderProps} />);
     }
 
     return { ...result, rerender, user };

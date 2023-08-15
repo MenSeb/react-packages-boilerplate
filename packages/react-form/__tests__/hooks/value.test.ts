@@ -35,7 +35,9 @@ describe('useValue', () => {
 
     expect(result.current.value).toBe('');
 
-    act(() => result.current.changeValue(event));
+    act(() => {
+      result.current.changeValue(event);
+    });
 
     expect(result.current.value).toBe(value);
   });

@@ -15,7 +15,7 @@ export function Select({
   ...props
 }: SelectProps) {
   const { changeValue, value } = useValue<HTMLSelectElement>(
-    options.indexOf(defaultValue) > -1 ? defaultValue : '',
+    options.includes(defaultValue) ? defaultValue : '',
   );
 
   return (

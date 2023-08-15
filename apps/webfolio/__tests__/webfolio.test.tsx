@@ -11,10 +11,10 @@ import { routes } from '../src/router';
 import { Layout } from '../src/containers';
 import { About, Error as ErrorPage, Home, Lost } from '../src/pages';
 
-type RouterSettings = {
+interface RouterSettings {
   routes: React.ReactNode;
   initialEntries?: (string | Partial<Location>)[];
-};
+}
 
 function renderRouter({ routes, initialEntries }: RouterSettings) {
   const router = createMemoryRouter(createRoutesFromElements(routes), {

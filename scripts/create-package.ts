@@ -8,14 +8,14 @@ import {
   writeFileSync,
 } from 'node:fs';
 
-type PackageJSON = {
+interface PackageJSON {
   description: string;
-  keywords: Array<string>;
+  keywords: string[];
   main: string;
   peerDependencies: object;
   publishConfig: object;
   typings: string;
-};
+}
 
 function createPackage(): void {
   const packageName = argv[2];

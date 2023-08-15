@@ -13,7 +13,9 @@ export function Newsletter() {
         your inbox.
       </UI.Text>
       <UI.Form
-        onSubmit={(e: React.FormEvent) => e.preventDefault()}
+        onSubmit={(e: React.FormEvent) => {
+          e.preventDefault();
+        }}
         className="newsletter-form"
       >
         <UI.Input

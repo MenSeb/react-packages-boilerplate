@@ -53,7 +53,9 @@ describe('createContextReducer', () => {
         ContextReducer.Provider,
       );
 
-      act(() => result.current.action2(payload));
+      act(() => {
+        result.current.action2(payload);
+      });
 
       expect(actions.action2).toHaveBeenCalledWith(initializerState, payload);
     });
@@ -89,7 +91,9 @@ describe('createContextReducer', () => {
         ContextReducer.Provider,
       );
 
-      act(() => result.current.dispatch.action2(payload));
+      act(() => {
+        result.current.dispatch.action2(payload);
+      });
 
       expect(result.current.state).toEqual({
         ...initializerState,
@@ -174,7 +178,9 @@ describe('createContextReducer', () => {
       );
 
       for (const action of Object.keys(actions) as (keyof typeof actions)[]) {
-        act(() => result.current.dispatch[action]({}));
+        act(() => {
+          result.current.dispatch[action]({});
+        });
 
         expect(actions[action]).toHaveBeenCalledWith(initializerState, {});
       }
@@ -207,7 +213,9 @@ describe('createContextReducer', () => {
         ContextReducer.Provider,
       );
 
-      act(() => result.current.dispatch.action2());
+      act(() => {
+        result.current.dispatch.action2();
+      });
 
       expect(actions.action2).toHaveBeenCalledWith(initializerState, {});
     });

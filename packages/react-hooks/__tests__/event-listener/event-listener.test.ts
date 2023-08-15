@@ -7,9 +7,9 @@ describe('useEventListener', () => {
     const addEventListener = jest.spyOn(target, 'addEventListener');
     const removeEventListener = jest.spyOn(target, 'removeEventListener');
 
-    const { unmount } = renderHook(() =>
-      useEventListener(target, type, listener, options),
-    );
+    const { unmount } = renderHook(() => {
+      useEventListener(target, type, listener, options);
+    });
 
     expect(addEventListener).toHaveBeenCalledWith(type, listener, options);
 

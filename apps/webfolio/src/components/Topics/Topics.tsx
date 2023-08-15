@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as UI from '@packages/react-ui';
 import { Topic, TopicProps } from '.';
 
-export type TopicsProps = {
+export interface TopicsProps {
   topics: TopicProps[];
-};
+}
 
 export function Topics({ topics }: TopicsProps) {
   return (

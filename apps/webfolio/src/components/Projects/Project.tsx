@@ -1,23 +1,23 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
 
-export type Task = {
+export interface Task {
   icon: React.ElementType;
   name: string;
-};
+}
 
-export type Techno = {
+export interface Techno {
   icon: React.ElementType;
   name: string;
-};
+}
 
-export type ProjectProps = {
+export interface ProjectProps {
   tasks: Task[];
   image: string;
   name: string;
   technos: Techno[];
   website?: string;
-};
+}
 
 export function Project({
   tasks,

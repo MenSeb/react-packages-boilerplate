@@ -11,7 +11,9 @@ export function createDispatcher<Actions, State, Payload>(
   const dispatcher = {} as Types.GenericDispatcher<Actions, Payload>;
 
   for (const type of Object.keys(actions) as (keyof Actions)[])
-    dispatcher[type] = (payload = {} as Payload) => dispatch({ payload, type });
+    dispatcher[type] = (payload = {} as Payload) => {
+      dispatch({ payload, type });
+    };
 
   return dispatcher;
 }

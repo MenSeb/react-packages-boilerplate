@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as UI from '@packages/react-ui';
 import { Service, ServiceProps } from '.';
 
-export type ServicesProps = {
+export interface ServicesProps {
   services: ServiceProps[];
-};
+}
 
 export function Services({ services }: ServicesProps) {
   return (

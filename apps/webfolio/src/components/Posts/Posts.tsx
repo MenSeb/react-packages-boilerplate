@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as UI from '@packages/react-ui';
 import { Post, PostProps } from '.';
 
-export type PostsProps = {
+export interface PostsProps {
   posts: PostProps[];
-};
+}
 
 export function Posts({ posts }: PostsProps) {
   return (

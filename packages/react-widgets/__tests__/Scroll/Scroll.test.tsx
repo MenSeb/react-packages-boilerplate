@@ -12,7 +12,9 @@ const props = {
 const renderScroll = createRender<ScrollProps>(Scroll, { props });
 
 describe('<Scroll />', () => {
-  afterEach(() => resetScroll());
+  afterEach(() => {
+    resetScroll();
+  });
 
   it('renders correctly', () => {
     renderScroll({ props: otherProps });

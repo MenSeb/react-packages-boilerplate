@@ -3,10 +3,10 @@ import * as UI from '@packages/react-ui';
 import * as ReactForm from '@packages/react-form';
 import { SentMessageInfo } from 'nodemailer';
 
-export type FetchContactEmail = {
+export interface FetchContactEmail {
   info: SentMessageInfo;
   error: Error | null;
-};
+}
 
 export type ContactEmailResponse = Omit<Response, 'json'> & {
   json: () => Promise<FetchContactEmail>;

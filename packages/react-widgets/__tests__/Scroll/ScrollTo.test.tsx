@@ -21,7 +21,9 @@ const renderScrollTo = createRender<ScrollToProps>(ScrollTo, { props });
 const renderScrollToLeft = createRender<ScrollToProps>(ScrollToLeft, { props });
 const renderScrollToTop = createRender<ScrollToProps>(ScrollToTop, { props });
 
-afterEach(() => resetScroll());
+afterEach(() => {
+  resetScroll();
+});
 
 describe('<ScrollTo />', () => {
   it('renders correctly', () => {

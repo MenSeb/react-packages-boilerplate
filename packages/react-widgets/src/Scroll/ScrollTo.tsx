@@ -18,9 +18,9 @@ export function ScrollTo({
   scrollOptions,
   ...props
 }: ScrollToProps) {
-  const { matches } = useMatchMedia(QUERY_REDUCED_MOTION, () =>
-    setMotion((motion) => !motion),
-  );
+  const { matches } = useMatchMedia(QUERY_REDUCED_MOTION, () => {
+    setMotion((motion) => !motion);
+  });
 
   const [motionReduced, setMotion] = React.useState(matches);
 

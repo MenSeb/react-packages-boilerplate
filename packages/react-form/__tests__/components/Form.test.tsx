@@ -3,7 +3,7 @@ import { Form, FormProps } from '../../src';
 import { createRender } from '..';
 
 const props = {
-  onSubmit: jest.fn(() => {}),
+  onSubmit: jest.fn(() => null),
   'aria-label': 'form label',
 };
 
