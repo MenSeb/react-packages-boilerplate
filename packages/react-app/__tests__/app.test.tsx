@@ -12,39 +12,35 @@ import {
 import { routes } from '../src/router';
 import { About, Error as ErrorPage, Home, Layout, Lost } from '../src/pages';
 
+function renderRouter() {
+  return render(
+    <MemoryRouter>
+      <Routes>{routes}</Routes>
+    </MemoryRouter>,
+  );
+}
+
 describe('<App />', () => {
   describe('<Layout />', () => {
-    beforeEach(() =>
-      render(
-        <MemoryRouter>
-          <Routes>{routes}</Routes>
-        </MemoryRouter>,
-      ),
-    );
-
     it('renders with header', () => {
+      renderRouter();
       expect(screen.getByRole('banner')).toBeInTheDocument();
     });
 
     it('renders with main', () => {
+      renderRouter();
       expect(screen.getByRole('main')).toBeInTheDocument();
     });
 
     it('renders with footer', () => {
+      renderRouter();
       expect(screen.getByRole('contentinfo')).toBeInTheDocument();
     });
   });
 
   describe('<Home />', () => {
-    beforeEach(() =>
-      render(
-        <MemoryRouter>
-          <Routes>{routes}</Routes>
-        </MemoryRouter>,
-      ),
-    );
-
     it('renders with home page', () => {
+      renderRouter();
       expect(
         screen.getByRole('region', { name: 'home page' }),
       ).toBeInTheDocument();
@@ -52,15 +48,9 @@ describe('<App />', () => {
   });
 
   describe('<About />', () => {
-    beforeEach(() =>
-      render(
-        <MemoryRouter>
-          <Routes>{routes}</Routes>
-        </MemoryRouter>,
-      ),
-    );
-
     it('renders with about page', async () => {
+      renderRouter();
+
       const user = userEvent.setup();
 
       await act(async () => {
@@ -74,15 +64,12 @@ describe('<App />', () => {
   });
 
   describe('<Lost />', () => {
-    beforeEach(() =>
+    it('renders with lost page', () => {
       render(
         <MemoryRouter initialEntries={['/test']}>
           <Routes>{routes}</Routes>
         </MemoryRouter>,
-      ),
-    );
-
-    it('renders with lost page', () => {
+      );
       expect(
         screen.getByRole('region', { name: 'lost page' }),
       ).toBeInTheDocument();

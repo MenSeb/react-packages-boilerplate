@@ -4,7 +4,7 @@ declare module '*.svg' {
   export default Icon;
 }
 
-declare module NodeJS {
+declare namespace NodeJS {
   export interface ProcessEnv {
     [key: string]: string | undefined;
     BACKEND_PORT: string;

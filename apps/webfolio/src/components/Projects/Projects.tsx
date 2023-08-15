@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as UI from '@packages/react-ui';
 import { Project, ProjectProps } from '.';
 
-export type ProjectsProps = {
+export interface ProjectsProps {
   projects: ProjectProps[];
-};
+}
 
 export function Projects({ projects }: ProjectsProps) {
   return (

@@ -8,7 +8,7 @@ import {
   NavigationProps,
 } from '..';
 
-export type Social = {
+export interface Social {
   /**
    * The social icon.
    */
@@ -17,7 +17,7 @@ export type Social = {
    * The social link.
    */
   link: string;
-};
+}
 
 /**
  * The props types for component {@link Socials}

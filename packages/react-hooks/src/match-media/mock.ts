@@ -4,8 +4,9 @@ export function dispatchMatchMedia(
   mediaQuery: string,
   event = new Event('change'),
 ) {
-  if (mapMatchMedia.has(mediaQuery))
-    (mapMatchMedia.get(mediaQuery) as MediaQueryList).dispatchEvent(event);
+  const mediaQueryList = mapMatchMedia.get(mediaQuery);
+
+  if (mediaQueryList) mediaQueryList.dispatchEvent(event);
 }
 
 export function defineMatchMedia() {
@@ -21,7 +22,7 @@ export function mockMatchMedia(mediaQuery: string): MediaQueryList {
   let mediaMatches = true;
 
   function onchange(event: Partial<MediaQueryListEvent>) {
-    mediaMatches = event.matches === undefined ? !mediaMatches : event.matches;
+    mediaMatches = event.matches ?? !mediaMatches;
 
     if (mediaListener !== undefined)
       mediaListener({
@@ -41,7 +42,7 @@ export function mockMatchMedia(mediaQuery: string): MediaQueryList {
     dispatchEvent: (event: Partial<MediaQueryListEvent>) => {
       onchange(event);
 
-      return !(event.cancelable || event.defaultPrevented);
+      return !(event.cancelable ?? event.defaultPrevented);
     },
     addEventListener: (type: 'change', listener: EventListener) => {
       mediaListener = listener;

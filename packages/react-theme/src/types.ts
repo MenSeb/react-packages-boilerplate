@@ -1,18 +1,18 @@
 export type Payload = React.UIEvent;
 
-export type State = {
+export interface State {
   theme: Theme;
-};
+}
 
 export enum Theme {
   DARK = 'dark',
   LIGHT = 'light',
 }
 
-export type DefaultState = {
+export interface DefaultState {
   theme: Theme;
-};
+}
 
-export type InitialState = {
+export interface InitialState {
   theme?: Theme;
-};
+}

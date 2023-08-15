@@ -3,7 +3,7 @@ import * as UI from '@packages/react-ui';
 import { FaHeart } from 'react-icons/fa';
 import { ImageSVG, ImageSVGType } from '..';
 
-export type PostProps = {
+export interface PostProps {
   author: string;
   date: Date;
   id: string;
@@ -11,7 +11,7 @@ export type PostProps = {
   time: number;
   text: string;
   title: string;
-};
+}
 
 export function Post({
   author,

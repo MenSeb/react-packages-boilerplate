@@ -17,7 +17,9 @@ describe('useLockScroll', () => {
     expect(getOverflow()).toBe(overflow);
 
     const { rerender } = renderHook(
-      (toggle: boolean) => useLockScroll(toggle, element),
+      (toggle: boolean) => {
+        useLockScroll(toggle, element);
+      },
       { initialProps: true },
     );
 
@@ -29,7 +31,9 @@ describe('useLockScroll', () => {
   });
 
   it('resets the element scroll behavior on unmount', () => {
-    const { unmount } = renderHook(() => useLockScroll(true, element));
+    const { unmount } = renderHook(() => {
+      useLockScroll(true, element);
+    });
 
     unmount();
 

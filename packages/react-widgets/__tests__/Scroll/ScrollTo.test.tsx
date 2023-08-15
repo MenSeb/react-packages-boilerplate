@@ -21,7 +21,9 @@ const renderScrollTo = createRender<ScrollToProps>(ScrollTo, { props });
 const renderScrollToLeft = createRender<ScrollToProps>(ScrollToLeft, { props });
 const renderScrollToTop = createRender<ScrollToProps>(ScrollToTop, { props });
 
-afterEach(() => resetScroll());
+afterEach(() => {
+  resetScroll();
+});
 
 describe('<ScrollTo />', () => {
   it('renders correctly', () => {
@@ -41,17 +43,15 @@ describe('<ScrollTo />', () => {
 
     expect(queryScroll()).not.toBeInTheDocument();
 
-    act(() => {
-      window.scroll({ top: 500 });
-      fireEvent.scroll(window);
-    });
+    window.scroll({ top: 500 });
+
+    fireEvent.scroll(window);
 
     expect(getScroll()).toBeInTheDocument();
 
-    await act(async () => {
-      await user.click(getScroll());
-      fireEvent.scroll(window);
-    });
+    await user.click(getScroll());
+
+    fireEvent.scroll(window);
 
     expect(queryScroll()).not.toBeInTheDocument();
   });
@@ -65,17 +65,15 @@ describe('<ScrollTo />', () => {
 
     expect(queryScroll()).not.toBeInTheDocument();
 
-    act(() => {
-      window.scroll({ left: 500 });
-      fireEvent.scroll(window);
-    });
+    window.scroll({ left: 500 });
+
+    fireEvent.scroll(window);
 
     expect(getScroll()).toBeInTheDocument();
 
-    await act(async () => {
-      await user.click(getScroll());
-      fireEvent.scroll(window);
-    });
+    await user.click(getScroll());
+
+    fireEvent.scroll(window);
 
     expect(queryScroll()).not.toBeInTheDocument();
   });

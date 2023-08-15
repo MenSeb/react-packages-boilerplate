@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
 
-export type ServiceProps = {
+export interface ServiceProps {
   description: string;
   icon: React.ElementType;
   name: string;
-};
+}
 
 export function Service({ description, icon: Icon, name }: ServiceProps) {
   return (

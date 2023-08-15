@@ -2,19 +2,19 @@ import * as React from 'react';
 import * as UI from '@packages/react-ui';
 import { ImageSVG, ImageSVGType } from '..';
 
-export type Credit = {
+export interface Credit {
   link: string;
   name: string;
-};
+}
 
-export type AboutProps = {
+export interface AboutProps {
   author: string;
   children?: React.ReactNode;
   credit?: Credit;
   image: ImageSVGType;
   text: string;
   title: string;
-};
+}
 
 export function About({
   author,

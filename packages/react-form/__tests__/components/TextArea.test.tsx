@@ -38,7 +38,9 @@ describe('<TextArea />', () => {
 
     const { user } = renderTextArea();
 
-    await act(async () => await user.type(getTextArea(), value));
+    await act(async () => {
+      await user.type(getTextArea(), value);
+    });
 
     expect(getTextArea()).toHaveValue(value);
     expect(getTextArea()).toHaveDisplayValue(value);

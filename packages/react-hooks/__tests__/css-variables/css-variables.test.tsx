@@ -12,7 +12,9 @@ beforeAll(() => {
 
 describe('useVariablesCSS', () => {
   it('injects css variables on the element', () => {
-    renderHook(() => useVariablesCSS(variables, element));
+    renderHook(() => {
+      useVariablesCSS(variables, element);
+    });
 
     expect(element).toHaveStyle(style);
   });
@@ -20,7 +22,9 @@ describe('useVariablesCSS', () => {
   it('injects css variables on a ref object', () => {
     const { result } = renderHook(() => useRef(element));
 
-    renderHook(() => useVariablesCSS(variables, result.current));
+    renderHook(() => {
+      useVariablesCSS(variables, result.current);
+    });
 
     expect(element).toHaveStyle(style);
   });

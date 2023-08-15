@@ -7,14 +7,18 @@ import {
 } from '@testing-library/react';
 import * as Types from '../src/types';
 
-export type DefaultState = { baz?: string };
-export type InitialState = { bar: string };
-export type State = {
+export interface DefaultState {
+  baz?: string;
+}
+export interface InitialState {
+  bar: string;
+}
+export interface State {
   bar: string;
   baz?: string;
   foo?: string;
   foobarbaz?: string;
-};
+}
 
 export type Payload1 = Partial<State>;
 export type Payload2 = Pick<State, 'foobarbaz'>;
@@ -98,5 +102,7 @@ export function spyOnConsoleError() {
   let spy: jest.SpyInstance;
 
   beforeEach(() => (spy = jest.spyOn(console, 'error').mockImplementation()));
-  afterEach(() => spy.mockRestore());
+  afterEach(() => {
+    spy.mockRestore();
+  });
 }

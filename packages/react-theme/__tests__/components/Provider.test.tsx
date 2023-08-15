@@ -42,15 +42,21 @@ describe('Provider', () => {
 
     const { result } = renderThemeHook(Theme.useContextReducer);
 
-    act(() => result.current.dispatch.toggleTheme());
+    act(() => {
+      result.current.dispatch.toggleTheme();
+    });
 
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('light');
 
-    act(() => result.current.dispatch.setThemeDark());
+    act(() => {
+      result.current.dispatch.setThemeDark();
+    });
 
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('dark');
 
-    act(() => result.current.dispatch.setThemeLight());
+    act(() => {
+      result.current.dispatch.setThemeLight();
+    });
 
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('light');
   });
@@ -62,11 +68,15 @@ describe('Provider', () => {
 
     expect(result.current.state.theme).toBe('dark');
 
-    act(() => result.current.dispatch.toggleTheme());
+    act(() => {
+      result.current.dispatch.toggleTheme();
+    });
 
     expect(result.current.state.theme).toBe('light');
 
-    act(() => result.current.dispatch.toggleTheme());
+    act(() => {
+      result.current.dispatch.toggleTheme();
+    });
 
     expect(result.current.state.theme).toBe('dark');
   });
@@ -78,11 +88,15 @@ describe('Provider', () => {
 
     expect(result.current.state.theme).toBe('light');
 
-    act(() => result.current.dispatch.setThemeDark());
+    act(() => {
+      result.current.dispatch.setThemeDark();
+    });
 
     expect(result.current.state.theme).toBe('dark');
 
-    act(() => result.current.dispatch.setThemeDark());
+    act(() => {
+      result.current.dispatch.setThemeDark();
+    });
 
     expect(result.current.state.theme).toBe('dark');
   });
@@ -94,11 +108,15 @@ describe('Provider', () => {
 
     expect(result.current.state.theme).toBe('dark');
 
-    act(() => result.current.dispatch.setThemeLight());
+    act(() => {
+      result.current.dispatch.setThemeLight();
+    });
 
     expect(result.current.state.theme).toBe('light');
 
-    act(() => result.current.dispatch.setThemeLight());
+    act(() => {
+      result.current.dispatch.setThemeLight();
+    });
 
     expect(result.current.state.theme).toBe('light');
   });

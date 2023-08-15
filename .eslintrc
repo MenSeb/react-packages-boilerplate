@@ -1,21 +1,56 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:jest/recommended",
-    "plugin:jest-dom/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended",
-    "plugin:react/recommended",
-    "plugin:testing-library/dom"
-  ],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
   "env": {
     "browser": true,
     "es6": true,
     "jest": true,
     "node": true
   },
+  "overrides": [
+    {
+      "files": ["*.{ts,tsx}"],
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "plugin:@typescript-eslint/strict-type-checked",
+        "plugin:@typescript-eslint/stylistic-type-checked"
+      ],
+      "rules": {
+        "@typescript-eslint/no-misused-promises": [
+          2,
+          { "checksVoidReturn": { "attributes": false } }
+        ]
+      }
+    },
+    {
+      "files": ["*.tsx"],
+      "excludedFiles": ["*.test.tsx"],
+      "plugins": ["jsx-a11y", "react", "react-hooks"],
+      "extends": [
+        "plugin:jsx-a11y/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended"
+      ],
+      "rules": {
+        "react-hooks/exhaustive-deps": "error"
+      }
+    },
+    {
+      "files": ["*.test.{ts,tsx}"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"]
+    },
+    {
+      "files": ["*.test.tsx", "**/__tests__/**/index.tsx"],
+      "plugins": ["testing-library", "jest-dom"],
+      "extends": [
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended"
+      ],
+      "rules": {
+        "testing-library/render-result-naming-convention": "off"
+      }
+    }
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": { "jsx": true },
@@ -23,7 +58,7 @@
     "project": "tsconfig.json",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "jest", "jsx-a11y", "react", "react-hooks"],
+  "plugins": ["prettier"],
   "root": true,
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
@@ -32,19 +67,7 @@
     "semi": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],
     "no-cond-assign": ["error", "always"],
-    "no-console": "error",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-misused-promises": [
-      2,
-      {
-        "checksVoidReturn": {
-          "attributes": false
-        }
-      }
-    ],
-    "@typescript-eslint/no-unused-vars": ["error"],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error"
+    "no-console": "error"
   },
   "settings": {
     "react": {

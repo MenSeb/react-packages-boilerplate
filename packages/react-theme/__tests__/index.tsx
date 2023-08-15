@@ -2,7 +2,9 @@ import * as React from 'react';
 import { render, renderHook, screen } from '@testing-library/react';
 import * as Theme from '../src';
 
-beforeEach(() => localStorage.clear());
+beforeEach(() => {
+  localStorage.clear();
+});
 
 export const props = {
   className: 'className',
