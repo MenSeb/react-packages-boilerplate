@@ -11,8 +11,8 @@ const config: Config = {
   moduleNameMapper: {
     '\\.svg$': '<rootDir>/mocks/svg.tsx',
   },
-  setupFiles: ['whatwg-fetch', './jest.setup.ts'],
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  setupFiles: ['whatwg-fetch'],
+  setupFilesAfterEnv: ['./jest.setup.ts'],
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['^(.(?!\\.test\\.))*$'],
   transform: { '\\.tsx?': 'ts-jest' },
