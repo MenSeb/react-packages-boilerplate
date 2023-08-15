@@ -4,8 +4,9 @@ export function dispatchMatchMedia(
   mediaQuery: string,
   event = new Event('change'),
 ) {
-  if (mapMatchMedia.has(mediaQuery))
-    mapMatchMedia.get(mediaQuery)?.dispatchEvent(event);
+  const mediaQueryList = mapMatchMedia.get(mediaQuery);
+
+  if (mediaQueryList) mediaQueryList.dispatchEvent(event);
 }
 
 export function defineMatchMedia() {
