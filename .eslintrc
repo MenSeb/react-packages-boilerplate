@@ -67,8 +67,7 @@
     "semi": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],
     "no-cond-assign": ["error", "always"],
-    "no-console": "error",
-    "no-unused-vars": "off"
+    "no-console": "error"
   },
   "settings": {
     "react": {
