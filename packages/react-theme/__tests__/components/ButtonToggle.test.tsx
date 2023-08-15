@@ -38,11 +38,11 @@ describe('<ButtonToggle />', () => {
 
     expect(getButton()).toHaveAttribute('data-theme', 'light');
 
-    await act(async () => await userEvent.click(getButton()));
+    await act(() => userEvent.click(getButton()));
 
     expect(getButton()).toHaveAttribute('data-theme', 'dark');
 
-    await act(async () => await userEvent.click(getButton()));
+    await act(() => userEvent.click(getButton()));
 
     expect(getButton()).toHaveAttribute('data-theme', 'light');
   });

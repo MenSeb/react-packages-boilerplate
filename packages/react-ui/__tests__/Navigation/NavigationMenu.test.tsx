@@ -30,7 +30,9 @@ describe('<NavigationMenu />', () => {
     expect(getNavigation()).toHaveStyle(otherProps.style);
 
     getItems().forEach((item, index) => {
-      expect(getLink(item)).toHaveTextContent(props.links[index].children);
+      const { children } = props.links[index];
+
+      expect(getLink(item)).toHaveTextContent(children);
     });
   });
 
@@ -41,9 +43,7 @@ describe('<NavigationMenu />', () => {
     const elements = getLinks();
 
     for (let index = 0; index < elements.length; index++) {
-      await act(async () => {
-        await user.click(elements[index]);
-      });
+      await act(() => user.click(elements[index]));
 
       expect(location.href).toBe(`http://localhost/${props.links[index].to}`);
     }
