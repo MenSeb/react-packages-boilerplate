@@ -46,6 +46,10 @@
     "@typescript-eslint/no-unused-vars": ["error"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error"
+    // "testing-library/await-async-events": [
+    //   "error",
+    //   { "eventModule": ["fire-event"] }
+    // ]
   },
   "settings": {
     "react": {
