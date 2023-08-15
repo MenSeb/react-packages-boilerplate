@@ -1,0 +1,43 @@
+@use '@packages/styles/src/variables/breakpoints.scss' as *;
+
+.region-construction {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  gap: var(--spacing);
+
+  .container:not(.ctas),
+  .image {
+    width: calc(50% - var(--spacing) / 2);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing);
+  }
+
+  .image {
+    max-height: 40vmin;
+  }
+
+  @media (width < breakpoint(tablet)) {
+    flex-direction: column-reverse;
+    gap: calc(var(--spacing) * 2);
+
+    .container:not(.ctas),
+    .image {
+      width: 100%;
+    }
+  }
+
+  @media (width >= breakpoint(xsmall)) {
+    .ctas {
+      flex-direction: row;
+    }
+  }
+}

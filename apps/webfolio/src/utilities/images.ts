@@ -11,12 +11,14 @@ import ImageProjectsHeader from '../../public/assets/svgo/undraw_online_stats.sv
 import ImageAboutMe from '../../public/assets/svgo/undraw_source_code.svg';
 import ImageBlogHeader from '../../public/assets/svgo/undraw_typewriter.svg';
 import ImageServicesHeader from '../../public/assets/svgo/undraw_working.svg';
+import ImageCoding from '../../public/assets/images/coding.svg';
 
 export {
   ImageAboutHeader,
   ImageAboutMe,
   ImageBlogHeader,
   ImageBlogPost,
+  ImageCoding,
   ImageContactHeader,
   ImageHomeBlog,
   ImageHomeHeader,
