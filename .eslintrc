@@ -42,7 +42,13 @@
     {
       "files": ["*.test.tsx", "**/__tests__/**/index.tsx"],
       "plugins": ["testing-library", "jest-dom"],
-      "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
+      "extends": [
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended"
+      ],
+      "rules": {
+        "testing-library/render-result-naming-convention": "off"
+      }
     }
   ],
   "parser": "@typescript-eslint/parser",
