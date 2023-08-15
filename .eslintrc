@@ -40,7 +40,7 @@
       "extends": ["plugin:jest/recommended"]
     },
     {
-      "files": ["*.test.tsx"],
+      "files": ["*.test.tsx", "**/__tests__/**/index.tsx"],
       "plugins": ["testing-library", "jest-dom"],
       "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
     }
