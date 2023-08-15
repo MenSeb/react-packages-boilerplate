@@ -34,7 +34,7 @@ describe('<ButtonDark />', () => {
 
     renderButtonDark();
 
-    await act(async () => await userEvent.click(getButton()));
+    await act(() => userEvent.click(getButton()));
 
     expect(getButton()).toHaveAttribute('aria-pressed', 'true');
   });
