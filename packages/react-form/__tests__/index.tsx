@@ -11,7 +11,7 @@ export function createRender<Props>(
   UIElement: React.ElementType,
   defaultSettings?: Settings<Props>,
 ) {
-  const user = userEvent.setup();
+  const user = userEvent.setup(); // eslint-disable-line
 
   return function renderElement(customSettings?: Settings<Partial<Props>>) {
     const props = { ...defaultSettings?.props, ...customSettings?.props };
