@@ -1,27 +1,15 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:jest/recommended",
-    "plugin:jest-dom/recommended",
-    "plugin:prettier/recommended",
-    "plugin:testing-library/dom"
-  ],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
   "env": {
     "browser": true,
     "es6": true,
     "jest": true,
     "node": true
   },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": { "jsx": true },
-    "ecmaVersion": 6,
-    "project": "tsconfig.json",
-    "sourceType": "module"
-  },
   "overrides": [
     {
       "files": ["*.{ts,tsx}"],
+      "plugins": ["@typescript-eslint"],
       "extends": [
         "plugin:@typescript-eslint/strict-type-checked",
         "plugin:@typescript-eslint/stylistic-type-checked"
@@ -35,6 +23,8 @@
     },
     {
       "files": ["*.tsx"],
+      "excludedFiles": ["*.test.tsx"],
+      "plugins": ["jsx-a11y", "react", "react-hooks"],
       "extends": [
         "plugin:jsx-a11y/recommended",
         "plugin:react/recommended",
@@ -43,9 +33,26 @@
       "rules": {
         "react-hooks/exhaustive-deps": "error"
       }
+    },
+    {
+      "files": ["*.test.{ts,tsx}"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"]
+    },
+    {
+      "files": ["*.test.tsx"],
+      "plugins": ["testing-library", "jest-dom"],
+      "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
     }
   ],
-  "plugins": ["jest"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": 6,
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": ["prettier"],
   "root": true,
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
