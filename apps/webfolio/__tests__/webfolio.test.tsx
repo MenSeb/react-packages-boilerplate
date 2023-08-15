@@ -26,25 +26,25 @@ function renderRouter({ routes, initialEntries }: RouterSettings) {
 
 describe('<WebFolio />', () => {
   describe('<Layout />', () => {
-    beforeEach(() => renderRouter({ routes }));
-
     it('renders with header', () => {
+      renderRouter({ routes });
       expect(screen.getAllByRole('banner')[0]).toBeInTheDocument();
     });
 
     it('renders with main', () => {
+      renderRouter({ routes });
       expect(screen.getByRole('main')).toBeInTheDocument();
     });
 
     it('renders with footer', () => {
+      renderRouter({ routes });
       expect(screen.getByRole('contentinfo')).toBeInTheDocument();
     });
   });
 
   describe('<Home />', () => {
-    beforeEach(() => renderRouter({ routes }));
-
     it('renders with home page', () => {
+      renderRouter({ routes });
       expect(
         screen.getByRole('region', { name: 'home page' }),
       ).toBeInTheDocument();
@@ -52,9 +52,9 @@ describe('<WebFolio />', () => {
   });
 
   describe('<About />', () => {
-    beforeEach(() => renderRouter({ routes }));
-
     it('renders with about page', async () => {
+      renderRouter({ routes });
+
       const user = userEvent.setup();
 
       await act(async () => {
@@ -68,9 +68,8 @@ describe('<WebFolio />', () => {
   });
 
   describe('<Lost />', () => {
-    beforeEach(() => renderRouter({ routes, initialEntries: ['/test'] }));
-
     it('renders with lost page', () => {
+      renderRouter({ routes, initialEntries: ['/test'] });
       expect(
         screen.getByRole('region', { name: 'lost page' }),
       ).toBeInTheDocument();
