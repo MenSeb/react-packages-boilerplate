@@ -84,6 +84,7 @@ export const propsTest = {
 };
 
 export const propsWrapper = {
+  children: 'children',
   className: 'className',
 };
 

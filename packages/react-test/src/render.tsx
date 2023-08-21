@@ -35,7 +35,7 @@ export type CreateRender<Props> = (
 
 export function createRender<Props>(
   UI: React.ElementType,
-  props: Props,
+  props?: Props,
   settings?: Settings,
 ): CustomRender<Props> {
   const user = userEvent.setup(settings?.setup);
