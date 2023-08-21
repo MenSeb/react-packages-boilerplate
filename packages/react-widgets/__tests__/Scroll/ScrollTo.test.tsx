@@ -1,4 +1,4 @@
-import userEvent from '@testing-library/user-event';
+import { createRender } from '@packages/react-test';
 import { act, fireEvent } from '@testing-library/react';
 import { dispatchMatchMedia } from '@packages/react-hooks/src/match-media/mock';
 import { resetScroll } from '../../src/Scroll/mock';
@@ -9,17 +9,17 @@ import {
   ScrollToProps,
   ScrollToTop,
 } from '../../src';
-import { createRender } from '..';
+import { otherProps } from '..';
 import { getIcon, getScroll, queryScroll, scrollOptions } from '.';
 
-const props = {
-  children: 'children',
+const props: ScrollToProps = {
   scrollOptions,
+  scrollDirection: 'scrollTop',
 };
 
-const renderScrollTo = createRender<ScrollToProps>(ScrollTo, { props });
-const renderScrollToLeft = createRender<ScrollToProps>(ScrollToLeft, { props });
-const renderScrollToTop = createRender<ScrollToProps>(ScrollToTop, { props });
+const renderScrollTo = createRender(ScrollTo, props);
+const renderScrollToLeft = createRender(ScrollToLeft, props);
+const renderScrollToTop = createRender(ScrollToTop, props);
 
 afterEach(() => {
   resetScroll();
@@ -27,18 +27,21 @@ afterEach(() => {
 
 describe('<ScrollTo />', () => {
   it('renders correctly', () => {
-    renderScrollTo();
+    renderScrollTo({ ...otherProps });
 
     expect(getScroll()).toBeInTheDocument();
-    expect(getScroll()).toHaveTextContent(props.children);
     expect(getScroll()).toHaveClass('scrolled');
+
+    expect(getScroll()).toHaveStyle(otherProps.style);
+    expect(getScroll()).toHaveClass(otherProps.className);
+    expect(getScroll()).toHaveAttribute('id', otherProps.id);
+    expect(getScroll()).toHaveTextContent(otherProps.children);
   });
 
   it('hides and shows on window scroll Y', async () => {
-    const user = userEvent.setup();
-
-    renderScrollTo({
-      props: { scrollDirection: 'scrollTop', scrollHidden: true },
+    const { user } = renderScrollTo({
+      scrollDirection: 'scrollTop',
+      scrollHidden: true,
     });
 
     expect(queryScroll()).not.toBeInTheDocument();
@@ -57,10 +60,9 @@ describe('<ScrollTo />', () => {
   });
 
   it('hides and shows on window scroll X', async () => {
-    const user = userEvent.setup();
-
-    renderScrollTo({
-      props: { scrollDirection: 'scrollLeft', scrollHidden: true },
+    const { user } = renderScrollTo({
+      scrollDirection: 'scrollLeft',
+      scrollHidden: true,
     });
 
     expect(queryScroll()).not.toBeInTheDocument();
@@ -81,9 +83,7 @@ describe('<ScrollTo />', () => {
   it('scrolls with the user preference behavior', async () => {
     const spy = jest.spyOn(window, 'scroll');
 
-    renderScrollTo();
-
-    const user = userEvent.setup();
+    const { user } = renderScrollTo();
 
     await user.click(getScroll());
 
@@ -99,13 +99,11 @@ describe('<ScrollTo />', () => {
   it('listens for behavior update from the user preference', async () => {
     const spy = jest.spyOn(window, 'scroll');
 
-    renderScrollTo();
+    const { user } = renderScrollTo();
 
     act(() => {
       dispatchMatchMedia(QUERY_REDUCED_MOTION);
     });
-
-    const user = userEvent.setup();
 
     await user.click(getScroll());
 
@@ -134,9 +132,7 @@ describe('<ScrollToLeft />', () => {
   it('scrolls correctly', async () => {
     window.scroll({ left: 1000 });
 
-    renderScrollToLeft();
-
-    const user = userEvent.setup();
+    const { user } = renderScrollToLeft();
 
     await user.click(getScroll());
 
@@ -159,9 +155,7 @@ describe('<ScrollToTop />', () => {
   it('scrolls correctly', async () => {
     window.scroll({ top: 1000 });
 
-    renderScrollToTop();
-
-    const user = userEvent.setup();
+    const { user } = renderScrollToTop();
 
     await user.click(getScroll());
 

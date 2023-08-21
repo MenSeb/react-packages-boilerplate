@@ -11,6 +11,10 @@ export type ScrollToProps = ScrollProps & {
   scrollHidden?: boolean;
 };
 
+export type ScrollToPropsDirection = Partial<
+  Omit<ScrollToProps, 'scrollDirection'>
+>;
+
 export function ScrollTo({
   className,
   scrollDirection,
@@ -51,7 +55,7 @@ export function ScrollTo({
 export function ScrollToTop({
   scrollOptions,
   ...props
-}: Partial<ScrollToProps>) {
+}: ScrollToPropsDirection) {
   return (
     <ScrollTo
       {...props}
@@ -68,7 +72,7 @@ export function ScrollToTop({
 export function ScrollToLeft({
   scrollOptions,
   ...props
-}: Partial<ScrollToProps>) {
+}: ScrollToPropsDirection) {
   return (
     <ScrollTo
       {...props}
