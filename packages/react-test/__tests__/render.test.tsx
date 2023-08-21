@@ -1,38 +1,6 @@
-import * as React from 'react';
 import { screen } from '@testing-library/react';
-import { createRender } from '../src';
-
-interface TestProps {
-  className: string;
-  id: string;
-  onClick: () => void;
-}
-
-function Test(props: TestProps) {
-  return <input {...props} />;
-}
-
-function getInput() {
-  return screen.getByRole('textbox');
-}
-
-interface WrapperProps {
-  children: React.ReactNode;
-}
-
-function Wrapper(props: WrapperProps) {
-  return <div {...props} data-testid="wrapper" />;
-}
-
-function getWrapper() {
-  return screen.getByTestId('wrapper');
-}
-
-const props = {
-  className: 'className',
-  id: 'id',
-  onClick: jest.fn(),
-};
+import { createRender, createRenderWrapper } from '../src';
+import { getTest, getWrapper, propsTest, propsWrapper, Test, Wrapper } from '.';
 
 const options = {
   wrapper: Wrapper,
@@ -42,29 +10,25 @@ const setup = {
   skipClick: true,
 };
 
-const render = createRender<TestProps>(Test, props);
-const renderOptions = createRender<TestProps>(Test, props, { options });
-const renderSetup = createRender<TestProps>(Test, props, { setup });
-
-afterEach(() => {
-  props.onClick.mockReset();
-});
+const render = createRender(Test, propsTest);
+const renderOptions = createRender(Test, propsTest, { options });
+const renderSetup = createRender(Test, propsTest, { setup });
 
 describe('createRender', () => {
   it('renders with default props', () => {
     render();
 
-    expect(getInput()).toBeInTheDocument();
-    expect(getInput()).toHaveClass(props.className);
-    expect(getInput()).toHaveAttribute('id', props.id);
+    expect(getTest()).toBeInTheDocument();
+    expect(getTest()).toHaveClass(propsTest.className);
+    expect(getTest()).toHaveAttribute('id', propsTest.id);
   });
 
   it('renders with custom props', () => {
     render({ className: 'test' });
 
-    expect(getInput()).toHaveClass('test');
-    expect(getInput()).not.toHaveClass(props.className);
-    expect(getInput()).toHaveAttribute('id', props.id);
+    expect(getTest()).toHaveClass('test');
+    expect(getTest()).not.toHaveClass(propsTest.className);
+    expect(getTest()).toHaveAttribute('id', propsTest.id);
   });
 
   it('rerenders with default props', () => {
@@ -72,9 +36,9 @@ describe('createRender', () => {
 
     rerender();
 
-    expect(getInput()).toBeInTheDocument();
-    expect(getInput()).toHaveClass(props.className);
-    expect(getInput()).toHaveAttribute('id', props.id);
+    expect(getTest()).toBeInTheDocument();
+    expect(getTest()).toHaveClass(propsTest.className);
+    expect(getTest()).toHaveAttribute('id', propsTest.id);
   });
 
   it('rerenders with custom props', () => {
@@ -82,38 +46,52 @@ describe('createRender', () => {
 
     rerender({ className: 'test' });
 
-    expect(getInput()).toHaveClass('test');
-    expect(getInput()).toHaveAttribute('id', props.id);
-    expect(getInput()).not.toHaveClass(props.className);
+    expect(getTest()).toHaveClass('test');
+    expect(getTest()).toHaveAttribute('id', propsTest.id);
+    expect(getTest()).not.toHaveClass(propsTest.className);
   });
 
   it('renders user event logic', async () => {
     const { user } = render();
 
-    await user.click(getInput());
+    await user.click(getTest());
 
-    expect(props.onClick).toHaveBeenCalledTimes(1);
+    expect(propsTest.onClick).toHaveBeenCalledTimes(1);
   });
 
   it('renders with default options', () => {
     renderOptions();
 
     expect(getWrapper()).toBeInTheDocument();
-    expect(getWrapper()).toContainElement(getInput());
+    expect(getWrapper()).toContainElement(getTest());
   });
 
   it('renders with custom options', () => {
     renderOptions(undefined, { wrapper: undefined });
 
-    expect(getInput()).toBeInTheDocument();
+    expect(getTest()).toBeInTheDocument();
     expect(screen.queryByTestId('wrapper')).not.toBeInTheDocument();
   });
 
   it('renders with user event options', async () => {
     const { user } = renderSetup();
 
-    await user.type(getInput(), 'hello world!');
+    await user.type(getTest(), 'hello world!');
 
-    expect(props.onClick).not.toHaveBeenCalled();
+    expect(propsTest.onClick).not.toHaveBeenCalled();
+  });
+});
+
+describe('createRenderWrapper', () => {
+  const createRender = createRenderWrapper(Wrapper, propsWrapper);
+
+  const renderWrapper = createRender(Test, propsTest);
+
+  it('renders with props and wrapper', () => {
+    renderWrapper();
+
+    expect(getWrapper()).toBeInTheDocument();
+    expect(getWrapper()).toContainElement(getTest());
+    expect(getWrapper()).toHaveClass(propsWrapper.className);
   });
 });

@@ -15,6 +15,16 @@ export interface ProviderProps extends React.PropsWithChildren {
   test?: string;
 }
 
+export interface TestProps {
+  className: string;
+  id: string;
+  onClick: () => void;
+}
+
+export interface WrapperProps extends React.PropsWithChildren {
+  className?: string;
+}
+
 export function Provider({ children, test }: ProviderProps) {
   return (
     <Context.Provider value={{ ...contextValue, test }}>
@@ -31,6 +41,14 @@ export function ProviderTest({ children }: React.PropsWithChildren) {
   );
 }
 
+export function Test(props: TestProps) {
+  return <input {...props} data-testid="test" />;
+}
+
+export function Wrapper(props: WrapperProps) {
+  return <div {...props} data-testid="wrapper" />;
+}
+
 export function useHook(props: HookProps): HookProps {
   return props;
 }
@@ -41,6 +59,10 @@ export function useTest(): ContextValue {
 
 export function getTest() {
   return screen.getByTestId('test');
+}
+
+export function getWrapper() {
+  return screen.getByTestId('wrapper');
 }
 
 export const contextValue = { context: 'test' };
@@ -54,3 +76,17 @@ export const propsHook = {
 export const propsProvider = {
   test: 'test',
 };
+
+export const propsTest = {
+  className: 'className',
+  id: 'id',
+  onClick: jest.fn(),
+};
+
+export const propsWrapper = {
+  className: 'className',
+};
+
+afterEach(() => {
+  propsTest.onClick.mockReset();
+});

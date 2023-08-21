@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { Options } from '@testing-library/user-event/options';
 import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
 import { RenderOptions, RenderResult, render } from '@testing-library/react';
+import { createWrapper } from '.';
 
 export interface Settings {
   options?: RenderOptions;
@@ -56,5 +57,24 @@ export function createRender<Props>(
     }
 
     return { result, rerender: customRerender, user };
+  };
+}
+
+export function createRenderWrapper<PropsWrapper>(
+  wrapper: React.ElementType,
+  propsWrapper?: PropsWrapper,
+) {
+  return function renderWrapper<Props>(
+    element: React.ElementType,
+    propsElement: Props,
+    settings?: Settings,
+  ): CustomRender<Props> {
+    return createRender(element, propsElement, {
+      options: {
+        ...settings?.options,
+        wrapper: createWrapper(wrapper, propsWrapper),
+      },
+      setup: settings?.setup,
+    });
   };
 }
