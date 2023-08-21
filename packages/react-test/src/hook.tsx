@@ -68,3 +68,17 @@ export function createRenderHookWrapper<PropsWrapper>(
     });
   };
 }
+
+export function setupRenderHook<ResultHook, PropsHook, PropsWrapper>(
+  hook: Hook<ResultHook, PropsHook>,
+  wrapper: React.ElementType,
+  propsHook?: PropsHook,
+  propsWrapper?: PropsWrapper,
+  options?: CustomRenderHookOptions<PropsHook>,
+) {
+  return createRenderHookWrapper(wrapper, propsWrapper)(
+    hook,
+    propsHook,
+    options,
+  );
+}

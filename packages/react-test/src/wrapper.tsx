@@ -8,18 +8,3 @@ export function createWrapper<Props>(
     return <WrapperElement {...props}>{children}</WrapperElement>;
   };
 }
-
-// export function createRenderWrapper<PropsElement, PropsWrapper>(
-//   element: React.ElementType,
-//   propsElement: PropsElement,
-//   wrapper: React.ElementType,
-//   propsWrapper: PropsWrapper,
-//   settings: Settings,
-// ) {
-//   const { options, setup } = settings;
-
-//   return createRender(element, propsElement, {
-//     options: { ...options, wrapper: createWrapper(wrapper, propsWrapper) },
-//     setup,
-//   });
-// }

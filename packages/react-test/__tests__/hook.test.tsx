@@ -1,4 +1,8 @@
-import { createRenderHook, createRenderHookWrapper } from '../src';
+import {
+  createRenderHook,
+  createRenderHookWrapper,
+  setupRenderHook,
+} from '../src';
 import {
   contextValue,
   propsHook,
@@ -47,13 +51,17 @@ describe('createRenderHook', () => {
   it('renders with default options', () => {
     const { result } = renderHookTest();
 
-    expect(result.current).toEqual(contextValue);
+    expect(result.current).toEqual({ ...contextValue, ...propsHook });
   });
 
   it('renders with custom options', () => {
     const { result } = renderHookTest(undefined, { wrapper: ProviderTest });
 
-    expect(result.current).toEqual({ ...contextValue, test: 'test' });
+    expect(result.current).toEqual({
+      ...contextValue,
+      ...propsHook,
+      test: 'test',
+    });
   });
 });
 
@@ -65,6 +73,34 @@ describe('createRenderHookWrapper', () => {
   it('renders with props and wrapper', () => {
     const { result } = renderHookWrapper();
 
-    expect(result.current).toEqual({ ...contextValue, test: 'test' });
+    expect(result.current).toEqual({ ...contextValue, ...propsProvider });
+  });
+});
+
+describe('setupRenderHook', () => {
+  it('renders with hook and wrapper', () => {
+    const renderHook = setupRenderHook(useTest, Provider);
+
+    const { result } = renderHook();
+
+    expect(result.current).toEqual(contextValue);
+  });
+
+  it('renders with props and options', () => {
+    const renderHook = setupRenderHook(
+      useTest,
+      Provider,
+      propsHook,
+      propsProvider,
+      { wrapper: ProviderTest },
+    );
+
+    const { result } = renderHook();
+
+    expect(result.current).toEqual({
+      ...contextValue,
+      ...propsHook,
+      ...propsProvider,
+    });
   });
 });

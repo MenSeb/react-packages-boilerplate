@@ -78,3 +78,17 @@ export function createRenderWrapper<PropsWrapper>(
     });
   };
 }
+
+export function setupRender<PropsElement, PropsWrapper>(
+  element: React.ElementType,
+  wrapper: React.ElementType,
+  propsElement?: PropsElement,
+  propsWrapper?: PropsWrapper,
+  settings?: Settings,
+) {
+  return createRenderWrapper(wrapper, propsWrapper)(
+    element,
+    propsElement,
+    settings,
+  );
+}

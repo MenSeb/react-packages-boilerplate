@@ -1,14 +1,16 @@
-import { screen } from '@testing-library/react';
-import { createRender, createRenderWrapper } from '../src';
-import { getTest, getWrapper, propsTest, propsWrapper, Test, Wrapper } from '.';
-
-const options = {
-  wrapper: Wrapper,
-};
-
-const setup = {
-  skipClick: true,
-};
+import { createRender, createRenderWrapper, setupRender } from '../src';
+import {
+  getTest,
+  getWrapper,
+  options,
+  propsTest,
+  propsWrapper,
+  queryWrapper,
+  settings,
+  setup,
+  Test,
+  Wrapper,
+} from '.';
 
 const render = createRender(Test, propsTest);
 const renderOptions = createRender(Test, propsTest, { options });
@@ -70,7 +72,7 @@ describe('createRender', () => {
     renderOptions(undefined, { wrapper: undefined });
 
     expect(getTest()).toBeInTheDocument();
-    expect(screen.queryByTestId('wrapper')).not.toBeInTheDocument();
+    expect(queryWrapper()).not.toBeInTheDocument();
   });
 
   it('renders with user event options', async () => {
@@ -93,5 +95,38 @@ describe('createRenderWrapper', () => {
     expect(getWrapper()).toBeInTheDocument();
     expect(getWrapper()).toContainElement(getTest());
     expect(getWrapper()).toHaveClass(propsWrapper.className);
+  });
+});
+
+describe('setupRender', () => {
+  it('renders with element and wrapper', () => {
+    const render = setupRender(Test, Wrapper);
+
+    render();
+
+    expect(getWrapper()).toBeInTheDocument();
+    expect(getWrapper()).toContainElement(getTest());
+  });
+
+  it('renders with props and settings', async () => {
+    const render = setupRender(
+      Test,
+      Wrapper,
+      propsTest,
+      propsWrapper,
+      settings,
+    );
+
+    const { user } = render();
+
+    expect(getWrapper()).toBeInTheDocument();
+    expect(getWrapper()).toContainElement(getTest());
+    expect(getWrapper()).toHaveClass(propsWrapper.className);
+    expect(getTest()).toHaveAttribute(propsTest.id);
+    expect(getTest()).toHaveClass(propsTest.className);
+
+    await user.type(getTest(), 'hello world!');
+
+    expect(propsTest.onClick).not.toHaveBeenCalled();
   });
 });
