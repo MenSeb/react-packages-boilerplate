@@ -1,51 +1,31 @@
-import { createRenderHook } from '../src';
+import { createRenderHook, createRenderHookWrapper } from '../src';
+import {
+  contextValue,
+  propsHook,
+  propsProvider,
+  useHook,
+  useTest,
+  Provider,
+  ProviderTest,
+} from '.';
 
-interface Props {
-  other?: string;
-  test: string;
-}
+const renderHook = createRenderHook(useHook, propsHook);
 
-interface Result {
-  test: string;
-}
-
-function useHook({ other, test }: Props): Result {
-  return { test: other ?? test };
-}
-
-const spyDefault = jest.fn();
-function WrapperDefault() {
-  spyDefault();
-
-  return null;
-}
-
-const spyCustom = jest.fn();
-function WrapperCustom() {
-  spyCustom();
-
-  return null;
-}
-
-const props: Props = { test: 'test' };
-
-const renderHook = createRenderHook(useHook, props);
-
-const renderHookOptions = createRenderHook(useHook, props, {
-  wrapper: WrapperDefault,
+const renderHookTest = createRenderHook(useTest, propsHook, {
+  wrapper: Provider,
 });
 
 describe('createRenderHook', () => {
   it('renders with default props', () => {
     const { result } = renderHook();
 
-    expect(result.current).toEqual({ test: props.test });
+    expect(result.current).toEqual(propsHook);
   });
 
   it('renders with custom props', () => {
-    const { result } = renderHook({ other: 'other' });
+    const { result } = renderHook({ test: 'test' });
 
-    expect(result.current).toEqual({ test: 'other' });
+    expect(result.current).toEqual({ ...propsHook, test: 'test' });
   });
 
   it('rerenders with default props', () => {
@@ -53,26 +33,38 @@ describe('createRenderHook', () => {
 
     rerender();
 
-    expect(result.current).toEqual({ test: props.test });
+    expect(result.current).toEqual(propsHook);
   });
 
   it('rerenders with custom props', () => {
     const { rerender, result } = renderHook();
 
-    rerender({ other: 'other' });
+    rerender({ test: 'test' });
 
-    expect(result.current).toEqual({ test: 'other' });
+    expect(result.current).toEqual({ ...propsHook, test: 'test' });
   });
 
   it('renders with default options', () => {
-    renderHookOptions();
+    const { result } = renderHookTest();
 
-    expect(spyDefault).toHaveBeenCalledTimes(1);
+    expect(result.current).toEqual(contextValue);
   });
 
   it('renders with custom options', () => {
-    renderHookOptions(undefined, { wrapper: WrapperCustom });
+    const { result } = renderHookTest(undefined, { wrapper: ProviderTest });
 
-    expect(spyCustom).toHaveBeenCalledTimes(1);
+    expect(result.current).toEqual({ ...contextValue, test: 'test' });
+  });
+});
+
+describe('createRenderHookWrapper', () => {
+  const createRenderHook = createRenderHookWrapper(Provider, propsProvider);
+
+  const renderHookWrapper = createRenderHook(useTest);
+
+  it('renders with props and wrapper', () => {
+    const { result } = renderHookWrapper();
+
+    expect(result.current).toEqual({ ...contextValue, test: 'test' });
   });
 });

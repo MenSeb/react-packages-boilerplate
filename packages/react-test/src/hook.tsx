@@ -3,6 +3,7 @@ import {
   RenderHookOptions,
   RenderHookResult,
 } from '@testing-library/react';
+import { createWrapper } from '.';
 
 export type Hook<Result, Props> = (props: Props) => Result;
 
@@ -22,9 +23,15 @@ export type CustomRenderHook<Result, Props> = (
   options?: CustomRenderHookOptions<Props>,
 ) => CustomRenderHookResult<Result, Props>;
 
+export type CreateRenderHook<Result, Props> = (
+  hook: Hook<Result, Props>,
+  props?: Props,
+  options?: CustomRenderHookOptions<Props>,
+) => CustomRenderHook<Result, Props>;
+
 export function createRenderHook<Result, Props>(
   hook: Hook<Result, Props>,
-  props: Props,
+  props?: Props,
   options?: CustomRenderHookOptions<Props>,
 ): CustomRenderHook<Result, Props> {
   return function customRenderHook(
@@ -39,9 +46,25 @@ export function createRenderHook<Result, Props>(
     );
 
     function customRerenderHook(rerenderProps?: Partial<Props>): void {
-      rerender({ ...props, ...rerenderProps });
+      rerender({ ...props, ...customProps, ...rerenderProps } as Props);
     }
 
     return { ...rest, rerender: customRerenderHook };
+  };
+}
+
+export function createRenderHookWrapper<PropsWrapper>(
+  wrapper: React.ElementType,
+  propsWrapper?: PropsWrapper,
+) {
+  return function renderHookWrapper<ResultHook, PropsHook>(
+    hook: Hook<ResultHook, PropsHook>,
+    props?: PropsHook,
+    options?: CustomRenderHookOptions<PropsHook>,
+  ): CustomRenderHook<ResultHook, PropsHook> {
+    return createRenderHook(hook, props, {
+      ...options,
+      wrapper: createWrapper(wrapper, propsWrapper),
+    });
   };
 }
