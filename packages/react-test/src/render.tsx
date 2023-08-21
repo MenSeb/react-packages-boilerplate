@@ -26,6 +26,12 @@ export type CustomRender<Props> = (
   options?: RenderOptions,
 ) => CustomRenderResult<Props>;
 
+export type CreateRender<Props> = (
+  UI: React.ElementType,
+  props: Props,
+  settings?: Settings,
+) => CustomRender<Props>;
+
 export function createRender<Props>(
   UI: React.ElementType,
   props: Props,
