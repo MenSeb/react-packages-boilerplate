@@ -1,5 +1,4 @@
-import { screen } from '@testing-library/react';
-import { createRender } from '@packages/react-test';
+import { createRender, screen } from '@packages/react-test';
 import { Alert, AlertProps } from '../../src';
 
 const props = {

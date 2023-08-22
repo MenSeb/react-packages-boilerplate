@@ -1,5 +1,4 @@
-import { act, screen } from '@testing-library/react';
-import { createRender } from '@packages/react-test';
+import { act, createRender, screen } from '@packages/react-test';
 import { Input, InputProps } from '../../src';
 import { defaultValue, value } from '..';
 

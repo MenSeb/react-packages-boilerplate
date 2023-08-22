@@ -1,5 +1,4 @@
-import { createRender } from '@packages/react-test';
-import { act, fireEvent } from '@testing-library/react';
+import { act, createRender, fireEvent } from '@packages/react-test';
 import { dispatchMatchMedia } from '@packages/react-hooks/src/match-media/mock';
 import { resetScroll } from '../../src/Scroll/mock';
 import {

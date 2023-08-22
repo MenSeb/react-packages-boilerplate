@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { renderHook } from '@testing-library/react';
-import { createRenderHook } from '@packages/react-test';
+import { createRenderHook, renderHook } from '@packages/react-test';
 import { UseVariablesCSS, useVariablesCSS } from '../../src/css-variables';
 
 const element = document.createElement('div');

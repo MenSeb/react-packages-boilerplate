@@ -1,4 +1,4 @@
-import { act } from '@testing-library/react';
+import { act } from '@packages/react-test';
 import { ButtonLight, ButtonLightProps } from '../../src/components';
 import { THEME_STORAGE_KEY } from '../../src/utilities';
 import { createRender, getButton, props } from '..';

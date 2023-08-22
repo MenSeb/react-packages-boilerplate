@@ -1,7 +1,7 @@
-import { screen } from '@testing-library/react';
 import {
   createRenderWrapper,
   createRenderHookWrapper,
+  screen,
 } from '@packages/react-test';
 import * as Theme from '../src';
 

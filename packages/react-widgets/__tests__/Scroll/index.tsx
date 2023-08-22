@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react';
+import { screen, within } from '@packages/react-test';
 
 export function getScroll() {
   return screen.getByRole('button');

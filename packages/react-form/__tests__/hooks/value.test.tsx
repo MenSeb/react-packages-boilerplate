@@ -1,5 +1,4 @@
-import { createRenderHook } from '@packages/react-test';
-import { act } from '@testing-library/react';
+import { act, createRenderHook } from '@packages/react-test';
 import { useValue } from '../../src/hooks';
 import { defaultValue, value } from '..';
 

@@ -1,4 +1,4 @@
-import { act } from '@testing-library/react';
+import { act } from '@packages/react-test';
 import { dispatchMatchMedia } from '@packages/react-hooks/src/match-media/mock';
 import * as Theme from '../../src';
 import { THEME_QUERY_DARK, THEME_STORAGE_KEY } from '../../src/utilities';

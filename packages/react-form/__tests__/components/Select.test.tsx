@@ -1,5 +1,4 @@
-import { act, screen, within } from '@testing-library/react';
-import { createRender } from '@packages/react-test';
+import { act, createRender, screen, within } from '@packages/react-test';
 import { Select, SelectProps } from '../../src';
 
 const props = {
