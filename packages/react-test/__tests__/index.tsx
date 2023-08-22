@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { screen } from '@testing-library/react';
+import { screen } from '../src';
 
 export interface ContextValue {
   context: string;
