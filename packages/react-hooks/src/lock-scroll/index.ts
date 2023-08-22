@@ -1,1 +1,1 @@
-export { default as useLockScroll } from './lock-scroll';
+export * from './lock-scroll';

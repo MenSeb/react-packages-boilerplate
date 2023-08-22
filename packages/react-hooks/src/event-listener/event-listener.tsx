@@ -1,11 +1,18 @@
 import * as React from 'react';
 
-export default function useEventListener(
-  target: EventTarget,
-  type: string,
-  listener: EventListenerOrEventListenerObject,
-  options?: Partial<AddEventListenerOptions>,
-) {
+export interface UseEventListener {
+  target: EventTarget;
+  type: string;
+  listener: EventListenerOrEventListenerObject;
+  options?: Partial<AddEventListenerOptions>;
+}
+
+export function useEventListener({
+  target,
+  type,
+  listener,
+  options,
+}: UseEventListener) {
   React.useEffect(() => {
     target.addEventListener(type, listener, options);
 
