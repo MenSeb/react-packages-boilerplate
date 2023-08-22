@@ -3,7 +3,7 @@ import * as ReactHooks from '@packages/react-hooks';
 import ContextReducer from '../setup';
 import { THEME_QUERY_DARK, THEME_STORAGE_KEY } from '../utilities';
 
-export default function Update(): null {
+export function Update(): null {
   const { state, dispatch } = ContextReducer.useContextReducer();
 
   const updateTheme = React.useCallback<EventListener>(() => {

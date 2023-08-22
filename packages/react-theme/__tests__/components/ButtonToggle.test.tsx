@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import { act } from '@testing-library/react';
 import { ButtonToggle } from '../../src/components';
 import { THEME_STORAGE_KEY } from '../../src/utilities';
@@ -34,9 +33,7 @@ describe('<ButtonToggle />', () => {
   it('renders with click handler to toggle the theme', async () => {
     localStorage.setItem(THEME_STORAGE_KEY, 'light');
 
-    renderButtonToggle();
-
-    const user = userEvent.setup();
+    const { user } = renderButtonToggle();
 
     expect(getButton()).toHaveAttribute('data-theme', 'light');
 

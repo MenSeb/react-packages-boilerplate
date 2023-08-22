@@ -2,10 +2,9 @@ import * as React from 'react';
 import ContextReducer from '../setup';
 import { Theme } from '../types';
 
-export default function ButtonDark({
-  children,
-  ...props
-}: React.ComponentProps<'button'>) {
+export type ButtonDarkProps = React.ComponentProps<'button'>;
+
+export function ButtonDark({ children, ...props }: ButtonDarkProps) {
   const { state, dispatch } = ContextReducer.useContextReducer();
 
   return (
