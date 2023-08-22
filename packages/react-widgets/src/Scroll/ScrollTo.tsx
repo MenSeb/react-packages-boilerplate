@@ -22,8 +22,11 @@ export function ScrollTo({
   scrollOptions,
   ...props
 }: ScrollToProps) {
-  const { matches } = useMatchMedia(QUERY_REDUCED_MOTION, () => {
-    setMotion((motion) => !motion);
+  const { matches } = useMatchMedia({
+    query: QUERY_REDUCED_MOTION,
+    listener: () => {
+      setMotion((motion) => !motion);
+    },
   });
 
   const [motionReduced, setMotion] = React.useState(matches);
@@ -38,7 +41,11 @@ export function ScrollTo({
     setScrolled(getScrolled);
   }, [getScrolled, setScrolled]);
 
-  useEventListener(window, 'scroll', scroll);
+  useEventListener({
+    target: window,
+    type: 'scroll',
+    listener: scroll,
+  });
 
   return scrollHidden && scrolled ? null : (
     <Scroll

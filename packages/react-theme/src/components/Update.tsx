@@ -10,7 +10,10 @@ export default function Update(): null {
     dispatch.toggleTheme();
   }, [dispatch]);
 
-  ReactHooks.useMatchMedia(THEME_QUERY_DARK, updateTheme);
+  ReactHooks.useMatchMedia({
+    query: THEME_QUERY_DARK,
+    listener: updateTheme,
+  });
 
   React.useEffect(() => {
     localStorage.setItem(THEME_STORAGE_KEY, state.theme);
