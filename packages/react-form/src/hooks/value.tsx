@@ -5,9 +5,13 @@ export type ChangeElement =
   | HTMLSelectElement
   | HTMLTextAreaElement;
 
-export function useValue<GenericElement extends ChangeElement>(
+export interface UseValue {
+  defaultValue?: string;
+}
+
+export function useValue<GenericElement extends ChangeElement>({
   defaultValue = '',
-) {
+}: UseValue) {
   const [value, setValue] = React.useState(defaultValue);
 
   const changeValue = React.useCallback(

@@ -1,13 +1,13 @@
 import { act, screen, within } from '@testing-library/react';
+import { createRender } from '@packages/react-test';
 import { Select, SelectProps } from '../../src';
-import { createRender } from '..';
 
 const props = {
   options: Array.from({ length: 5 }, (_, index) => `option-${index}`),
   placeholder: 'select option...',
 };
 
-const renderSelect = createRender<SelectProps>(Select, { props });
+const renderSelect = createRender<SelectProps>(Select, props);
 
 function getSelect() {
   return screen.getByRole('combobox');
@@ -34,16 +34,14 @@ describe('<Select />', () => {
   it('renders with default value', () => {
     const defaultValue = props.options[0];
 
-    renderSelect({ props: { defaultValue } });
+    renderSelect({ defaultValue });
 
     expect(getSelect()).toHaveValue(defaultValue);
     expect(getSelect()).toHaveDisplayValue(defaultValue);
   });
 
   it('renders with empty value if default value is invalid', () => {
-    const defaultValue = 'test';
-
-    renderSelect({ props: { defaultValue } });
+    renderSelect({ defaultValue: 'test' });
 
     expect(getSelect()).toHaveValue('');
     expect(getSelect()).toHaveDisplayValue(props.placeholder);

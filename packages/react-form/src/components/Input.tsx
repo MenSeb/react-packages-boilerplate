@@ -7,7 +7,7 @@ export type InputProps = Omit<UI.InputProps, 'defaultValue'> & {
 };
 
 export function Input({ defaultValue, ...props }: InputProps) {
-  const { changeValue, value } = useValue<HTMLInputElement>(defaultValue);
+  const { changeValue, value } = useValue<HTMLInputElement>({ defaultValue });
 
   return <UI.Input {...props} value={value} onChange={changeValue} />;
 }

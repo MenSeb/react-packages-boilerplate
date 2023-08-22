@@ -1,9 +1,13 @@
-import { act, renderHook } from '@testing-library/react';
+import { createRenderHook } from '@packages/react-test';
+import { act } from '@testing-library/react';
 import { useValue } from '../../src/hooks';
+import { defaultValue, value } from '..';
+
+const renderValue = createRenderHook(useValue);
 
 describe('useValue', () => {
   it('returns an object with value and helpers', () => {
-    const { result } = renderHook(() => useValue());
+    const { result } = renderValue();
 
     expect(result.current).toMatchObject({
       value: expect.any(String) as string,
@@ -12,26 +16,23 @@ describe('useValue', () => {
   });
 
   it('returns an empty string value by default', () => {
-    const { result } = renderHook(() => useValue());
+    const { result } = renderValue();
 
     expect(result.current.value).toBe('');
   });
 
   it('returns the default value if provided', () => {
-    const defaultValue = 'test';
-
-    const { result } = renderHook(() => useValue(defaultValue));
+    const { result } = renderValue({ defaultValue });
 
     expect(result.current.value).toBe(defaultValue);
   });
 
   it('updates the value correctly', () => {
-    const value = 'value';
     const event = {
       currentTarget: { value },
     } as React.ChangeEvent<HTMLInputElement>;
 
-    const { result } = renderHook(() => useValue<HTMLInputElement>());
+    const { result } = renderValue();
 
     expect(result.current.value).toBe('');
 
