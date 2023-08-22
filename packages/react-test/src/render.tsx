@@ -66,7 +66,7 @@ export function createRenderWrapper<PropsWrapper>(
 ) {
   return function renderWrapper<Props>(
     element: React.ElementType,
-    propsElement: Props,
+    propsElement?: Props,
     settings?: Settings,
   ): CustomRender<Props> {
     return createRender(element, propsElement, {
