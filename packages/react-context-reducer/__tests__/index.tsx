@@ -1,10 +1,3 @@
-import * as React from 'react';
-import {
-  render,
-  renderHook,
-  RenderHookResult,
-  RenderResult,
-} from '@testing-library/react';
 import * as Types from '../src/types';
 
 export interface DefaultState {
@@ -53,50 +46,6 @@ export const initializer: Types.Initializer<State, DefaultState, InitialState> =
     (state: DefaultState & InitialState): State =>
       state.baz === undefined ? initializerState : state,
   );
-
-export function createWrapper(
-  Provider: React.ElementType,
-  props: React.ComponentProps<typeof Provider>,
-) {
-  return function wrapper({ children }: React.PropsWithChildren) {
-    return <Provider {...props}>{children}</Provider>;
-  };
-}
-
-export function renderConsumer(
-  Consumer: React.ElementType,
-  Provider: React.ElementType,
-  props = { initialState },
-): RenderResult {
-  return render(
-    <Consumer>
-      {({
-        dispatch,
-        state,
-      }: {
-        dispatch?: Types.GenericDispatcher<typeof actions, Payload>;
-        state?: State;
-      }) => {
-        return (
-          <button onClick={() => dispatch?.action1(payload)}>
-            {state?.bar}
-          </button>
-        );
-      }}
-    </Consumer>,
-    { wrapper: createWrapper(Provider, props) },
-  );
-}
-
-export function renderContextHook<Result>(
-  hook: () => Result,
-  Provider: React.ElementType,
-  props = { initialState },
-): RenderHookResult<Result, React.ComponentProps<typeof Provider>> {
-  return renderHook(() => hook(), {
-    wrapper: createWrapper(Provider, props),
-  });
-}
 
 export function spyOnConsoleError() {
   let spy: jest.SpyInstance;
