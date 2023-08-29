@@ -1,24 +1,43 @@
 import * as React from 'react';
-import { act, screen, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { act, screen } from '@testing-library/react';
+import { createRender } from '@packages/react-test';
 import {
-  MemoryRouter,
   Route,
-  Routes,
   RouterProvider,
+  RouterProviderProps,
   createRoutesFromElements,
   createMemoryRouter,
 } from 'react-router-dom';
 import { routes } from '../src/router';
 import { About, Error as ErrorPage, Home, Layout, Lost } from '../src/pages';
 
-function renderRouter() {
-  return render(
-    <MemoryRouter>
-      <Routes>{routes}</Routes>
-    </MemoryRouter>,
-  );
+function ErrorTest({ error = true }: { error?: boolean }) {
+  if (error) throw new Error('test');
+  return null;
 }
+
+const routesTest = (
+  <Route element={<Layout />} path="/">
+    <Route errorElement={<ErrorPage />}>
+      <Route element={<Home />} index />
+      <Route element={<About />} path="about" />
+      <Route element={<Lost />} path="*" />
+      <Route element={<ErrorTest />} path="error" />
+    </Route>
+  </Route>
+);
+
+const routerRoutes = createRoutesFromElements(routes);
+const router = createMemoryRouter(routerRoutes);
+const routerLost = createMemoryRouter(routerRoutes, {
+  initialEntries: ['/lost'],
+});
+const routerError = createMemoryRouter(createRoutesFromElements(routesTest), {
+  initialEntries: ['/error'],
+});
+const renderRouter = createRender<RouterProviderProps>(RouterProvider, {
+  router,
+});
 
 describe('<App />', () => {
   describe('<Layout />', () => {
@@ -49,9 +68,7 @@ describe('<App />', () => {
 
   describe('<About />', () => {
     it('renders with about page', async () => {
-      renderRouter();
-
-      const user = userEvent.setup();
+      const { user } = renderRouter();
 
       await act(async () => {
         await user.click(screen.getByText(/about/i));
@@ -65,11 +82,7 @@ describe('<App />', () => {
 
   describe('<Lost />', () => {
     it('renders with lost page', () => {
-      render(
-        <MemoryRouter initialEntries={['/test']}>
-          <Routes>{routes}</Routes>
-        </MemoryRouter>,
-      );
+      renderRouter({ router: routerLost });
       expect(
         screen.getByRole('region', { name: 'lost page' }),
       ).toBeInTheDocument();
@@ -77,32 +90,12 @@ describe('<App />', () => {
   });
 
   describe('<Error />', () => {
-    function Test() {
-      throw new Error('test error');
-
-      return <></>;
-    }
-
     it('renders with error page', () => {
       const spy = jest.spyOn(console, 'error');
 
       spy.mockImplementation(() => null);
 
-      const testRouter = createMemoryRouter(
-        createRoutesFromElements(
-          <Route element={<Layout />} path="/">
-            <Route errorElement={<ErrorPage />}>
-              <Route element={<Home />} index />
-              <Route element={<About />} path="about" />
-              <Route element={<Lost />} path="*" />
-              <Route element={<Test />} path="test" />
-            </Route>
-          </Route>,
-        ),
-        { initialEntries: ['/test'] },
-      );
-
-      render(<RouterProvider router={testRouter} />);
+      renderRouter({ router: routerError });
 
       expect(
         screen.getByRole('region', { name: 'error page' }),
