@@ -2,10 +2,9 @@ import * as React from 'react';
 import ContextReducer from '../setup';
 import { Theme } from '../types';
 
-export default function IconDark({
-  children,
-  ...props
-}: React.ComponentProps<'svg'>) {
+export type IconDarkProps = React.ComponentProps<'svg'>;
+
+export function IconDark({ children, ...props }: IconDarkProps) {
   const state = ContextReducer.useContextState();
 
   return (

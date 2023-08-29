@@ -2,10 +2,9 @@ import * as React from 'react';
 import ContextReducer from '../setup';
 import { Theme } from '../types';
 
-export default function ButtonToggle({
-  children,
-  ...props
-}: React.ComponentProps<'button'>) {
+export type ButtonToggleProps = React.ComponentProps<'button'>;
+
+export function ButtonToggle({ children, ...props }: ButtonToggleProps) {
   const { state, dispatch } = ContextReducer.useContextReducer();
 
   return (

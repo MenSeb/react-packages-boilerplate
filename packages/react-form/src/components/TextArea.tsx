@@ -7,7 +7,9 @@ export type TextAreaProps = Omit<UI.TextAreaProps, 'defaultValue'> & {
 };
 
 export function TextArea({ defaultValue, ...props }: TextAreaProps) {
-  const { changeValue, value } = useValue<HTMLTextAreaElement>(defaultValue);
+  const { changeValue, value } = useValue<HTMLTextAreaElement>({
+    defaultValue,
+  });
 
   return <UI.TextArea {...props} value={value} onChange={changeValue} />;
 }

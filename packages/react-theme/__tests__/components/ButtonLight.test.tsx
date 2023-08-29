@@ -1,10 +1,9 @@
-import userEvent from '@testing-library/user-event';
-import { act } from '@testing-library/react';
-import { ButtonLight } from '../../src/components';
+import { act } from '@packages/react-test';
+import { ButtonLight, ButtonLightProps } from '../../src/components';
 import { THEME_STORAGE_KEY } from '../../src/utilities';
 import { createRender, getButton, props } from '..';
 
-const renderButtonLight = createRender(ButtonLight);
+const renderButtonLight = createRender<ButtonLightProps>(ButtonLight);
 
 describe('<ButtonLight />', () => {
   it('renders with attribute data-theme to light', () => {
@@ -32,9 +31,7 @@ describe('<ButtonLight />', () => {
   it('renders with click handler to set the theme to light', async () => {
     localStorage.setItem(THEME_STORAGE_KEY, 'dark');
 
-    renderButtonLight();
-
-    const user = userEvent.setup();
+    const { user } = renderButtonLight();
 
     await act(async () => {
       await user.click(getButton());

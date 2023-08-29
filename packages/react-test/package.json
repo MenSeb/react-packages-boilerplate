@@ -1,20 +1,19 @@
 {
-  "name": "@packages/react-app",
+  "name": "@packages/react-test",
   "version": "1.0.0",
-  "description": "React app.",
+  "description": "Test utilities for React.",
   "keywords": [
-    "app",
+    "test",
     "react"
   ],
-  "homepage": "https://github.com/MenSeb/react-packages-boilerplate#readme",
   "author": "MenSeb <sebastien.menard.github@gmail.com>",
+  "homepage": "https://github.com/MenSeb/react-packages-boilerplate#readme",
   "license": "ISC",
-  "main": "lib/index.js",
+  "main": "src/index.ts",
   "types": "lib/index.d.ts",
   "type": "module",
   "directories": {
     "lib": "lib",
-    "public": "public",
     "test": "__tests__"
   },
   "files": [
@@ -29,13 +28,10 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
-    "webpack:build": "webpack --mode production",
-    "webpack:serve": "webpack serve --hot --open --mode development"
+    "build": "tsc",
+    "build:watch": "tsc --watch"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"
-  },
-  "devDependencies": {
-    "@packages/react-test": "*"
   }
 }

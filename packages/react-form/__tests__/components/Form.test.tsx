@@ -1,13 +1,12 @@
-import { fireEvent, screen } from '@testing-library/react';
+import { createRender, fireEvent, screen } from '@packages/react-test';
 import { Form, FormProps } from '../../src';
-import { createRender } from '..';
 
 const props = {
   onSubmit: jest.fn(),
   'aria-label': 'form label',
 };
 
-const renderForm = createRender<FormProps>(Form, { props });
+const renderForm = createRender<FormProps>(Form, props);
 
 function getForm() {
   return screen.getByRole('form');

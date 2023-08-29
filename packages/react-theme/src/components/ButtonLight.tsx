@@ -2,10 +2,9 @@ import * as React from 'react';
 import ContextReducer from '../setup';
 import { Theme } from '../types';
 
-export default function ButtonLight({
-  children,
-  ...props
-}: React.ComponentProps<'button'>) {
+export type ButtonLightProps = React.ComponentProps<'button'>;
+
+export function ButtonLight({ children, ...props }: ButtonLightProps) {
   const { state, dispatch } = ContextReducer.useContextReducer();
 
   return (

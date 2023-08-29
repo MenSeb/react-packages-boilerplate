@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as UI from '@packages/react-ui';
 import classNames, { Argument } from 'classnames';
 
-export type ScrollProps = Omit<UI.ButtonProps, 'onClick'> & {
-  className: Argument;
+export type ScrollProps = Omit<UI.ButtonProps, 'onClick' | 'className'> & {
+  className?: Argument;
   scrollOptions: ScrollToOptions;
 };
 

@@ -11,6 +11,10 @@ export type ScrollToProps = ScrollProps & {
   scrollHidden?: boolean;
 };
 
+export type ScrollToPropsDirection = Partial<
+  Omit<ScrollToProps, 'scrollDirection'>
+>;
+
 export function ScrollTo({
   className,
   scrollDirection,
@@ -18,8 +22,11 @@ export function ScrollTo({
   scrollOptions,
   ...props
 }: ScrollToProps) {
-  const { matches } = useMatchMedia(QUERY_REDUCED_MOTION, () => {
-    setMotion((motion) => !motion);
+  const { matches } = useMatchMedia({
+    query: QUERY_REDUCED_MOTION,
+    listener: () => {
+      setMotion((motion) => !motion);
+    },
   });
 
   const [motionReduced, setMotion] = React.useState(matches);
@@ -34,7 +41,11 @@ export function ScrollTo({
     setScrolled(getScrolled);
   }, [getScrolled, setScrolled]);
 
-  useEventListener(window, 'scroll', scroll);
+  useEventListener({
+    target: window,
+    type: 'scroll',
+    listener: scroll,
+  });
 
   return scrollHidden && scrolled ? null : (
     <Scroll
@@ -51,7 +62,7 @@ export function ScrollTo({
 export function ScrollToTop({
   scrollOptions,
   ...props
-}: Partial<ScrollToProps>) {
+}: ScrollToPropsDirection) {
   return (
     <ScrollTo
       {...props}
@@ -68,7 +79,7 @@ export function ScrollToTop({
 export function ScrollToLeft({
   scrollOptions,
   ...props
-}: Partial<ScrollToProps>) {
+}: ScrollToPropsDirection) {
   return (
     <ScrollTo
       {...props}

@@ -1,6 +1,4 @@
-import * as React from 'react';
-import userEvent from '@testing-library/user-event';
-import { act, render, renderHook, screen } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import createContextReducer from '../src/context-reducer';
 import {
   actions,
@@ -9,8 +7,6 @@ import {
   initializer,
   initializerState,
   payload,
-  renderConsumer,
-  renderContextHook,
   spyOnConsoleError,
   Payload,
   DefaultState,
@@ -18,7 +14,14 @@ import {
   State,
 } from '.';
 
-let ContextReducer: ReturnType<
+import {
+  createRenderWrapper,
+  createRenderHookWrapper,
+} from '@packages/react-test';
+
+spyOnConsoleError();
+
+const ContextReducer: ReturnType<
   typeof createContextReducer<
     typeof actions,
     Payload,
@@ -26,32 +29,57 @@ let ContextReducer: ReturnType<
     DefaultState,
     InitialState
   >
->;
+> = createContextReducer({
+  actions,
+  defaultState,
+  initializer,
+});
 
-beforeEach(
-  () =>
-    (ContextReducer = createContextReducer({
-      actions,
-      defaultState,
-      initializer,
-    })),
+const createRenderContext = createRenderWrapper(ContextReducer.Provider, {
+  initialState,
+});
+
+const renderConsumerDispatch = createRenderContext(
+  ContextReducer.ConsumerDispatch,
 );
 
-spyOnConsoleError();
+const renderConsumerState = createRenderContext(ContextReducer.ConsumerState);
+
+const renderConsumerReducer = createRenderContext(
+  ContextReducer.ConsumerReducer,
+);
+
+const createRenderContextHook = createRenderHookWrapper(
+  ContextReducer.Provider,
+  { initialState },
+);
+
+const renderHookDispatch = createRenderContextHook(
+  ContextReducer.useContextDispatch,
+);
+
+const renderHookState = createRenderContextHook(ContextReducer.useContextState);
+
+const renderHookReducer = createRenderContextHook(
+  ContextReducer.useContextReducer,
+);
+
+const spyContext = jest.fn();
+
+afterEach(() => {
+  spyContext.mockReset();
+});
 
 describe('createContextReducer', () => {
   describe('useContextDispatch', () => {
     it('throws when used without provider', () => {
       expect(() =>
-        renderHook(() => ContextReducer.useContextDispatch()),
+        renderHookDispatch(undefined, { wrapper: undefined }),
       ).toThrow('useContextDispatch');
     });
 
     it('renders the context dispatcher', () => {
-      const { result } = renderContextHook(
-        ContextReducer.useContextDispatch,
-        ContextReducer.Provider,
-      );
+      const { result } = renderHookDispatch();
 
       act(() => {
         result.current.action2(payload);
@@ -63,16 +91,13 @@ describe('createContextReducer', () => {
 
   describe('useContextState', () => {
     it('throws when used without provider', () => {
-      expect(() => renderHook(() => ContextReducer.useContextState())).toThrow(
+      expect(() => renderHookState(undefined, { wrapper: undefined })).toThrow(
         'useContextState',
       );
     });
 
     it('renders the context state', () => {
-      const { result } = renderContextHook(
-        ContextReducer.useContextState,
-        ContextReducer.Provider,
-      );
+      const { result } = renderHookState();
 
       expect(result.current).toEqual(initializerState);
     });
@@ -81,15 +106,12 @@ describe('createContextReducer', () => {
   describe('useContextReducer', () => {
     it('throws when used without provider', () => {
       expect(() =>
-        renderHook(() => ContextReducer.useContextReducer()),
+        renderHookReducer(undefined, { wrapper: undefined }),
       ).toThrow('useContextReducer');
     });
 
     it('renders the context dispatcher and state', () => {
-      const { result } = renderContextHook(
-        ContextReducer.useContextReducer,
-        ContextReducer.Provider,
-      );
+      const { result } = renderHookReducer();
 
       act(() => {
         result.current.dispatch.action2(payload);
@@ -106,76 +128,64 @@ describe('createContextReducer', () => {
 
   describe('<ConsumerState />', () => {
     it('throws when used without provider', () => {
-      expect(() => {
-        render(
-          <ContextReducer.ConsumerState>
-            {jest.fn()}
-          </ContextReducer.ConsumerState>,
-        );
-      }).toThrow('ConsumerState');
+      expect(() =>
+        renderConsumerState(undefined, { wrapper: undefined }),
+      ).toThrow('ConsumerState');
     });
 
     it('calls children with state', () => {
-      renderConsumer(ContextReducer.ConsumerState, ContextReducer.Provider);
+      renderConsumerState({ children: spyContext });
 
-      expect(screen.getByText(initializerState.bar)).toBeInTheDocument();
+      expect(spyContext).toHaveBeenCalledWith({
+        state: initializerState,
+      });
     });
   });
 
   describe('<ConsumerDispatch />', () => {
     it('throws when used without provider', () => {
       expect(() => {
-        render(
-          <ContextReducer.ConsumerDispatch>
-            {jest.fn()}
-          </ContextReducer.ConsumerDispatch>,
-        );
+        renderConsumerDispatch(undefined, { wrapper: undefined });
       }).toThrow('ConsumerDispatch');
     });
 
-    it('calls children with dispatch', async () => {
-      const user = userEvent.setup();
+    it('calls children with dispatch', () => {
+      renderConsumerDispatch({ children: spyContext });
 
-      renderConsumer(ContextReducer.ConsumerDispatch, ContextReducer.Provider);
-
-      await act(async () => {
-        await user.click(screen.getByRole('button'));
+      expect(spyContext).toHaveBeenCalledWith({
+        dispatch: expect.objectContaining({
+          action1: expect.any(Function) as () => void,
+          action2: expect.any(Function) as () => void,
+          action3: expect.any(Function) as () => void,
+        }) as object,
       });
-
-      expect(actions.action2).toHaveBeenCalledWith(initializerState, payload);
     });
   });
 
   describe('<ConsumerReducer />', () => {
     it('throws when used without provider', () => {
       expect(() => {
-        render(
-          <ContextReducer.ConsumerReducer>
-            {jest.fn()}
-          </ContextReducer.ConsumerReducer>,
-        );
+        renderConsumerReducer(undefined, { wrapper: undefined });
       }).toThrow('ConsumerReducer');
     });
 
-    it('calls children with dispatch and state', async () => {
-      const user = userEvent.setup();
+    it('calls children with dispatch and state', () => {
+      renderConsumerReducer({ children: spyContext });
 
-      renderConsumer(ContextReducer.ConsumerReducer, ContextReducer.Provider);
-
-      await act(async () => {
-        await user.click(screen.getByText(initializerState.bar));
+      expect(spyContext).toHaveBeenCalledWith({
+        state: initializerState,
+        dispatch: expect.objectContaining({
+          action1: expect.any(Function) as () => void,
+          action2: expect.any(Function) as () => void,
+          action3: expect.any(Function) as () => void,
+        }) as object,
       });
-
-      expect(actions.action2).toHaveBeenCalledWith(initializerState, payload);
     });
   });
 
   describe('<Provider />', () => {
     it('renders with the actions dispatcher', () => {
-      const { result } = renderContextHook(
-        ContextReducer.useContextReducer,
-        ContextReducer.Provider,
-      );
+      const { result } = renderHookReducer();
 
       for (const action of Object.keys(actions) as (keyof typeof actions)[]) {
         act(() => {
@@ -187,10 +197,7 @@ describe('createContextReducer', () => {
     });
 
     it('renders with the initializer function', () => {
-      renderContextHook(
-        ContextReducer.useContextReducer,
-        ContextReducer.Provider,
-      );
+      renderHookReducer();
 
       expect(initializer).toHaveBeenCalledWith({
         ...defaultState,
@@ -199,19 +206,13 @@ describe('createContextReducer', () => {
     });
 
     it('renders with the initial state', () => {
-      const { result } = renderContextHook(
-        ContextReducer.useContextReducer,
-        ContextReducer.Provider,
-      );
+      const { result } = renderHookReducer();
 
       expect(result.current.state).toEqual(initializerState);
     });
 
     it('calls the dispatcher with an empty object if payload is undefined', () => {
-      const { result } = renderContextHook(
-        ContextReducer.useContextReducer,
-        ContextReducer.Provider,
-      );
+      const { result } = renderHookReducer();
 
       act(() => {
         result.current.dispatch.action2();

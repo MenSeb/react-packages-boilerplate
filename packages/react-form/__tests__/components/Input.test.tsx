@@ -1,10 +1,8 @@
-import { act, screen } from '@testing-library/react';
+import { act, createRender, screen } from '@packages/react-test';
 import { Input, InputProps } from '../../src';
-import { createRender } from '..';
+import { defaultValue, value } from '..';
 
-const props = {};
-
-const renderInput = createRender<InputProps>(Input, { props });
+const renderInput = createRender<InputProps>(Input);
 
 function getInput() {
   return screen.getByRole('textbox');
@@ -25,17 +23,13 @@ describe('<Input />', () => {
   });
 
   it('renders with default value', () => {
-    const defaultValue = 'defaultValue';
-
-    renderInput({ props: { defaultValue } });
+    renderInput({ defaultValue });
 
     expect(getInput()).toHaveValue(defaultValue);
     expect(getInput()).toHaveDisplayValue(defaultValue);
   });
 
   it('updates with the user onChange value', async () => {
-    const value = 'value';
-
     const { user } = renderInput();
 
     await act(async () => {

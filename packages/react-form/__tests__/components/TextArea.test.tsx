@@ -1,10 +1,8 @@
-import { act, screen } from '@testing-library/react';
+import { act, createRender, screen } from '@packages/react-test';
 import { TextArea, TextAreaProps } from '../../src';
-import { createRender } from '..';
+import { defaultValue, value } from '..';
 
-const props = {};
-
-const renderTextArea = createRender<TextAreaProps>(TextArea, { props });
+const renderTextArea = createRender<TextAreaProps>(TextArea);
 
 function getTextArea() {
   return screen.getByRole('textbox');
@@ -25,17 +23,13 @@ describe('<TextArea />', () => {
   });
 
   it('renders with default value', () => {
-    const defaultValue = 'defaultValue';
-
-    renderTextArea({ props: { defaultValue } });
+    renderTextArea({ defaultValue });
 
     expect(getTextArea()).toHaveValue(defaultValue);
     expect(getTextArea()).toHaveDisplayValue(defaultValue);
   });
 
   it('updates with the user onChange value', async () => {
-    const value = 'value';
-
     const { user } = renderTextArea();
 
     await act(async () => {

@@ -47,7 +47,8 @@
         "plugin:jest-dom/recommended"
       ],
       "rules": {
-        "testing-library/render-result-naming-convention": "off"
+        "testing-library/render-result-naming-convention": "off",
+        "testing-library/no-node-access": "warn"
       }
     }
   ],

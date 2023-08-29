@@ -1,12 +1,11 @@
-import { screen } from '@testing-library/react';
+import { createRender, screen } from '@packages/react-test';
 import { Alert, AlertProps } from '../../src';
-import { createRender } from '..';
 
 const props = {
   children: 'children',
 };
 
-const renderAlert = createRender<AlertProps>(Alert, { props });
+const renderAlert = createRender<AlertProps>(Alert, props);
 
 function getAlert() {
   return screen.getByRole('alert');

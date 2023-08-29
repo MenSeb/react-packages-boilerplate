@@ -42,5 +42,8 @@
   "dependencies": {
     "@packages/react-context-reducer": "*",
     "@packages/react-hooks": "*"
+  },
+  "devDependencies": {
+    "@packages/react-test": "*"
   }
 }

@@ -1,20 +1,22 @@
-import { act } from '@testing-library/react';
+import { act } from '@packages/react-test';
 import { dispatchMatchMedia } from '@packages/react-hooks/src/match-media/mock';
 import * as Theme from '../../src';
 import { THEME_QUERY_DARK, THEME_STORAGE_KEY } from '../../src/utilities';
-import { renderThemeHook } from '..';
+import { createRenderHook } from '..';
+
+const renderThemeHook = createRenderHook(Theme.useContextReducer);
 
 describe('Provider', () => {
   it('loads the theme from local storage', () => {
     localStorage.setItem(THEME_STORAGE_KEY, 'light');
 
-    const { result } = renderThemeHook(Theme.useContextReducer);
+    const { result } = renderThemeHook();
 
     expect(result.current.state.theme).toBe('light');
   });
 
   it('loads the user color scheme preference', () => {
-    const { result } = renderThemeHook(Theme.useContextReducer);
+    const { result } = renderThemeHook();
 
     expect(result.current.state.theme).toBe('dark');
   });
@@ -24,7 +26,7 @@ describe('Provider', () => {
       .spyOn(window, 'matchMedia')
       .mockImplementationOnce(() => ({ matches: false }) as MediaQueryList);
 
-    const { result } = renderThemeHook(Theme.useContextReducer);
+    const { result } = renderThemeHook();
 
     expect(result.current.state.theme).toBe('light');
   });
@@ -32,7 +34,7 @@ describe('Provider', () => {
   it('saves the theme in local storage on the initial render', () => {
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBeNull();
 
-    renderThemeHook(Theme.useContextReducer);
+    renderThemeHook();
 
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe('dark');
   });
@@ -40,7 +42,7 @@ describe('Provider', () => {
   it('saves the theme in local storage when it changes', () => {
     localStorage.setItem(THEME_STORAGE_KEY, 'dark');
 
-    const { result } = renderThemeHook(Theme.useContextReducer);
+    const { result } = renderThemeHook();
 
     act(() => {
       result.current.dispatch.toggleTheme();
@@ -64,7 +66,7 @@ describe('Provider', () => {
   it('renders with the dispatch to toggle theme', () => {
     localStorage.setItem(THEME_STORAGE_KEY, 'dark');
 
-    const { result } = renderThemeHook(Theme.useContextReducer);
+    const { result } = renderThemeHook();
 
     expect(result.current.state.theme).toBe('dark');
 
@@ -84,7 +86,7 @@ describe('Provider', () => {
   it('renders with the dispatch to set theme dark', () => {
     localStorage.setItem(THEME_STORAGE_KEY, 'light');
 
-    const { result } = renderThemeHook(Theme.useContextReducer);
+    const { result } = renderThemeHook();
 
     expect(result.current.state.theme).toBe('light');
 
@@ -104,7 +106,7 @@ describe('Provider', () => {
   it('renders with the dispatch to set theme light', () => {
     localStorage.setItem(THEME_STORAGE_KEY, 'dark');
 
-    const { result } = renderThemeHook(Theme.useContextReducer);
+    const { result } = renderThemeHook();
 
     expect(result.current.state.theme).toBe('dark');
 
@@ -122,7 +124,7 @@ describe('Provider', () => {
   });
 
   it('listens to the user color scheme change event', () => {
-    const { result } = renderThemeHook(Theme.useContextReducer);
+    const { result } = renderThemeHook();
 
     expect(result.current.state.theme).toBe('dark');
 

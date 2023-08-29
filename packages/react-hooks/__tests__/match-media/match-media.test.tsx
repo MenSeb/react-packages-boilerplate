@@ -1,10 +1,14 @@
-import { renderHook } from '@testing-library/react';
-import { useMatchMedia } from '../../src/match-media';
+import { createRenderHook } from '@packages/react-test';
+import { useMatchMedia, UseMatchMedia } from '../../src/match-media';
 import { listener, query } from './index';
+
+const props: UseMatchMedia = { query, listener };
+
+const renderMatchMedia = createRenderHook(useMatchMedia, props);
 
 describe('useMatchMedia', () => {
   it('returns a media query list with matches and media', () => {
-    const { result } = renderHook(() => useMatchMedia(query, listener));
+    const { result } = renderMatchMedia();
 
     expect(result.current).toMatchObject({
       matches: true,
@@ -13,9 +17,7 @@ describe('useMatchMedia', () => {
   });
 
   it('listens to change on the media query', () => {
-    const { result, unmount } = renderHook(() =>
-      useMatchMedia(query, listener),
-    );
+    const { result, unmount } = renderMatchMedia();
 
     result.current.dispatchEvent(new Event('change'));
 

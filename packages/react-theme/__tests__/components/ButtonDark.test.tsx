@@ -1,10 +1,9 @@
-import userEvent from '@testing-library/user-event';
-import { act } from '@testing-library/react';
-import { ButtonDark } from '../../src/components';
+import { act } from '@packages/react-test';
+import { ButtonDark, ButtonDarkProps } from '../../src/components';
 import { THEME_STORAGE_KEY } from '../../src/utilities';
 import { createRender, getButton, props } from '..';
 
-const renderButtonDark = createRender(ButtonDark);
+const renderButtonDark = createRender<ButtonDarkProps>(ButtonDark);
 
 describe('<ButtonDark />', () => {
   it('renders with attribute data-theme to dark', () => {
@@ -32,9 +31,7 @@ describe('<ButtonDark />', () => {
   it('renders with click handler to set the theme to dark', async () => {
     localStorage.setItem(THEME_STORAGE_KEY, 'light');
 
-    renderButtonDark();
-
-    const user = userEvent.setup();
+    const { user } = renderButtonDark();
 
     await act(async () => {
       await user.click(getButton());

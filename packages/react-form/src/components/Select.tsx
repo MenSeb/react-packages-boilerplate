@@ -9,14 +9,15 @@ export type SelectProps = Omit<UI.SelectProps, 'defaultValue'> & {
 };
 
 export function Select({
-  defaultValue = '',
+  defaultValue,
   options,
   placeholder,
   ...props
 }: SelectProps) {
-  const { changeValue, value } = useValue<HTMLSelectElement>(
-    options.includes(defaultValue) ? defaultValue : '',
-  );
+  const { changeValue, value } = useValue<HTMLSelectElement>({
+    defaultValue:
+      defaultValue && options.includes(defaultValue) ? defaultValue : '',
+  });
 
   return (
     <UI.Select {...props} value={value} onChange={changeValue}>
