@@ -1,7 +1,6 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-import type { Config } from 'jest';
+import { JestConfigWithTsJest } from 'ts-jest';
 
-const config: Config = {
+export const jestConfig: JestConfigWithTsJest = {
   collectCoverageFrom: [
     '<rootDir>/packages/**/src/*.{ts,tsx}',
     '<rootDir>/packages/**/src/**/*.{ts,tsx}',
@@ -19,4 +18,4 @@ const config: Config = {
   verbose: true,
 };
 
-export default config;
+export default jestConfig;
