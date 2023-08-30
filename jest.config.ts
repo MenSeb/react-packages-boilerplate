@@ -10,8 +10,9 @@ export const jestConfig: JestConfigWithTsJest = {
   moduleNameMapper: {
     '\\.svg$': '<rootDir>/mocks/svg.tsx',
   },
+  passWithNoTests: true,
   setupFiles: ['whatwg-fetch'],
-  setupFilesAfterEnv: ['./jest.setup.ts'],
+  setupFilesAfterEnv: [`${__dirname}/jest.setup.ts`],
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['^(.(?!\\.test\\.))*$'],
   transform: { '\\.tsx?': 'ts-jest' },
