@@ -41,9 +41,9 @@
     "publish": "lerna publish",
     "serve": "lerna run serve",
     "show": "lerna --scope=@apps/webfolio run webpack:serve",
-    "test": "jest",
-    "test:watch": "yarn test --watch",
-    "test:coverage": "yarn test --coverage"
+    "test": "lerna run test",
+    "test:watch": "lerna run test:watch",
+    "test:coverage": "lerna run test:coverage"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
