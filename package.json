@@ -30,6 +30,7 @@
     "deploy": "lerna run deploy",
     "docs": "typedoc --plugin @plugins/typedoc",
     "build": "lerna run build",
+    "build:watch": "lerna run build:watch",
     "lint": "yarn lint:es && yarn lint:markdown && yarn lint:style",
     "lint:es": "eslint .",
     "lint:markdown": "markdownlint **/*.md",
