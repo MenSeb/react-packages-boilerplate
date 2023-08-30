@@ -1,5 +1,12 @@
 {
-  "compilerOptions": { "outDir": "./lib" },
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./lib",
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"]
+    }
+  },
   "extends": "../../tsconfig.json",
   "include": ["src"]
 }
