@@ -1,4 +1,4 @@
-import { defineScroll, resetScroll } from '../../src/Scroll/mock';
+import { defineScroll, resetScroll } from '@/Scroll/mock';
 
 defineScroll();
 

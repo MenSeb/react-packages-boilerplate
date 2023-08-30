@@ -1,6 +1,6 @@
 import { createRender } from '@packages/react-test';
-import { resetScroll } from '../../src/Scroll/mock';
-import { Scroll, ScrollProps } from '../../src';
+import { resetScroll } from '@/Scroll/mock';
+import { Scroll, ScrollProps } from '@';
 import { otherProps } from '..';
 import { getScroll, scrollOptions } from '.';
 

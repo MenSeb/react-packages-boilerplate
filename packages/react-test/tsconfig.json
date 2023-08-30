@@ -8,5 +8,5 @@
     }
   },
   "extends": "../../tsconfig.json",
-  "include": ["src"]
+  "include": ["src", "__tests__", "../../jest.setup.ts"]
 }

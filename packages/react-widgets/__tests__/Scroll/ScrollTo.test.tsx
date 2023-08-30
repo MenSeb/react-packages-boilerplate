@@ -1,13 +1,13 @@
 import { act, createRender, fireEvent } from '@packages/react-test';
 import { dispatchMatchMedia } from '@packages/react-hooks/src/match-media/mock';
-import { resetScroll } from '../../src/Scroll/mock';
+import { resetScroll } from '@/Scroll/mock';
 import {
   QUERY_REDUCED_MOTION,
   ScrollTo,
   ScrollToLeft,
   ScrollToProps,
   ScrollToTop,
-} from '../../src';
+} from '@';
 import { otherProps } from '..';
 import { getIcon, getScroll, queryScroll, scrollOptions } from '.';
 

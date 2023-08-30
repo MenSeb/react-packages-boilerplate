@@ -30,8 +30,12 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
-    "build": "tsc && tsc-alias",
-    "build:watch": "tsc && (concurrently \"tsc -w\" \"tsc-alias -w\")"
+    "build": "yarn build:ts && tsc-alias",
+    "build:ts": "tsc -p tsconfig.build.json",
+    "build:watch": "yarn build:ts && (concurrently \"yarn:build:ts -w\" \"tsc-alias -w\")",
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "yarn test --coverage"
   },
   "bugs": {
     "url": "https://github.com/MenSeb/react-packages-boilerplate/issues"

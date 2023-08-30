@@ -30,10 +30,14 @@
     "url": "git+https://github.com/MenSeb/react-packages-boilerplate.git"
   },
   "scripts": {
-    "start": "nodemon",
-    "build": "tsc && tsc-alias",
-    "build:watch": "tsc && (concurrently \"tsc -w\" \"tsc-alias -w\")",
+    "build": "yarn build:ts && tsc-alias",
+    "build:ts": "tsc -p tsconfig.build.json",
+    "build:watch": "yarn build:ts && (concurrently \"yarn:build:ts -w\" \"tsc-alias -w\")",
     "deploy": "yarn build && yarn webpack:build",
+    "start": "nodemon",
+    "test-temp": "jest",
+    "test:watch-temp": "yarn test --watch",
+    "test:coverage-temp": "yarn test --coverage",
     "webpack:build": "webpack --mode production",
     "webpack:serve": "webpack serve --hot --open --mode development"
   },

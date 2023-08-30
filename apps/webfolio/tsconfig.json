@@ -9,7 +9,7 @@
   },
   "extends": "../../tsconfig.json",
   "files": ["modules.d.ts"],
-  "include": ["src"],
+  "include": ["src", "__tests__", "../../jest.setup.ts"],
   "ts-node": {
     "compilerOptions": {
       "module": "ES6",
