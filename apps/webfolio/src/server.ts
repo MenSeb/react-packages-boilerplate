@@ -1,7 +1,7 @@
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import express, { Request, Response } from 'express';
-import nodemailer, { SendMailOptions } from 'nodemailer';
+import * as nodemailer from 'nodemailer';
 import { log } from 'console';
 import 'dotenv/config';
 
@@ -42,7 +42,7 @@ app.listen(port, () => {
 function sendMailContact(req: ContactMailRequest, res: Response) {
   const { body } = req;
 
-  const sendMailOptions: SendMailOptions = {
+  const sendMailOptions: nodemailer.SendMailOptions = {
     from: body.email,
     to: process.env.NODE_MAILER_EMAIL,
     subject: `${body.firstname}, ${body.lastname} - ${body.website}`,

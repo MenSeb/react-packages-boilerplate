@@ -1,7 +1,7 @@
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
-import { Options } from '@testing-library/user-event/options';
-import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
+import type { Options } from '@testing-library/user-event/options';
+import type { UserEvent } from '@testing-library/user-event/setup/setup';
 import { RenderOptions, RenderResult, render } from '@testing-library/react';
 import { createWrapper } from '.';
 

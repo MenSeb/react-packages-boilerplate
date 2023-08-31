@@ -2,7 +2,6 @@ import { pathsToModuleNameMapper, JestConfigWithTsJest } from 'ts-jest';
 import { compilerOptions } from './tsconfig.json';
 import { name as displayName } from './package.json';
 import { jestConfig } from '../../jest.config';
-import { log } from 'console';
 
 const config: JestConfigWithTsJest = {
   ...jestConfig,

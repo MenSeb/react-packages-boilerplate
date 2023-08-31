@@ -1,5 +1,10 @@
 {
-  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
   "env": {
     "browser": true,
     "es6": true,
@@ -18,7 +23,11 @@
         "@typescript-eslint/no-misused-promises": [
           2,
           { "checksVoidReturn": { "attributes": false } }
-        ]
+        ],
+        // Needed since the use of path aliases, how to fix!?
+        "@typescript-eslint/no-unsafe-call": 1,
+        "@typescript-eslint/no-unsafe-argument": 1,
+        "@typescript-eslint/no-unsafe-member-access": 1
       }
     },
     {
@@ -59,7 +68,7 @@
     "project": "tsconfig.json",
     "sourceType": "module"
   },
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "import"],
   "root": true,
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
@@ -68,9 +77,21 @@
     "semi": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],
     "no-cond-assign": ["error", "always"],
-    "no-console": "error"
+    "no-console": "error",
+    "import/namespace": ["error", { "allowComputed": true }]
   },
   "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": [
+          "apps/*/tsconfig.json",
+          "packages/*/tsconfig.json",
+          "plugins/*/tsconfig.json",
+          "scripts/*/tsconfig.json"
+        ]
+      },
+      "node": {}
+    },
     "react": {
       "version": "detect"
     }
