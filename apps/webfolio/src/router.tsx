@@ -18,6 +18,7 @@ import {
   Projects,
   Services,
   Sitemap,
+  Carriere,
 } from './pages';
 
 export const routes = (
@@ -33,6 +34,7 @@ export const routes = (
       <Route element={<Conditions />} path="terms-conditions" />
       <Route element={<Accessibility />} path="accessibility" />
       <Route element={<Sitemap />} path="sitemap" />
+      <Route element={<Carriere />} path="carriere" />
       <Route element={<Lost />} path="*" />
     </Route>
   </Route>

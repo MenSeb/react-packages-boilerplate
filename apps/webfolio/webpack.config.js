@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as url from 'url';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import 'dotenv/config';
 
 export const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 

@@ -10,3 +10,5 @@ export { default as Privacy } from './privacy';
 export { default as Projects } from './projects';
 export { default as Services } from './services';
 export { default as Sitemap } from './sitemap';
+
+export { default as Carriere } from './carriere';
