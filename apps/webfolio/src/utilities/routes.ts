@@ -12,6 +12,7 @@ export const ROUTES_INFOS = createRoutesLinks([
   'terms & conditions',
   'accessibility',
   'sitemap',
+  'carriere',
 ]);
 
 export const ROUTES_MAIN = createRoutesLinks([

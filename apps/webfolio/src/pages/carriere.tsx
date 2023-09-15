@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as UI from '@packages/react-ui';
-import { Construction } from '../sections';
 import * as ReactForm from '@packages/react-form';
 import { SentMessageInfo } from 'nodemailer';
 
@@ -22,7 +21,7 @@ async function sendContactEmail(formData: FormData) {
   return await response.json();
 }
 
-export default function Sitemap() {
+export default function PageCarriere() {
   const [, setData] = React.useState<FetchContactEmail | null>(null);
 
   const submitForm = React.useCallback(async (formData: FormData) => {
@@ -30,9 +29,7 @@ export default function Sitemap() {
   }, []);
 
   return (
-    <UI.Page className="page-sitemap" label="sitemap page">
-      <UI.Separator />
-      <Construction />
+    <UI.Page label="about page" className="page-about">
       <UI.Separator />
 
       <ReactForm.Form

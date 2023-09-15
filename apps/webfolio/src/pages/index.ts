@@ -1,6 +1,7 @@
 export { default as About } from './about';
 export { default as Accessibility } from './accessibility';
 export { default as Blog } from './blog';
+export { default as Carriere } from './carriere';
 export { default as Conditions } from './conditions';
 export { default as Contact } from './contact';
 export { default as Error } from './error';

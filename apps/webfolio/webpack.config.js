@@ -1,6 +1,8 @@
 import * as path from 'path';
 import * as url from 'url';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import 'dotenv/config';
 
 export const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -52,5 +54,6 @@ export default {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.sass'],
     modules: ['node_modules', path.resolve(__dirname, 'src')],
+    plugins: [new TsconfigPathsPlugin()],
   },
 };

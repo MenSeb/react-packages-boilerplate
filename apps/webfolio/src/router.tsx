@@ -18,12 +18,14 @@ import {
   Projects,
   Services,
   Sitemap,
+  Carriere,
 } from './pages';
 
 export const routes = (
   <Route element={<Layout />} path="/">
     <Route errorElement={<Error />}>
       <Route element={<Home />} index />
+      <Route element={<Carriere />} path="carriere" />
       <Route element={<Services />} path="services" />
       <Route element={<Projects />} path="projects" />
       <Route element={<Blog />} path="blog" />

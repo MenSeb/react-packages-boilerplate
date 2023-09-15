@@ -1,9 +1,61 @@
 import cors from 'cors';
-import bodyParser from 'body-parser';
 import express, { Request, Response } from 'express';
 import nodemailer, { SendMailOptions } from 'nodemailer';
 import { log } from 'console';
 import 'dotenv/config';
+import multer from 'multer';
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+type ContactMailGmail = Omit<Express.Request, 'body'> & {
+  body: {
+    Nom: string;
+    Courriel: string;
+    Telephone: string;
+    Adresse: string;
+    Note: string;
+  };
+};
+
+const transporterGMAIL = nodemailer.createTransport({
+  host: process.env.GMAIL_HOST,
+  port: Number(process.env.GMAIL_PORT),
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS,
+  },
+});
+
+function sendMailGmail(req: ContactMailGmail, res: Response) {
+  const { body, file } = req;
+
+  const sendMailOptions: SendMailOptions = {
+    from: process.env.GMAIL_USER,
+    to: process.env.GMAIL_USER,
+    cc: body.Courriel,
+    subject: 'Message sent with GMAIL',
+    text: `
+      Nom : ${body.Nom}
+      Courriel : ${body.Courriel}
+      Telephone : ${body.Telephone}
+      Adresse : ${body.Adresse}
+      Note : ${body.Note}
+    `,
+    attachments: [
+      {
+        filename: file?.originalname,
+        content: file?.buffer,
+      },
+    ],
+  };
+
+  transporterGMAIL.sendMail(sendMailOptions, function (error, info) {
+    log('TRANSPORTER sendMailGmail', { error, info });
+
+    res.json({ error, info });
+  });
+}
 
 export type ContactMailRequest = Omit<Request, 'body'> & {
   body: {
@@ -22,21 +74,6 @@ const transporter = nodemailer.createTransport({
     user: process.env.NODE_MAILER_USERNAME,
     pass: process.env.NODE_MAILER_PASSWORD,
   },
-});
-
-const app = express();
-const port = process.env.BACKEND_PORT;
-
-app.use(cors());
-app.use(bodyParser.json());
-
-app.get('/webfolio', (req, res) => {
-  res.send('Hello World!');
-  log('Hello World! WebFolio!');
-});
-
-app.listen(port, () => {
-  log(`Listening on port: ${port}`);
 });
 
 function sendMailContact(req: ContactMailRequest, res: Response) {
@@ -73,11 +110,37 @@ function sendMailUser(req: ContactMailRequest, res: Response) {
   );
 }
 
+const app = express();
+const port = process.env.BACKEND_PORT;
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.listen(port, () => {
+  log(`Listening on port: ${port}`);
+});
+
+app.get('/webfolio', (req, res) => {
+  res.send('Hello World!');
+  log('Hello World! WebFolio!');
+});
+
 app.post(
   '/webfolio/api/contact',
   function (req: ContactMailRequest, res: Response) {
     sendMailContact(req, res);
 
     sendMailUser(req, res);
+  },
+);
+
+app.post(
+  '/webfolio/api/carriere',
+  upload.single('File'),
+  function (req: ContactMailGmail, res: Response) {
+    log('POST sendMailGmail');
+
+    sendMailGmail(req, res);
   },
 );
