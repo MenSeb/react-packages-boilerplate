@@ -25,7 +25,7 @@ jobs:
         run: yarn deploy --scope=@apps/webfolio
 
       - name: Deploy FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           port: ${{ secrets.FTP_PORT }}
           server: ${{ secrets.FTP_SERVER }}
